@@ -26,7 +26,7 @@ import lombok.Setter;
 public class Ejemplo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idPrueba;
+	private int idEjemplo;
 	
 	private String descripcion;
 	
