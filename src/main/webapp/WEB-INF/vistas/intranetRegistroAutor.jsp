@@ -50,6 +50,7 @@
 		 		</div>
 			</div>
 			<div>
+			
 			<div class="form-group col-md-3">
 					<label class="control-label" for="id_telefono">Telefono</label>
 					<input class="form-control" type="text" id="id_telefono" name="telefono" placeholder="Ingrese telefono ">
