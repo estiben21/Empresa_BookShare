@@ -25,6 +25,7 @@ public class EjemploRegistroController {
 	
 	@PostMapping("/registraEjemplo")
 	@ResponseBody
+	
 	public Map<?, ?> registra(Ejemplo obj, HttpSession session){
 		Usuario objUsuario = (Usuario)session.getAttribute("objUsuario");
 		obj.setFechaActualizacion(new Date());
