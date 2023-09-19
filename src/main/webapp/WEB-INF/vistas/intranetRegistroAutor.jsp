@@ -56,7 +56,6 @@
 								name="fechaNacimiento" placeholder="Ingrese la fecha"
 								maxlength="100">
 						</div>
-
 					</div>
 				</div>
 				<div>
@@ -102,7 +101,7 @@
 		$.getJSON("listaGradoAutor", {}, function(data) {
 			$.each(data, function(index, item) {
 				$("#id_grado").append(
-						"<option value="+item.idGrado +">" + item.descripcion
+						"<option value="+item.idDataCatalogo +">" + item.descripcion
 								+ "</option>");
 			});
 		});
