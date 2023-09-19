@@ -74,7 +74,7 @@
 					</div>
 					<div class="form-group col-md-3">
 						<label class="control-label" for="id_grado">Grado</label> <select
-							id="id_grado" name="grado.idGrado" class='form-control'>
+							id="id_grado" name="grado.idDataCatalogo" class='form-control'>
 							<option value=" ">[Seleccione]</option>
 						</select>
 					</div>
@@ -133,9 +133,9 @@
 											message : 'El nombre es un campo obligatorio'
 										},
 										stringLength : {
-											message : 'El nombre es de 5 a 100 caracteres',
-											min : 5,
-											max : 100
+											message : 'El nombre es de 2 a 40 caracteres',
+											min : 2,
+											max : 40
 										},
 										regexp : {
 											regexp : /^[a-zA-Z\s]+$/,
@@ -150,9 +150,9 @@
 											message : 'El apellido es un campo obligatorio'
 										},
 										stringLength : {
-											message : 'El apellido es de 5 a 100 caracteres',
-											min : 5,
-											max : 100
+											message : 'El apellido es de 2 a 40 caracteres',
+											min : 2,
+											max : 40
 										},
 										regexp : {
 											regexp : /^[a-zA-Z\s]+$/,
