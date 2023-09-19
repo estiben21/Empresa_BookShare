@@ -55,6 +55,7 @@
 							<input class="form-control" type="date" id="id_fecha"
 								name="fechaNacimiento" placeholder="Ingrese la fecha"
 								maxlength="100">
+								
 						</div>
 					</div>
 				</div>
