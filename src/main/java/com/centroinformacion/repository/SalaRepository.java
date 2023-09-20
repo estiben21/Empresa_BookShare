@@ -1,5 +1,11 @@
 package com.centroinformacion.repository;
 
-public interface SalaRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.centroinformacion.entity.Sala;
+
+public interface SalaRepository extends JpaRepository<Sala, Integer>{
+	
+	
 
 }
