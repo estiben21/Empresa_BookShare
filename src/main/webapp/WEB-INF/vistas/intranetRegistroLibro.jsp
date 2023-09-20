@@ -37,12 +37,22 @@
 					<input class="form-control" type="text" id="id_titulo" name="titulo" placeholder="Ingrese el tìtulo del Libro">
 				</div>
 				<div class="form-group col-md-3">
-					<label class="control-label" for="id_titulo">Año</label>
-					<input class="form-control" type="text" id="id_año" name="año" placeholder="Ingrese el tìtulo del Libro">
+					<label class="control-label" for="id_año">Año</label>
+					<input class="form-control" type="text" id="id_año" name="año" placeholder="Ingrese el años del Libro">
 				</div>
 				<div class="form-group col-md-3">
-					<label class="control-label" for="id_pais">País</label>
-					<select id="id_pais" name="pais.idPais" class='form-control'>
+					<label class="control-label" for="id_serie">Serie</label>
+					<input class="form-control" type="text" id="id_serie" name="serie" placeholder="Ingrese la serie del Libro">
+				</div>
+				<div class="form-group col-md-3">
+					<label class="control-label" for="id_categoriaLibro">Categoria</label>
+					<select id="id_categoriaLibro" name="dataCatalogo.idCategoriaLibro" class='form-control'>
+						<option value=" ">[Seleccione]</option>    
+					</select>
+			    </div>
+			    <div class="form-group col-md-3">
+					<label class="control-label" for="id_tipo">Tipo</label>
+					<select id="id_tipo" name="dataCatalogo.idTipoLibro" class='form-control'>
 						<option value=" ">[Seleccione]</option>    
 					</select>
 			    </div>
@@ -58,9 +68,19 @@
 </div>
 
 <script type="text/javascript">
-$.getJSON("listaPais", {}, function(data){
-	$.each(data, function(index,item){
-		$("#id_pais").append("<option value="+item.idPais +">"+ item.nombre +"</option>");
+$.getJSON("listaCategoriaDeLibro", {}, function(data) {
+	$.each(data, function(index, item) {
+		$("#id_categoriaLibro").append(
+				"<option value="+item.idDataCatalogo +">" + item.descripcion
+						+ "</option>");
+	});
+});
+
+$.getJSON("listaTipoLibroRevista", {}, function(data) {
+	$.each(data, function(index, item) {
+		$("#id_tipo").append(
+				"<option value="+item.idDataCatalogo +">" + item.descripcion
+						+ "</option>");
 	});
 });
 
@@ -71,7 +91,7 @@ $("#id_registrar").click(function (){
 	if (validator.isValid()){
 		$.ajax({
     		type: "POST",
-            url: "registraEjemplo", 
+            url: "registraLibro", 
             data: $('#id_form').serialize(),
             success: function(data){
             	mostrarMensaje(data.MENSAJE);
@@ -86,8 +106,11 @@ $("#id_registrar").click(function (){
 });
 
 function limpiarFormulario(){
-	$("#id_descripcion").val('');
-	$("#id_pais").val(' ');
+	$("#id_titulo").val('');
+	$("#id_año").val(' ');
+	$("#id_serie").val(' ');
+	$("#id_categoria").val(' ');
+	$("#id_tipo").val(' ');
 }
 
 $('#id_form').bootstrapValidator({
@@ -98,30 +121,58 @@ $('#id_form').bootstrapValidator({
         validating: 'glyphicon glyphicon-refresh'
     },
     fields: {
-    	descripcion: {
-    		selector : '#id_descripcion',
+        titulo: {
             validators: {
                 notEmpty: {
-                    message: 'El descripción es un campo obligatorio'
+                    message: 'El título es un campo obligatorio'
                 },
-                stringLength :{
-                	message:'El descripción es de 5 a 100 caracteres',
-                	min : 5,
-                	max : 100
-                },
+                stringLength: {
+                    min: 2,
+                    max: 40,
+                    message: 'El título debe tener entre 2 y 40 caracteres'
+                }
             }
         },
-        pais: {
-    		selector : '#id_pais',
+        año: {
             validators: {
-            	notEmpty: {
-                    message: 'País es un campo obligatorio'
+                notEmpty: {
+                    message: 'El año es un campo obligatorio'
                 },
+                regexp: {
+                    regexp: /^\d{4}$/,
+                    message: 'El año debe ser un número de 4 dígitos'
+                }
             }
         },
-    	
-    }   
+        serie: {
+            validators: {
+                notEmpty: {
+                    message: 'La serie es un campo obligatorio'
+                },
+                regexp: {
+                    regexp: /^[A-Za-z]{2}\d{3}$/,
+                    message: 'La serie debe tener 2 letras seguidas de 3 dígitos'
+                }
+            }
+        },
+        'dataCatalogo.idCategoriaLibro': {
+            validators: {
+                notEmpty: {
+                    message: 'Debe seleccionar una Categoria'
+                }
+            }
+        },
+        'dataCatalogo.idTipoLibro': {
+            validators: {
+                notEmpty: {
+                    message: 'Debe seleccionar un Tipo'
+                }
+            }
+        }
+    }
 });
+
+
 </script>   		
 </body>
 </html>
