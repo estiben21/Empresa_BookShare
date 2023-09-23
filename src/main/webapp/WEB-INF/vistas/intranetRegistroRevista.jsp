@@ -52,13 +52,13 @@
 				<div class="form-group col-md-4">
 					<label class="control-label" for="id_pais">País :</label>
 					<select id="id_pais" name="pais.idPais" class='form-control'>
-						<option value=" ">Seleccione:</option>    
+						<option value=" ">Seleccione</option>    
 					</select>
 			    </div>
 			    <div class="form-group col-md-4">
 					<label class="control-label" for="id_tipoRevista">Tipo de revista :</label>
 					<select id="id_tipoRevista" name="tipoRevista.idDataCatalogo" class='form-control'>
-						<option value=" ">Seleccione:</option>    
+						<option value=" ">Seleccione</option>    
 					</select>
 			    </div>
 			</div>
