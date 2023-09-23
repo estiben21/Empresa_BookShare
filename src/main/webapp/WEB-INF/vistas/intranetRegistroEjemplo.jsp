@@ -49,6 +49,7 @@
 				</div>
 			</div>
 	</div>
+	
 	</form>
 	
 </div>
@@ -121,6 +122,5 @@ $('#id_form').bootstrapValidator({
 });
 </script>
 
-</script>   		
 </body>
 </html>
