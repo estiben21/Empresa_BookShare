@@ -55,13 +55,13 @@
 				</div>
 				
 				
-				<div class="form-group col-md-3">
+				<div class="form-group col-md-9">
 					<label class="control-label" for="id_tipo">Tipo</label>
 					<select id="id_tipo" name="tipoSala.idDataCatalogo" class='form-control'>
 						<option value=" ">[Seleccione]</option>    
 					</select>
 			    </div>
-			    <div class="form-group col-md-3">
+			    <div class="form-group col-md-9">
 					<label class="control-label" for="id_sede">Sede</label>
 					<select id="id_sede" name="sede.idDataCatalogo" class='form-control'>
 						<option value=" ">[Seleccione]</option>    
@@ -150,6 +150,11 @@ $('#id_form').bootstrapValidator({
     	            regexp: /^[A-Za-z]\d{3}$/,
     	            message: 'El número debe consistir en un carácter y tres dígitos.'
     	        },
+    	        remote :{
+                	delay   : 1000,
+                	url     : 'buscaPorNumeroSala',
+                	message : 'El numero ya existe'
+                }
     	    }
     	},
     	 piso:{

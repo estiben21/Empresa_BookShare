@@ -3,11 +3,13 @@ package com.centroinformacion.controller;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -50,4 +52,16 @@ public class SalaRegistroController {
 		}
 		return map;
 }
+	@GetMapping("/buscaPorNumeroSala")
+	@ResponseBody
+	public String validaNumero(String numero) {
+		List<Sala> lstSala = salaService.listaPorNumero(numero);
+		if (CollectionUtils.isEmpty(lstSala)) {
+			return "{\"valid\" : true }";
+		} else {
+			return "{\"valid\" : false }";
+		}
 }
+}
+
+
