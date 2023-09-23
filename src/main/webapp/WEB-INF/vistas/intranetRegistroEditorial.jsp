@@ -38,29 +38,29 @@
 			
 			<!-- RAZON SOCIAL -->
 				<div class="form-group col-md-6">
-					<label class="control-label" for="id_razonSocial">Razón Social</label>
+					<label class="control-label" for="id_razonSocial">Razón Social:</label>
 					<input class="form-control" type="text" id="id_razonSocial" name="razonSocial" placeholder="Ingrese la razon social">
 				</div>
 			<!-- DIRECCION -->
 			<div class="form-group col-md-6">
-					<label class="control-label" for="id_direccionl">Dirección</label>
+					<label class="control-label" for="id_direccionl">Dirección:</label>
 					<input class="form-control" type="text" id="id_direccion" name="direccion" placeholder="Ingrese la direccion">
 				</div>
 			<!-- RUC (NUMEROS 11 DIGITOS) -->
 			<div class="form-group col-md-6">
-					<label class="control-label" for="id_ruc">RUC</label>
+					<label class="control-label" for="id_ruc">RUC:</label>
 					<input class="form-control" type="text" id="id_ruc" name="ruc" placeholder="Ingrese el RUC" maxlength="11">
 				</div>
 			<!-- FECHA CREACION -->
 			<div class="form-group col-sm-6">
-    <label class="control-label" for="id_fechaCreacion">Fecha Creación</label>
+    <label class="control-label" for="id_fechaCreacion">Fecha Creación:</label>
     <input class="form-control" type="date" id="id_fechaCreacion" name="fechaCreacion" placeholder="Ingrese la fecha de creación" maxlength="100">
 </div>
 
 		
 			<!-- PAIS (CBO) -->
 			    <div class="form-group col-md-3">
-					<label class="control-label" for="id_pais">Pais</label>
+					<label class="control-label" for="id_pais">País:</label>
 					<select id="id_pais" name="pais.idPais" class='form-control'>
 						<option value=" ">[Seleccione]</option>    
 					</select>
@@ -72,7 +72,7 @@
 			
 		    <div class="row">
 				<div class="form-group col-md-12" align="center">
-					<button id="id_registrar" type="button" class="btn btn-primary" >Registra</button>
+					<button id="id_registrar" type="button" class="btn btn-primary" >Registrar</button>
 				</div>
 			</div>
 	</div>
@@ -143,12 +143,12 @@ $('#id_form').bootstrapValidator({
             selector: "#id_direccion",
             validators:{
                 notEmpty: {
-                     message: 'La direccion es obligatorio'
+                     message: 'La dirección es obligatoria'
                 },
                 stringLength: {
                     min: 3,
                     max: 40,
-                    message: 'La direccion es de 3 a 40 caracteres'
+                    message: 'La dirección es de 3 a 40 carácteres'
                 },
             }
         },
