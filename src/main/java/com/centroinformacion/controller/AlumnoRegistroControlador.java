@@ -19,7 +19,7 @@ import com.centroinformacion.util.AppSettings;
 
 import jakarta.servlet.http.HttpSession;
 
-@Controller
+@Controller    
 public class AlumnoRegistroControlador {
 	@Autowired
 	private AlumnoService alumnoService;

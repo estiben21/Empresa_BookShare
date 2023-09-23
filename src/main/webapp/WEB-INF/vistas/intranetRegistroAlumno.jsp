@@ -53,22 +53,20 @@
 						<label class="control-label" for="id_telefono">Teléfono</label>
 					</div>
 					<div class="col-sm-8">
-						<input class="form-control" type="text" id="id_telefono" name="telefono" placeholder="Ingrese el teléfono">
+						<input class="form-control" type="text" id="id_telefono" name="telefono" placeholder="Ingrese el teléfono" maxlength="9">
 					</div>
 			</div>
-		</div>	
-		<div class="row" style="margin-top: 5%">
 			<div class="form-group col-sm-6">
 					<div class="col-sm-4">
 						<label class="control-label" for="id_dni">DNI</label>
 					</div>
 					<div class="col-sm-8">
-						<input class="form-control" type="text" id="id_dni" name="dni" placeholder="Ingrese el DNI">
+						<input class="form-control" type="text" id="id_dni" name="dni" placeholder="Ingrese el DNI" maxlength="8">
 					</div>
-			</div>
+		</div>
 		</div>	
 		<div class="row" style="margin-top: 5%">
-			<div class="form-group col-sm-6">
+			<div class="form-group col-sm-6"> 
 				<div class="col-sm-4">
 					<label class="control-label" for="id_correo">Correo</label>
 				</div>
@@ -85,23 +83,19 @@
 				</div>
 			</div>
 		</div>
-		<div class="row" style="margin-top: 5%">
-			<div class="form-group col-sm-6">
-				<div class="form-group col-md-3">
-					<label class="control-label" for="id_pais">Pais</label>
-					<select id="id_pais" name="pais.idPais" class='form-control'>
+		<div class="form-group col-sm-6">
+				<div class="col-sm-4">
+					<label class="control-label" for="id_pais">Paìs</label>
+					<select id="id_pais" name="pais.nombre" class='form-control'>
 						<option value=" ">[Seleccione]</option>    
 					</select>
 			    </div>
-			</div>
-			<div class="form-group col-sm-6">
-				<div class="form-group col-md-3">
+				<div class="col-sm-4">
 					<label class="control-label" for="id_modalidad">Modalidad</label>
-					<select id="id_modalidad" name="listaModalidadAlumno.idModalidad" class='form-control'>
+					<select id="id_modalidad" name="listaModalidadAlumno.idDataCatalogo" class='form-control'>
 						<option value=" ">[Seleccione]</option>    
 					</select>
 			    </div>
-			</div>
 		</div>
 		
 		<div class="row" style="margin-top: 2%" align="center"	>
@@ -111,15 +105,14 @@
 </div>
 
 <script type="text/javascript">
-<!-- Agregar aquí -->
-$.getJSON		("listaPais", {}, function(data){
+$.getJSON("listaPais", {}, function(data){
 	$.each(data, function(index,item){
-		$("#id_pais").append("<option value="+item.idPais +">"+ item.idPais +"</option>");
+		$("#id_pais").append("<option value="+item.nombre +">"+ item.nombre +"</option>");
 	});
 });
-$.getJSON		("listaModalidad", {}, function(data){
+$.getJSON("listaModalidadAlumno", {}, function(data){
 	$.each(data, function(index,item){
-		$("#id_modalidad").append("<option value="+item.idModalidad +">"+ item.idModalidad +"</option>");
+		$("#id_modalidad").append("<option value="+item.idDataCatalogo +">"+ item.idDataCatalogo +"</option>");
 	});
 });
 $("#id_registrar").click(function (){ 
@@ -198,6 +191,7 @@ $(document).ready(function() {
                         },
                         stringLength: {
                             max: 9,
+                            regexp: /^[0-9]{9}$/,
                             message: 'El teléfono es de 9 dígitos'
                         },
                     }
@@ -238,7 +232,7 @@ $(document).ready(function() {
                     selector: "#id_pais",
                     validators:{
                         notEmpty: {
-                             message: 'El pais es obligatorio'
+                             message: 'El paìs es obligatorio'
                         }
                     }
                 },
