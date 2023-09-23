@@ -85,17 +85,17 @@
 		</div>
 		<div class="form-group col-sm-6">
 				<div class="col-sm-4">
-					<label class="control-label" for="id_pais">Paìs</label>
-					<select id="id_pais" name="pais.nombre" class='form-control'>
+					<label class="control-label" for="id_pais">País</label>
+					<select id="id_pais" name="pais.idPais" class='form-control'>
 						<option value=" ">[Seleccione]</option>    
 					</select>
 			    </div>
 				<div class="col-sm-4">
 					<label class="control-label" for="id_modalidad">Modalidad</label>
-					<select id="id_modalidad" name="listaModalidadAlumno.idDataCatalogo" class='form-control'>
+					<select id="id_modalidad" name="modalidad.idDataCatalogo" class='form-control'>
 						<option value=" ">[Seleccione]</option>    
 					</select>
-			    </div>
+			    </div>tipoLibro.idDataCatalogo
 		</div>
 		
 		<div class="row" style="margin-top: 2%" align="center"	>
@@ -107,12 +107,12 @@
 <script type="text/javascript">
 $.getJSON("listaPais", {}, function(data){
 	$.each(data, function(index,item){
-		$("#id_pais").append("<option value="+item.nombre +">"+ item.nombre +"</option>");
+		$("#id_pais").append("<option value="+item.idPais +">"+ item.nombre +"</option>");
 	});
 });
 $.getJSON("listaModalidadAlumno", {}, function(data){
 	$.each(data, function(index,item){
-		$("#id_modalidad").append("<option value="+item.idDataCatalogo +">"+ item.idDataCatalogo +"</option>");
+		$("#id_modalidad").append("<option value="+item.idDataCatalogo +">"+ item.descripcion +"</option>");
 	});
 });
 $("#id_registrar").click(function (){ 
@@ -205,7 +205,7 @@ $(document).ready(function() {
                         regexp: {
                         	max: 8,
                             regexp: /^[0-9]{8}$/,
-                            message: 'El dni es de 8 dígitos'
+                            message: 'El dni es de 8 dígitos numéricos'
                         }
                     }
                 },
@@ -217,6 +217,10 @@ $(document).ready(function() {
                         },
                         emailAddress: {
                             message: 'El correo no es válido'
+                        },
+                        regexp: {
+                            regexp: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                            message: 'Ingresar un correo válido'
                         }
                     }
                 },
@@ -232,7 +236,7 @@ $(document).ready(function() {
                     selector: "#id_pais",
                     validators:{
                         notEmpty: {
-                             message: 'El paìs es obligatorio'
+                             message: 'El país es obligatorio'
                         }
                     }
                 },
