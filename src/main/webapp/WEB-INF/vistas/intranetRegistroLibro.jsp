@@ -33,19 +33,19 @@
 	 <div class="col-md-12" style="margin-top: 2%">
 			<div class="row">
 				<div class="form-group col-md-9">
-					<label class="control-label" for="id_titulo">Titulo</label>
+					<label class="control-label" for="id_titulo">Título</label>
 					<input class="form-control" type="text" id="id_titulo" name="titulo" placeholder="Ingrese el tìtulo del Libro">
 				</div>
 				<div class="form-group col-md-3">
 					<label class="control-label" for="id_año">Año</label>
-					<input class="form-control" type="text" id="id_año" name="anio" placeholder="Ingrese el años del Libro">
+					<input class="form-control" type="text" id="id_año" name="anio" placeholder="Ingrese el año del Libro">
 				</div>
 				<div class="form-group col-md-3">
 					<label class="control-label" for="id_serie">Serie</label>
 					<input class="form-control" type="text" id="id_serie" name="serie" placeholder="Ingrese la serie del Libro">
 				</div>
 				<div class="form-group col-md-3">
-					<label class="control-label" for="id_categoria">Categoria</label>
+					<label class="control-label" for="id_categoria">Categoría</label>
 					<select id="id_categoria" name="categoriaLibro.idDataCatalogo" class='form-control'>
 						<option value=" ">[Seleccione]</option>    
 					</select>
@@ -152,6 +152,20 @@ $('#id_form').bootstrapValidator({
                 regexp: {
                     regexp: /^[A-Za-z]{2}\d{3}$/,
                     message: 'La serie debe tener 2 letras seguidas de 3 dígitos'
+                }
+            }
+        },
+        'categoriaLibro.idDataCatalogo': {
+            validators: {
+                notEmpty: {
+                    message: 'Debe seleccionar una categoría'
+                }
+            }
+        },
+        'tipoLibro.idDataCatalogo': {
+            validators: {
+                notEmpty: {
+                    message: 'Debe seleccionar un tipo'
                 }
             }
         }

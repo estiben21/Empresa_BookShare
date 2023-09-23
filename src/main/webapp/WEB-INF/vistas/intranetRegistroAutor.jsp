@@ -46,20 +46,12 @@
 						<input class="form-control" type="text" id="id_apellidos"
 							name="apellidos" placeholder="Ingrese apellido ">
 					</div>
-					<div>
-						<div class="col-sm-4">
-							<label class="control-label" for="id_fecha">Fecha de
-								Nacimiento</label>
-						</div>
-						<div class="col-sm-6">
-							<input class="form-control" type="date" id="id_fecha"
-								name="fechaNacimiento"
-								maxlength="100">
-								
-						</div>
+					<div class="form-group col-md-6">
+						<label class="control-label col-sm-4" for="id_fecha">Fecha de Nacimiento</label>
+						<input class="form-control" type="date" id="id_fecha"name="fechaNacimiento">
 					</div>
 				</div>
-				<div>
+				<div class="row">
 
 					<div class="form-group col-md-3">
 						<label class="control-label" for="id_telefono">Teléfono</label> <input
