@@ -38,21 +38,21 @@
 				</div>
 				<div class="form-group col-md-3">
 					<label class="control-label" for="id_año">Año</label>
-					<input class="form-control" type="text" id="id_año" name="año" placeholder="Ingrese el años del Libro">
+					<input class="form-control" type="text" id="id_año" name="anio" placeholder="Ingrese el años del Libro">
 				</div>
 				<div class="form-group col-md-3">
 					<label class="control-label" for="id_serie">Serie</label>
 					<input class="form-control" type="text" id="id_serie" name="serie" placeholder="Ingrese la serie del Libro">
 				</div>
 				<div class="form-group col-md-3">
-					<label class="control-label" for="id_categoriaLibro">Categoria</label>
-					<select id="id_categoriaLibro" name="dataCatalogo.idCategoriaLibro" class='form-control'>
+					<label class="control-label" for="id_categoria">Categoria</label>
+					<select id="id_categoria" name="categoriaLibro.idDataCatalogo" class='form-control'>
 						<option value=" ">[Seleccione]</option>    
 					</select>
 			    </div>
 			    <div class="form-group col-md-3">
 					<label class="control-label" for="id_tipo">Tipo</label>
-					<select id="id_tipo" name="dataCatalogo.idTipoLibro" class='form-control'>
+					<select id="id_tipo" name="tipoLibro.idDataCatalogo" class='form-control'>
 						<option value=" ">[Seleccione]</option>    
 					</select>
 			    </div>
@@ -70,7 +70,7 @@
 <script type="text/javascript">
 $.getJSON("listaCategoriaDeLibro", {}, function(data) {
 	$.each(data, function(index, item) {
-		$("#id_categoriaLibro").append(
+		$("#id_categoria").append(
 				"<option value="+item.idDataCatalogo +">" + item.descripcion
 						+ "</option>");
 	});
@@ -133,7 +133,7 @@ $('#id_form').bootstrapValidator({
                 }
             }
         },
-        año: {
+        anio: {
             validators: {
                 notEmpty: {
                     message: 'El año es un campo obligatorio'
@@ -154,25 +154,9 @@ $('#id_form').bootstrapValidator({
                     message: 'La serie debe tener 2 letras seguidas de 3 dígitos'
                 }
             }
-        },
-        'dataCatalogo.idCategoriaLibro': {
-            validators: {
-                notEmpty: {
-                    message: 'Debe seleccionar una Categoria'
-                }
-            }
-        },
-        'dataCatalogo.idTipoLibro': {
-            validators: {
-                notEmpty: {
-                    message: 'Debe seleccionar un Tipo'
-                }
-            }
         }
     }
 });
-
-
 </script>   		
 </body>
 </html>
