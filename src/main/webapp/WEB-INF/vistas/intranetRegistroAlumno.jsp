@@ -97,7 +97,7 @@
 			<div class="form-group col-sm-6">
 				<div class="form-group col-md-3">
 					<label class="control-label" for="id_modalidad">Modalidad</label>
-					<select id="id_modalidad" name="listaModalidad.idModalidad" class='form-control'>
+					<select id="id_modalidad" name="listaModalidadAlumno.idModalidad" class='form-control'>
 						<option value=" ">[Seleccione]</option>    
 					</select>
 			    </div>
