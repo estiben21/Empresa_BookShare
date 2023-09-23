@@ -153,7 +153,7 @@ $('#id_form').bootstrapValidator({
     	        remote :{
                 	delay   : 1000,
                 	url     : 'buscaPorNumeroSala',
-                	message : 'El numero ya existe'
+                	message : 'El número ya existe'
                 }
     	    }
     	},
