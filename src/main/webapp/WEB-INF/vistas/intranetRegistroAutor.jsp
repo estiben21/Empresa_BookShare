@@ -53,17 +53,18 @@
 						</div>
 						<div class="col-sm-6">
 							<input class="form-control" type="date" id="id_fecha"
-								name="fechaNacimiento" placeholder="Ingrese la fecha"
+								name="fechaNacimiento"
 								maxlength="100">
 								
 						</div>
 					</div>
 				</div>
-				<div class="row">
+				<div>
+
 					<div class="form-group col-md-3">
 						<label class="control-label" for="id_telefono">Teléfono</label> <input
 							class="form-control" type="text" id="id_telefono" name="telefono"
-							placeholder="Ingrese telefono ">
+							placeholder="Ingrese teléfono ">
 					</div>
 					<div class="form-group col-md-3">
 						<label class="control-label" for="id_pais">País</label> <select
