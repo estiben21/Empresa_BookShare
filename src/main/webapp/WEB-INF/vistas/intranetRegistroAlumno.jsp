@@ -89,7 +89,7 @@
 			<div class="form-group col-sm-6">
 				<div class="form-group col-md-3">
 					<label class="control-label" for="id_pais">Pais</label>
-					<select id="id_pais" name="listaPais.idPais" class='form-control'>
+					<select id="id_pais" name="pais.idPais" class='form-control'>
 						<option value=" ">[Seleccione]</option>    
 					</select>
 			    </div>
