@@ -59,10 +59,9 @@
 						</div>
 					</div>
 				</div>
-				<div>
-
+				<div class="row">
 					<div class="form-group col-md-3">
-						<label class="control-label" for="id_telefono">Telefono</label> <input
+						<label class="control-label" for="id_telefono">Teléfono</label> <input
 							class="form-control" type="text" id="id_telefono" name="telefono"
 							placeholder="Ingrese telefono ">
 					</div>
@@ -133,7 +132,7 @@
 											message : 'El nombre es un campo obligatorio'
 										},
 										stringLength : {
-											message : 'El nombre es de 2 a 40 caracteres',
+											message : 'El nombre es de 2 a 40 carácteres',
 											min : 2,
 											max : 40
 										},
@@ -150,7 +149,7 @@
 											message : 'El apellido es un campo obligatorio'
 										},
 										stringLength : {
-											message : 'El apellido es de 2 a 40 caracteres',
+											message : 'El apellido es de 2 a 40 carácteres',
 											min : 2,
 											max : 40
 										},
