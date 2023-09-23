@@ -176,7 +176,7 @@ $('#id_form').bootstrapValidator({
             		selector : '#id_tipoRevista',
                     validators: {
                     	notEmpty: {
-                            message: 'tipo de revista es un campo obligatorio'
+                            message: 'Tipo de revista es un campo obligatorio'
                         },
                     }
                 },
