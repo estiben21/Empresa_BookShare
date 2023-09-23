@@ -13,12 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.centroinformacion.entity.Alumno;
+import com.centroinformacion.entity.Usuario;
 import com.centroinformacion.service.AlumnoService;
 import com.centroinformacion.util.AppSettings;
 
 import jakarta.servlet.http.HttpSession;
 
-@Controller
+@Controller    
 public class AlumnoRegistroControlador {
 	@Autowired
 	private AlumnoService alumnoService;
@@ -26,9 +27,12 @@ public class AlumnoRegistroControlador {
 	@PostMapping("/registraAlumno")
 	@ResponseBody
 	public Map<?, ?> registra(Alumno obj, HttpSession session){
+		Usuario objUsuario = (Usuario)session.getAttribute("objUsuario");
 		obj.setFechaRegistro(new Date());
 		obj.setFechaActualizacion(new Date());
 		obj.setEstado(AppSettings.ACTIVO);
+		obj.setUsuarioRegistro(objUsuario);
+		obj.setUsuarioActualiza(objUsuario);
 		
 		HashMap<String, String> map = new HashMap<String, String>();
 		Alumno objSalida = alumnoService.insertaAlumno(obj);

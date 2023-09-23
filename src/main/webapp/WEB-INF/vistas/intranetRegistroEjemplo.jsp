@@ -38,7 +38,7 @@
 				</div>
 				<div class="form-group col-md-3">
 					<label class="control-label" for="id_pais">País</label>
-					<select id="id_pais" name="pais.idPais" class='form-control'>
+					<select id="id_pais" name="pais.nombre" class='form-control'>
 						<option value=" ">[Seleccione]</option>    
 					</select>
 			    </div>
