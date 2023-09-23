@@ -168,7 +168,7 @@ $('#id_form').bootstrapValidator({
             		selector : '#id_pais',
                     validators: {
                     	notEmpty: {
-                            message: 'País es un campo obligatorio'
+                            message: 'El país es un campo obligatorio'
                         },
                     }
                 },
@@ -176,7 +176,7 @@ $('#id_form').bootstrapValidator({
             		selector : '#id_tipoRevista',
                     validators: {
                     	notEmpty: {
-                            message: 'Tipo de revista es un campo obligatorio'
+                            message: 'El tipo de revista es un campo obligatorio'
                         },
                     }
                 },
