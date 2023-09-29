@@ -102,13 +102,24 @@ $("#id_registrar").click(function (){
             	mostrarMensaje(MSG_ERROR);
             }
     	});
+		$.ajax({
+		    type: "GET",  
+		    url: "buscaPorSerieLibro",
+		    data: $('#id_form').serialize(),
+		    success: function(data){
+		   
+		    },
+		    error: function(){
+		       
+		    }
+		});
 	}   
 });
 
 function limpiarFormulario(){
 	$("#id_titulo").val('');
-	$("#id_año").val(' ');
-	$("#id_serie").val(' ');
+	$("#id_año").val('');
+	$("#id_serie").val('');
 	$("#id_categoria").val(' ');
 	$("#id_tipo").val(' ');
 }
@@ -134,9 +145,16 @@ $('#id_form').bootstrapValidator({
             }
         },
         anio: {
-            validators: {
-                notEmpty: {
-                    message: 'El año es un campo obligatorio'
+        	validators: {
+                callback: {
+                    message: 'El año es un campo obligatorio',
+                    callback: function(value, validator, $field) {
+                        var añoValue = $('#id_año').val();
+                        if (value === '' && añoValue === '') {
+                            return false;
+                        }
+                        return true;
+                    }
                 },
                 regexp: {
                     regexp: /^\d{4}$/,
@@ -145,27 +163,40 @@ $('#id_form').bootstrapValidator({
             }
         },
         serie: {
-            validators: {
-                notEmpty: {
-                    message: 'La serie es un campo obligatorio'
+        	selector: '#id_serie',
+        	validators: {
+                callback: {
+                    message: 'La serie es un campo obligatorio',
+                    callback: function(value, validator, $field) {
+                        var anioValue = $('#id_año').val();
+                        if (value === '' && anioValue === '') {
+                            return false;
+                        }
+                        return true;
+                    }
                 },
                 regexp: {
                     regexp: /^[A-Za-z]{2}\d{3}$/,
                     message: 'La serie debe tener 2 letras seguidas de 3 dígitos'
+                },
+                remote :{
+                    delay: 1000,
+                    url: 'buscaPorSerieLibro',
+                    message: 'La Serie ya existe'
                 }
             }
         },
         'categoriaLibro.idDataCatalogo': {
             validators: {
                 notEmpty: {
-                    message: 'Debe seleccionar una categoría'
+                    message: 'Por favor, seleccione una categoría'
                 }
             }
         },
         'tipoLibro.idDataCatalogo': {
             validators: {
                 notEmpty: {
-                    message: 'Debe seleccionar un tipo'
+                    message: 'Por favor, seleccione un tipo'
                 }
             }
         }
