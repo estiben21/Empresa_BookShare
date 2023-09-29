@@ -16,4 +16,14 @@ public class LibroServiceImp implements LibroService {
 	public Libro insertaActualizaLibro(Libro obj) {
 		return repository.save(obj);
 	}
+	 
+	@Override
+	public boolean existeLibroConSerie(String serie) {
+		 Libro libro = repository.findBySerie(serie);
+		    if (libro != null) {
+		        return true;
+		    }else {
+			    return false;	
+		    }
+	}
 }
