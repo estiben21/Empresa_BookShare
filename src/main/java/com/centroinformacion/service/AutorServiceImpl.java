@@ -18,11 +18,6 @@ public class AutorServiceImpl implements AutorService{
 	public Autor insertaActualizaAutor (Autor obj) {
 		return repository.save(obj);
 	}
-	
-	@Override
-	public List<Autor> listaTodos() {
-		return repository.findByOrderByApellidosAsc();
-	}
 	@Override
 	public List<Autor> listaPorTelefono(String telefono) {
 		return repository.findByTelefonoIgnoreCase(telefono);

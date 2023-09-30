@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 /**
  * @author Lionel Orihuela
+
  */
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
@@ -47,15 +48,16 @@ public class AutorRegistroController {
 		}
 		return map;
 	}
+	
 	//Buscar Telefono
 			@GetMapping("/buscaPorTelefonoAutor")
 			@ResponseBody
-			public String validaAutor(String telefono) {
+			public String validaTelefono(String telefono) {
 				List<Autor> lstAutor = autorService.listaPorTelefono(telefono);
 				if (CollectionUtils.isEmpty(lstAutor)) {
-					return "{\"valid\" : true }";
-				} else {
 					return "{\"valid\" : false }";
+				} else {
+					return "{\"valid\" : true }";
 				}
 			}
 	
