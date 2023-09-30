@@ -163,17 +163,18 @@
 								Telefono : {
 									selector : '#id_telefono',
 									validators : {
-										notEmpty : {
-											message : 'El teléfono es un campo obligatorio'
-										},
-										stringLength : {
-											min : 9,
-											max : 9,
-											message : 'El teléfono debe tener exactamente 9 dígitos'
-										},
-										numeric : {
-											message : 'El teléfono debe contener solo números'
-										}
+										notEmpty: {
+								            message: 'El teléfono es un campo obligatorio'
+								        },
+								        regexp: {
+								            regexp: /^[0-9]{9}$/,
+								            message: 'El teléfono es 9 dígitos y en formato numérico'
+								        },
+								        remote: {
+								            delay: 1000,
+								            url: 'buscaPorTelefonoAutor',
+								            message: 'El Teléfono ya existe'
+								        }
 									}
 
 								},
