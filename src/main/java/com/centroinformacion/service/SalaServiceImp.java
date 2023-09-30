@@ -22,4 +22,9 @@ public class SalaServiceImp implements SalaService {
 	public List<Sala> listaPorNumero(String numero) {
 		return repository.findByNumero(numero);
 	}
+	
+	@Override
+	public List<Sala> listPorNumerolike(String filtro) {
+		return repository.listPorNumerolike(filtro);
+	}
 }
