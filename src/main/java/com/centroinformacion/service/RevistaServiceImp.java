@@ -21,4 +21,12 @@ public class RevistaServiceImp implements RevistaService{
 	public List<Revista> ListaPorNombre(String nombre) {
 		return repository.findByNombreIgnoreCase(nombre);
 	}
+	@Override
+	public List<Revista> listPorNombreLike(String filtro) {
+		return repository.listPorNombreLike(filtro);
+	}
+	@Override
+	public List<Revista> ListaPorNombreOrFrecuencia(String nombre, String frecuencia) {
+		return repository.findByNombreOrFrecuenciaIgnoreCase(nombre,frecuencia);
+	}
 }
