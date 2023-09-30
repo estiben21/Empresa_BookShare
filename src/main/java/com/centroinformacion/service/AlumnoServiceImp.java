@@ -38,5 +38,12 @@ public class AlumnoServiceImp implements AlumnoService {
 	public List<Alumno> listaPorTelefono(String telefono) {
 		return repository.findByTelefonoIgnoreCase(telefono);
 	}
+
+	
+	//----------------------------------------- CP2 ---------------------------------------
+	@Override //PASO1:
+	public List<Alumno> listarPorTituloLikeNombresOrApellidosLike(String filtro) {
+		return repository.listaPorNombresOApellidos(filtro);
+	}
 	
 }
