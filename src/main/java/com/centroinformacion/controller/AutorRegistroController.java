@@ -27,39 +27,38 @@ import jakarta.servlet.http.HttpSession;
 public class AutorRegistroController {
 	@Autowired
 	private AutorService autorService;
-	
+
 	@PostMapping("/registraAutor")
 	@ResponseBody
-	
-	public Map<?, ?> registra(Autor obj, HttpSession session){
-		Usuario objUsuario = (Usuario)session.getAttribute("objUsuario");
+
+	public Map<?, ?> registra(Autor obj, HttpSession session) {
+		Usuario objUsuario = (Usuario) session.getAttribute("objUsuario");
 		obj.setFechaRegistro(new Date());
 		obj.setFechaActualizacion(new Date());
 		obj.setEstado(AppSettings.ACTIVO);
 		obj.setUsuarioRegistro(objUsuario);
 		obj.setUsuarioActualiza(objUsuario);
-		
+
 		HashMap<String, String> map = new HashMap<String, String>();
 		Autor objSalida = autorService.insertaActualizaAutor(obj);
 		if (objSalida == null) {
 			map.put("MENSAJE", "Error en el registro");
-		}else {
+		} else {
 			map.put("MENSAJE", "Registro exitoso");
 		}
 		return map;
 	}
-	
-	//Buscar Telefono
-			@GetMapping("/buscaPorTelefonoAutor")
-			@ResponseBody
-			public String validaTelefono(String telefono) {
-				List<Autor> lstAutor = autorService.listaPorTelefono(telefono);
-				if (CollectionUtils.isEmpty(lstAutor)) {
-					return "{\"valid\" : false }";
-				} else {
-					return "{\"valid\" : true }";
-				}
-			}
-	
-	
+
+	// Buscar Telefono
+	@GetMapping("/buscaPorTelefonoAutor")
+	@ResponseBody
+	public String validaTelefono(String telefono) {
+		List<Autor> lstAutor = autorService.listaPorTelefono(telefono);
+		if (CollectionUtils.isEmpty(lstAutor)) {
+			return "{\"valid\" : false }"; 
+		} else {
+			return "{\"valid\" : true }"; 
+		}
+	}
+
 }
