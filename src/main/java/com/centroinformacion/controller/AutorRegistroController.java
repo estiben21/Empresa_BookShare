@@ -2,6 +2,7 @@ package com.centroinformacion.controller;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author Lionel Orihuela
  */
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -44,6 +47,17 @@ public class AutorRegistroController {
 		}
 		return map;
 	}
+	//Buscar Telefono
+			@GetMapping("/buscaPorTelefonoAutor")
+			@ResponseBody
+			public String validaAutor(String telefono) {
+				List<Autor> lstAutor = autorService.listaPorTelefono(telefono);
+				if (CollectionUtils.isEmpty(lstAutor)) {
+					return "{\"valid\" : true }";
+				} else {
+					return "{\"valid\" : false }";
+				}
+			}
 	
 	
 }
