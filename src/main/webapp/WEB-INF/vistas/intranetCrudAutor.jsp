@@ -28,12 +28,76 @@
 <div class="container" style="margin-top: 4%"><h4>CRUD Autor</h4></div>
 
 <div class="container" style="margin-top: 1%">
-<!-- Agregar aquí -->
+<div class="row" style="height: 70px">
+						<div class="col-md-3" >
+								<input class="form-control" id="id_txt_filtro"  name="filtro" placeholder="Ingrese el nombre o apellidos" type="text" maxlength="30"/>
+						</div>
+						<div class="col-md-2" >
+							<button type="button" class="btn btn-primary" id="id_btn_filtrar" style="width: 150px">FILTRA</button>
+						</div>
+						<div class="col-md-2">
+							<button type="button" data-toggle='modal'  data-target="#id_div_modal_registra"  class='btn btn-success' style="width: 150px">REGISTRA</button>
+						</div>
+					</div>
+					<div class="row" > 
+						<div class="col-md-12">
+								<div class="content" >
+						
+									<table id="id_table" class="table table-striped table-bordered" >
+										<thead>
+											<tr>
+												<th style="width: 5%" >ID</th>
+												<th style="width: 10%">Nombres</th>
+												<th style="width: 10%">Apellidos</th>
+												<th style="width: 15%">Fecha de Nacimiento</th>
+												<th style="width: 9%">Teléfono</th>
+												<th style="width: 10%">Pais</th>
+												<th style="width: 10%">Grado</th>
+												<th style="width: 10%">Actualiza</th>
+												<th style="width: 10%">Elimina</th>
+											</tr>
+										</thead>
+											<tbody>
+											</tbody>
+										</table>
+								</div>	
+						</div>
+					</div>
 	
 </div>
 
 <script type="text/javascript">
-<!-- Agregar aquí -->
+$("#id_btn_filtrar").click(function(){
+	var fil=$("#id_txt_filtro").val();
+	$.getJSON("consultaCrudAutor",{"filtro":fil}, function (lista){
+		agregarGrilla(lista);
+	});
+});
+
+function agregarGrilla(lista){
+	 $('#id_table').DataTable().clear();
+	 $('#id_table').DataTable().destroy();
+	 $('#id_table').DataTable({
+			data: lista,
+			searching: false,
+			ordering: true,
+			processing: true,
+			pageLength: 5,
+			lengthChange: false,
+			columns:[
+				{data: "idAutor"},
+				{data: "nombres"},
+				{data: "apellidos"},
+				{data: "fechaNacimiento"},
+				{data: "telefono"},
+				{data: "pais.nombre"},
+				{data: "grado.descripcion"},
+				{data: "estado"},
+				{data: "estado"},
+																
+			]                                     
+	    });
+}
 
 
 </script>   		

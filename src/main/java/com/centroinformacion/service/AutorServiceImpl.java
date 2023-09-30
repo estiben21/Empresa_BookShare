@@ -22,5 +22,9 @@ public class AutorServiceImpl implements AutorService{
 	public List<Autor> listaPorTelefono(String telefono) {
 		return repository.findByTelefonoIgnoreCase(telefono);
 	}
+	@Override
+	public List<Autor> listPorNombreYApellidoLike(String filtro) {
+		return repository.listPorNombreYApellidoLike(filtro);
+	}
 	
 }
