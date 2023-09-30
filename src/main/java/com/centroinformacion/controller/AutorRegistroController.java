@@ -49,15 +49,14 @@ public class AutorRegistroController {
 		return map;
 	}
 
-	// Buscar Telefono
-	@GetMapping("/buscaPorTelefonoAutor")
+	@GetMapping("/buscaPorTelefono")
 	@ResponseBody
 	public String validaTelefono(String telefono) {
-		List<Autor> lstAutor = autorService.listaPorTelefono(telefono);
-		if (CollectionUtils.isEmpty(lstAutor)) {
-			return "{\"valid\" : false }"; 
+		List<Autor> listaPorTelefono = autorService.listaPorTelefono(telefono);
+		if (CollectionUtils.isEmpty(listaPorTelefono)) {
+			return "{\"valid\" : true }";
 		} else {
-			return "{\"valid\" : true }"; 
+			return "{\"valid\" : false }";
 		}
 	}
 
