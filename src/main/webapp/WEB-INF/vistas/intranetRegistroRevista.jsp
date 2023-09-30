@@ -112,8 +112,8 @@ function limpiarFormulario(){
 	$('#id_nombre').val('');
 	$('#id_frecuencia').val('');
 	$('#id_fechaCreacion').val('');
-	$('#id_pais').val('');
-	$('#id_tipoRevista').val('');
+	$('#id_pais').val(' ');
+	$('#id_tipoRevista').val(' ');
 }
 
 $(document).ready(function() {

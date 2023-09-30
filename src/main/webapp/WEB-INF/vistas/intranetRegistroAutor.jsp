@@ -160,7 +160,7 @@
 										}
 									}
 								},
-								Telefono : {
+								telefono : {
 									selector : '#id_telefono',
 									validators : {
 										notEmpty: {
@@ -170,11 +170,11 @@
 								            regexp: /^[0-9]{9}$/,
 								            message: 'El teléfono es 9 dígitos y en formato numérico'
 								        },
-								        remote: {
-								            delay: 1000,
-								            url: 'buscaPorTelefonoAutor',
-								            message: 'El Teléfono ya existe'
-								        }
+								        remote :{
+				                            delay: 100,
+				                            url: 'buscaPorTelefonoAutor',
+				                            message: 'El teléfono ya existe'
+				                        }
 									}
 
 								},

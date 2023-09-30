@@ -40,6 +40,8 @@
 					<label class="control-label" for="id_año">Año</label>
 					<input class="form-control" type="text" id="id_año" name="anio" placeholder="Ingrese el año del Libro">
 				</div>
+			</div>	
+			<div class="row">	
 				<div class="form-group col-md-3">
 					<label class="control-label" for="id_serie">Serie</label>
 					<input class="form-control" type="text" id="id_serie" name="serie" placeholder="Ingrese la serie del Libro">

@@ -50,10 +50,10 @@
 		<div class="row" style="margin-top: 2%">
 			<div class="form-group col-sm-6">
 					<div class="col-sm-4">
-						<label class="control-label" for="id_telefono">Teléfono</label>
+						<label class="control-label" for="id_telefono">Tel&eacute;fono</label>
 					</div>
 					<div class="col-sm-8">
-						<input class="form-control" type="text" id="id_telefono" name="telefono" placeholder="Ingrese el teléfono" maxlength="9">
+						<input class="form-control" type="text" id="id_telefono" name="telefono" placeholder="Ingrese el tel&eacute;fono" maxlength="9">
 					</div>
 			</div>
 			<div class="form-group col-sm-6">
@@ -71,7 +71,7 @@
 					<label class="control-label" for="id_correo">Correo</label>
 				</div>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" id="id_correo" name="correo" placeholder="Ingrese el correo electrónico">
+					<input class="form-control" type="text" id="id_correo" name="correo" placeholder="Ingrese el correo electr&oacute;nico">
 				</div>
 			</div>
 			<div class="form-group col-sm-6">
@@ -86,7 +86,7 @@
 		<div class="row" style="margin-top: 2%">
 		<div class="form-group col-sm-6">
 				<div class="col-sm-4">
-					<label class="control-label" for="id_pais">País</label>
+					<label class="control-label" for="id_pais">Pa&iacute;s</label>
 				</div>
 				<div class="col-sm-8">
 					<select id="id_pais" name="pais.idPais" class='form-control'>
@@ -178,7 +178,7 @@ $(document).ready(function() {
                         },
                         regexp: {
                             regexp: /^[a-zA-Z]+$/,
-                            message: 'Ingresar nombres con caracteres alfabéticos'
+                            message: 'Ingresar nombres con caracteres alfab&eacute;ticos'
                         }
                     }
                 },
@@ -195,7 +195,7 @@ $(document).ready(function() {
                         },
                         regexp: {
                             regexp: /^[a-zA-Z]+$/,
-                            message: 'Ingresar apellidos con caracteres alfabéticos'
+                            message: 'Ingresar apellidos con caracteres alfab&eacute;ticos'
                         }
                     }
                 },
@@ -203,21 +203,21 @@ $(document).ready(function() {
                     selector: "#id_telefono",
                     validators:{
                         notEmpty: {
-                             message: 'El teléfono es obligatorio'
+                             message: 'El tel&eacute;fono es obligatorio'
                         },
                         stringLength: {
                         	min: 9,
                             max: 9,
-                            message: 'El teléfono es de 9 dígitos'
+                            message: 'El tel&eacute;fono es de 9 dígitos'
                         },
                         regexp: {
                             regexp: /^[0-9]+$/,
-                            message: 'Ingresar teléfono con caracteres numéricos'
+                            message: 'Ingresar tel&eacute;fono con caracteres num&eacute;ricos'
                         },
                         remote :{
                             delay: 100,
                             url: 'buscaPorTelefono',
-                            message: 'El teléfono ya existe'
+                            message: 'El tel&eacute;fono ya existe'
                         }
                     }
                 },
@@ -230,11 +230,11 @@ $(document).ready(function() {
                         stringLength: {
                         	max: 8,
                         	min: 8,
-                            message: 'El DNI es de 8 dígitos'
+                            message: 'El DNI es de 8 d&iacute;gitos'
                         },
                         regexp: {
                             regexp: /^[0-9]+$/,
-                            message: 'Ingresar DNI con caracteres numéricos'
+                            message: 'Ingresar DNI con caracteres num&eacute;ricos'
                         }, remote :{
                             delay: 100,
                             url: 'buscaPorDni',
@@ -249,11 +249,11 @@ $(document).ready(function() {
                              message: 'El correo es obligatorio'
                         },
                         emailAddress: {
-                            message: 'El correo no es válido'
+                            message: 'El correo no es v&aacute;lido'
                         },
                         regexp: {
                             regexp: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                            message: 'Ingresar un correo válido'
+                            message: 'Ingresar un correo v&aacute;lido'
                         }
                     }
                 },
@@ -269,7 +269,7 @@ $(document).ready(function() {
                     selector: "#id_pais",
                     validators:{
                         notEmpty: {
-                             message: 'El país es obligatorio'
+                             message: 'El pa&iacute;s es obligatorio'
                         }
                     }
                 },

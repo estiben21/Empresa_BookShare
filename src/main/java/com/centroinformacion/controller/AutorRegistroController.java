@@ -55,9 +55,9 @@ public class AutorRegistroController {
 	public String validaTelefono(String telefono) {
 		List<Autor> lstAutor = autorService.listaPorTelefono(telefono);
 		if (CollectionUtils.isEmpty(lstAutor)) {
-			return "{\"valid\" : false }"; 
-		} else {
 			return "{\"valid\" : true }"; 
+		} else {
+			return "{\"valid\" : false }"; 
 		}
 	}
 
