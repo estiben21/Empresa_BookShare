@@ -37,6 +37,7 @@ public class AlumnoRegistroControlador {
 		obj.setUsuarioRegistro(objUsuario);
 		obj.setUsuarioActualiza(objUsuario);
 		
+		
 		HashMap<String, String> map = new HashMap<String, String>();
 		Alumno objSalida = alumnoService.insertaAlumno(obj);
 		if (objSalida == null) {

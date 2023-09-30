@@ -34,43 +34,44 @@
 	 <div class="col-md-12" style="margin-top: 2%">
 			<div class="row">
 			
-				<div class="form-group col-md-9">
+				<div class="form-group col-md-6">
 					<label class="control-label" for="id_numero">Número</label>
 					<input class="form-control" type="text" id="id_numero" name="numero" placeholder="Ingrese el número">
 				</div>
 				
-				<div class="form-group col-md-9">
+				<div class="form-group col-md-6">
 					<label class="control-label" for="id_piso">Piso</label>
 					<input class="form-control" type="text" id="id_piso" name="piso" placeholder="Ingrese el piso">
 				</div>
 				
-				<div class="form-group col-md-9">
+				<div class="form-group col-md-6">
 					<label class="control-label" for="id_cantAlumnos">Cantidad de Alumnos</label>
 					<input class="form-control" type="text" id="id_cantAlumnos" name="numAlumnos" placeholder="Ingrese la cantidad de alumnos">
 				</div>
 				
-				<div class="form-group col-md-9">
+				<div class="form-group col-md-6">
 					<label class="control-label" for="id_recursos">Recursos</label>
 					<input class="form-control" type="text" id="id_recursos" name="recursos" placeholder="Ingrese los recursos">
 				</div>
 				
 				
-				<div class="form-group col-md-9">
+				<div class="form-group col-md-6">
 					<label class="control-label" for="id_tipo">Tipo</label>
 					<select id="id_tipo" name="tipoSala.idDataCatalogo" class='form-control'>
 						<option value=" ">[Seleccione]</option>    
 					</select>
 			    </div>
-			    <div class="form-group col-md-9">
+			    <div class="form-group col-md-6">
 					<label class="control-label" for="id_sede">Sede</label>
 					<select id="id_sede" name="sede.idDataCatalogo" class='form-control'>
 						<option value=" ">[Seleccione]</option>    
 					</select>
 			    </div>
 			</div>
+			<br>
 		    <div class="row">
 				<div class="form-group col-md-12" align="center">
-					<button id="id_registrar" type="button" class="btn btn-primary" >Registra</button>
+					<button id="id_registrar" type="button" class="btn btn-primary" >Registrar Sala</button>
 				</div>
 			</div>
 	</div>
@@ -187,16 +188,32 @@ $('#id_form').bootstrapValidator({
      		selector : '#id_recursos',
              validators: {
                  notEmpty: {
-                     message: 'los recursos es un campo obligatorio'
+                     message: 'Los recursos es un campo obligatorio'
                  },
                  stringLength :{
-                 	message:'los recursos es de 2 a 40 caracteres',
+                 	message:'Los recursos es de 2 a 40 caracteres',
                  	min : 2,
                  	max : 40
                  },
              }
          },
-     	
+         
+         tipoSala: {
+     		selector : '#id_tipo',
+             validators: {
+             	notEmpty: {
+                     message: 'Tipo es un campo obligatorio'
+                 },
+             }
+         },
+         sede: {
+      		selector : '#id_sede',
+              validators: {
+              	notEmpty: {
+                      message: 'Sede es un campo obligatorio'
+                  },
+              }
+          },
      }   
  });
 

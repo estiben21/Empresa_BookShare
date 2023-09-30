@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
  *  @author Fernando Manrique Solano
  */
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.centroinformacion.entity.DataCatalogo;
@@ -49,4 +51,18 @@ public class LibroRegistroController {
 		}
 		return map;
 	}
+	
+	
+	@GetMapping("/buscaPorSerieLibro")
+    @ResponseBody
+    public Map<String, Boolean> buscaPorSerieLibro(@RequestParam("serie") String serie) {
+        Map<String, Boolean> response = new HashMap<>();
+
+        // Llama al servicio para verificar si la serie ya existe en la base de datos
+        boolean serieExiste = libroService.existeLibroConSerie(serie);
+
+        response.put("valid", !serieExiste);
+
+        return response;
+    }
 }

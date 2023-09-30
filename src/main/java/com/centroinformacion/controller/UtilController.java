@@ -8,11 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.centroinformacion.entity.Alumno;
-import com.centroinformacion.entity.Autor;
 import com.centroinformacion.entity.DataCatalogo;
 import com.centroinformacion.entity.Pais;
 import com.centroinformacion.service.AlumnoService;
-import com.centroinformacion.service.AutorService;
 import com.centroinformacion.service.DataCatalogoService;
 import com.centroinformacion.service.PaisService;
 import com.centroinformacion.util.AppSettings;
@@ -28,8 +26,6 @@ public class UtilController {
 	@Autowired
 	private AlumnoService alumnoService;
 	
-	@Autowired
-	private AutorService autorService;
 	
 
 	@GetMapping("/listaPais")
@@ -42,12 +38,6 @@ public class UtilController {
 	@ResponseBody
 	public List<Alumno> listaAlumno() {
 		return alumnoService.listaTodos();
-	}
-	
-	@GetMapping("/listaAutor")
-	@ResponseBody
-	public List<Autor> listaAutor() {
-		return autorService.listaTodos();
 	}
 	
 
