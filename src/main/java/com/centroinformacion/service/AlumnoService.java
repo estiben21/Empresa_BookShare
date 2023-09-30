@@ -11,4 +11,5 @@ public interface AlumnoService {
 	
 	public abstract List<Alumno> findByOrderByApellidosAsc();
 	public abstract List<Alumno> listaPorDni(String dni);
+	public abstract List<Alumno> listaPorTelefono(String telefono);
 }
