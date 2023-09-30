@@ -29,7 +29,7 @@
 
 <div class="container" style="margin-top: 1%">
 <form id="id_form"> 
-		<div class="row" style="margin-top: 5%">
+		<div class="row" style="margin-top: 2%">
 			<div class="form-group col-sm-6">
 				<div class="col-sm-4">
 					<label class="control-label" for="id_nombre">Nombres</label>
@@ -47,13 +47,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="row" style="margin-top: 5%">
+		<div class="row" style="margin-top: 2%">
 			<div class="form-group col-sm-6">
 					<div class="col-sm-4">
-						<label class="control-label" for="id_telefono">TelÈfono</label>
+						<label class="control-label" for="id_telefono">Tel√©fono</label>
 					</div>
 					<div class="col-sm-8">
-						<input class="form-control" type="text" id="id_telefono" name="telefono" placeholder="Ingrese el telÈfono" maxlength="9">
+						<input class="form-control" type="text" id="id_telefono" name="telefono" placeholder="Ingrese el tel√©fono" maxlength="9">
 					</div>
 			</div>
 			<div class="form-group col-sm-6">
@@ -65,13 +65,13 @@
 					</div>
 		</div>
 		</div>	
-		<div class="row" style="margin-top: 5%">
+		<div class="row" style="margin-top: 2%">
 			<div class="form-group col-sm-6"> 
 				<div class="col-sm-4">
 					<label class="control-label" for="id_correo">Correo</label>
 				</div>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" id="id_correo" name="correo" placeholder="Ingrese el correo electrÛnico">
+					<input class="form-control" type="text" id="id_correo" name="correo" placeholder="Ingrese el correo electr√≥nico">
 				</div>
 			</div>
 			<div class="form-group col-sm-6">
@@ -83,19 +83,27 @@
 				</div>
 			</div>
 		</div>
+		<div class="row" style="margin-top: 2%">
 		<div class="form-group col-sm-6">
 				<div class="col-sm-4">
-					<label class="control-label" for="id_pais">PaÌs</label>
+					<label class="control-label" for="id_pais">Pa√≠s</label>
+				</div>
+				<div class="col-sm-8">
 					<select id="id_pais" name="pais.idPais" class='form-control'>
 						<option value=" ">[Seleccione]</option>    
 					</select>
 			    </div>
+		</div>
+		<div class="form-group col-sm-6">
 				<div class="col-sm-4">
 					<label class="control-label" for="id_modalidad">Modalidad</label>
+				</div>
+				<div class="col-sm-8">
 					<select id="id_modalidad" name="modalidad.idDataCatalogo" class='form-control'>
 						<option value=" ">[Seleccione]</option>    
 					</select>
-			    </div>tipoLibro.idDataCatalogo
+			    </div>
+			    </div>
 		</div>
 		
 		<div class="row" style="margin-top: 2%" align="center"	>
@@ -168,6 +176,10 @@ $(document).ready(function() {
                             max: 40,
                             message: 'El nombre es de 2 a 40 caracteres'
                         },
+                        regexp: {
+                            regexp: /^[a-zA-Z]+$/,
+                            message: 'Ingresar nombres con caracteres alfab√©ticos'
+                        }
                     }
                 },
                 apellidos:{
@@ -179,33 +191,54 @@ $(document).ready(function() {
                         stringLength: {
                         	min: 2,
                             max: 40,
-                            message: 'Los apellidos son de 2 a 40 caracteres'
+                            message: 'Los apellidos son de 2 a 40 caracteres '
                         },
+                        regexp: {
+                            regexp: /^[a-zA-Z]+$/,
+                            message: 'Ingresar apellidos con caracteres alfab√©ticos'
+                        }
                     }
                 },
                 telefono:{
                     selector: "#id_telefono",
                     validators:{
                         notEmpty: {
-                             message: 'El telÈfono es obligatorio'
+                             message: 'El tel√©fono es obligatorio'
                         },
                         stringLength: {
+                        	min: 9,
                             max: 9,
-                            regexp: /^[0-9]{9}$/,
-                            message: 'El telÈfono es de 9 dÌgitos'
+                            message: 'El tel√©fono es de 9 d√≠gitos'
                         },
+                        regexp: {
+                            regexp: /^[0-9]+$/,
+                            message: 'Ingresar tel√©fono con caracteres num√©ricos'
+                        },
+                        remote :{
+                            delay: 100,
+                            url: 'buscaPorTelefono',
+                            message: 'El tel√©fono ya existe'
+                        }
                     }
                 },
                 dni:{
                     selector: "#id_dni",
                     validators:{
                         notEmpty: {
-                             message: 'El dni es obligatorio'
+                             message: 'El DNI es obligatorio'
+                        },
+                        stringLength: {
+                        	max: 8,
+                        	min: 8,
+                            message: 'El DNI es de 8 d√≠gitos'
                         },
                         regexp: {
-                        	max: 8,
-                            regexp: /^[0-9]{8}$/,
-                            message: 'El dni es de 8 dÌgitos numÈricos'
+                            regexp: /^[0-9]+$/,
+                            message: 'Ingresar DNI con caracteres num√©ricos'
+                        }, remote :{
+                            delay: 100,
+                            url: 'buscaPorDni',
+                            message: 'El DNI ya existe'
                         }
                     }
                 },
@@ -216,11 +249,11 @@ $(document).ready(function() {
                              message: 'El correo es obligatorio'
                         },
                         emailAddress: {
-                            message: 'El correo no es v·lido'
+                            message: 'El correo no es v√°lido'
                         },
                         regexp: {
                             regexp: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                            message: 'Ingresar un correo v·lido'
+                            message: 'Ingresar un correo v√°lido'
                         }
                     }
                 },
@@ -236,7 +269,7 @@ $(document).ready(function() {
                     selector: "#id_pais",
                     validators:{
                         notEmpty: {
-                             message: 'El paÌs es obligatorio'
+                             message: 'El pa√≠s es obligatorio'
                         }
                     }
                 },

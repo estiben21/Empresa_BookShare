@@ -33,5 +33,10 @@ public class AlumnoServiceImp implements AlumnoService {
 	public List<Alumno> listaPorDni(String dni){
 		return repository.findByDniIgnoreCase(dni);
 	}
+
+	@Override
+	public List<Alumno> listaPorTelefono(String telefono) {
+		return repository.findByTelefonoIgnoreCase(telefono);
+	}
 	
 }
