@@ -172,7 +172,7 @@
 								        },
 								        remote :{
 				                            delay: 100,
-				                            url: 'buscaPorTelefonoAutor',
+				                            url: 'buscaPorTelefonoPorAutor',
 				                            message: 'El teléfono ya existe'
 				                        }
 									}

@@ -49,8 +49,7 @@ public class AutorRegistroController {
 		return map;
 	}
 
-	// Buscar Telefono
-	@GetMapping("/buscaPorTelefonoAutor")
+	@GetMapping("/buscaPorTelefonoPorAutor")
 	@ResponseBody
 	public String validaTelefono(String telefono) {
 		List<Autor> lstAutor = autorService.listaPorTelefono(telefono);
