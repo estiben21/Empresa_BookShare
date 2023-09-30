@@ -25,5 +25,10 @@ public class EditorialServiceImp implements EditorialService {
 	public List<Editorial> listaPorRuc(String ruc){
 		return repository.findByRucIgnoreCase(ruc);
 	}
+
+	@Override
+	public List<Editorial> listaPorRazonSocialLike(String filtro) {
+		return repository.listaPorRazonSocialLike(filtro);
+	}
 	
 }
