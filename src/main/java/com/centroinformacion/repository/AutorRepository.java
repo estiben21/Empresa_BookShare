@@ -8,6 +8,7 @@ import com.centroinformacion.entity.Autor;
 
 public interface AutorRepository extends JpaRepository<Autor, Integer>{
 	
-	public List<Autor> findByTelefonoIgnoreCase(String telefono);
+	public List<Autor> findByTelefonoIgnoreCase(String telef);
+	
 
 }
