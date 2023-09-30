@@ -137,7 +137,7 @@ $('#id_form').bootstrapValidator({
                     max: 40,
                     message: 'La razón social es de 2 a 40 caracteres'
                 },
-                regexp{
+                regexp:{
                 	regexp: /^[a-zA-Z]+$/,
                 	message: 'Ingresar razón social en carácteres alfabéticos'
                 	
