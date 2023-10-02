@@ -9,5 +9,8 @@ public interface EditorialService {
 	public abstract Editorial insertaActualizaEditorial(Editorial obj);
 //Buscar RUC
 	public abstract List<Editorial> listaPorRuc(String ruc);
+	
+	//CONSULTA
+	public abstract List<Editorial> listaPorRazonSocialLike(String filtro);
 
 }
