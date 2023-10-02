@@ -54,8 +54,9 @@
 												<th style="width: 8%">RUC</th>
 												<th style="width: 8%">Fecha Creacion</th>
 												<th style="width: 10%">Pais</th>
-												<th style="width: 10%">Actualiza</th>
-												<th style="width: 10%">Elimina</th>
+												<!-- <th style="width: 10%">Actualiza</th>
+												<th style="width: 10%">Elimina</th> -->
+												
 											</tr>
 										</thead>
 											<tbody>
@@ -78,6 +79,15 @@ $("#id_btn_filtrar").click(function(){
 	});
 });
 
+//PAIS
+$.getJSON("listaPais", {}, function(data) {
+	$.each(data, function(index, item) {
+		$("#id_pais").append(
+				"<option value="+item.idPais +">" + item.nombre
+						+ "</option>");
+	});
+});
+
 //metodo grlla
 function agregarGrilla(lista){
 	 $('#id_table').DataTable().clear();
@@ -95,7 +105,7 @@ function agregarGrilla(lista){
 				{data: "direccion"},
 				{data: "ruc"},
 				{data: "fechaCreacion"},
-				{data: "pais"},
+				{data: "pais.nombre"},
 															
 			]                                     
 	    });
