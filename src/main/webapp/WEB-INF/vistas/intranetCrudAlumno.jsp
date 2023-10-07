@@ -49,11 +49,11 @@
 												<th style="width: 5%" >ID</th>
 												<th style="width: 25%">Nombres</th>
 												<th style="width: 8%">Apellidos</th>
-												<th style="width: 8%">Telèfono</th>
+												<th style="width: 8%">TelÃ¨fono</th>
 												<th style="width: 8%">Dni</th>
-												<th style="width: 8%">Correo elctrònico</th>
+												<th style="width: 8%">Correo elctrÃ²nico</th>
 												<th style="width: 8%">Fecha de nacimiento</th>
-												<th style="width: 10%">Paìs</th>
+												<th style="width: 10%">PaÃ¬s</th>
 												<th style="width: 10%">Modalidad</th>
 												<th style="width: 10%">Actualiza</th>
 												<th style="width: 10%">Elimina</th>
@@ -68,7 +68,7 @@
 </div>
 
 <script type="text/javascript">
-//----EVENTO DEL BOTÒN FILTAR ***********************************************
+//----EVENTO DEL BOTÃ’N FILTAR ***********************************************
 $("#id_btn_filtrar").click(function(){
 	var fil=$("#id_txt_filtro").val();
 	$.getJSON("consultaCrudAlumno",{"filtro":fil}, function (lista){ 
@@ -94,8 +94,8 @@ function agregarGrilla(lista){
 				{data: "dni"},
 				{data: "correo"},
 				{data: "fechaNacimiento"},
-				{data: "pais.idPais"},
-				{data: "modalidad.idDataCatalogo"}
+				{data: "pais.nombre"},
+				{data: "modalidad.descripcion"}
 																
 			]                                     
 	    });
