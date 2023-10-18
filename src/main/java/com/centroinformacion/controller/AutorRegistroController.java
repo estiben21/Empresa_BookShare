@@ -40,7 +40,7 @@ public class AutorRegistroController {
 		obj.setUsuarioActualiza(objUsuario);
 
 		HashMap<String, String> map = new HashMap<String, String>();
-		Autor objSalida = autorService.insertaActualizaAutor(obj);
+		Autor objSalida = autorService.registraAutor(obj);
 		if (objSalida == null) {
 			map.put("MENSAJE", "Error en el registro");
 		} else {

@@ -100,7 +100,7 @@
 		});
 
 		function limpiarFormulario() {
-			$("#id_nombres").val('');
+			$("#id_nombres").val(' ');
 			$("#id_apellidos").val(' ');
 			$("#id_telefono").val(' ');
 			$("#id_fecha").val(' ');
