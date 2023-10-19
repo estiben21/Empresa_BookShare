@@ -28,6 +28,7 @@ public class AutorServiceImpl implements AutorService{
 		return repository.listPorNombreYApellidoLike(filtro);
 	}
 	
+	///----
 	//-----
 	@Override
 	public Autor actualizaAutor(Autor obj) {
