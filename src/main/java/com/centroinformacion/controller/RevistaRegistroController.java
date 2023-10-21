@@ -38,7 +38,7 @@ public class RevistaRegistroController {
 		obj.setUsuarioActualiza(objUsuario);
 		
 		HashMap<String, String> map = new HashMap<String, String>();
-		Revista objSalida = revistaService.insertaActualizaRevista(obj);
+		Revista objSalida = revistaService.insertaRevista(obj);
 		if (objSalida == null) {
 			map.put("MENSAJE", "Error en el registro");
 		}else {

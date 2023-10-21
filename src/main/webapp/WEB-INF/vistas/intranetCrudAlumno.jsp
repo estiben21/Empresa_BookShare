@@ -50,11 +50,11 @@
 										<th style="width: 5%" >ID</th>
 										<th style="width: 12%">Nombres</th>
 										<th style="width: 12%">Apellidos</th>
-										<th style="width: 9%">TelÈfono</th>
+										<th style="width: 9%">Tel√©fono</th>
 										<th style="width: 8%">Dni</th>
-										<th style="width: 13%">Correo elctrÛnico</th>
+										<th style="width: 13%">Correo elctr√≥nico</th>
 										<th style="width: 10%">Fecha de nacimiento</th>
-										<th style="width: 8%">PaÌs</th>
+										<th style="width: 8%">Pa√≠s</th>
 										<th style="width: 8%">Modalidad</th>
 										<th style="width: 7%">Actualiza</th>
 										<th style="width: 7%">Elimina</th>
@@ -97,9 +97,9 @@
 				                                        </div>
 				                                    </div>
 				                                    <div class="form-group">
-				                                        <label class="col-lg-3 control-label" for="id_reg_telefono">TelÈfono</label>
+				                                        <label class="col-lg-3 control-label" for="id_reg_telefono">Tel√©fono</label>
 				                                        <div class="col-lg-8">
-															<input class="form-control" id="id_reg_telefono" name="telefono" placeholder="Ingrese el telÈfono" type="text" maxlength="9"/>
+															<input class="form-control" id="id_reg_telefono" name="telefono" placeholder="Ingrese el tel√©fono" type="text" maxlength="9"/>
 				                                        </div>
 				                                    </div>
 				                                    <div class="form-group">
@@ -109,9 +109,9 @@
 				                                        </div>
 				                                    </div>
 				                                    <div class="form-group">
-				                                        <label class="col-lg-3 control-label" for="id_reg_correo">Correo electrÛnico</label>
+				                                        <label class="col-lg-3 control-label" for="id_reg_correo">Correo electr√≥nico</label>
 				                                        <div class="col-lg-8">
-															<input class="form-control" id="id_reg_correo" name="correo" placeholder="Ingrese el correo electrÛnico" type="text" maxlength="50"/>
+															<input class="form-control" id="id_reg_correo" name="correo" placeholder="Ingrese el correo electr√≥nico" type="text" maxlength="50"/>
 				                                        </div>
 				                                    </div>
 				                                    <div class="form-group">
@@ -121,7 +121,7 @@
 				                                        </div>
 				                                    </div>		   
 				                                    <div class="form-group">
-				                                        <label class="col-lg-3 control-label" for="id_reg_pais">PaÌs</label>
+				                                        <label class="col-lg-3 control-label" for="id_reg_pais">Pa√≠s</label>
 				                                        <div class="col-lg-6">
 															 <select id="id_reg_pais" name="pais" class='form-control'>
 									                            	<option value=" ">[Seleccione]</option>    
@@ -151,7 +151,7 @@
 				</div>		
 			</div>
 			
-			<!--------------------------------------- MODAL de ActualizaciÛn ----------------------------------------------->
+			<!--------------------------------------- MODAL de Actualizaci√≥n ----------------------------------------------->
 		  	 <div class="modal fade" id="id_div_modal_actualiza" >
 					<div class="modal-dialog" style="width: 60%">
 						<!-- Modal content-->
@@ -189,9 +189,9 @@
 				                                        </div>
 				                                    </div>
 				                                    <div class="form-group">
-				                                        <label class="col-lg-3 control-label" for="id_act_telefono">TelÈfono</label>
+				                                        <label class="col-lg-3 control-label" for="id_act_telefono">Tel√©fono</label>
 				                                        <div class="col-lg-8">
-															<input class="form-control" id="id_act_telefono" name="telefono" placeholder="Ingrese el telÈfono" type="text" maxlength="9"/>
+															<input class="form-control" id="id_act_telefono" name="telefono" placeholder="Ingrese el tel√©fono" type="text" maxlength="9"/>
 				                                        </div>
 				                                    </div>
 				                                    <div class="form-group">
@@ -201,9 +201,9 @@
 				                                        </div>
 				                                    </div>
 				                                    <div class="form-group">
-				                                        <label class="col-lg-3 control-label" for="id_act_correo">Correo electrÛnico</label>
+				                                        <label class="col-lg-3 control-label" for="id_act_correo">Correo electr√≥nico</label>
 				                                        <div class="col-lg-8">
-															<input class="form-control" id="id_act_correo" name="correo" placeholder="Ingrese el correo electrÛnico" type="text" maxlength="50"/>
+															<input class="form-control" id="id_act_correo" name="correo" placeholder="Ingrese el correo electr√≥nico" type="text" maxlength="50"/>
 				                                        </div>
 				                                    </div>
 				                                    <div class="form-group">
@@ -213,7 +213,7 @@
 				                                        </div>
 				                                    </div>		   
 				                                    <div class="form-group">
-				                                        <label class="col-lg-3 control-label" for="id_act_pais">PaÌs</label>
+				                                        <label class="col-lg-3 control-label" for="id_act_pais">Pa√≠s</label>
 				                                        <div class="col-lg-6">
 															 <select id="id_act_pais" name="pais" class='form-control'>
 									                            	<option value=" ">[Seleccione]</option>    
@@ -315,7 +315,7 @@ function limpiar(){
 }
 
 
-//------------------------ botÛn REGISTRAR ------------------------
+//------------------------ bot√≥n REGISTRAR ------------------------
 $("#id_btn_registra").click(function(){
 	var validator = $('#id_form_registra').data('bootstrapValidator');
     validator.validate();
@@ -362,7 +362,7 @@ $(document).ready(function() {
                         },
                         regexp: {
                             regexp: /^[a-zA-Z]+$/,
-                            message: 'Ingresar nombres con caracteres alfabÈticos'
+                            message: 'Ingresar nombres con caracteres alfab√©ticos'
                         }
                     }
                 },
@@ -379,7 +379,7 @@ $(document).ready(function() {
                         },
                         regexp: {
                             regexp: /^[a-zA-Z]+$/,
-                            message: 'Ingresar apellidos con caracteres alfabÈticos'
+                            message: 'Ingresar apellidos con caracteres alfab√©ticos'
                         }
                     }
                 },
@@ -387,21 +387,21 @@ $(document).ready(function() {
                     selector: "#id_telefono",
                     validators:{
                         notEmpty: {
-                             message: 'El telÈfono es obligatorio'
+                             message: 'El tel√©fono es obligatorio'
                         },
                         stringLength: {
                         	min: 9,
                             max: 9,
-                            message: 'El telÈfono es de 9 dÌgitos'
+                            message: 'El tel√©fono es de 9 d√≠gitos'
                         },
                         regexp: {
                             regexp: /^[0-9]+$/,
-                            message: 'Ingresar telÈfono con caracteres numÈricos'
+                            message: 'Ingresar tel√©fono con caracteres num√©ricos'
                         },
                         remote :{
                             delay: 100,
                             url: 'buscaPorTelefono',
-                            message: 'El telÈfono ya existe'
+                            message: 'El tel√©fono ya existe'
                         }
                     }
                 },
@@ -414,11 +414,11 @@ $(document).ready(function() {
                         stringLength: {
                         	max: 8,
                         	min: 8,
-                            message: 'El DNI es de 8 dÌgitos'
+                            message: 'El DNI es de 8 d√≠gitos'
                         },
                         regexp: {
                             regexp: /^[0-9]+$/,
-                            message: 'Ingresar DNI con caracteres numÈricos'
+                            message: 'Ingresar DNI con caracteres num√©ricos'
                         }, remote :{
                             delay: 100,
                             url: 'buscaPorDni',
@@ -433,11 +433,11 @@ $(document).ready(function() {
                              message: 'El correo es obligatorio'
                         },
                         emailAddress: {
-                            message: 'El correo no es v·lido'
+                            message: 'El correo no es v√°lido'
                         },
                         regexp: {
                             regexp: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                            message: 'Ingresar un correo v·lido'
+                            message: 'Ingresar un correo v√°lido'
                         }
                     }
                 },
@@ -453,7 +453,7 @@ $(document).ready(function() {
                     selector: "#id_pais",
                     validators:{
                         notEmpty: {
-                             message: 'El paÌs es obligatorio'
+                             message: 'El pa√≠s es obligatorio'
                         }
                     }
                 },
