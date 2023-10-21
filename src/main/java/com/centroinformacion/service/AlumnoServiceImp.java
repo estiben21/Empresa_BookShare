@@ -42,8 +42,13 @@ public class AlumnoServiceImp implements AlumnoService {
 	
 	//----------------------------------------- CP2 ---------------------------------------
 	@Override //PASO1:
-	public List<Alumno> listarPorTituloLikeNombresOrApellidosLike(String filtro) {
+	public List<Alumno> listarPorNombresOrApellidosLike(String filtro) {
 		return repository.listaPorNombresOApellidos(filtro);
+	}
+
+	@Override
+	public List<Alumno> listaPorNombreApellidoIgual(String nombre, String apellido) {
+		return repository.listaPorNombreApellidoIgual(nombre, apellido);
 	}
 	
 }

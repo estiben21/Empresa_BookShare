@@ -15,6 +15,7 @@ public interface AlumnoService {
 	
 	//------------------------------_CP2-------------------------------------------
 	//PASO1:
-	public abstract List<Alumno> listarPorTituloLikeNombresOrApellidosLike(String filtro);
+	public abstract List<Alumno> listarPorNombresOrApellidosLike(String filtro);
+	public abstract List<Alumno> listaPorNombreApellidoIgual(String nombre, String apellido);
 	
 }
