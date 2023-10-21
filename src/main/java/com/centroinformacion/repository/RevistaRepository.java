@@ -12,6 +12,7 @@ public interface RevistaRepository extends JpaRepository<Revista, Integer>{
 	public List<Revista> findByNombreOrFrecuenciaIgnoreCase(String nombre,String frecuencia);
 	
 	@Query("select r from Revista r where r.nombre like ?1 or r.frecuencia like ?1")
-	public List<Revista> listPorNombreLike(String filtro);
+	public List<Revista> listaPorNombreFrecuenciaLike(String filtro);
+	
 	
 }
