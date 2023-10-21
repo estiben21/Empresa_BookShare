@@ -18,4 +18,8 @@ public interface AlumnoRepository extends JpaRepository<Alumno, Integer>{
 	@Query("select p from Alumno p where p.nombres like ?1 or p.apellidos like ?1")
 	//PASO2:
 	public List<Alumno> listaPorNombresOApellidos(String filtro);
+	
+	@Query("select p from Alumno p where p.nombres like ?1 and p.apellidos like ?2")
+	//PASO2:
+	public List<Alumno> listaPorNombreApellidoIgual(String nombre, String apellido);
 }
