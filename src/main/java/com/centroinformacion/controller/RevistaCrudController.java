@@ -41,13 +41,7 @@ public class RevistaCrudController {
 		obj.setFechaActualizacion(new Date());
 		obj.setUsuarioRegistro(objUsuario);
 		obj.setUsuarioActualiza(objUsuario);
-		List<Revista> lstSalida = revistaService.ListaPorNombreOrFrecuencia(
-								obj.getNombre(), 
-								obj.getFrecuencia());
-		if (!CollectionUtils.isEmpty(lstSalida)) {
-			map.put("mensaje", "La revista " + obj.getNombre() + " " + obj.getFrecuencia() + " ya existe");
-			return map;
-		}
+		
 		
 		Revista objSalida = revistaService.insertaRevista(obj);
 		if (objSalida == null) {
