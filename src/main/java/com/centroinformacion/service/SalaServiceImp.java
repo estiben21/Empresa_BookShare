@@ -17,6 +17,10 @@ public class SalaServiceImp implements SalaService {
 	public Sala insertaActualizaSala(Sala obj) {
 		return repository.save(obj);
 	}
+	@Override
+	public Sala insertaRegistraSala(Sala obj) {
+		return repository.save(obj);
+	}
 
 	@Override
 	public List<Sala> listaPorNumero(String numero) {
