@@ -78,4 +78,22 @@ public class AutorCrudController {
 		return map;
 	}
 	
+	//----elimina
+	@ResponseBody
+	@PostMapping("/eliminaCrudAutor")
+	public Map<?, ?> elimina(int id) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		Autor objAutor= autorService.buscaAutor(id).get();  
+		objAutor.setFechaActualizacion(new Date());  
+		objAutor.setEstado( objAutor.getEstado() == 1 ? 0 : 1);
+		Autor objSalida = autorService.actualizaAutor(objAutor);
+		if (objSalida == null) {
+			map.put("mensaje", "Error en actualizar");
+		} else {
+			List<Autor> lista = autorService.listPorNombreYApellidoLike("%");
+			map.put("lista", lista);
+		}
+		return map;
+	}
+	
 }

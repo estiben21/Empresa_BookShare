@@ -516,6 +516,21 @@
 
 							}
 						});
+		
+		function accionEliminar(id){	
+		    $.ajax({
+		          type: "POST",
+		          url: "eliminaCrudAutor", 
+		          data: {"id":id},
+		          success: function(data){
+		        	  agregarGrilla(data.lista);
+		          },
+		          error: function(){
+		        	  mostrarMensaje(MSG_ERROR);
+		          }
+		     });
+		}
+		
 		function editar(idAutor,nombres,apellidos,fechaNacimiento,telefono,idPais,idDataCatalogo){	
 			$('#id_ID').val(idAutor);
 			$('#id_act_nombres').val(nombres);
