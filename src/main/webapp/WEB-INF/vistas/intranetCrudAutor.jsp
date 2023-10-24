@@ -403,7 +403,7 @@
 														+ '\',\''
 														+ row.pais.idPais
 														+ '\',\''
-														+ row.grado.
+														+ row.grado.idDataCatalogo
 														+ '\')">Editar</button>';
 												return salida;
 											},
@@ -516,16 +516,103 @@
 
 							}
 						});
-		function editar(idAutor,nombres,apellidos,fechaNacimiento,telefono,idPais,grado){	
+		function editar(idAutor,nombres,apellidos,fechaNacimiento,telefono,idPais,idDataCatalogo){	
 			$('#id_ID').val(idAutor);
 			$('#id_act_nombres').val(nombres);
 			$('#id_act_apellidos').val(apellidos);
 			$('#id_act_fechaNacimiento').val(fechaNacimiento);
 			$('#id_act_telefono').val(telefono);
 			$('#id_act_pais').val(idPais);
-			$('#id_act_grado').val(grado);
+			$('#id_act_grado').val(idDataCatalogo);
 			$('#id_div_modal_actualiza').modal("show");
 		}
+		
+		$('#id_form_actualiza').bootstrapValidator({
+		    message: 'This value is not valid',
+		    feedbackIcons: {
+		        valid: 'glyphicon glyphicon-ok',
+		        invalid: 'glyphicon glyphicon-remove',
+		        validating: 'glyphicon glyphicon-refresh'
+		    },
+		    fields: {
+					nombres : {
+						selector : '#id_act_nombres',
+						validators : {
+							notEmpty : {
+								message : 'El nombre es un campo obligatorio'
+							},
+							stringLength : {
+								message : 'El nombre es de 2 a 40 carácteres',
+								min : 2,
+								max : 40
+							},
+							regexp : {
+								regexp : /^[a-zA-Z\s]+$/,
+								message : 'El nombre solo puede contener letras y espacios'
+							}
+						}
+					},
+					apellidos : {
+						selector : '#id_act_apellidos',
+						validators : {
+							notEmpty : {
+								message : 'El apellido es un campo obligatorio'
+							},
+							stringLength : {
+								message : 'El apellido es de 2 a 40 carácteres',
+								min : 2,
+								max : 40
+							},
+							regexp : {
+								regexp : /^[a-zA-Z\s]+$/,
+								message : 'El apellido solo puede contener letras y espacios'
+							}
+						}
+					},
+					fechaNacimiento : {
+						selector : "#id_act_fechaNacimiento",
+						validators : {
+							notEmpty : {
+								message : 'La fecha es obligatorio'
+							}
+						}
+					},
+					telefono : {
+						selector : '#id_act_telefono',
+						validators : {
+							notEmpty : {
+								message : 'El teléfono es un campo obligatorio'
+							},
+							regexp : {
+								regexp : /^[0-9]{9}$/,
+								message : 'El teléfono es 9 dígitos y en formato numérico'
+							},
+							remote : {
+								delay : 100,
+								url : 'buscaPorTelefonoPorAutor',
+								message : 'El teléfono ya existe'
+							}
+						}
+
+					},
+					pais : {
+						selector : '#id_act_pais',
+						validators : {
+							notEmpty : {
+								message : 'País es un campo obligatorio'
+							},
+						}
+					},
+					grado : {
+						selector : '#id_act_grado',
+						validators : {
+							notEmpty : {
+								message : 'Grado es un campo obligatorio'
+							},
+						}
+					},
+		    }   
+		}); 
 		
 	</script>
 </body>
