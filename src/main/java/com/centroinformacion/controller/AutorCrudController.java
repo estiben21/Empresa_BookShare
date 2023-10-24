@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -51,6 +52,28 @@ public class AutorCrudController {
 			List<Autor> lista = autorService.listPorNombreYApellidoLike("%");
 			map.put("lista", lista);
 			map.put("mensaje", "Registro exitoso");
+		}
+		return map;
+	}
+	
+	@PostMapping("/actualizaCrudAutor")
+	@ResponseBody
+	public Map<?, ?> actualiza(Autor obj) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		  
+		Optional<Autor> optAutor= autorService.buscaAutor(obj.getIdAutor());
+		obj.setFechaRegistro(optAutor.get().getFechaRegistro());
+		obj.setFechaActualizacion(optAutor.get().getFechaActualizacion());
+		obj.setEstado(optAutor.get().getEstado());
+		obj.setUsuarioRegistro(optAutor.get().getUsuarioRegistro());
+		obj.setUsuarioActualiza(optAutor.get().getUsuarioActualiza());
+		Autor objSalida = autorService.actualizaAutor(obj);
+		if (objSalida == null) {
+			map.put("mensaje", "Error en actualizar");
+		} else {
+			List<Autor> lista = autorService.listPorNombreYApellidoLike("%");
+			map.put("lista", lista);
+			map.put("mensaje", "Actualización exitosa");
 		}
 		return map;
 	}

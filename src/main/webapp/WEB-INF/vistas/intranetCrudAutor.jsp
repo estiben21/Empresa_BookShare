@@ -165,7 +165,8 @@
 			</div>
 		</div>
 	</div>
-
+	
+	
 	<div class="modal fade" id="id_div_modal_actualiza">
 		<div class="modal-dialog" style="width: 60%">
 
@@ -200,9 +201,9 @@
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="col-lg-3 control-label" for="id_act_nombre">Nombre</label>
+											<label class="col-lg-3 control-label" for="id_act_nombres">Nombre</label>
 											<div class="col-lg-8">
-												<input class="form-control" id="id_act_nombre" name="nombres"
+												<input class="form-control" id="id_act_nombres" name="nombres"
 													placeholder="Ingrese el nombre del autor" type="text"
 													maxlength="40" />
 											</div>
@@ -265,7 +266,7 @@
 			</div>
 		</div>
 	</div>
-
+	
 
 
 	<script type="text/javascript">
@@ -321,6 +322,26 @@
 					}
 				});
 			}
+		});
+		
+		$("#id_btn_actualiza").click(function(){
+			var validator = $('#id_form_actualiza').data('bootstrapValidator');
+		    validator.validate();
+		    if (validator.isValid()) {
+		        $.ajax({
+		          type: "POST",
+		          url: "actualizaCrudAutor", 
+		          data: $('#id_form_actualiza').serialize(),
+		          success: function(data){
+		        	  agregarGrilla(data.lista);
+		        	  $('#id_div_modal_actualiza').modal("hide");
+		        	  mostrarMensaje(data.mensaje);
+		          },
+		          error: function(){
+		        	  mostrarMensaje(MSG_ERROR);
+		          }
+		        });
+		    }
 		});
 		
 		function limpiarFormulario(){	
@@ -380,9 +401,9 @@
 														+ '\',\''
 														+ row.telefono
 														+ '\',\''
-														+ row.pais.nombre
+														+ row.pais.idPais
 														+ '\',\''
-														+ row.grado.descripcion
+														+ row.grado.
 														+ '\')">Editar</button>';
 												return salida;
 											},
@@ -495,17 +516,17 @@
 
 							}
 						});
-		
-		function editar(idAutor,nombres,apellidos,fechaNacimiento,telefono,idPais.idGrado){	
+		function editar(idAutor,nombres,apellidos,fechaNacimiento,telefono,idPais,grado){	
 			$('#id_ID').val(idAutor);
 			$('#id_act_nombres').val(nombres);
 			$('#id_act_apellidos').val(apellidos);
 			$('#id_act_fechaNacimiento').val(fechaNacimiento);
 			$('#id_act_telefono').val(telefono);
 			$('#id_act_pais').val(idPais);
-			$('#id_act_grado').val(idGrado);
+			$('#id_act_grado').val(grado);
 			$('#id_div_modal_actualiza').modal("show");
 		}
+		
 	</script>
 </body>
 </html>

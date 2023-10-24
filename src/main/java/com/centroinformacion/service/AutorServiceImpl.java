@@ -1,6 +1,7 @@
 package com.centroinformacion.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,14 @@ public class AutorServiceImpl implements AutorService{
 	@Override
 	public List<Autor> listPorNombreYApellidoLike(String filtro) {
 		return repository.listPorNombreYApellidoLike(filtro);
+	}
+	@Override
+	public Autor actualizaAutor(Autor obj) {
+		return  repository.save(obj);
+	}
+	@Override
+	public Optional<Autor> buscaAutor(int idAutor) {
+		return repository.findById(idAutor);
 	}
 	
 	
