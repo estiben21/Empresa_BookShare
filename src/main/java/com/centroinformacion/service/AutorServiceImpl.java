@@ -13,7 +13,7 @@ import com.centroinformacion.repository.AutorRepository;
 public class AutorServiceImpl implements AutorService{
 	@Autowired	
 	private AutorRepository repository;
-
+ 
 	
 	@Override
 	public Autor registraAutor (Autor obj) {
@@ -27,14 +27,18 @@ public class AutorServiceImpl implements AutorService{
 	public List<Autor> listPorNombreYApellidoLike(String filtro) {
 		return repository.listPorNombreYApellidoLike(filtro);
 	}
-	
-	///----
-	//-----
 	@Override
 	public Autor actualizaAutor(Autor obj) {
 		return  repository.save(obj);
 	}
 	@Override
+	public Optional<Autor> buscaAutor(int idAutor) {
+		return repository.findById(idAutor);
+	}
+	
+	
+	/*
+	 * @Override
 	public Optional<Autor> buscaAutor(int idAutor) {
 		return repository.findById(idAutor);
 	}
@@ -46,5 +50,10 @@ public class AutorServiceImpl implements AutorService{
 	public List<Autor> listaPorNombreApellidoIgualActualiza(String nombre, String apellido, int idAutor) {
 		return repository.listaAutorNombreApellidoIgualActualiza(nombre, apellido, idAutor);
 	}
+	public Autor actualizaAutor(Autor obj) {
+		return  repository.save(obj);
+	}
+	
+	*/
 	
 }
