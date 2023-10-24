@@ -35,25 +35,10 @@ public class AutorServiceImpl implements AutorService{
 	public Optional<Autor> buscaAutor(int idAutor) {
 		return repository.findById(idAutor);
 	}
-	
-	
-	/*
-	 * @Override
-	public Optional<Autor> buscaAutor(int idAutor) {
-		return repository.findById(idAutor);
-	}
 	@Override
-	public List<Autor> listaPorNombreApellidoIgual(String nombre, String apellido) {
-		return repository.listaAutorNombreApellidoIgual(nombre, apellido);
-	}
-	@Override
-	public List<Autor> listaPorNombreApellidoIgualActualiza(String nombre, String apellido, int idAutor) {
-		return repository.listaAutorNombreApellidoIgualActualiza(nombre, apellido, idAutor);
-	}
-	public Autor actualizaAutor(Autor obj) {
-		return  repository.save(obj);
+	public List<Autor> listaAutorNombreIgualActualiza(String nombres, int id) {
+		return repository.listaAutorNombreIgualActualiza(nombres, id);
 	}
 	
-	*/
 	
 }

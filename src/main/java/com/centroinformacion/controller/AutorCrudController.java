@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.centroinformacion.entity.Autor;
 import com.centroinformacion.entity.Usuario;
 import com.centroinformacion.service.AutorService;
+import com.centroinformacion.util.AppSettings;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -94,6 +96,27 @@ public class AutorCrudController {
 			map.put("lista", lista);
 		}
 		return map;
+	}
+	//----valida edad
+	@GetMapping("/buscaAutorMayorEdad")
+	@ResponseBody
+	public String validaFecha(String fechaNacimiento) {
+		if(AppSettings.isMayorEdad(fechaNacimiento)) {
+			return "{\"valid\":true}";
+		}else {
+			return "{\"valid\":false}";
+		}
+	}
+	
+	@GetMapping("/buscaAutorPorNombreActualiza")
+	@ResponseBody
+	public String validaNombreActualiza(String nombres, int id) {
+		List<Autor> lst = autorService.listaAutorNombreIgualActualiza(nombres, id);
+		if(CollectionUtils.isEmpty(lst)) {
+			return "{\"valid\":true}";
+		}else {
+			return "{\"valid\":false}";
+		}
 	}
 	
 }
