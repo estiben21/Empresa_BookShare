@@ -48,11 +48,11 @@
 											<tr>
 												<th style="width: 5%" >ID</th>
 												<th style="width: 25%">#Numero</th>
-												<th style="width: 8%">#Piso</th>
-												<th style="width: 8%">#Alumnos</th>
-												<th style="width: 8%">Recursos</th>
-												<th style="width: 8%">Estado</th>
-												<th style="width: 8%">Tipo</th>
+												<th style="width: 20%">#Piso</th>
+												<th style="width: 20%">#Alumnos</th>
+												<th style="width: 10%">Recursos</th>
+												<th style="width: 10%">Estado</th>
+												<th style="width: 10%">Tipo</th>
 												
 											</tr>
 										</thead>
@@ -62,7 +62,91 @@
 								</div>	
 						</div>
 					</div>	
+					
+					
+					 <div class="modal fade" id="id_div_modal_registra" >
+			<div class="modal-dialog" style="width: 60%">
+		
+				<!-- Modal content-->
+				<div class="modal-content">
+				<div class="modal-header" style="padding: 35px 50px">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4><span class="glyphicon glyphicon-ok-sign"></span> Registro de Sala</h4>
+				</div>
+				<div class="modal-body" style="padding: 20px 10px;">
+						<form id="id_form_registra" accept-charset="UTF-8" class="form-horizontal"     method="post">
+		                    <div class="panel-group" id="steps">
+		                        <!-- Step 1 -->
+		                        <div class="panel panel-default">
+		                            <div class="panel-heading">
+		                                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#steps" href="#stepOne">Datos de la Sala</a></h4>
+		                            </div>
+		                            <div id="stepOne" class="panel-collapse collapse in">
+		                                <div class="panel-body">
+		                                     <div class="form-group">
+		                                        <label class="col-lg-3 control-label" for="id_numero">Número</label>
+		                                        <div class="col-lg-8">
+													<input class="form-control"  id="id_numero" name="numero" placeholder="Ingrese el número" type="text" maxlength="20"/>
+		                                        </div>
+		                                    </div>
+		                                    
+		                                    <div class="form-group">
+		                                        <label class="col-lg-3 control-label" for="id_piso">Piso</label>
+		                                        <div class="col-lg-8">
+													<input class="form-control" id="id_piso" name="piso" placeholder="Ingrese el piso" type="text" maxlength="20"/>
+		                                        </div>
+		                                    </div>
+		                                    
+		                                    <div class="form-group"> 
+											<label class="col-lg-3 control-label" for="id_cantAlumnos">Cantidad de Alumnos</label>
+											<div class="col-lg-8">
+											<input class="form-control" type="text" id="id_cantAlumnos" name="numAlumnos" placeholder="Ingrese la cantidad de alumnos">
+										</div>
+									</div>
+									 	<div class="form-group">
+											<label class="col-lg-3 control-label" for="id_recursos">Recursos</label>
+											<div class="col-lg-8">
+											<input class="form-control" type="text" id="id_recursos" name="recursos" placeholder="Ingrese los recursos">
+										</div>
+									</div>
+										
+											<div class="form-group" >
+											<label class="col-lg-3 control-label" for="id_tipo">Tipo</label>
+											<div class="col-lg-6">
+											<select id="id_tipo" name="tipoSala.idDataCatalogo" class='form-control'>
+												<option value=" ">[Seleccione]</option>    
+											</select>
+										   </div>
+										 </div>
+										 
+										   <div class="form-group" >
+											<label class="col-lg-3 control-label" for="id_sede">Sede</label>
+											<div class="col-lg-6">
+											<select id="id_sede" name="sede.idDataCatalogo" class='form-control'>
+												<option value=" ">[Seleccione]</option>    
+											</select>
+										   </div>
+										  </div>
+								             <div class="form-group">
+		                                        <div class="col-lg-9 col-lg-offset-3">
+		                                        	<button type="button" class="btn btn-primary" id="id_btn_registra">REGISTRA</button>
+                                 				 </div>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                        </div>
+		                        
+		                    </div>
+		                </form>   
+				
+				</div>
+			</div>
+		</div>
+			
+		</div>
+
 </div>
+		
 
 <script type="text/javascript">
 
@@ -91,12 +175,34 @@ function agregarGrilla(lista){
 				{data: "recursos"},
 				{data: "estado"},
 				{data: "sede"},
-				{data: "estado"},
-				{data: "estado"},
 																
 			]                                     
 	    });
 }
+
+$("#id_btn_registra").click(function(){
+	var validator = $('#id_form_registra').data('bootstrapValidator');
+    validator.validate();
+	
+    if (validator.isValid()) {
+        $.ajax({
+          type: "POST",
+          url: "registraCrudEmpleado", 
+          data: $('#id_form_registra').serialize(),
+          success: function(data){
+        	  agregarGrilla(data.lista);
+        	  $('#id_div_modal_registra').modal("hide");
+        	  mostrarMensaje(data.mensaje);
+        	  limpiarFormulario();
+        	  validator.resetForm();
+          },
+          error: function(){
+        	  mostrarMensaje(MSG_ERROR);
+          }
+        });
+        
+    }
+});
 
 
 </script>   		
