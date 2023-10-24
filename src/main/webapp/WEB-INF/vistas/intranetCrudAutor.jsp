@@ -113,7 +113,7 @@
 												<input class="form-control" id="id_reg_apellidos"
 													name="apellidos"
 													placeholder="Ingrese el apellido del autor" type="text"
-													maxlength="40" />
+													maxlength="40"  />
 											</div>
 										</div>
 										<div class="form-group">
