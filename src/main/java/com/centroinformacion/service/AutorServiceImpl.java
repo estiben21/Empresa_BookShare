@@ -1,7 +1,6 @@
 package com.centroinformacion.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +12,7 @@ import com.centroinformacion.repository.AutorRepository;
 public class AutorServiceImpl implements AutorService{
 	@Autowired	
 	private AutorRepository repository;
-
+ 
 	
 	@Override
 	public Autor registraAutor (Autor obj) {
@@ -28,13 +27,9 @@ public class AutorServiceImpl implements AutorService{
 		return repository.listPorNombreYApellidoLike(filtro);
 	}
 	
-	///----
-	//-----
-	@Override
-	public Autor actualizaAutor(Autor obj) {
-		return  repository.save(obj);
-	}
-	@Override
+	
+	/*
+	 * @Override
 	public Optional<Autor> buscaAutor(int idAutor) {
 		return repository.findById(idAutor);
 	}
@@ -46,5 +41,10 @@ public class AutorServiceImpl implements AutorService{
 	public List<Autor> listaPorNombreApellidoIgualActualiza(String nombre, String apellido, int idAutor) {
 		return repository.listaAutorNombreApellidoIgualActualiza(nombre, apellido, idAutor);
 	}
+	public Autor actualizaAutor(Autor obj) {
+		return  repository.save(obj);
+	}
+	
+	*/
 	
 }
