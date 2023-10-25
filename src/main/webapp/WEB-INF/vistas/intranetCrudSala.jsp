@@ -46,13 +46,17 @@
 									<table id="id_table" class="table table-striped table-bordered" >
 										<thead>
 											<tr>
-												<th style="width: 5%" >ID</th>
-												<th style="width: 25%">#Numero</th>
-												<th style="width: 20%">#Piso</th>
-												<th style="width: 20%">#Alumnos</th>
+												<th style="width: 10%" >ID</th>
+												<th style="width: 10%">#Numero</th>
+												<th style="width: 10%">#Piso</th>
+												<th style="width: 10%">#Alumnos</th>
 												<th style="width: 10%">Recursos</th>
 												<th style="width: 10%">Estado</th>
 												<th style="width: 10%">Tipo</th>
+												<th style="width: 10%">Sede</th>
+												<th style="width: 10%">Actualiza</th>
+												<th style="width: 10%">Elimina</th>
+												
 												
 											</tr>
 										</thead>
@@ -113,16 +117,16 @@
 											<div class="form-group" >
 											<label class="col-lg-3 control-label" for="id_tipo">Tipo</label>
 											<div class="col-lg-6">
-											<select id="id_tipo" name="tipoSala.idDataCatalogo" class='form-control'>
+											<select id="id_reg_tipo" name="tipoSala" class='form-control'>
 												<option value=" ">[Seleccione]</option>    
 											</select>
 										   </div>
 										 </div>
 										 
 										   <div class="form-group" >
-											<label class="col-lg-3 control-label" for="id_sede">Sede</label>
+											<label class="col-lg-3 control-label" for="id_reg_sede">Sede</label>
 											<div class="col-lg-6">
-											<select id="id_sede" name="sede.idDataCatalogo" class='form-control'>
+											<select id="id_reg_sede" name="sede" class='form-control'>
 												<option value=" ">[Seleccione]</option>    
 											</select>
 										   </div>
@@ -130,7 +134,7 @@
 								             <div class="form-group">
 		                                        <div class="col-lg-9 col-lg-offset-3">
 		                                        	<button type="button" class="btn btn-primary" id="id_btn_registra">REGISTRA</button>
-                                 				 </div>
+                                 			 </div>
 		                                    </div>
 		                                </div>
 		                            </div>
@@ -142,13 +146,121 @@
 				</div>
 			</div>
 		</div>
-			
-		</div>
-
+	</div>
 </div>
+<div class="modal fade" id="id_div_modal_actualiza" >
+			<div class="modal-dialog" style="width: 60%">
 		
+				<!-- Modal content-->
+				<div class="modal-content">
+				<div class="modal-header" style="padding: 35px 50px">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4><span class="glyphicon glyphicon-ok-sign"></span> Registro de Sala</h4>
+				</div>
+				<div class="modal-body" style="padding: 20px 10px;">
+						<form id="id_form_registra" accept-charset="UTF-8" class="form-horizontal"     method="post">
+		                    <div class="panel-group" id="steps">
+		                        <!-- Step 1 -->
+		                        <div class="panel panel-default">
+		                            <div class="panel-heading">
+		                                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#steps" href="#stepOne">Datos de la Sala</a></h4>
+		                              </div>
+		                            <div id="stepOne" class="panel-collapse collapse in">
+		                                <div class="panel-body">
+		                                
+		                                
+		                                <div class="form-group">
+		                                        <label class="col-lg-3 control-label" for="id_ID">ID</label>
+		                                        <div class="col-lg-8">
+		                                           <input class="form-control" id="id_ID" readonly="readonly" name="idModalidad" type="text" maxlength="8"/>
+		                                        </div>
+		                                     </div>
+		                                	                        
+		                                <div class="form-group">
+		                                        <label class="col-lg-3 control-label" for="id_act_numero">Número</label>
+		                                        <div class="col-lg-8">
+													<input class="form-control"  id="id_act_numero" name="numero" placeholder="Ingrese el número" type="text" maxlength="20"/>
+		                                        </div>
+		                                    </div>
+		                                    
+		                                <div class="form-group">
+		                                        <label class="col-lg-3 control-label" for="id_act_piso">Piso</label>
+		                                        <div class="col-lg-8">
+													<input class="form-control" id="id_act_piso" name="piso" placeholder="Ingrese el piso" type="text" maxlength="20"/>
+		                                        </div>
+		                                    </div>
+		                                    
+		                                <div class="form-group"> 
+											<label class="col-lg-3 control-label" for="id_act_cantAlumnos">Cantidad de Alumnos</label>
+											<div class="col-lg-8">
+											<input class="form-control" type="text" id="id_act_cantAlumnos" name="numAlumnos" placeholder="Ingrese la cantidad de alumnos">
+										</div>
+									</div>
+									
+									 	<div class="form-group">
+											<label class="col-lg-3 control-label" for="id_act_recursos">Recursos</label>
+											<div class="col-lg-8">
+											<input class="form-control" type="text" id="id_act_recursos" name="recursos" placeholder="Ingrese los recursos">
+										</div>
+									</div>
+										
+										<div class="form-group" >
+											<label class="col-lg-3 control-label" for="id_act_tipo">Tipo</label>
+											<div class="col-lg-6">
+											<select id="id_act_tipo" name="tipoSala" class='form-control'>
+												<option value=" ">[Seleccione]</option>    
+											</select>
+										   </div>
+										 </div>
+										 
+										<div class="form-group" >
+											<label class="col-lg-3 control-label" for="id_act_sede">Sede</label>
+											<div class="col-lg-6">
+											<select id="id_act_sede" name="sede" class='form-control'>
+												<option value=" ">[Seleccione]</option>    
+											</select>
+										   </div>
+										  </div>
+										  
+								             <div class="form-group">
+		                                        <div class="col-lg-9 col-lg-offset-3">
+		                                        	<button type="button" class="btn btn-primary" id="id_btn_actualiza">ACTUALIZAR</button>
+                                                    </div>		                                        </div>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                    </div>
+		                        
+
+		                </form>   
+				
+				</div>
+			</div>
+		</div>
+</div>
+
+
 
 <script type="text/javascript">
+
+$.getJSON("listaTipoSala", {}, function(data){
+	$.each(data, function(i,item){
+		$("#id_reg_tipo").append("<option value="+item.idDataCatalogo +">"+ item.descripcion +"</option>");
+		$("#id_act_tipo").append("<option value="+item.idDataCatalogo +">"+ item.descripcion +"</option>");
+
+	});
+});
+
+
+$.getJSON("listaSede", {}, function(data){
+	$.each(data, function(i,item){
+		$("#id_reg_sede").append("<option value="+item.idDataCatalogo +">"+ item.descripcion +"</option>");
+		$("#id_act_sede").append("<option value="+item.idDataCatalogo +">"+ item.descripcion +"</option>");
+
+	});
+});
+
+
 
 $("#id_btn_filtrar").click(function(){
 	var fil=$("#id_txt_filtro").val();
@@ -156,6 +268,7 @@ $("#id_btn_filtrar").click(function(){
 		agregarGrilla(lista);
 	});
 });
+
 
 function agregarGrilla(lista){
 	 $('#id_table').DataTable().clear();
@@ -174,11 +287,55 @@ function agregarGrilla(lista){
 				{data: "numAlumnos"},
 				{data: "recursos"},
 				{data: "estado"},
+				{data: "tipoSala"},
 				{data: "sede"},
-																
+				{data: function(row, type, val, meta){
+					var salida='<button type="button" style="width: 90px" class="btn btn-info btn-sm" onclick="editar(\''+row.idSala+ '\',\'' + row.numero +'\',\'' + row.piso  +'\',\'' + row.numAlumnos + '\',\''  + row.recursos + '\',\'' + row.estado +'\',\'' + row.tipoSala.idDataCatalogo + '\',\'' + row.sede.idDataCatalogo + '\')">Editar</button>';
+					return salida;
+				},className:'text-center'},	
+				{data: function(row, type, val, meta){
+				    var salida='<button type="button" style="width: 90px" class="btn btn-warning btn-sm" onclick="accionEliminar(\'' + row.idSala + '\')">'+ (row.estado == 1? 'Activo':'Inactvo') +  '</button>';
+					return salida;
+				},className:'text-center'},										
 			]                                     
 	    });
 }
+
+function accionEliminar(id){	
+    $.ajax({
+          type: "POST",
+          url: "eliminaCrudSala", 
+          data: {"id":id},
+          success: function(data){
+        	  agregarGrilla(data.lista);
+          },
+          error: function(){
+        	  mostrarMensaje(MSG_ERROR);
+          }
+     });
+}
+
+
+function editar(id,numero,piso,numAlumnos,recursos, tipoSala,sede){	
+	$('#id_ID').val(id);
+	$('#id_act_numero').val(numero);
+	$('#id_act_piso').val(piso);
+	$('#id_act_numAlumnos').val(numAlumnos);
+	$('#id_act_recursos').val(recursos);
+	$('#id_act_tipo').val(tipoSala);
+	$('#id_act_sede').val(sede);
+}
+
+function limpiarFormulario(){	
+	$('#id_ID').val('');
+	$('#id_numero').val('');
+	$('#id_piso').val('');
+	$('#id_cantAlumnos').val('');
+	$('#id_recursos').val('');
+	$('#id_tipo').val('');
+	$('#id_sede').val('');
+}
+
 
 $("#id_btn_registra").click(function(){
 	var validator = $('#id_form_registra').data('bootstrapValidator');
@@ -187,7 +344,7 @@ $("#id_btn_registra").click(function(){
     if (validator.isValid()) {
         $.ajax({
           type: "POST",
-          url: "registraCrudEmpleado", 
+          url: "registraCrudSala", 
           data: $('#id_form_registra').serialize(),
           success: function(data){
         	  agregarGrilla(data.lista);
@@ -203,6 +360,112 @@ $("#id_btn_registra").click(function(){
         
     }
 });
+
+
+$("#id_btn_actualiza").click(function(){
+	var validator = $('#id_form_actualiza').data('bootstrapValidator');
+    validator.validate();
+    if (validator.isValid()) {
+        $.ajax({
+          type: "POST",
+          url: "actualizaCrudModalidad", 
+          data: $('#id_form_actualiza').serialize(),
+          success: function(data){
+        	  agregarGrilla(data.lista);
+        	  $('#id_div_modal_actualiza').modal("hide");
+        	  mostrarMensaje(data.mensaje);
+          },
+          error: function(){
+        	  mostrarMensaje(MSG_ERROR);
+          }
+        });
+    }
+});
+
+
+    	$('#id_form_registra').bootstrapValidator({
+    	    message: 'This value is not valid',
+    	    feedbackIcons: {
+    	        valid: 'glyphicon glyphicon-ok',
+    	        invalid: 'glyphicon glyphicon-remove',
+    	        validating: 'glyphicon glyphicon-refresh'
+    	    },
+    	    fields: {
+    	    	numero: {
+    	    	    selector: '#id_numero',
+    	    	    validators: {
+    	    	        notEmpty: {
+    	    	            message: 'El número es un campo obligatorio'
+    	    	        },
+    	    	        regexp: {
+    	    	            regexp: /^[A-Za-z]\d{3}$/,
+    	    	            message: 'El número debe consistir en un carácter y tres dígitos.'
+    	    	        },
+    	    	        remote :{
+    	                	delay   : 1000,
+    	                	url     : 'buscaPorNumeroSala',
+    	                	message : 'El número ya existe'
+    	                }
+    	    	    }
+    	    	},
+    	    	 piso:{
+    	             selector: "#id_piso",
+    	             validators:{
+    	                 notEmpty: {
+    	                      message: 'El piso es obligatorio'
+    	                 },
+    	                 regexp: {
+    	                     regexp: /^[0-9]{2}$/,
+    	                     message: 'El Piso debe tener dos dígitos'
+    	                 },
+    	                 
+    	             }
+    	         },
+    	         numAlumnos:{
+    	             selector: "#id_cantAlumnos",
+    	             validators:{
+    	                 notEmpty: {
+    	                      message: 'La cantidad de alumnos es obligatorio'
+    	                 },
+    	                 regexp: {
+    	                     regexp: /^[0-9]{2}$/,
+    	                     message: 'La cantidad de alumnos debe tener dos dígitos'
+    	                 },
+    	                 
+    	             }
+    	         },
+    	         recursos: {
+    	     		selector : '#id_recursos',
+    	             validators: {
+    	                 notEmpty: {
+    	                     message: 'Los recursos es un campo obligatorio'
+    	                 },
+    	                 stringLength :{
+    	                 	message:'Los recursos es de 2 a 40 caracteres',
+    	                 	min : 2,
+    	                 	max : 40
+    	                 },
+    	             }
+    	         },
+    	         
+    	         tipoSala: {
+    	     		selector : '#id_reg_tipo',
+    	             validators: {
+    	             	notEmpty: {
+    	                     message: 'Tipo es un campo obligatorio'
+    	                 },
+    	             }
+    	         },
+    	         sede: {
+    	      		selector : '#id_reg_sede',
+    	              validators: {
+    	              	notEmpty: {
+    	                      message: 'Sede es un campo obligatorio'
+    	                  },
+    	              }
+    	          },
+    	     }   
+    	 });
 
 
 </script>   		
