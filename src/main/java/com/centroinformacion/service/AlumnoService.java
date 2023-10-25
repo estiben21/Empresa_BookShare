@@ -29,4 +29,8 @@ public interface AlumnoService {
 	public abstract Alumno actualizaAlumno(Alumno obj);
 	//Para eliminar por ID
 	public abstract Optional<Alumno> buscaAlumno(int idAlumno);
+	
+	
+	//Validar que en el Actualizar no se pueda agregar un Alumno con un ID que ya existe
+		public abstract List<Alumno> listaPorDniAlumnoExistenteActualiza(String dni, int id);
 }

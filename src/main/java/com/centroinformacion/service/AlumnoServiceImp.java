@@ -67,6 +67,11 @@ public class AlumnoServiceImp implements AlumnoService {
 		return repository.findById(idAlumno);
 	}
 
+	@Override
+	public List<Alumno> listaPorDniAlumnoExistenteActualiza(String dni, int id) {
+		return repository.listaPorDniAlumnoExistenteActualiza(dni, id);
+	}
+
 	
 	
 }

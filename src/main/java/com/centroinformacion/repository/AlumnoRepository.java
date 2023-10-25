@@ -26,4 +26,8 @@ public interface AlumnoRepository extends JpaRepository<Alumno, Integer>{
 	@Query("select a from Alumno a where a.nombres like ?1 and a.apellidos like ?2 and a.idAlumno !=?3")
 	//PASO2:
 	public List<Alumno> listaPorNombreApellidoIgualActualiza(String nombre, String apellido, int id);
+	
+	@Query("select a from Alumno a where a.dni like ?1 and a.idAlumno !=?2")
+	//Validar que en el Actualizar no se pueda agregar un Alumno con un ID que ya existe
+	public abstract List<Alumno> listaPorDniAlumnoExistenteActualiza(String dni, int id);
 }

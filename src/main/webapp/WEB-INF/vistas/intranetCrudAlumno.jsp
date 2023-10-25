@@ -504,6 +504,7 @@ $("#id_btn_actualiza").click(function(){
     }
 });
 
+
 //----------------------------------- botón EDITA ---------------------------
 function editar(idAlumno,nombres,apellidos,telefono,dni,correo,fechaNacimiento,pais,modalidad){	
 	$('#id_ID').val(idAlumno);
@@ -582,7 +583,7 @@ $(document).ready(function() {
                     remote: {
                         delay: 100,
                         url: 'buscaAlumnoPorNombreApellidoId_btnActualizar', 
-                        message: 'El alumno ya existe',
+                        message: 'El alumno ya existe', //Ya existe una alumno con ese nombre y apellido
                         data: {
                             nombres: function() {
                                 return $('#id_act_nombres').val();
@@ -597,7 +598,6 @@ $(document).ready(function() {
                     }
                 }
             },
-
             telefono:{
                 selector: "#id_act_telefono",
                 validators:{
@@ -613,11 +613,6 @@ $(document).ready(function() {
                         regexp: /^[0-9]+$/,
                         message: 'Ingresar teléfono con caracteres numéricos'
                     },
-                    /*remote :{
-                        delay: 100,
-                        url: 'buscaPorTelefono',
-                        message: 'El teléfono ya existe'
-                    }*/
                 }
             },
             dni:{
@@ -634,11 +629,19 @@ $(document).ready(function() {
                     regexp: {
                         regexp: /^[0-9]+$/,
                         message: 'Ingresar DNI con caracteres numéricos'
-                    }, /*remote :{
+                    }, remote: {
                         delay: 100,
-                        url: 'buscaPorDni',
-                        message: 'El DNI ya existe'
-                    }*/
+                        url: 'buscaAlumnoPorDniId_Actualizar', 
+                        message: 'El DNI ya existe',
+                        data: {
+                            dni: function() {
+                                return $('#id_act_dni').val();
+                            },
+                            id: function() {
+                                return $('#id_ID').val();
+                            },
+                        },
+                    }
                 }
             },
             correo:{
