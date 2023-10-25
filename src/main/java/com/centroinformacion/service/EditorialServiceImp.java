@@ -30,5 +30,15 @@ public class EditorialServiceImp implements EditorialService {
 	public List<Editorial> listaPorRazonSocialLike(String filtro) {
 		return repository.listaPorRazonSocialLike(filtro);
 	}
+
+	@Override
+	public List<Editorial> listaPorRucIgualRegistra(String ruc) {
+		return repository.listaPorRucIgualRegistra(ruc);
+	}
+
+	@Override
+	public List<Editorial> listaPorRucIgualActualiza(String ruc, int id) {
+		return repository.listaPorRucIgualActualiza(ruc,id);
+	}
 	
 }

@@ -12,5 +12,14 @@ public interface EditorialService {
 	
 	//CONSULTA
 	public abstract List<Editorial> listaPorRazonSocialLike(String filtro);
+	
+	//PC2 -- VALIDACIONES
+
+
+
+	//REGISTRAR
+		public abstract List<Editorial> listaPorRucIgualRegistra(String ruc);
+	//ACTUALIZAR
+		public abstract List<Editorial> listaPorRucIgualActualiza(String ruc, int id);
 
 }
