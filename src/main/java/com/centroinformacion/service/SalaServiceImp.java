@@ -1,6 +1,7 @@
 package com.centroinformacion.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,4 +32,20 @@ public class SalaServiceImp implements SalaService {
 	public List<Sala> listPorNumerolike(String filtro) {
 		return repository.listPorNumerolike(filtro);
 	}
+	@Override
+	public Optional<Sala> buscarSala(int idSala) {
+		return repository.findById(idSala);
+	}
+	@Override
+	public List<Sala> listaPorNumeroIgualRegistra(String nombre) {
+		return repository.listaPorNumeroIgualRegistra(nombre);
+
+	}
+
+	@Override
+	public List<Sala> listaPorNumeroIgualActualiza(String nombre,int id) {
+		return repository.listaPorNumeroIgualActualiza(nombre, id);
+
+	}
+	
 }
