@@ -451,6 +451,11 @@
 										regexp : {
 											regexp : /^[a-zA-Z\s]+$/,
 											message : 'El nombre solo puede contener letras y espacios'
+										},
+										remote : {
+											delay : 100,
+											url : 'buscaAutorNombreApellidoRegistro',
+											message : 'El nombre ya existe'
 										}
 									}
 								},
@@ -468,6 +473,11 @@
 										regexp : {
 											regexp : /^[a-zA-Z\s]+$/,
 											message : 'El apellido solo puede contener letras y espacios'
+										},
+										remote : {
+											delay : 100,
+											url : 'buscaAutorNombreApellidoRegistro',
+											message : 'El nombre ya existe'
 										}
 									}
 								},
@@ -572,9 +582,9 @@
 							},
 							remote : {
 								delay : 100,
-								url : 'buscaAutorPorNombreActualiza',
+								url : 'buscaAutorNombreApellidoActualiza',
 								message : 'El nombre ya existe'
-							},
+							}
 						}
 					},
 					apellidos : {
@@ -592,6 +602,11 @@
 								regexp : /^[a-zA-Z\s]+$/,
 								message : 'El apellido solo puede contener letras y espacios'
 							},
+							remote : {
+								delay : 100,
+								url : 'buscaAutorNombreApellidoActualiza',
+								message : 'El apellido ya existe'
+							}
 
 						}
 					},

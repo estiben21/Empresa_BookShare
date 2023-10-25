@@ -8,7 +8,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -107,12 +106,24 @@ public class AutorCrudController {
 			return "{\"valid\":false}";
 		}
 	}
-	
-	@GetMapping("/buscaAutorPorNombreActualiza")
+	@GetMapping("/buscaAutorNombreApellidoRegistro")
 	@ResponseBody
-	public String validaNombreActualiza(String nombres, int id) {
-		List<Autor> lst = autorService.listaAutorNombreIgualActualiza(nombres, id);
-		if(CollectionUtils.isEmpty(lst)) {
+	public String validaAutorRegistra(String nombres, String apellidos) {
+		List<Autor> lstSalida = autorService.listaPorNombreApellidoIgual(nombres, apellidos);
+		if(lstSalida.isEmpty()) {
+			return "{\"valid\":true}";
+		}else {
+			return "{\"valid\":false}";
+		}
+	}
+	
+	@GetMapping("/buscaAutorNombreApellidoActualiza")
+	@ResponseBody
+	public String validaAutorActualiza(String nombres, String apellidos, int id) {
+		
+		List<Autor> lstSalida = autorService.listaPorNombreApellidoIgualActualiza(nombres,apellidos,id);
+		
+		if(lstSalida.isEmpty()) {
 			return "{\"valid\":true}";
 		}else {
 			return "{\"valid\":false}";

@@ -12,6 +12,7 @@ public interface AutorService {
 	public abstract List<Autor> listPorNombreYApellidoLike(String filtro);
 	public abstract Autor actualizaAutor(Autor obj);
 	public abstract Optional<Autor> buscaAutor(int idAutor);
-	public abstract List<Autor> listaAutorNombreIgualActualiza(String nombres, int id);
-
+	public abstract List<Autor> listaPorNombreApellidoIgualActualiza(String nombres, String apellidos,int id);
+	public abstract List<Autor> listaPorNombreApellidoIgual(String nombres, String apellidos);
+	
 }
