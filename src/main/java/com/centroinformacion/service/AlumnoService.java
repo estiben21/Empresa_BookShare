@@ -1,11 +1,12 @@
 package com.centroinformacion.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.centroinformacion.entity.Alumno;
 
-public interface AlumnoService {
-
+public interface AlumnoService { 
+  
 	public abstract List<Alumno> listaTodos();
 	public abstract Alumno insertaAlumno(Alumno obj);
 	
@@ -15,7 +16,17 @@ public interface AlumnoService {
 	
 	//------------------------------_CP2-------------------------------------------
 	//PASO1:
+	//CRUD - Traer registros que coincidan con el FILTRO ingresado
 	public abstract List<Alumno> listarPorNombresOrApellidosLike(String filtro);
-	public abstract List<Alumno> listaPorNombreApellidoIgual(String nombre, String apellido);
 	
+	//Validación Modal Registrar
+	public abstract List<Alumno> listaPorNombreApellidoIgualReg(String nombres, String apellidos);
+	//Validación Modal Actualizar
+	public abstract List<Alumno> listaPorNombreApellidoIgualAct(String nombres, String apellidos, int id);
+	
+	
+	//Para actualizar el alumno, su ESTADO (btn Eliminar)
+	public abstract Alumno actualizaAlumno(Alumno obj);
+	//Para eliminar por ID
+	public abstract Optional<Alumno> buscaAlumno(int idAlumno);
 }
