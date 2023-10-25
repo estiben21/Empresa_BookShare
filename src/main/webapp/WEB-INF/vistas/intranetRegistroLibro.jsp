@@ -170,7 +170,7 @@ $('#id_form').bootstrapValidator({
                 callback: {
                     message: 'La serie es un campo obligatorio',
                     callback: function(value, validator, $field) {
-                        var anioValue = $('#id_año').val();
+                        var anioValue = $('#id_serie').val();
                         if (value === '' && anioValue === '') {
                             return false;
                         }
