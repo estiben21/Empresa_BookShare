@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,7 +68,32 @@ public class EditorialCrudController {
 
 	
 
-	
+	//ACTUALIZAR
+	@PostMapping("/actualizaCrudEditorial")
+	@ResponseBody
+	public Map<?, ?> actualiza(Editorial obj, HttpSession session) {
+		 Usuario objUsuario = (Usuario)session.getAttribute("objUsuario");
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		  
+		Optional<Editorial> optEditorial= editorialService.buscaEditorial(obj.getIdEditorial());
+		obj.setUsuarioRegistro(objUsuario);
+		obj.setUsuarioActualiza(objUsuario);
+		
+		obj.setFechaRegistro(optEditorial.get().getFechaRegistro());
+		obj.setEstado(optEditorial.get().getEstado());
+		obj.setFechaActualizacion(new Date());
+		
+		Editorial objSalida = editorialService.insertaActualizaEditorial(obj);
+		if (objSalida == null) {
+			map.put("MENSAJE", "Error en actualizar");
+		} else {
+			map.put("MENSAJE", "Actualización exitosa");
+			List<Editorial> lista = editorialService.listaPorRazonSocialLike("%");
+			map.put("lista", lista);
+			
+		}
+		return map;
+	}
 	
 	//========================================VALIDACIONES
 //PARA EL REGISTRAR
@@ -77,7 +103,7 @@ public class EditorialCrudController {
 		List<Editorial> lst = editorialService.listaPorRucIgualRegistra(ruc);
 		if(CollectionUtils.isEmpty(lst)) {
 			return "{\"valid\":true}";
-		}else {
+		}else {     
 			return "{\"valid\":false}";
 		}
 	}
