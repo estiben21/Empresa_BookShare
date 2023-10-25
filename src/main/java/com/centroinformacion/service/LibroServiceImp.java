@@ -1,6 +1,7 @@
 package com.centroinformacion.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,5 +33,20 @@ public class LibroServiceImp implements LibroService {
 	@Override
 	public List<Libro> listaPorTituloLike(String filtro) {
 		return repository.listPorTituloLike(filtro);
+	}
+
+	@Override
+	public Libro actualizaLibro(Libro obj) {
+		return repository.save(obj);
+	}
+
+	@Override
+	public Libro insertaLibro(Libro obj) {
+		return repository.save(obj);
+	}
+
+	@Override
+	public Optional<Libro> buscaLibro(int idLibro) {
+		return repository.findById(idLibro);
 	}
 }
