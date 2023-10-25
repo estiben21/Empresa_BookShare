@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -56,25 +57,28 @@ public class AutorCrudController {
 		}
 		return map;
 	}
-	
 	@PostMapping("/actualizaCrudAutor")
 	@ResponseBody
-	public Map<?, ?> actualiza(Autor obj) {
+
+	public Map<?, ?> actualizaAutor(Autor obj) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		  
-		Optional<Autor> optAutor= autorService.buscaAutor(obj.getIdAutor());
-		obj.setFechaRegistro(optAutor.get().getFechaRegistro());
-		obj.setFechaActualizacion(optAutor.get().getFechaActualizacion());
-		obj.setEstado(optAutor.get().getEstado());
-		obj.setUsuarioRegistro(optAutor.get().getUsuarioRegistro());
-		obj.setUsuarioActualiza(optAutor.get().getUsuarioActualiza());
-		Autor objSalida = autorService.actualizaAutor(obj);
-		if (objSalida == null) {
-			map.put("mensaje", "Error en actualizar");
-		} else {
-			List<Autor> lista = autorService.listPorNombreYApellidoLike("%");
-			map.put("lista", lista);
-			map.put("mensaje", "Actualización exitosa");
+		Optional<Autor> optAutor = autorService.buscaAutor(obj.getIdAutor());
+		if (optAutor.isPresent()) {
+			obj.setFechaRegistro(optAutor.get().getFechaRegistro());
+			obj.setEstado(optAutor.get().getEstado());
+			obj.setFechaActualizacion(new Date());
+			obj.setUsuarioRegistro(optAutor.get().getUsuarioRegistro());
+			obj.setUsuarioActualiza(optAutor.get().getUsuarioActualiza());
+
+			Autor objSalida = autorService.actualizaAutor(obj);
+			if (objSalida == null) {
+				map.put("mensaje", "Error en la actualización");
+			} else {
+				map.put("mensaje", "Actualización exitosa");
+				List<Autor> lstSalida = autorService.listPorNombreYApellidoLike("%");
+				map.put("lista", lstSalida);
+
+			}
 		}
 		return map;
 	}
@@ -110,7 +114,7 @@ public class AutorCrudController {
 	@ResponseBody
 	public String validaAutorRegistra(String nombres, String apellidos) {
 		List<Autor> lstSalida = autorService.listaPorNombreApellidoIgual(nombres, apellidos);
-		if(lstSalida.isEmpty()) {
+		if(CollectionUtils.isEmpty(lstSalida)) {
 			return "{\"valid\":true}";
 		}else {
 			return "{\"valid\":false}";
@@ -119,11 +123,9 @@ public class AutorCrudController {
 	
 	@GetMapping("/buscaAutorNombreApellidoActualiza")
 	@ResponseBody
-	public String validaAutorActualiza(String nombres, String apellidos, int id) {
-		
-		List<Autor> lstSalida = autorService.listaPorNombreApellidoIgualActualiza(nombres,apellidos,id);
-		
-		if(lstSalida.isEmpty()) {
+	public String validaAutorActualiza(String nombres, String apellidos, String id) {
+		List<Autor> lstSalida = autorService.listaPorNombreApellidoIgualActualiza(nombres,apellidos,Integer.parseInt(id));
+		if(CollectionUtils.isEmpty(lstSalida)) {
 			return "{\"valid\":true}";
 		}else {
 			return "{\"valid\":false}";

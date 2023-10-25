@@ -455,7 +455,15 @@
 										remote : {
 											delay : 100,
 											url : 'buscaAutorNombreApellidoRegistro',
-											message : 'El nombre ya existe'
+											message : 'El nombre ya existe',
+						                        data: {
+						                            'nombres': function() {
+						                                return $('#id_reg_nombres').val();
+						                            },
+						                            'apellidos': function() {
+						                                return $('#id_reg_apellidos').val();
+						                            }
+						                        }
 										}
 									}
 								},
@@ -474,11 +482,19 @@
 											regexp : /^[a-zA-Z\s]+$/,
 											message : 'El apellido solo puede contener letras y espacios'
 										},
-										remote : {
-											delay : 100,
-											url : 'buscaAutorNombreApellidoRegistro',
-											message : 'El nombre ya existe'
-										}
+					                    remote: {
+					                        delay: 1000,
+					                        url: 'buscaAutorNombreApellidoRegistro',
+					                        message: 'El Autor ya existe',
+					                        data: {
+					                            'nombres': function() {
+					                                return $('#id_reg_nombres').val();
+					                            },
+					                            'apellidos': function() {
+					                                return $('#id_reg_apellidos').val();
+					                            }
+					                        }
+					                    }
 									}
 								},
 								fechaNacimiento : {
@@ -582,8 +598,16 @@
 							},
 							remote : {
 								delay : 100,
-								url : 'buscaAutorNombreApellidoActualiza',
-								message : 'El nombre ya existe'
+								url : 'buscaAutorNombreApellidoRegistro',
+								message : 'El nombre ya existe',
+			                        data: {
+			                            'nombres': function() {
+			                                return $('#id_act_nombres').val();
+			                            },
+			                            'apellidos': function() {
+			                                return $('#id_act_apellidos').val();
+			                            }
+			                        }
 							}
 						}
 					},
@@ -604,10 +628,17 @@
 							},
 							remote : {
 								delay : 100,
-								url : 'buscaAutorNombreApellidoActualiza',
-								message : 'El apellido ya existe'
+								url : 'buscaAutorNombreApellidoRegistro',
+								message : 'El apellido ya existe',
+			                        data: {
+			                            'nombres': function() {
+			                                return $('#id_act_nombres').val();
+			                            },
+			                            'apellidos': function() {
+			                                return $('#id_act_apellidos').val();
+			                            }
+			                        }
 							}
-
 						}
 					},
 					fechaNacimiento : {
