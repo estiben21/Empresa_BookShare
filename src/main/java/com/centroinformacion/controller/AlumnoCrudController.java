@@ -1,8 +1,5 @@
 package com.centroinformacion.controller;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -53,13 +50,11 @@ public class AlumnoCrudController {
 		
 		obj.setUsuarioRegistro(objUsuario);
 		obj.setUsuarioActualiza(objUsuario);
-		
-		List<Alumno> lstSalida = alumnoService.listaPorNombreApellidoIgualReg(obj.getNombres(), obj.getApellidos());
+		/*List<Alumno> lstSalida = alumnoService.listaPorNombreApellidoIgualReg(obj.getNombres(), obj.getApellidos());
 		if (!CollectionUtils.isEmpty(lstSalida)) { //Si la lista no es vacía, está trayendo datos coincidentes, 
 			map.put("mensaje", "El alumno " + obj.getNombres() + " " + obj.getApellidos() + " ya existe");
 			return map;
-		}
-		
+		}*/	
 		Alumno objSalida = alumnoService.insertaAlumno(obj);
 		if (objSalida == null) {
 			map.put("mensaje", "Error en el registro");
@@ -106,6 +101,18 @@ public class AlumnoCrudController {
 	public String buscaAlumno(String nombres, String apellidos, int id) {
 		List<Alumno> listaPorNombreApellidoId = alumnoService.listaPorNombreApellidoIgualAct(nombres, apellidos, id);
 		if (CollectionUtils.isEmpty(listaPorNombreApellidoId)) {
+			return "{\"valid\" : true }";
+		} else {
+			return "{\"valid\" : false }";
+		}
+	}
+	
+	
+	@GetMapping("/buscaAlumnoPorDniId_Actualizar")
+	@ResponseBody
+	public String buscaAlumno(String dni, int id) {
+		List<Alumno> listaPorDni = alumnoService.listaPorDniAlumnoExistenteActualiza(dni, id);
+		if (CollectionUtils.isEmpty(listaPorDni)) {
 			return "{\"valid\" : true }";
 		} else {
 			return "{\"valid\" : false }";
