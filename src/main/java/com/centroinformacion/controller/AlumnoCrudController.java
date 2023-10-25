@@ -1,9 +1,13 @@
 package com.centroinformacion.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +19,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.centroinformacion.entity.Alumno;
 import com.centroinformacion.entity.Usuario;
 import com.centroinformacion.service.AlumnoService;
-import com.centroinformacion.util.AppSettings;
+import com.centroinformacion.util.FunctionUtil;
 
 import jakarta.servlet.http.HttpSession;
+
 
 @Controller //PASO 1: para decirle al sistema que esta clase la usaremos como Controller
 public class AlumnoCrudController {
@@ -26,44 +31,32 @@ public class AlumnoCrudController {
 	//PASO 3: Llamar al Service
 	private AlumnoService alumnoService;
 	
+	/** -------------- Traer lista según FILTRO ingresado -------------- **/
 	//PASO4: Despuès de haber programado en el Repository, Service y ServiceImpl
 	@ResponseBody
-	@GetMapping("/consultaCrudAlumno")
+	@GetMapping(value = "/consultaCrudAlumno")
 	public List<Alumno> consulta(String filtro){
-		List<Alumno> lstaSalida = alumnoService.listarPorNombresOrApellidosLike("%" + filtro + "%");
-		return lstaSalida;
+		return alumnoService.listarPorNombresOrApellidosLike("%" + filtro + "%");
 	}
-	/*
-	@ResponseBody
-	@GetMapping("/buscaAlumnoMayorEdad")
-	public String busca(String fechaNacimiento){
-		if(FunctionsUtil.isMayorEdad(fechaNacimiento)) { 
-			return "{\"valid\":true}";
-		} else {  
-			return "{\"valid\":false}";
-		}
-	}*/
-	
+			
+		
+	/** -------------- Método REGISTRA -------------- **/
 	@PostMapping("/registraCrudAlumno")
 	@ResponseBody
 	public Map<?, ?> registra(Alumno obj, HttpSession session) {
 		Usuario objUsuario = (Usuario)session.getAttribute("objUsuario");
-		obj.setFechaRegistro(new Date());
-		obj.setFechaActualizacion(new Date());
-		obj.setEstado(AppSettings.ACTIVO);
-		obj.setUsuarioRegistro(objUsuario);
-		obj.setUsuarioActualiza(objUsuario);
-		
-		HashMap<String, Object> map = new HashMap<String, Object>(); /*Permite colocar los mensajes*/
-		obj.setEstado(1);
+		HashMap<String, Object> map = new HashMap<String, Object>(); //Permite colocar los mensajes
 		//Datos que se llenarán por defecto, automáticamente
 		obj.setFechaRegistro(new Date()); //Toma la fecha del sistema
 		obj.setFechaActualizacion(new Date()); //Toma la fecha del sistema
+		obj.setEstado(1); //obj.setEstado(AppSettings.ACTIVO);
 		
-		List<Alumno> lstSalida = alumnoService.
-						listaPorNombreApellidoIgual(obj.getNombres(), obj.getApellidos());
+		obj.setUsuarioRegistro(objUsuario);
+		obj.setUsuarioActualiza(objUsuario);
+		
+		List<Alumno> lstSalida = alumnoService.listaPorNombreApellidoIgualReg(obj.getNombres(), obj.getApellidos());
 		if (!CollectionUtils.isEmpty(lstSalida)) { //Si la lista no es vacía, está trayendo datos coincidentes, 
-			map.put("mensaje", "El empleado " + obj.getNombres() + " " + obj.getApellidos() + " ya existe");
+			map.put("mensaje", "El alumno " + obj.getNombres() + " " + obj.getApellidos() + " ya existe");
 			return map;
 		}
 		
@@ -80,25 +73,80 @@ public class AlumnoCrudController {
 		return map;
 	}
 	
-	/*@GetMapping("/buscaPorDni")
+	/** -------------- Método ACTUALIZA / del btn EDITAR -------------- **/
+	@PostMapping("/actualizaCrudAlumno")
 	@ResponseBody
-	public String validaDni(String dni) {
-		List<Alumno> listaPorDni = alumnoService.listaPorDni(dni);
-		if (CollectionUtils.isEmpty(listaPorDni)) {
+	public Map<?, ?> actualiza(Alumno obj, HttpSession session) {
+		Usuario objUsuario = (Usuario)session.getAttribute("objUsuario");
+		HashMap<String, Object> map = new HashMap<String, Object>(); //Permite colocar los mensajes
+		  
+		Optional<Alumno> optAlumno = alumnoService.buscaAlumno(obj.getIdAlumno());
+		obj.setUsuarioRegistro(objUsuario);
+		obj.setUsuarioActualiza(objUsuario);
+		
+		obj.setFechaRegistro(optAlumno.get().getFechaRegistro());
+		obj.setEstado(optAlumno.get().getEstado());
+		obj.setFechaActualizacion(new Date());
+		
+		Alumno objSalida = alumnoService.actualizaAlumno(obj);
+		if (objSalida == null) {
+			map.put("mensaje", "Error en actualizar");
+		} else {
+			map.put("mensaje", "Actualización exitosa");
+			List<Alumno> lista = alumnoService.listarPorNombresOrApellidosLike("%");
+			map.put("listaAct", lista);
+		}
+		return map;
+	}
+
+	
+
+	@GetMapping("/buscaAlumnoPorNombreApellidoId_btnActualizar")
+	@ResponseBody
+	public String buscaAlumno(String nombres, String apellidos, int id) {
+		List<Alumno> listaPorNombreApellidoId = alumnoService.listaPorNombreApellidoIgualAct(nombres, apellidos, id);
+		if (CollectionUtils.isEmpty(listaPorNombreApellidoId)) {
 			return "{\"valid\" : true }";
 		} else {
 			return "{\"valid\" : false }";
 		}
 	}
 	
-	@GetMapping("/buscaPorTelefono")
+	
+	/** -------------- Método ELIMINAR / del btn Elimina (estado)-------------- **/
 	@ResponseBody
-	public String validaTelefono(String telefono) {
-		List<Alumno> listaPorTelefono = alumnoService.listaPorTelefono(telefono);
-		if (CollectionUtils.isEmpty(listaPorTelefono)) {
-			return "{\"valid\" : true }";
+	@PostMapping("/eliminaCrudAlumno")
+	public Map<?, ?> elimina(Alumno obj, HttpSession session, int id) {
+		Usuario objUsuario = (Usuario)session.getAttribute("objUsuario");
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		Alumno objAlumno = alumnoService.buscaAlumno(id).get();
+		objAlumno.setFechaActualizacion(new Date());  
+		objAlumno.setEstado( objAlumno.getEstado() == 1 ? 0 : 1);
+		
+		obj.setUsuarioRegistro(objUsuario);
+		obj.setUsuarioActualiza(objUsuario);
+		obj.setFechaActualizacion(new Date());
+		
+		Alumno objSalida = alumnoService.actualizaAlumno(objAlumno);
+		if (objSalida == null) {
+			map.put("mensaje", "Error en actualizar");
 		} else {
-			return "{\"valid\" : false }";
+			List<Alumno> lista = alumnoService.listarPorNombresOrApellidosLike("%");
+			map.put("lista", lista);
 		}
-	}*/
+		return map;
+	}
+	
+	
+	//-------------------- VALIDAR EDAD ESTUDIANTIL ------------------------------------
+	@GetMapping("/buscaAlumnoEdadEstudiantil")
+	@ResponseBody
+	public String validaFecha(String fechaNacimiento) {
+		if(FunctionUtil.isEdadEstudiantil(fechaNacimiento)) {
+			return "{\"valid\":true}";
+		}else {
+			return "{\"valid\":false}";
+		}
+	}
 }
