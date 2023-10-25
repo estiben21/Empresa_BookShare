@@ -32,28 +32,17 @@ public class AutorServiceImpl implements AutorService{
 		return  repository.save(obj);
 	}
 	@Override
-	public Optional<Autor> buscaAutor(int idAutor) {
-		return repository.findById(idAutor);
-	}
-	
-	
-	/*
-	 * @Override
-	public Optional<Autor> buscaAutor(int idAutor) {
-		return repository.findById(idAutor);
+	public Optional<Autor> buscaAutor(int id) {
+		return repository.findById(id);
 	}
 	@Override
-	public List<Autor> listaPorNombreApellidoIgual(String nombre, String apellido) {
-		return repository.listaAutorNombreApellidoIgual(nombre, apellido);
+	public List<Autor> listaPorNombreApellidoIgualActualiza(String nombres,String apellidos, int id) {
+		return repository.listaAutorNombreApellidoIgualActualiza(nombres, apellidos, id);
 	}
 	@Override
-	public List<Autor> listaPorNombreApellidoIgualActualiza(String nombre, String apellido, int idAutor) {
-		return repository.listaAutorNombreApellidoIgualActualiza(nombre, apellido, idAutor);
-	}
-	public Autor actualizaAutor(Autor obj) {
-		return  repository.save(obj);
+	public List<Autor> listaPorNombreApellidoIgual(String nombres, String apellidos) {
+		return repository.listaAutorNombreApellidoIgual(nombres, apellidos);
 	}
 	
-	*/
 	
 }

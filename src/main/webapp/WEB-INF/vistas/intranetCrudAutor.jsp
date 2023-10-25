@@ -451,6 +451,19 @@
 										regexp : {
 											regexp : /^[a-zA-Z\s]+$/,
 											message : 'El nombre solo puede contener letras y espacios'
+										},
+										remote : {
+											delay : 100,
+											url : 'buscaAutorNombreApellidoRegistro',
+											message : 'El nombre ya existe',
+						                        data: {
+						                            'nombres': function() {
+						                                return $('#id_reg_nombres').val();
+						                            },
+						                            'apellidos': function() {
+						                                return $('#id_reg_apellidos').val();
+						                            }
+						                        }
 										}
 									}
 								},
@@ -468,7 +481,20 @@
 										regexp : {
 											regexp : /^[a-zA-Z\s]+$/,
 											message : 'El apellido solo puede contener letras y espacios'
-										}
+										},
+					                    remote: {
+					                        delay: 1000,
+					                        url: 'buscaAutorNombreApellidoRegistro',
+					                        message: 'El Autor ya existe',
+					                        data: {
+					                            'nombres': function() {
+					                                return $('#id_reg_nombres').val();
+					                            },
+					                            'apellidos': function() {
+					                                return $('#id_reg_apellidos').val();
+					                            }
+					                        }
+					                    }
 									}
 								},
 								fechaNacimiento : {
@@ -476,6 +502,11 @@
 									validators : {
 										notEmpty : {
 											message : 'La fecha es obligatorio'
+										},
+										remote : {
+											delay : 100,
+											url : 'buscaAutorMayorEdad',
+											message : 'El autor tiene que ser mayor de edad'
 										}
 									}
 								},
@@ -516,6 +547,21 @@
 
 							}
 						});
+		
+		function accionEliminar(id){	
+		    $.ajax({
+		          type: "POST",
+		          url: "eliminaCrudAutor", 
+		          data: {"id":id},
+		          success: function(data){
+		        	  agregarGrilla(data.lista);
+		          },
+		          error: function(){
+		        	  mostrarMensaje(MSG_ERROR);
+		          }
+		     });
+		}
+		
 		function editar(idAutor,nombres,apellidos,fechaNacimiento,telefono,idPais,idDataCatalogo){	
 			$('#id_ID').val(idAutor);
 			$('#id_act_nombres').val(nombres);
@@ -549,6 +595,19 @@
 							regexp : {
 								regexp : /^[a-zA-Z\s]+$/,
 								message : 'El nombre solo puede contener letras y espacios'
+							},
+							remote : {
+								delay : 100,
+								url : 'buscaAutorNombreApellidoRegistro',
+								message : 'El nombre ya existe',
+			                        data: {
+			                            'nombres': function() {
+			                                return $('#id_act_nombres').val();
+			                            },
+			                            'apellidos': function() {
+			                                return $('#id_act_apellidos').val();
+			                            }
+			                        }
 							}
 						}
 					},
@@ -566,6 +625,19 @@
 							regexp : {
 								regexp : /^[a-zA-Z\s]+$/,
 								message : 'El apellido solo puede contener letras y espacios'
+							},
+							remote : {
+								delay : 100,
+								url : 'buscaAutorNombreApellidoRegistro',
+								message : 'El apellido ya existe',
+			                        data: {
+			                            'nombres': function() {
+			                                return $('#id_act_nombres').val();
+			                            },
+			                            'apellidos': function() {
+			                                return $('#id_act_apellidos').val();
+			                            }
+			                        }
 							}
 						}
 					},
@@ -574,6 +646,11 @@
 						validators : {
 							notEmpty : {
 								message : 'La fecha es obligatorio'
+							},
+							remote : {
+								delay : 100,
+								url : 'buscaAutorMayorEdad',
+								message : 'El autor tiene que ser mayor de edad'
 							}
 						}
 					},
@@ -586,11 +663,6 @@
 							regexp : {
 								regexp : /^[0-9]{9}$/,
 								message : 'El teléfono es 9 dígitos y en formato numérico'
-							},
-							remote : {
-								delay : 100,
-								url : 'buscaPorTelefonoPorAutor',
-								message : 'El teléfono ya existe'
 							}
 						}
 
