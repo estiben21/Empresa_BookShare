@@ -97,7 +97,7 @@
 		                                     <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_razonSocial">Razón Social:</label>
 		                                        <div class="col-lg-8">
-													<input class="form-control" id="id_razonSocial" name="razonSocial" placeholder="Ingrese la razón social" type="text"/>
+													<input class="form-control" id="id_reg_razonSocial" name="razonSocial" placeholder="Ingrese la razón social" type="text"/>
 		                                        </div>
 		                                    </div>
 		                    
@@ -105,7 +105,7 @@
 		                                    <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_direccion">Dirección:</label>
 		                                        <div class="col-lg-8">
-													<input class="form-control" id="id_direccion" name="direccion" placeholder="Ingrese la dirección" type="text" maxlength="20"/>
+													<input class="form-control" id="id_reg_direccion" name="direccion" placeholder="Ingrese la dirección" type="text" maxlength="20"/>
 		                                        </div>
 		                                    </div>
 		                                    
@@ -113,14 +113,14 @@
 		                                    <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_ruc">RUC:</label>
 		                                        <div class="col-lg-3">
-													<input class="form-control" id="id_ruc" name="ruc" type="text" placeholder="Ingrese el RUC" maxlength="11"/>
+													<input class="form-control" id="id_reg_ruc" name="ruc" type="text" placeholder="Ingrese el RUC" maxlength="11"/>
 		                                        </div>
 		                                    </div>
 		                                    <!-- FECHA CREACIÓN -->
 		                                    <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_fechaCreacion">Fecha de Creación:</label>
 		                                        <div class="col-lg-3">
-													<input class="form-control" id="id_fechaCreacion" name="fechaCreacion" type="date" placeholder="Ingrese la fecha de creación" maxlength="100"/>
+													<input class="form-control" id="id_reg_fechaCreacion" name="fechaCreacion" type="date" placeholder="Ingrese la fecha de creación" maxlength="100"/>
 		                                        </div>
 		                                    </div>
 		                                    <!-- PAIS -->		   
@@ -186,14 +186,14 @@
 		                                     <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_razonSocial">Razón Social:</label>
 		                                        <div class="col-lg-8">
-													<input class="form-control" id="id_razonSocial" name="razonSocial" placeholder="Ingrese la razón social" type="text"/>
+													<input class="form-control" id="id_act_razonSocial" name="razonSocial" placeholder="Ingrese la razón social" type="text"/>
 		                                        </div>
 		                                    </div>
 		                                   <!-- DIRECCIÓN -->
 		                                    <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_direccion">Dirección:</label>
 		                                        <div class="col-lg-8">
-													<input class="form-control" id="id_direccion" name="direccion" placeholder="Ingrese la dirección" type="text" maxlength="20"/>
+													<input class="form-control" id="id_act_direccion" name="direccion" placeholder="Ingrese la dirección" type="text" maxlength="20"/>
 		                                        </div>
 		                                    </div>
 		                                    
@@ -201,21 +201,21 @@
 		                                    <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_ruc">RUC:</label>
 		                                        <div class="col-lg-3">
-													<input class="form-control" id="id_ruc" name="ruc" type="text" placeholder="Ingrese el RUC" maxlength="11"/>
+													<input class="form-control" id="id_act_ruc" name="ruc" type="text" placeholder="Ingrese el RUC" maxlength="11"/>
 		                                        </div>
 		                                    </div>
 		                                    <!-- FECHA CREACIÓN -->
 		                                    <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_fechaCreacion">Fecha de Creación:</label>
 		                                        <div class="col-lg-3">
-													<input class="form-control" id="id_fechaCreacion" name="fechaCreacion" type="date" placeholder="Ingrese la fecha de creación" maxlength="100"/>
+													<input class="form-control" id="id_act_fechaCreacion" name="fechaCreacion" type="date" placeholder="Ingrese la fecha de creación" maxlength="100"/>
 		                                        </div>
 		                                    </div>
 		                                    <!-- PAIS -->		   
 		                                    <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_reg_pais">País</label>
 		                                        <div class="col-lg-6">
-													 <select id="id_reg_pais" name="pais" class='form-control'>
+													 <select id="id_act_pais" name="pais" class='form-control'>
 							                            	<option value=" ">[Seleccione]</option>    
 							                         </select>
 		                                        </div>
@@ -328,10 +328,10 @@ $("#id_btn_registra").click(function(){
           url: "registraEditorialCrud", 
           data: $('#id_form_registra').serialize(),
           success: function(data){
-        	  agregarGrilla(data.lista);
+        	 
         	  agregarGrilla(data.lista); //'lista' viene de la "lista" creada en el Controller
         	  $('#id_div_modal_registra').modal("hide");
-        	  mostrarMensaje(data.mensaje);
+        	  mostrarMensaje(data.MENSAJE);
         	  limpiarFormulario();
         	  validator.resetForm();
           },
@@ -346,37 +346,11 @@ $("#id_btn_registra").click(function(){
 
 
 
-
-/*REGISTRAR
-$("#id_registrar").click(function() {
-			var validator = $('#id_form').data('bootstrapValidator');
-			validator.validate();
-
-			if (validator.isValid()) {
-				$.ajax({
-				    type: "POST",
-				    url: "registraEditorialCrud", 
-				    data: $('#id_form_registra').serialize(),
-				    success: function(data) {
-				        
-				        agregarGrilla(data.lista);
-				        $('#id_div_modal_registra').modal("hide");
-				        mostrarMensaje(data.mensaje);
-				        limpiarFormulario();
-				        validator.resetForm();
-				    },
-				    error: function() {
-				        mostrarMensaje(MSG_ERROR);
-				    }
-				});
-
-			}
-		});*/
-
 <!--BOTON ACTUALIZAR-->
 $("#id_btn_actualiza").click(function(){
 	var validator = $('#id_form_actualiza').data('bootstrapValidator');
     validator.validate();
+	
     if (validator.isValid()) {
         $.ajax({
           type: "POST",
@@ -384,23 +358,24 @@ $("#id_btn_actualiza").click(function(){
           data: $('#id_form_actualiza').serialize(),
           success: function(data){
         	  agregarGrilla(data.lista);
-        	  $('#id_div_modal_actualiza').modal("hide");
+        	  $('#id_div_modal_actualiza').modal("hide"); 
         	  mostrarMensaje(data.mensaje);
           },
           error: function(){
         	  mostrarMensaje(MSG_ERROR);
           }
         });
+        
     }
 });
 <!--ACCION EDITAR-->
-function editar(id,razonSocial,direccion,ruc,fechaCreacion,idpais){	
+function editar(id,razonSocial,direccion,ruc,fechaCreacion,idPais){	
 	$('#id_ID').val(id);
 	$('#id_act_razonSocial').val(razonSocial);
 	$('#id_act_direccion').val(direccion);
 	$('#id_act_ruc').val(ruc);
 	$('#id_act_fechaCreacion').val(fechaCreacion);
-	$('#id_act_pais').val(idpais);
+	$('#id_act_pais').val(idPais);
 	$('#id_div_modal_actualiza').modal("show");
 }
 <!--ACCION LIMPIAR-->
@@ -412,6 +387,7 @@ function limpiarFormulario(){
 }
 
 <!--VALIDACIONES REGISTRAR-->
+$(document).ready(function(){
 $('#id_form_registra').bootstrapValidator({
     message: 'This value is not valid',
     feedbackIcons: {
@@ -421,7 +397,7 @@ $('#id_form_registra').bootstrapValidator({
     },
     fields : {
 		razonSocial : {
-			selector : "#id_razonSocial",
+			selector : "#id_reg_razonSocial",
 			validators : {
 				notEmpty : {
 					message : 'La razón social es obligatoria'
@@ -439,7 +415,7 @@ $('#id_form_registra').bootstrapValidator({
 			}
 		},
 		direccion : {
-			selector : "#id_direccion",
+			selector : "#id_reg_direccion",
 			validators : {
 				notEmpty : {
 					message : 'La dirección es obligatoria'
@@ -452,30 +428,29 @@ $('#id_form_registra').bootstrapValidator({
 			}
 		},
 		ruc : {
-			selector : "#id_ruc",
-			validators : {
-				notEmpty : {
-					message : 'El RUC es obligatorio'
-				},
-				regexp : {
-					regexp : /^[0-9]{11}$/,
-					message : 'El RUC es 11 dígitos y en formato numérico'
-				},
-				remote : {
-					delay : 1000,
-					url : 'buscaEditorialPorRucRegistra',
-					message : 'El RUC ya existe'
-				},
-				data: {
-	               
-	                ruc: function() {
-	                    return $('#id_reg_ruc').val();
-	                }
-	        },
-			}
-		},
+            selector : "#id_reg_ruc",
+            validators : {
+                notEmpty : {
+                    message : 'El RUC es obligatorio'
+                },
+                regexp : {
+                    regexp : /^[0-9]{11}$/,
+                    message : 'El RUC es 11 dígitos y en formato numérico'
+                },
+                remote : {
+                    delay : 500,
+                    url : 'buscaEditorialPorRucRegistra',
+                    message : 'El RUC ya existe'
+                },
+                data: {
+                    ruc: function() {
+                        return $('#id_reg_ruc').val();
+                    },
+                },
+            }
+        },
 		fechaCreacion : {
-			selector : "#id_fechaCreacion",
+			selector : "#id_reg_fechaCreacion",
 			validators : {
 				notEmpty : {
 					message : 'La fecha de creación es obligatoria'
@@ -483,7 +458,7 @@ $('#id_form_registra').bootstrapValidator({
 			}
 		},
 		pais : {
-			selector : '#id_pais',
+			selector : '#id_reg_pais',
 			validators : {
 				notEmpty : {
 					message : 'País es un campo obligatorio'
@@ -493,92 +468,94 @@ $('#id_form_registra').bootstrapValidator({
 
 	}   
 });
+});
 <!--VALIDACIONES REGISTRAR FIN-->
 <!--VALIDACIONES ACTUALIZAR-->
-$('#id_form_actualiza').bootstrapValidator({
-    message: 'This value is not valid',
-    feedbackIcons: {
-        valid: 'glyphicon glyphicon-ok',
-        invalid: 'glyphicon glyphicon-remove',
-        validating: 'glyphicon glyphicon-refresh'
-    },
-    fields : {
-		razonSocial : {
-			selector : "#id_razonSocial",
-			validators : {
-				notEmpty : {
-					message : 'La razón social es obligatoria'
-				},
-				stringLength : {
-					min : 2,
-					max : 40,
-					message : 'La razón social es de 2 a 40 caracteres'
-				},
-				regexp : {
-					regexp : /^[a-zA-Z\s]+$/,
-					message : 'Ingresar razón social en carácteres alfabéticos'
+$(document).ready(function(){
+	$('#id_form_actualiza').bootstrapValidator({
+	    message: 'This value is not valid',
+	    feedbackIcons: {
+	        valid: 'glyphicon glyphicon-ok',
+	        invalid: 'glyphicon glyphicon-remove',
+	        validating: 'glyphicon glyphicon-refresh'
+	    },
+	    fields : {
+			razonSocial : {
+				selector : "#id_act_razonSocial",
+				validators : {
+					notEmpty : {
+						message : 'La razón social es obligatoria'
+					},
+					stringLength : {
+						min : 2,
+						max : 40,
+						message : 'La razón social es de 2 a 40 caracteres'
+					},
+					regexp : {
+						regexp : /^[a-zA-Z\s]+$/,
+						message : 'Ingresar razón social en carácteres alfabéticos'
 
+					}
 				}
-			}
-		},
-		direccion : {
-			selector : "#id_direccion",
-			validators : {
-				notEmpty : {
-					message : 'La dirección es obligatoria'
-				},
-				stringLength : {
-					min : 3,
-					max : 40,
-					message : 'La dirección es de 3 a 40 carácteres'
-				},
-			}
-		},
-		ruc : {
-			selector : "#id_ruc",
-			validators : {
-				notEmpty : {
-					message : 'El RUC es obligatorio'
-				},
-				regexp : {
-					regexp : /^[0-9]{11}$/,
-					message : 'El RUC es 11 dígitos y en formato numérico'
-				},
-				remote : {
-					delay : 1000,
-					url : 'buscaEditorialPorRucActualiza',
-					message : 'El RUC ya existe'
-				},
-				data: {
-	                ruc: function() {
-	                    return $('#id_act_ruc').val();
-	               
+			},
+			direccion : {
+				selector : "#id_act_direccion",
+				validators : {
+					notEmpty : {
+						message : 'La dirección es obligatoria'
+					},
+					stringLength : {
+						min : 3,
+						max : 40,
+						message : 'La dirección es de 3 a 40 carácteres'
+					},
+				}
+			},
+			ruc : {
+	            selector : "#id_act_ruc",
+	            validators : {
+	                notEmpty : {
+	                    message : 'El RUC es obligatorio'
 	                },
-	                id: function() {
-	                    return $('#id_ID').val();
-	                }
+	                regexp : {
+	                    regexp : /^[0-9]{11}$/,
+	                    message : 'El RUC es 11 dígitos y en formato numérico'
+	                },
+	                remote : {
+	                    delay : 500,
+	                    url : 'buscaEditorialPorRucActualiza',
+	                    message : 'El RUC ya existe'
+	                },
+	                data: {
+	                    ruc: function() {
+	                        return $('#id_act_ruc').val();
+	                    },
+	                    ruc: function() {
+	                        return $('#id_ID').val();
+	                    },
+	                },
+	            }
 	        },
-			}
-		},
-		fechaCreacion : {
-			selector : "#id_fechaCreacion",
-			validators : {
-				notEmpty : {
-					message : 'La fecha de creación es obligatoria'
+			fechaCreacion : {
+				selector : "#id_act_fechaCreacion",
+				validators : {
+					notEmpty : {
+						message : 'La fecha de creación es obligatoria'
+					}
 				}
-			}
-		},
-		pais : {
-			selector : '#id_pais',
-			validators : {
-				notEmpty : {
-					message : 'País es un campo obligatorio'
-				},
-			}
-		},
+			},
+			pais : {
+				selector : '#id_act_pais',
+				validators : {
+					notEmpty : {
+						message : 'País es un campo obligatorio'
+					},
+				}
+			},
 
-	}
-});
+		}   
+	});
+	});
 <!--VALIDACIONES ACTUALIZAR FIN-->
 
 
