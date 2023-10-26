@@ -34,7 +34,7 @@
 <!-- sem6 avance -->
 <div class="row" style="height: 70px">
 						<div class="col-md-2" >
-								<input class="form-control" id="id_txt_filtro"  name="filtro" placeholder="Ingrese la razon social" type="text" maxlength="30"/>
+								<input class="form-control" id="id_txt_filtro"  name="filtro" placeholder="Ingrese la razón social" type="text" maxlength="30"/>
 						</div>
 						<div class="col-md-2" >
 							<button type="button" class="btn btn-primary" id="id_btn_filtrar" style="width: 150px">FILTRA</button>
@@ -51,11 +51,11 @@
 										<thead>
 											<tr>
 												<th style="width: 5%" >ID</th>
-												<th style="width: 25%">Razon Social</th>
-												<th style="width: 20%">Direccion</th>
+												<th style="width: 20%">Razón Social</th>
+												<th style="width: 20%">Dirección</th>
 												<th style="width: 10%">RUC</th>
-												<th style="width: 10%">Fecha Creacion</th>
-												<th style="width: 10%">Pais</th>
+												<th style="width: 15%">Fecha Creación</th>
+												<th style="width: 10%">País</th>
 											 <th style="width: 10%">Actualiza</th>
 												<th style="width: 10%">Elimina</th> 
 												
@@ -95,7 +95,7 @@
 		                                
 		                                <!-- RAZON SOCIAL -->
 		                                     <div class="form-group">
-		                                        <label class="col-lg-3 control-label" for="id_razonSocial">Razón Social:</label>
+		                                        <label class="col-lg-3 control-label" for="id_reg_razonSocial">Razón Social:</label>
 		                                        <div class="col-lg-8">
 													<input class="form-control" id="id_reg_razonSocial" name="razonSocial" placeholder="Ingrese la razón social" type="text"/>
 		                                        </div>
@@ -103,7 +103,7 @@
 		                    
 		                                    <!-- DIRECCIÓN -->
 		                                    <div class="form-group">
-		                                        <label class="col-lg-3 control-label" for="id_direccion">Dirección:</label>
+		                                        <label class="col-lg-3 control-label" for="id_reg_direccion">Dirección:</label>
 		                                        <div class="col-lg-8">
 													<input class="form-control" id="id_reg_direccion" name="direccion" placeholder="Ingrese la dirección" type="text" maxlength="20"/>
 		                                        </div>
@@ -111,14 +111,14 @@
 		                                    
 		                                    <!-- RUC (NÚMEROS 11 DIGITOS) -->
 		                                    <div class="form-group">
-		                                        <label class="col-lg-3 control-label" for="id_ruc">RUC:</label>
+		                                        <label class="col-lg-3 control-label" for="id_reg_ruc">RUC:</label>
 		                                        <div class="col-lg-3">
 													<input class="form-control" id="id_reg_ruc" name="ruc" type="text" placeholder="Ingrese el RUC" maxlength="11"/>
 		                                        </div>
 		                                    </div>
 		                                    <!-- FECHA CREACIÓN -->
 		                                    <div class="form-group">
-		                                        <label class="col-lg-3 control-label" for="id_fechaCreacion">Fecha de Creación:</label>
+		                                        <label class="col-lg-3 control-label" for="id_reg_fechaCreacion">Fecha de Creación:</label>
 		                                        <div class="col-lg-3">
 													<input class="form-control" id="id_reg_fechaCreacion" name="fechaCreacion" type="date" placeholder="Ingrese la fecha de creación" maxlength="100"/>
 		                                        </div>
@@ -179,19 +179,19 @@
 		                               		 <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_ID">ID</label>
 		                                        <div class="col-lg-8">
-		                                           <input class="form-control" id="id_ID" readonly="readonly" name="idEmpleado" type="text" maxlength="8"/>
+		                                           <input class="form-control" id="id_ID"  readonly="readonly" name="idEditorial" type="text"/>
 		                                        </div>
 		                                     </div>
 		                                     <!-- RAZON SOCIAL -->
 		                                     <div class="form-group">
-		                                        <label class="col-lg-3 control-label" for="id_razonSocial">Razón Social:</label>
+		                                        <label class="col-lg-3 control-label" for="id_act_razonSocial">Razón Social:</label>
 		                                        <div class="col-lg-8">
 													<input class="form-control" id="id_act_razonSocial" name="razonSocial" placeholder="Ingrese la razón social" type="text"/>
 		                                        </div>
 		                                    </div>
 		                                   <!-- DIRECCIÓN -->
 		                                    <div class="form-group">
-		                                        <label class="col-lg-3 control-label" for="id_direccion">Dirección:</label>
+		                                        <label class="col-lg-3 control-label" for="id_act_direccion">Dirección:</label>
 		                                        <div class="col-lg-8">
 													<input class="form-control" id="id_act_direccion" name="direccion" placeholder="Ingrese la dirección" type="text" maxlength="20"/>
 		                                        </div>
@@ -199,21 +199,21 @@
 		                                    
 		                                    <!-- RUC (NÚMEROS 11 DIGITOS) -->
 		                                    <div class="form-group">
-		                                        <label class="col-lg-3 control-label" for="id_ruc">RUC:</label>
+		                                        <label class="col-lg-3 control-label" for="id_act_ruc">RUC:</label>
 		                                        <div class="col-lg-3">
 													<input class="form-control" id="id_act_ruc" name="ruc" type="text" placeholder="Ingrese el RUC" maxlength="11"/>
 		                                        </div>
 		                                    </div>
 		                                    <!-- FECHA CREACIÓN -->
 		                                    <div class="form-group">
-		                                        <label class="col-lg-3 control-label" for="id_fechaCreacion">Fecha de Creación:</label>
+		                                        <label class="col-lg-3 control-label" for="id_act_fechaCreacion">Fecha de Creación:</label>
 		                                        <div class="col-lg-3">
 													<input class="form-control" id="id_act_fechaCreacion" name="fechaCreacion" type="date" placeholder="Ingrese la fecha de creación" maxlength="100"/>
 		                                        </div>
 		                                    </div>
 		                                    <!-- PAIS -->		   
 		                                    <div class="form-group">
-		                                        <label class="col-lg-3 control-label" for="id_reg_pais">País</label>
+		                                        <label class="col-lg-3 control-label" for="id_act_pais">País</label>
 		                                        <div class="col-lg-6">
 													 <select id="id_act_pais" name="pais" class='form-control'>
 							                            	<option value=" ">[Seleccione]</option>    
@@ -294,7 +294,7 @@ function agregarGrilla(lista){
 					return salida;
 				},className:'text-center'},	
 				{data: function(row, type, val, meta){
-				    var salida='<button type="button" style="width: 90px" class="btn btn-warning btn-sm" onclick="accionEliminar(\'' + row.idEditorial + '\')">'+ (row.estado == 1? 'Activo':'Inactvo') +  '</button>';
+				    var salida='<button type="button" style="width: 90px" class="btn btn-warning btn-sm" onclick="accionEliminar(\'' + row.idEditorial + '\')">'+ (row.estado == 1? 'Activo':'Inactivo') +  '</button>';
 					return salida;
 				},className:'text-center'},	
 															
@@ -357,9 +357,9 @@ $("#id_btn_actualiza").click(function(){
           url: "actualizaCrudEditorial", 
           data: $('#id_form_actualiza').serialize(),
           success: function(data){
-        	  agregarGrilla(data.lista);
+        	  agregarGrilla(data.listaA);
         	  $('#id_div_modal_actualiza').modal("hide"); 
-        	  mostrarMensaje(data.mensaje);
+        	  mostrarMensaje(data.MENSAJE);
           },
           error: function(){
         	  mostrarMensaje(MSG_ERROR);
@@ -410,7 +410,7 @@ $('#id_form_registra').bootstrapValidator({
 					message : 'La razón social es de 2 a 40 caracteres'
 				},
 				regexp : {
-					regexp : /^[a-zA-Z\s]+$/,
+					regexp : /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/,
 					message : 'Ingresar razón social en carácteres alfabéticos'
 
 				}
@@ -442,12 +442,11 @@ $('#id_form_registra').bootstrapValidator({
                 remote : {
                     delay : 500,
                     url : 'buscaEditorialPorRuc',
-                    message : 'El RUC ya existe'
-                },
+                    message : 'El RUC ya existe',
                 data: {
                     ruc: function() {
                         return $('#id_reg_ruc').val();
-                    },
+                    },},
                 },
             }
         },
@@ -473,6 +472,7 @@ $('#id_form_registra').bootstrapValidator({
 });
 <!--VALIDACIONES REGISTRAR FIN-->
 <!--VALIDACIONES ACTUALIZAR-->
+
 $(document).ready(function(){
 	$('#id_form_actualiza').bootstrapValidator({
 	    message: 'This value is not valid',
@@ -494,7 +494,7 @@ $(document).ready(function(){
 						message : 'La razón social es de 2 a 40 caracteres'
 					},
 					regexp : {
-						regexp : /^[a-zA-Z\s]+$/,
+						regexp : /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/,
 						message : 'Ingresar razón social en carácteres alfabéticos'
 
 					}
@@ -526,15 +526,15 @@ $(document).ready(function(){
 	                remote : {
 	                    delay : 500,
 	                    url : 'buscaEditorialPorRucActualiza',
-	                    message : 'El RUC ya existe'
-	                },
+	                    message : 'El RUC ya existe',
+	                
 	                data: {
 	                    ruc: function() {
 	                        return $('#id_act_ruc').val();
 	                    },
 	                    id: function() {
 	                        return $('#id_ID').val();
-	                    },
+	                    },},
 	                },
 	            }
 	        },
@@ -558,8 +558,21 @@ $(document).ready(function(){
 		}   
 	});
 	});
+	
 <!--VALIDACIONES ACTUALIZAR FIN-->
-
+function accionEliminar(id){	
+    $.ajax({
+          type: "POST",
+          url: "eliminaCrudEditorial", 
+          data: {"id":id},
+          success: function(data){
+        	  agregarGrilla(data.lista);
+          },
+          error: function(){
+        	  mostrarMensaje(MSG_ERROR);
+          }
+     });
+}
 
 </script>   		
 </body>

@@ -90,11 +90,12 @@ public class EditorialCrudController {
 		} else {
 			map.put("MENSAJE", "Actualización exitosa");
 			List<Editorial> lista = editorialService.listaPorRazonSocialLike("%");
-			map.put("lista", lista);
+			map.put("listaA", lista);
 			
 		}
 		return map;
 	}
+	//==============================================================
 	
 	//========================================VALIDACIONES
 //PARA EL REGISTRAR
@@ -111,28 +112,43 @@ public class EditorialCrudController {
 	}
 	
 
+	
+	
 	@GetMapping("/buscaEditorialPorRucActualiza")
 	@ResponseBody
-	public String validaRuc(String ruc,int id) {
-		List<Editorial> lstEditorial = editorialService.listaPorRucIgualActualiza(ruc,id);
-		if (CollectionUtils.isEmpty(lstEditorial)) {
+	public String buscaEditorial(String ruc, int id) {
+		List<Editorial> listaPorRuc = editorialService.listaPorRucIgualActualiza(ruc, id);
+		if (CollectionUtils.isEmpty(listaPorRuc)) {
 			return "{\"valid\" : true }";
 		} else {
 			return "{\"valid\" : false }";
 		}
 	}
 	
-	/*PARA EL ACTUALIZAR
-	@GetMapping("/buscaEditorialPorRucActualiza")
+//ELIMINAR
 	@ResponseBody
-	public String validaRucActualiza(String ruc, int id) {
-		List<Editorial> listaPorRuc = editorialService.listaPorRucIgualActualiza(ruc, id);
-		if(CollectionUtils.isEmpty(listaPorRuc)) {
-			return "{\"valid\":true}";
-		}else {
-			return "{\"valid\":false}";
+	@PostMapping("/eliminaCrudEditorial")
+	public Map<?, ?> elimina(Editorial obj, HttpSession session, int id) {
+		Usuario objUsuario = (Usuario)session.getAttribute("objUsuario");
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		Editorial objEditorial = editorialService.buscaEditorial(id).get();
+		objEditorial.setFechaActualizacion(new Date());  
+		objEditorial.setEstado( objEditorial.getEstado() == 1 ? 0 : 1);
+		
+		obj.setUsuarioRegistro(objUsuario);
+		obj.setUsuarioActualiza(objUsuario);
+		obj.setFechaActualizacion(new Date());
+		
+		Editorial objSalida = editorialService.actualizaEditorial(objEditorial);
+		if (objSalida == null) {
+			map.put("mensaje", "Error en actualizar");
+		} else {
+			List<Editorial> lista = editorialService.listaPorRazonSocialLike("%");
+			map.put("lista", lista);
 		}
-	}*/
+		return map;
+	}
 	
 	
 	
