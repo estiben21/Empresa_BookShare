@@ -441,7 +441,7 @@ $('#id_form_registra').bootstrapValidator({
                 },
                 remote : {
                     delay : 500,
-                    url : 'buscaEditorialPorRucRegistra',
+                    url : 'buscaEditorialPorRuc',
                     message : 'El RUC ya existe'
                 },
                 data: {
