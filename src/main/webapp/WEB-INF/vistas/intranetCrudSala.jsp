@@ -255,6 +255,7 @@ $.getJSON("listaTipoSala", {}, function(data){
 });
 
 
+
 $.getJSON("listaSede", {}, function(data){
 	$.each(data, function(i,item){
 		$("#id_reg_sede").append("<option value="+item.idDataCatalogo +">"+ item.descripcion +"</option>");
@@ -471,7 +472,6 @@ $("#id_btn_actualiza").click(function(){
     	          },
     	     }   
     	 });
-
 
 </script>   		
 </body>
