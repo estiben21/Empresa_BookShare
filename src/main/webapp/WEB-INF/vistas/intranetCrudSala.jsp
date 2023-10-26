@@ -78,7 +78,7 @@
 					<h4><span class="glyphicon glyphicon-ok-sign"></span> Registro de Sala</h4>
 				</div>
 				<div class="modal-body" style="padding: 20px 10px;">
-						<form id="id_form_registra" accept-charset="UTF-8" class="form-horizontal"     method="post">
+						<form id="id_form_registra" accept-charset="UTF-8" class="form-horizontal"  action="registraActualizaCrudSala"   method="post">
 		                    <div class="panel-group" id="steps">
 		                        <!-- Step 1 -->
 		                        <div class="panel panel-default">
@@ -159,7 +159,7 @@
 					<h4><span class="glyphicon glyphicon-ok-sign"></span> Registro de Sala</h4>
 				</div>
 				<div class="modal-body" style="padding: 20px 10px;">
-						<form id="id_form_actualiza" accept-charset="UTF-8" class="form-horizontal"     method="post">
+						<form id="id_form_actualiza" accept-charset="UTF-8" class="form-horizontal" action="registraActualizaCrudSala" method="post">
 		                    <div class="panel-group" id="steps">
 		                        <!-- Step 1 -->
 		                        <div class="panel panel-default">
