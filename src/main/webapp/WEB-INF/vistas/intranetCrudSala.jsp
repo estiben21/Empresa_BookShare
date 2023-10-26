@@ -78,7 +78,7 @@
 					<h4><span class="glyphicon glyphicon-ok-sign"></span> Registro de Sala</h4>
 				</div>
 				<div class="modal-body" style="padding: 20px 10px;">
-						<form id="id_form_registra" accept-charset="UTF-8" class="form-horizontal"  action="registraActualizaCrudSala"   method="post">
+						<form id="id_form_registra" accept-charset="UTF-8" class="form-horizontal"     method="post">
 		                    <div class="panel-group" id="steps">
 		                        <!-- Step 1 -->
 		                        <div class="panel panel-default">
@@ -159,7 +159,7 @@
 					<h4><span class="glyphicon glyphicon-ok-sign"></span> Registro de Sala</h4>
 				</div>
 				<div class="modal-body" style="padding: 20px 10px;">
-						<form id="id_form_actualiza" accept-charset="UTF-8" class="form-horizontal" action="registraActualizaCrudSala" method="post">
+						<form id="id_form_actualiza" accept-charset="UTF-8" class="form-horizontal"  method="post">
 		                    <div class="panel-group" id="steps">
 		                        <!-- Step 1 -->
 		                        <div class="panel panel-default">
@@ -243,8 +243,8 @@
 </div>
 
 
-<script type="text/javascript">
 
+<script type="text/javascript">
 
 $.getJSON("listaTipoSala", {}, function(data){
 	$.each(data, function(i,item){
@@ -307,14 +307,16 @@ function agregarGrilla(lista){
 
 
 
-function editar(idSala, numero, piso, numAlumnos, recursos, estado, tipoSala, sede) {
-    $('#id_ID').val(id);
+function editar(idSala, numero, piso, numAlumnos, recursos, tipoSala, sede) {
+    $('#id_ID').val(idSala);
     $('#id_act_numero').val(numero);
     $('#id_act_piso').val(piso);
     $('#id_act_cantAlumnos').val(numAlumnos); 
     $('#id_act_recursos').val(recursos);
     $('#id_act_tipo').val(tipoSala);
     $('#id_act_sede').val(sede);
+	$('#id_div_modal_actualiza').modal("show");
+
 }
 
 function accionEliminar(id){	
@@ -388,7 +390,9 @@ $("#id_btn_actualiza").click(function(){
     }
 });
 
+</script>
 
+<script type="text/javascript">
     	$('#id_form_registra').bootstrapValidator({
     	    message: 'This value is not valid',
     	    feedbackIcons: {
@@ -464,6 +468,102 @@ $("#id_btn_actualiza").click(function(){
     	         },
     	         sede: {
     	      		selector : '#id_reg_sede',
+    	              validators: {
+    	              	notEmpty: {
+    	                      message: 'Sede es un campo obligatorio'
+    	                  },
+    	              }
+    	          },
+    	     }   
+    	 });
+    	
+  
+    	</script>
+
+    	<script type="text/javascript"> 
+    	$('#id_form_actualiza').bootstrapValidator({
+    	    message: 'This value is not valid',
+    	    feedbackIcons: {
+    	        valid: 'glyphicon glyphicon-ok',
+    	        invalid: 'glyphicon glyphicon-remove',
+    	        validating: 'glyphicon glyphicon-refresh'
+    	    },
+    	    fields: {
+    	    	numero: {
+    	    	    selector: '#id_act_numero',
+    	    	    validators: {
+    	    	        notEmpty: {
+    	    	            message: 'El número es un campo obligatorio'
+    	    	        },
+    	    	        regexp: {
+    	    	            regexp: /^[A-Za-z]\d{3}$/,
+    	    	            message: 'El número debe consistir en un carácter y tres dígitos.'
+    	    	        },
+    	    	        remote :{
+                        	delay   : 1000,
+                        	url     : 'buscaPorNumeroSalaActualiza',
+                        	message : 'El número ya existe',
+                        	data: {
+        		                numero: function() {
+        		                    return $('#id_act_numero').val();
+        		                },
+        		                id: function() {
+        		                    return $('#id_ID').val();
+        		                },
+        		        	},
+                        } 
+                    }
+                },
+    	    	 piso:{
+    	             selector: "#id_act_piso",
+    	             validators:{
+    	                 notEmpty: {
+    	                      message: 'El piso es obligatorio'
+    	                 },
+    	                 regexp: {
+    	                     regexp: /^[0-9]{2}$/,
+    	                     message: 'El Piso debe tener dos dígitos'
+    	                 },
+    	                 
+    	             }
+    	         },
+    	         numAlumnos:{
+    	             selector: "#id_act_cantAlumnos",
+    	             validators:{
+    	                 notEmpty: {
+    	                      message: 'La cantidad de alumnos es obligatorio'
+    	                 },
+    	                 regexp: {
+    	                     regexp: /^[0-9]{2}$/,
+    	                     message: 'La cantidad de alumnos debe tener dos dígitos'
+    	                 },
+    	                 
+    	             }
+    	         },
+    	         recursos: {
+    	     		selector : '#id_act_recursos',
+    	             validators: {
+    	                 notEmpty: {
+    	                     message: 'Los recursos es un campo obligatorio'
+    	                 },
+    	                 stringLength :{
+    	                 	message:'Los recursos es de 2 a 40 caracteres',
+    	                 	min : 2,
+    	                 	max : 40
+    	                 },
+    	             }
+    	         },
+    	         
+    	         tipoSala: {
+    	     		selector : '#id_act_tipo',
+    	             validators: {
+    	             	notEmpty: {
+    	                     message: 'Tipo es un campo obligatorio'
+    	                 },
+    	             }
+    	         },
+    	         sede: {
+    	      		selector : '#id_act_sede',
     	              validators: {
     	              	notEmpty: {
     	                      message: 'Sede es un campo obligatorio'

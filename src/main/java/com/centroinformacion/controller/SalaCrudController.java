@@ -109,8 +109,19 @@ public class SalaCrudController {
 	
 	@GetMapping("/buscaSalaPorNumeroRegistra")
 	@ResponseBody
-	public String validaNumeroRegistra(String nombre) {
-		List<Sala> lst = salaService.listaPorNumeroIgualRegistra(nombre);
+	public String validaNumeroRegistra(String numero) {
+		List<Sala> lst = salaService.listaPorNumeroIgualRegistra(numero);
+		if(CollectionUtils.isEmpty(lst)) {
+			return "{\"valid\":true}";
+		}else {
+			return "{\"valid\":false}";
+		}
+	}
+	
+	@GetMapping("/buscaPorNumeroSalaActualiza")
+	@ResponseBody
+	public String validaNumeroActualiza(String numero, int idSala) {
+		List<Sala> lst = salaService.listaPorNumeroIgualActualiza(numero, idSala);
 		if(CollectionUtils.isEmpty(lst)) {
 			return "{\"valid\":true}";
 		}else {

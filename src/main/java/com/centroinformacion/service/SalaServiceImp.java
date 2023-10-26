@@ -37,14 +37,14 @@ public class SalaServiceImp implements SalaService {
 		return repository.findById(idSala);
 	}
 	@Override
-	public List<Sala> listaPorNumeroIgualRegistra(String nombre) {
-		return repository.listaPorNumeroIgualRegistra(nombre);
+	public List<Sala> listaPorNumeroIgualRegistra(String numero) {
+		return repository.listaPorNumeroIgualRegistra(numero);
 
 	}
 
 	@Override
-	public List<Sala> listaPorNumeroIgualActualiza(String nombre,int id) {
-		return repository.listaPorNumeroIgualActualiza(nombre, id);
+	public List<Sala> listaPorNumeroIgualActualiza(String numero,int idSala) {
+		return repository.listaPorNumeroIgualActualiza(numero, idSala);
 
 	}
 	
