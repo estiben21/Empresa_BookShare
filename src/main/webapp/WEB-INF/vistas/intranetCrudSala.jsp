@@ -179,8 +179,10 @@
 		                                	                        
 		                                <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_act_numero">Número</label>
+
 		                                        <div class="col-lg-8">
-													<input class="form-control"  id="id_act_numero" name="numero" placeholder="Ingrese el número" type="text" maxlength="20"/>
+													<input class="form-control" id="id_act_numero" name="numero" placeholder="Ingrese el número" type="text" maxlength="20"/>
+
 		                                        </div>
 		                                    </div>
 		                                    
@@ -317,14 +319,14 @@ function accionEliminar(id){
 }
 
 
-function editar(id,numero,piso,numAlumnos,recursos,tipoSala,sede){	
-	$('#id_ID').val(id);
-	$('#id_act_numero').val(numero);
-	$('#id_act_piso').val(piso);
-	$('#id_act_numAlumnos').val(numAlumnos);
-	$('#id_act_recursos').val(recursos);
-	$('#id_act_tipo').val(tipoSala);
-	$('#id_act_sede').val(sede);
+function editar(idSala, numero, piso, numAlumnos, recursos, tipoSala, sede) {
+    $('#id_ID').val(id);
+    $('#id_act_numero').val(numero);
+    $('#id_act_piso').val(piso);
+    $('#id_act_cantAlumnos').val(numAlumnos); 
+    $('#id_act_recursos').val(recursos);
+    $('#id_act_tipo').val(tipoSala);
+    $('#id_act_sede').val(sede);
 }
 
 function limpiarFormulario(){	
