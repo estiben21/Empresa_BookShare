@@ -11,7 +11,6 @@ import com.centroinformacion.repository.LibroRepository;
 
 @Service
 public class LibroServiceImp implements LibroService {
-	
 	@Autowired	
 	private LibroRepository repository;
 
@@ -19,7 +18,26 @@ public class LibroServiceImp implements LibroService {
 	public Libro insertaActualizaLibro(Libro obj) {
 		return repository.save(obj);
 	}
-	 
+	@Override
+	public Libro insertaRegistraLibro(Libro obj) {
+		return repository.save(obj);
+	}
+
+	@Override
+	public List<Libro> listaPorTitulo(String titulo) {
+		return repository.findByTituloIgnoreCase(titulo);
+	}
+	
+	@Override
+	public List<Libro> listaPorTituloLike(String filtro) {
+		return repository.listPorTituloLike(filtro);
+	}
+
+	@Override
+	public Optional<Libro> buscaLibro(int idLibro) {
+		return repository.findById(idLibro);
+	}
+	
 	@Override
 	public boolean existeLibroConSerie(String serie) {
 		 Libro libro = repository.findBySerie(serie);
@@ -28,25 +46,5 @@ public class LibroServiceImp implements LibroService {
 		    }else {
 			    return false;	
 		    }
-	}
-
-	@Override
-	public List<Libro> listaPorTituloLike(String filtro) {
-		return repository.listPorTituloLike(filtro);
-	}
-
-	@Override
-	public Libro actualizaLibro(Libro obj) {
-		return repository.save(obj);
-	}
-
-	@Override
-	public Libro insertaLibro(Libro obj) {
-		return repository.save(obj);
-	}
-
-	@Override
-	public Optional<Libro> buscaLibro(int idLibro) {
-		return repository.findById(idLibro);
 	}
 }
