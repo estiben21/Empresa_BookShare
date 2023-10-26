@@ -131,5 +131,20 @@ public class AutorCrudController {
 			return "{\"valid\":false}";
 		}
 	}
+	@GetMapping("/buscaAutorTelefonoIgualActualiza")
+	@ResponseBody
+	public String validaTelefonoActualiza(String telefono, String id) {
+		
+		List<Autor> lstSalida = autorService.listaPorTelefonoIgual(
+				telefono, 
+				Integer.parseInt(id));
+		
+		if(lstSalida.isEmpty()) {
+			return "{\"valid\":true}";
+		}else {
+			return "{\"valid\":false}";
+		}
+	}
+
 	
 }

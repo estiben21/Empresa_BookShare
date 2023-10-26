@@ -113,7 +113,7 @@
 												<input class="form-control" id="id_reg_apellidos"
 													name="apellidos"
 													placeholder="Ingrese el apellido del autor" type="text"
-													maxlength="40"  />
+													maxlength="40" />
 											</div>
 										</div>
 										<div class="form-group">
@@ -165,8 +165,8 @@
 			</div>
 		</div>
 	</div>
-	
-	
+
+
 	<div class="modal fade" id="id_div_modal_actualiza">
 		<div class="modal-dialog" style="width: 60%">
 
@@ -174,8 +174,7 @@
 				<div class="modal-header" style="padding: 35px 50px">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4>
-						<span class="glyphicon glyphicon-ok-sign"></span> Actualizar
-						Autor
+						<span class="glyphicon glyphicon-ok-sign"></span> Actualizar Autor
 					</h4>
 				</div>
 				<div class="modal-body" style="padding: 20px 10px;">
@@ -203,15 +202,16 @@
 										<div class="form-group">
 											<label class="col-lg-3 control-label" for="id_act_nombres">Nombre</label>
 											<div class="col-lg-8">
-												<input class="form-control" id="id_act_nombres" name="nombres"
-													placeholder="Ingrese el nombre del autor" type="text"
-													maxlength="40" />
+												<input class="form-control" id="id_act_nombres"
+													name="nombres" placeholder="Ingrese el nombre del autor"
+													type="text" maxlength="40" />
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-lg-3 control-label" for="id_act_apellidos">Apellido</label>
 											<div class="col-lg-8">
-												<input class="form-control" id="id_act_apellidos" name="apellidos"
+												<input class="form-control" id="id_act_apellidos"
+													name="apellidos"
 													placeholder="Ingrese el apellido del autor" type="text"
 													maxlength="40" />
 											</div>
@@ -227,9 +227,9 @@
 										<div class="form-group">
 											<label class="col-lg-3 control-label" for="id_act_telefono">Teléfono</label>
 											<div class="col-lg-8">
-												<input class="form-control" id="id_act_telefono" name="telefono"
-													placeholder="Ingrese el teléfono del autor" type="text"
-													maxlength="40" />
+												<input class="form-control" id="id_act_telefono"
+													name="telefono" placeholder="Ingrese el teléfono del autor"
+													type="text" maxlength="40" />
 											</div>
 										</div>
 										<div class="form-group">
@@ -243,8 +243,7 @@
 										<div class="form-group">
 											<label class="col-lg-3 control-label" for="id_act_grado">Grado</label>
 											<div class="col-lg-8">
-												<select id="id_act_grado" name="grado"
-													class='form-control'>
+												<select id="id_act_grado" name="grado" class='form-control'>
 													<option value=" ">Seleccione:</option>
 												</select>
 											</div>
@@ -266,7 +265,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 
 
 	<script type="text/javascript">
@@ -323,28 +322,28 @@
 				});
 			}
 		});
-		
-		$("#id_btn_actualiza").click(function(){
+
+		$("#id_btn_actualiza").click(function() {
 			var validator = $('#id_form_actualiza').data('bootstrapValidator');
-		    validator.validate();
-		    if (validator.isValid()) {
-		        $.ajax({
-		          type: "POST",
-		          url: "actualizaCrudAutor", 
-		          data: $('#id_form_actualiza').serialize(),
-		          success: function(data){
-		        	  agregarGrilla(data.lista);
-		        	  $('#id_div_modal_actualiza').modal("hide");
-		        	  mostrarMensaje(data.mensaje);
-		          },
-		          error: function(){
-		        	  mostrarMensaje(MSG_ERROR);
-		          }
-		        });
-		    }
+			validator.validate();
+			if (validator.isValid()) {
+				$.ajax({
+					type : "POST",
+					url : "actualizaCrudAutor",
+					data : $('#id_form_actualiza').serialize(),
+					success : function(data) {
+						agregarGrilla(data.lista);
+						$('#id_div_modal_actualiza').modal("hide");
+						mostrarMensaje(data.mensaje);
+					},
+					error : function() {
+						mostrarMensaje(MSG_ERROR);
+					}
+				});
+			}
 		});
-		
-		function limpiarFormulario(){	
+
+		function limpiarFormulario() {
 			$('#id_reg_nombres').val('');
 			$('#id_reg_apellidos').val('');
 			$('#id_reg_fechaNacimiento').val(' ');
@@ -456,14 +455,17 @@
 											delay : 100,
 											url : 'buscaAutorNombreApellidoRegistro',
 											message : 'El nombre ya existe',
-						                        data: {
-						                            'nombres': function() {
-						                                return $('#id_reg_nombres').val();
-						                            },
-						                            'apellidos': function() {
-						                                return $('#id_reg_apellidos').val();
-						                            }
-						                        }
+											data : {
+												'nombres' : function() {
+													return $('#id_reg_nombres')
+															.val();
+												},
+												'apellidos' : function() {
+													return $(
+															'#id_reg_apellidos')
+															.val();
+												}
+											}
 										}
 									}
 								},
@@ -482,19 +484,22 @@
 											regexp : /^[a-zA-Z\s]+$/,
 											message : 'El apellido solo puede contener letras y espacios'
 										},
-					                    remote: {
-					                        delay: 1000,
-					                        url: 'buscaAutorNombreApellidoRegistro',
-					                        message: 'El Autor ya existe',
-					                        data: {
-					                            'nombres': function() {
-					                                return $('#id_reg_nombres').val();
-					                            },
-					                            'apellidos': function() {
-					                                return $('#id_reg_apellidos').val();
-					                            }
-					                        }
-					                    }
+										remote : {
+											delay : 1000,
+											url : 'buscaAutorNombreApellidoRegistro',
+											message : 'El Autor ya existe',
+											data : {
+												'nombres' : function() {
+													return $('#id_reg_nombres')
+															.val();
+												},
+												'apellidos' : function() {
+													return $(
+															'#id_reg_apellidos')
+															.val();
+												}
+											}
+										}
 									}
 								},
 								fechaNacimiento : {
@@ -547,22 +552,25 @@
 
 							}
 						});
-		
-		function accionEliminar(id){	
-		    $.ajax({
-		          type: "POST",
-		          url: "eliminaCrudAutor", 
-		          data: {"id":id},
-		          success: function(data){
-		        	  agregarGrilla(data.lista);
-		          },
-		          error: function(){
-		        	  mostrarMensaje(MSG_ERROR);
-		          }
-		     });
+
+		function accionEliminar(id) {
+			$.ajax({
+				type : "POST",
+				url : "eliminaCrudAutor",
+				data : {
+					"id" : id
+				},
+				success : function(data) {
+					agregarGrilla(data.lista);
+				},
+				error : function() {
+					mostrarMensaje(MSG_ERROR);
+				}
+			});
 		}
-		
-		function editar(idAutor,nombres,apellidos,fechaNacimiento,telefono,idPais,idDataCatalogo){	
+
+		function editar(idAutor, nombres, apellidos, fechaNacimiento, telefono,
+				idPais, idDataCatalogo) {
 			$('#id_ID').val(idAutor);
 			$('#id_act_nombres').val(nombres);
 			$('#id_act_apellidos').val(apellidos);
@@ -572,120 +580,142 @@
 			$('#id_act_grado').val(idDataCatalogo);
 			$('#id_div_modal_actualiza').modal("show");
 		}
-		
-		$('#id_form_actualiza').bootstrapValidator({
-		    message: 'This value is not valid',
-		    feedbackIcons: {
-		        valid: 'glyphicon glyphicon-ok',
-		        invalid: 'glyphicon glyphicon-remove',
-		        validating: 'glyphicon glyphicon-refresh'
-		    },
-		    fields: {
-					nombres : {
-						selector : '#id_act_nombres',
-						validators : {
-							notEmpty : {
-								message : 'El nombre es un campo obligatorio'
-							},
-							stringLength : {
-								message : 'El nombre es de 2 a 40 carácteres',
-								min : 2,
-								max : 40
-							},
-							regexp : {
-								regexp : /^[a-zA-Z\s]+$/,
-								message : 'El nombre solo puede contener letras y espacios'
-							},
-							remote : {
-								delay : 100,
-								url : 'buscaAutorNombreApellidoRegistro',
-								message : 'El nombre ya existe',
-			                        data: {
-			                            'nombres': function() {
-			                                return $('#id_act_nombres').val();
-			                            },
-			                            'apellidos': function() {
-			                                return $('#id_act_apellidos').val();
-			                            }
-			                        }
-							}
-						}
-					},
-					apellidos : {
-						selector : '#id_act_apellidos',
-						validators : {
-							notEmpty : {
-								message : 'El apellido es un campo obligatorio'
-							},
-							stringLength : {
-								message : 'El apellido es de 2 a 40 carácteres',
-								min : 2,
-								max : 40
-							},
-							regexp : {
-								regexp : /^[a-zA-Z\s]+$/,
-								message : 'El apellido solo puede contener letras y espacios'
-							},
-							remote : {
-								delay : 100,
-								url : 'buscaAutorNombreApellidoRegistro',
-								message : 'El apellido ya existe',
-			                        data: {
-			                            'nombres': function() {
-			                                return $('#id_act_nombres').val();
-			                            },
-			                            'apellidos': function() {
-			                                return $('#id_act_apellidos').val();
-			                            }
-			                        }
-							}
-						}
-					},
-					fechaNacimiento : {
-						selector : "#id_act_fechaNacimiento",
-						validators : {
-							notEmpty : {
-								message : 'La fecha es obligatorio'
-							},
-							remote : {
-								delay : 100,
-								url : 'buscaAutorMayorEdad',
-								message : 'El autor tiene que ser mayor de edad'
-							}
-						}
-					},
-					telefono : {
-						selector : '#id_act_telefono',
-						validators : {
-							notEmpty : {
-								message : 'El teléfono es un campo obligatorio'
-							},
-							regexp : {
-								regexp : /^[0-9]{9}$/,
-								message : 'El teléfono es 9 dígitos y en formato numérico'
-							}
-						}
 
-					},
-					pais : {
-						selector : '#id_act_pais',
-						validators : {
-							notEmpty : {
-								message : 'País es un campo obligatorio'
+		$('#id_form_actualiza')
+				.bootstrapValidator(
+						{
+							message : 'This value is not valid',
+							feedbackIcons : {
+								valid : 'glyphicon glyphicon-ok',
+								invalid : 'glyphicon glyphicon-remove',
+								validating : 'glyphicon glyphicon-refresh'
 							},
-						}
-					},
-					grado : {
-						selector : '#id_act_grado',
-						validators : {
-							notEmpty : {
-								message : 'Grado es un campo obligatorio'
-							},
-						}
-					},
-		    }   
-		}); 
-		
+							fields : {
+								nombres : {
+									selector : '#id_act_nombres',
+									validators : {
+										notEmpty : {
+											message : 'El nombre es un campo obligatorio'
+										},
+										stringLength : {
+											message : 'El nombre es de 2 a 40 carácteres',
+											min : 2,
+											max : 40
+										},
+										regexp : {
+											regexp : /^[a-zA-Z\s]+$/,
+											message : 'El nombre solo puede contener letras y espacios'
+										},
+										remote : {
+											delay : 100,
+											url : 'buscaAutorNombreApellidoRegistro',
+											message : 'El nombre ya existe',
+											data : {
+												'nombres' : function() {
+													return $('#id_act_nombres')
+															.val();
+												},
+												'apellidos' : function() {
+													return $(
+															'#id_act_apellidos')
+															.val();
+												}
+											}
+										}
+									}
+								},
+								apellidos : {
+									selector : '#id_act_apellidos',
+									validators : {
+										notEmpty : {
+											message : 'El apellido es un campo obligatorio'
+										},
+										stringLength : {
+											message : 'El apellido es de 2 a 40 carácteres',
+											min : 2,
+											max : 40
+										},
+										regexp : {
+											regexp : /^[a-zA-Z\s]+$/,
+											message : 'El apellido solo puede contener letras y espacios'
+										},
+										remote : {
+											delay : 100,
+											url : 'buscaAutorNombreApellidoRegistro',
+											message : 'El apellido ya existe',
+											data : {
+												'nombres' : function() {
+													return $('#id_act_nombres')
+															.val();
+												},
+												'apellidos' : function() {
+													return $(
+															'#id_act_apellidos')
+															.val();
+												},
+					                            'id': function() {
+					                                return $('#id_ID').val();
+					                            }
+											}
+										}
+									}
+								},
+								fechaNacimiento : {
+									selector : "#id_act_fechaNacimiento",
+									validators : {
+										notEmpty : {
+											message : 'La fecha es obligatorio'
+										},
+										remote : {
+											delay : 100,
+											url : 'buscaAutorMayorEdad',
+											message : 'El autor tiene que ser mayor de edad'
+										}
+									}
+								},
+								telefono : {
+									selector : '#id_act_telefono',
+									validators : {
+										notEmpty : {
+											message : 'El teléfono es un campo obligatorio'
+										},
+										regexp : {
+											regexp : /^[0-9]{9}$/,
+											message : 'El teléfono es 9 dígitos y en formato numérico'
+										},
+										remote : {
+											delay : 100,
+											url : 'buscaAutorTelefonoIgualActualiza',
+											message : 'El teléfono ya existe',
+											data: {
+					                            'telefono': function() {
+					                                return $('#id_act_telefono').val();
+					                            },
+					                            'id': function() {
+					                                return $('#id_ID').val();
+					                            }
+					                        }
+										}
+									}
+								},
+								pais : {
+									selector : '#id_act_pais',
+									validators : {
+										notEmpty : {
+											message : 'País es un campo obligatorio'
+										},
+									}
+								},
+								grado : {
+									selector : '#id_act_grado',
+									validators : {
+										notEmpty : {
+											message : 'Grado es un campo obligatorio'
+										},
+									}
+								},
+							}
+						});
 	</script>
 </body>
 </html>

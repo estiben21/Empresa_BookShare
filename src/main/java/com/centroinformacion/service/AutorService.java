@@ -14,5 +14,8 @@ public interface AutorService {
 	public abstract Optional<Autor> buscaAutor(int id);
 	public abstract List<Autor> listaPorNombreApellidoIgualActualiza(String nombres, String apellidos,int id);
 	public abstract List<Autor> listaPorNombreApellidoIgual(String nombres, String apellidos);
+	public abstract List<Autor> listaPorTelefonoIgual(String telefono, int idAutor);
+
+
 	
 }
