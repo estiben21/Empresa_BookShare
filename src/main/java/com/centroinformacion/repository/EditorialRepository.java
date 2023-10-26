@@ -29,7 +29,7 @@ public interface EditorialRepository extends JpaRepository<Editorial, Integer>{
 		public List<Editorial> listaPorRucIgualRegistra(String ruc);
 		
 		// VALIDACION ACTUALIZAR
-		@Query("select x from Editorial x where x.ruc = ?1 and x.idEditorial !=?2")
+		@Query("select x from Editorial x where x.ruc like ?1 and x.idEditorial !=?2")
 		public List<Editorial> listaPorRucIgualActualiza(String ruc,int id);
 
 }

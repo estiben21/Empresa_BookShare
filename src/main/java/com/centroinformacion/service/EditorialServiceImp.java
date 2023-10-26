@@ -36,17 +36,18 @@ public class EditorialServiceImp implements EditorialService {
 	public List<Editorial> listaPorRucIgualRegistra(String ruc) {
 		return repository.listaPorRucIgualRegistra(ruc);
 	}
-
+//ACTUALIZAR
 	@Override
-	public List<Editorial> listaPorRucIgualActualiza(String ruc, int id) {
-		return repository.listaPorRucIgualActualiza(ruc,id);
+	public List<Editorial> listaPorRucIgualActualiza(String ruc, int idEditorial) {
+		return repository.listaPorRucIgualActualiza(ruc,idEditorial);
 	}
 	//BUSCAR EDITORIAL
 
 	@Override
-	public Optional<Editorial> buscaEditorial(int id) {
-		return repository.findById(id);
+	public Optional<Editorial> buscaEditorial(int idEditorial) {
+		return repository.findById(idEditorial);
 	}
+	
 
 	@Override
 	public Editorial actualizaEditorial(Editorial obj) {

@@ -9,8 +9,8 @@ import com.centroinformacion.entity.Editorial;
 public interface EditorialService {
 //REGISTRAR
 	public abstract Editorial insertaEditorial(Editorial obj);
-	
-	public abstract Optional<Editorial> buscaEditorial(int id);
+	//Para eliminar por ID
+	public abstract Optional<Editorial> buscaEditorial(int editorial);
 //Buscar RUC
 	public abstract List<Editorial> listaPorRuc(String ruc);
 	
@@ -27,6 +27,6 @@ public interface EditorialService {
 	//REGISTRAR
 		public abstract List<Editorial> listaPorRucIgualRegistra(String ruc);
 	//ACTUALIZAR
-		public abstract List<Editorial> listaPorRucIgualActualiza(String ruc, int id);
+	public abstract List<Editorial> listaPorRucIgualActualiza(String ruc, int id);
 
 }
