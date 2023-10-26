@@ -243,8 +243,8 @@
 </div>
 
 
-
 <script type="text/javascript">
+
 
 $.getJSON("listaTipoSala", {}, function(data){
 	$.each(data, function(i,item){
@@ -295,13 +295,25 @@ function agregarGrilla(lista){
 				{data: function(row, type, val, meta){
 					var salida='<button type="button" style="width: 90px" class="btn btn-info btn-sm" onclick="editar(\''+row.idSala+ '\',\'' + row.numero +'\',\'' + row.piso  +'\',\'' + row.numAlumnos + '\',\''  + row.recursos + '\',\'' + row.estado +'\',\'' + row.tipoSala.idDataCatalogo + '\',\'' + row.sede.idDataCatalogo + '\')">Editar</button>';
 					return salida;
-				},className:'text-center'},	
+				},className:'text-center'},
 				{data: function(row, type, val, meta){
 				    var salida='<button type="button" style="width: 90px" class="btn btn-warning btn-sm" onclick="accionEliminar(\'' + row.idSala + '\')">'+ (row.estado == 1? 'Activo':'Inactvo') +  '</button>';
 					return salida;
 				},className:'text-center'},										
 			]                                     
 	    });
+}
+
+
+
+function editar(idSala, numero, piso, numAlumnos, recursos, estado, tipoSala, sede) {
+    $('#id_ID').val(id);
+    $('#id_act_numero').val(numero);
+    $('#id_act_piso').val(piso);
+    $('#id_act_cantAlumnos').val(numAlumnos); 
+    $('#id_act_recursos').val(recursos);
+    $('#id_act_tipo').val(tipoSala);
+    $('#id_act_sede').val(sede);
 }
 
 function accionEliminar(id){	
@@ -317,18 +329,6 @@ function accionEliminar(id){
           }
      });
 }
-
-
-function editar(idSala, numero, piso, numAlumnos, recursos, tipoSala, sede) {
-    $('#id_ID').val(id);
-    $('#id_act_numero').val(numero);
-    $('#id_act_piso').val(piso);
-    $('#id_act_cantAlumnos').val(numAlumnos); 
-    $('#id_act_recursos').val(recursos);
-    $('#id_act_tipo').val(tipoSala);
-    $('#id_act_sede').val(sede);
-}
-
 function limpiarFormulario(){	
 	$('#id_ID').val('');
 	$('#id_numero').val('');
@@ -339,6 +339,7 @@ function limpiarFormulario(){
 	$('#id_sede').val('');
 }
 
+////////////////////REGISTRAR/////////////////
 
 $("#id_btn_registra").click(function(){
 	var validator = $('#id_form_registra').data('bootstrapValidator');
@@ -364,7 +365,8 @@ $("#id_btn_registra").click(function(){
     }
 });
 
-<script type="text/javascript">
+
+////////////////////ACTUALIZAR/////////////////
 $("#id_btn_actualiza").click(function(){
 	var validator = $('#id_form_actualiza').data('bootstrapValidator');
     validator.validate();
