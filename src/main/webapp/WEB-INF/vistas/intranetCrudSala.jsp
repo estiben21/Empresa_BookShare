@@ -68,7 +68,7 @@
 					</div>	
 					
 					
-					 <div class="modal fade" id="id_div_modal_registra" >
+<div class="modal fade" id="id_div_modal_registra" >
 			<div class="modal-dialog" style="width: 60%">
 		
 				<!-- Modal content-->
@@ -148,6 +148,7 @@
 		</div>
 	</div>
 </div>
+
 <div class="modal fade" id="id_div_modal_actualiza" >
 			<div class="modal-dialog" style="width: 60%">
 		
@@ -158,7 +159,7 @@
 					<h4><span class="glyphicon glyphicon-ok-sign"></span> Registro de Sala</h4>
 				</div>
 				<div class="modal-body" style="padding: 20px 10px;">
-						<form id="id_form_registra" accept-charset="UTF-8" class="form-horizontal"     method="post">
+						<form id="id_form_actualiza" accept-charset="UTF-8" class="form-horizontal"     method="post">
 		                    <div class="panel-group" id="steps">
 		                        <!-- Step 1 -->
 		                        <div class="panel panel-default">
@@ -287,8 +288,8 @@ function agregarGrilla(lista){
 				{data: "numAlumnos"},
 				{data: "recursos"},
 				{data: "estado"},
-				{data: "tipoSala"},
-				{data: "sede"},
+				{data: "tipoSala.descripcion"},
+				{data: "sede.descripcion"},
 				{data: function(row, type, val, meta){
 					var salida='<button type="button" style="width: 90px" class="btn btn-info btn-sm" onclick="editar(\''+row.idSala+ '\',\'' + row.numero +'\',\'' + row.piso  +'\',\'' + row.numAlumnos + '\',\''  + row.recursos + '\',\'' + row.estado +'\',\'' + row.tipoSala.idDataCatalogo + '\',\'' + row.sede.idDataCatalogo + '\')">Editar</button>';
 					return salida;
@@ -316,7 +317,7 @@ function accionEliminar(id){
 }
 
 
-function editar(id,numero,piso,numAlumnos,recursos, tipoSala,sede){	
+function editar(id,numero,piso,numAlumnos,recursos,tipoSala,sede){	
 	$('#id_ID').val(id);
 	$('#id_act_numero').val(numero);
 	$('#id_act_piso').val(piso);
@@ -368,7 +369,7 @@ $("#id_btn_actualiza").click(function(){
     if (validator.isValid()) {
         $.ajax({
           type: "POST",
-          url: "actualizaCrudModalidad", 
+          url: "actualizaCrudSala", 
           data: $('#id_form_actualiza').serialize(),
           success: function(data){
         	  agregarGrilla(data.lista);
