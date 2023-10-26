@@ -371,6 +371,33 @@ $(document).ready(function() {
                         regexp: {
                             regexp: /^[a-zA-Z\s]+$/, 
                             message: 'Ingresar nombres con caracteres alfabéticos'
+                        },
+                        remote: {
+                            delay: 100,
+                            url: 'buscaAlumnoPorNombreApellidoId_btnRgistrar', 
+                            message: 'El alumno ya existe', //Ya existe una alumno con ese nombre y apellido
+                            data: {
+                                nombres: function() {
+                                    return $('#id_reg_nombres').val();
+                                },
+                                apellidos: function() {
+                                    return $('#id_reg_apellidos').val();
+                                },
+                                id: function() {
+                                    return $('#id_ID').val();
+                                },
+                            },
+                            //
+                            onSuccess: function (e, data) {
+                                // Eliminar el error en el campo de nombres
+                                $('#id_form_registra').bootstrapValidator('updateStatus', 'apellidos', 'VALID');
+                            },
+                            // Función para manejar el error remoto
+                            onError: function (e, data) {
+                               
+                			// Establecer un error en el campo de nombres
+                                $('#id_form_registra').bootstrapValidator('updateStatus', 'apellidos', 'INVALID', 'remote');
+                            }
                         }
                     }
                 },
@@ -388,7 +415,34 @@ $(document).ready(function() {
                         regexp: {
                             regexp: /^[a-zA-Z\s]+$/,
                             message: 'Ingresar apellidos con caracteres alfabéticos'
-                    	}
+                    	},
+                    	remote: {
+                            delay: 100,
+                            url: 'buscaAlumnoPorNombreApellidoId_btnRgistrar', 
+                            message: 'El alumno ya existe', //Ya existe una alumno con ese nombre y apellido
+                            data: {
+                                nombres: function() {
+                                    return $('#id_reg_nombres').val();
+                                },
+                                apellidos: function() {
+                                    return $('#id_reg_apellidos').val();
+                                },
+                                id: function() {
+                                    return $('#id_ID').val();
+                                },
+                            },
+                            //
+                            onSuccess: function (e, data) {
+                                // Eliminar el error en el campo de nombres
+                                $('#id_form_registra').bootstrapValidator('updateStatus', 'nombres', 'VALID');
+                            },
+                            // Función para manejar el error remoto
+                            onError: function (e, data) {
+                               
+                			// Establecer un error en el campo de nombres
+                                $('#id_form_registra').bootstrapValidator('updateStatus', 'nombres', 'INVALID', 'remote');
+                            }
+                        }
                     }
                 },
                 telefono:{
@@ -546,22 +600,32 @@ $(document).ready(function() {
                         regexp: /^[a-zA-Z\s]+$/, 
                         message: 'Ingresar nombres con caracteres alfabéticos'
                     },
-                    remote :{
-                        delay	: 100,
-                        url		: 'buscaAlumnoPorNombreApellidoId_btnActualizar', 
-                        message	: 'El alumno ya existe',
+                    remote: {
+                        delay: 100,
+                        url: 'buscaAlumnoPorNombreApellidoId_btnRgistrar', 
+                        message: 'El alumno ya existe', //Ya existe una alumno con ese nombre y apellido
                         data: {
-                        	nombres: function() {
-                        		return $('#id_act_nombres').val();
-                        	},
-                        	apellidos: function() {
-                        		return $('#id_act_apellidos').val();
-                        	},
-                        	id: function() {
-                        		return $('#id_ID').val();
-                        	},
-						}
-                        
+                            nombres: function() {
+                                return $('#id_reg_nombres').val();
+                            },
+                            apellidos: function() {
+                                return $('#id_reg_apellidos').val();
+                            },
+                            id: function() {
+                                return $('#id_ID').val();
+                            },
+                        },
+                        //
+                        onSuccess: function (e, data) {
+                            // Eliminar el error en el campo de nombres
+                            $('#id_form_actualiza').bootstrapValidator('updateStatus', 'apellidos', 'VALID');
+                        },
+                        // Función para manejar el error remoto
+                        onError: function (e, data) {
+                           
+            			// Establecer un error en el campo de nombres
+                            $('#id_form_actualiza').bootstrapValidator('updateStatus', 'apelidos', 'INVALID', 'remote');
+                        }
                     }
                 }
             },
@@ -595,6 +659,17 @@ $(document).ready(function() {
                                 return $('#id_ID').val();
                             },
                         },
+                        //
+                        onSuccess: function (e, data) {
+                            // Eliminar el error en el campo de nombres
+                            $('#id_form_actualiza').bootstrapValidator('updateStatus', 'nombres', 'VALID');
+                        },
+                        // Función para manejar el error remoto
+                        onError: function (e, data) {
+                           
+            			// Establecer un error en el campo de nombres
+                            $('#id_form_actualiza').bootstrapValidator('updateStatus', 'nombres', 'INVALID', 'remote');
+                        }
                     }
                 }
             },

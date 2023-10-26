@@ -68,6 +68,9 @@ public class AlumnoCrudController {
 		return map;
 	}
 	
+	
+	
+	
 	/** -------------- Método ACTUALIZA / del btn EDITAR -------------- **/
 	@PostMapping("/actualizaCrudAlumno")
 	@ResponseBody
@@ -94,8 +97,6 @@ public class AlumnoCrudController {
 		return map;
 	}
 
-	
-
 	@GetMapping("/buscaAlumnoPorNombreApellidoId_btnActualizar")
 	@ResponseBody
 	public String buscaAlumno(String nombres, String apellidos, int id) {
@@ -107,6 +108,17 @@ public class AlumnoCrudController {
 		}
 	}
 	
+	
+	@GetMapping("/buscaAlumnoPorNombreApellidoId_btnRgistrar")
+	@ResponseBody
+	public String buscaAlumno(String nombres, String apellidos) {
+		List<Alumno> listaPorNombreApellido = alumnoService.listaPorNombreApellidoIgualReg(nombres, apellidos);
+		if (CollectionUtils.isEmpty(listaPorNombreApellido)) {
+			return "{\"valid\" : true }";
+		} else {
+			return "{\"valid\" : false }";
+		}
+	}
 	
 	@GetMapping("/buscaAlumnoPorDniId_Actualizar")
 	@ResponseBody
