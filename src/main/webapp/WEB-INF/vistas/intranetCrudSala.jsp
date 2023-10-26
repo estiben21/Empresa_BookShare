@@ -364,7 +364,7 @@ $("#id_btn_registra").click(function(){
     }
 });
 
-
+<script type="text/javascript">
 $("#id_btn_actualiza").click(function(){
 	var validator = $('#id_form_actualiza').data('bootstrapValidator');
     validator.validate();
