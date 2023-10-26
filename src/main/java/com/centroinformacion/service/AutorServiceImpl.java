@@ -43,6 +43,11 @@ public class AutorServiceImpl implements AutorService{
 	public List<Autor> listaPorNombreApellidoIgual(String nombres, String apellidos) {
 		return repository.listaAutorNombreApellidoIgual(nombres, apellidos);
 	}
+	@Override
+	public List<Autor> listaPorTelefonoIgual(String telefono, int idAutor) {
+		return repository.listaAutorTelefonoIgualActualiza(telefono, idAutor);
+	}
+
 	
 	
 }

@@ -21,6 +21,7 @@ public interface AutorRepository extends JpaRepository<Autor, Integer>{
 	@Query("select a from Autor a where a.nombres = ?1 and a.apellidos = ?2")
 	public List<Autor> listaAutorNombreApellidoIgual(String nombres, String apellidos);
 
-	
+	@Query("select a from Autor a where a.telefono = ?1 and a.idAutor != ?2")
+	public List<Autor> listaAutorTelefonoIgualActualiza(String telefono,int id);
 
 }
