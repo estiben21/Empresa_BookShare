@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.centroinformacion.entity.DataCatalogo;
 import com.centroinformacion.entity.Libro;
 import com.centroinformacion.entity.Usuario;
 import com.centroinformacion.service.LibroService;
@@ -42,8 +43,12 @@ public class LibroCrudController {
 		obj.setUsuarioRegistro(objUsuario);
 		obj.setUsuarioActualiza(objUsuario);
 		
+		DataCatalogo objData = new DataCatalogo();
+		objData.setIdDataCatalogo(27);
+		obj.setEstadoPrestamo(objData);
 		
-		Libro objSalida = libroService.insertaLibro(obj);
+		
+		Libro objSalida = libroService.insertaRegistraLibro(obj);
 		if (objSalida == null) {
 			map.put("mensaje", "Error en el registro");
 		} else {
@@ -65,7 +70,12 @@ public class LibroCrudController {
 		obj.setEstado(optLibro.get().getEstado());
 		obj.setUsuarioRegistro(optLibro.get().getUsuarioRegistro());
 		obj.setUsuarioActualiza(optLibro.get().getUsuarioActualiza());
-		Libro objSalida = libroService.actualizaLibro(obj);
+		
+		DataCatalogo objData = new DataCatalogo();
+		objData.setIdDataCatalogo(27);
+		obj.setEstadoPrestamo(objData);
+		
+		Libro objSalida = libroService.insertaActualizaLibro(obj);
 		if (objSalida == null) {
 			map.put("mensaje", "Error en actualizar");
 		} else {
@@ -82,7 +92,7 @@ public class LibroCrudController {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		Libro objLibro= libroService.buscaLibro(id).get();  
 		objLibro.setEstado( objLibro.getEstado() == 1 ? 0 : 1);
-		Libro objSalida = libroService.actualizaLibro(objLibro);
+		Libro objSalida = libroService.insertaActualizaLibro(objLibro);
 		if (objSalida == null) {
 			map.put("mensaje", "Error en actualizar");
 		} else {
@@ -95,7 +105,7 @@ public class LibroCrudController {
 	@GetMapping("/buscaPorTituloCrudLibro")
 	@ResponseBody
 	public String validaTitulo(String titulo) {
-		List<Libro> listaLibro = libroService.listaPorTituloLike(titulo);
+		List<Libro> listaLibro = libroService.listaPorTitulo(titulo);
 		if (CollectionUtils.isEmpty(listaLibro)) {
 			return "{\"valid\" : true }";
 		} else {

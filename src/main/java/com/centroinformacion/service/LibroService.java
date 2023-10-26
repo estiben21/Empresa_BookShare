@@ -7,10 +7,9 @@ import com.centroinformacion.entity.Libro;
 
 public interface LibroService {
 	public abstract Libro insertaActualizaLibro(Libro obj);
-	public abstract boolean existeLibroConSerie(String serie);
-	
-	public abstract Libro actualizaLibro(Libro obj);
-	public abstract Libro insertaLibro(Libro obj);
+	public abstract Libro insertaRegistraLibro(Libro obj);
+	public abstract List<Libro> listaPorTitulo(String titulo);
 	public abstract List<Libro> listaPorTituloLike(String filtro);
+	public abstract boolean existeLibroConSerie(String serie);
 	public abstract Optional<Libro>buscaLibro(int idLibro);
 }
