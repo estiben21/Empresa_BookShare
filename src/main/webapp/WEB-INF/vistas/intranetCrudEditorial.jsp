@@ -368,9 +368,17 @@ $("#id_btn_actualiza").click(function(){
         
     }
 });
+<!--ACCION LIMPIAR-->
+function limpiarFormulario(){	
+	$('#id_reg_razonSocial').val('');
+	$('#id_reg_direccion').val('');
+	$('#id_reg_ruc').val('');
+	$('#id_reg_fechaCreacion').val('');
+	$('#id_reg_pais').val(' ');
+}
 <!--ACCION EDITAR-->
-function editar(id,razonSocial,direccion,ruc,fechaCreacion,idPais){	
-	$('#id_ID').val(id);
+function editar(idEditorial,razonSocial,direccion,ruc,fechaCreacion,idPais){	
+	$('#id_ID').val(idEditorial);
 	$('#id_act_razonSocial').val(razonSocial);
 	$('#id_act_direccion').val(direccion);
 	$('#id_act_ruc').val(ruc);
@@ -378,13 +386,7 @@ function editar(id,razonSocial,direccion,ruc,fechaCreacion,idPais){
 	$('#id_act_pais').val(idPais);
 	$('#id_div_modal_actualiza').modal("show");
 }
-<!--ACCION LIMPIAR-->
-function limpiarFormulario(){	
-	$('#id_reg_razonSocial').val('');
-	$('#id_reg_direccion').val('');
-	$('#id_reg_fechaCreacion').val('');
-	$('#id_reg_pais').val(' ');
-}
+
 
 <!--VALIDACIONES REGISTRAR-->
 $(document).ready(function(){
@@ -530,7 +532,7 @@ $(document).ready(function(){
 	                    ruc: function() {
 	                        return $('#id_act_ruc').val();
 	                    },
-	                    ruc: function() {
+	                    id: function() {
 	                        return $('#id_ID').val();
 	                    },
 	                },

@@ -40,7 +40,7 @@ public class EditorialRegistroController {
 		obj.setUsuarioActualiza(objUsuario);
 		
 		HashMap<String, String> map = new HashMap<String, String>();
-		Editorial objSalida = editorialService.insertaActualizaEditorial(obj);
+		Editorial objSalida = editorialService.insertaEditorial(obj);
 		if (objSalida == null) {
 			map.put("MENSAJE", "Error en el registro");
 		}else {
