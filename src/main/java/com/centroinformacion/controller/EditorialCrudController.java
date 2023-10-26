@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.centroinformacion.entity.Editorial;
@@ -52,7 +53,7 @@ public class EditorialCrudController {
 	    obj.setUsuarioActualiza(objUsuario);
 	    
 	    HashMap<String, Object> map = new HashMap<String, Object>();
-	    Editorial objSalida = editorialService.insertaActualizaEditorial(obj);
+	    Editorial objSalida = editorialService.insertaEditorial(obj);
 	    if (objSalida == null) {
 	        map.put("MENSAJE", "Error en el registro");
 	        
@@ -83,7 +84,7 @@ public class EditorialCrudController {
 		obj.setEstado(optEditorial.get().getEstado());
 		obj.setFechaActualizacion(new Date());
 		
-		Editorial objSalida = editorialService.insertaActualizaEditorial(obj);
+		Editorial objSalida = editorialService.actualizaEditorial(obj);
 		if (objSalida == null) {
 			map.put("MENSAJE", "Error en actualizar");
 		} else {
@@ -97,27 +98,43 @@ public class EditorialCrudController {
 	
 	//========================================VALIDACIONES
 //PARA EL REGISTRAR
-	@GetMapping("/buscaEditorialPorRucRegistra")
+
+	@GetMapping("/buscaEditorialPorRuc")
 	@ResponseBody
 	public String validaRuc(String ruc) {
-		List<Editorial> lst = editorialService.listaPorRucIgualRegistra(ruc);
-		if(CollectionUtils.isEmpty(lst)) {
-			return "{\"valid\":true}";
-		}else {     
-			return "{\"valid\":false}";
+		List<Editorial> lstEditorial = editorialService.listaPorRuc(ruc);
+		if (CollectionUtils.isEmpty(lstEditorial)) {
+			return "{\"valid\" : true }";
+		} else {
+			return "{\"valid\" : false }";
 		}
 	}
 	
-	//PARA EL ACTUALIZAR
+
+	@GetMapping("/buscaEditorialPorRucActualiza")
+	@ResponseBody
+	public String validaRuc(String ruc,int id) {
+		List<Editorial> lstEditorial = editorialService.listaPorRucIgualActualiza(ruc,id);
+		if (CollectionUtils.isEmpty(lstEditorial)) {
+			return "{\"valid\" : true }";
+		} else {
+			return "{\"valid\" : false }";
+		}
+	}
+	
+	/*PARA EL ACTUALIZAR
 	@GetMapping("/buscaEditorialPorRucActualiza")
 	@ResponseBody
 	public String validaRucActualiza(String ruc, int id) {
-		List<Editorial> lst = editorialService.listaPorRucIgualActualiza(ruc, id);
-		if(CollectionUtils.isEmpty(lst)) {
+		List<Editorial> listaPorRuc = editorialService.listaPorRucIgualActualiza(ruc, id);
+		if(CollectionUtils.isEmpty(listaPorRuc)) {
 			return "{\"valid\":true}";
 		}else {
 			return "{\"valid\":false}";
 		}
-	}
+	}*/
+	
+	
+	
 
 }

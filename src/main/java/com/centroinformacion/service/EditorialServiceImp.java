@@ -17,7 +17,7 @@ public class EditorialServiceImp implements EditorialService {
 	private EditorialRepository repository;
 
 	@Override
-	public Editorial insertaActualizaEditorial(Editorial obj) {
+	public Editorial insertaEditorial(Editorial obj) {
 		return repository.save(obj);
 	}
 
@@ -44,8 +44,13 @@ public class EditorialServiceImp implements EditorialService {
 	//BUSCAR EDITORIAL
 
 	@Override
-	public Optional<Editorial> buscaEditorial(int idEditorial) {
-		return repository.findById(idEditorial);
+	public Optional<Editorial> buscaEditorial(int id) {
+		return repository.findById(id);
+	}
+
+	@Override
+	public Editorial actualizaEditorial(Editorial obj) {
+		return repository.save(obj);
 	}
 	
 }

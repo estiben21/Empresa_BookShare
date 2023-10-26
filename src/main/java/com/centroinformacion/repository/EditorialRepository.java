@@ -19,7 +19,7 @@ public interface EditorialRepository extends JpaRepository<Editorial, Integer>{
 	public List<Editorial> findByRucIgnoreCase(String ruc);
 	
 	//consultar ------------------ ?1 = UN PARAMETRO 
-	@Query("select p from Editorial p where p.razonSocial like ?1") //JPQL, se hace con tablas/clases/atributos
+	@Query("select p from Editorial p where p.razonSocial LIKE %?1%") //JPQL, se hace con tablas/clases/atributos
 	public List<Editorial> listaPorRazonSocialLike(String filtro);
 	
 	
@@ -29,7 +29,7 @@ public interface EditorialRepository extends JpaRepository<Editorial, Integer>{
 		public List<Editorial> listaPorRucIgualRegistra(String ruc);
 		
 		// VALIDACION ACTUALIZAR
-		@Query("select x from Editorial x where x.ruc like ?1 and x.idEditorial !=?2")
+		@Query("select x from Editorial x where x.ruc = ?1 and x.idEditorial !=?2")
 		public List<Editorial> listaPorRucIgualActualiza(String ruc,int id);
 
 }

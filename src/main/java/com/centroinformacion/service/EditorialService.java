@@ -7,15 +7,18 @@ import com.centroinformacion.entity.Editorial;
 
 
 public interface EditorialService {
-
-	public abstract Editorial insertaActualizaEditorial(Editorial obj);
+//REGISTRAR
+	public abstract Editorial insertaEditorial(Editorial obj);
 	
-	public abstract Optional<Editorial> buscaEditorial(int idEditorial);
+	public abstract Optional<Editorial> buscaEditorial(int id);
 //Buscar RUC
 	public abstract List<Editorial> listaPorRuc(String ruc);
 	
 	//CONSULTA
 	public abstract List<Editorial> listaPorRazonSocialLike(String filtro);
+	
+	//ACTUALIZA
+	public abstract Editorial actualizaEditorial(Editorial obj);
 	
 	//PC2 -- VALIDACIONES
 
