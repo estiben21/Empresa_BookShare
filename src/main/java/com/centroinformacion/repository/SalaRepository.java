@@ -16,10 +16,12 @@ public interface SalaRepository extends JpaRepository<Sala, Integer>{
 
 	
 	@Query("select x from Sala x where x.numero = ?1")
-	public List<Sala> listaPorNumeroIgualRegistra(String nombre);
+	public List<Sala> listaPorNumeroIgualRegistra(String numero);
 	
-	@Query("select x from Sala x where x.numero = ?1 and x.idSala != ?2 ")
-	public List<Sala> listaPorNumeroIgualActualiza(String nombre, int id);
+	@Query("select x from Sala x where x.numero = ?1")
+	public List<Sala> listaPorNumeroIgualActualiza(String numero);
+
+	
 
 
 }

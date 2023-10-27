@@ -59,20 +59,25 @@ public class SalaCrudController {
 	
 	@PostMapping("/actualizaCrudSala")
 	@ResponseBody
-	public Map<?, ?> actualiza(Sala obj) {
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		  
-		Optional<Sala> optSala= salaService.buscarSala(obj.getIdSala());
+	@GetMapping
+	public Map<?, ?> actualiza(Sala obj, HttpSession session) {
+	    HashMap<String, Object> map = new HashMap<String, Object>();
+	    
+		Optional<Sala> optSala = salaService.buscarSala(obj.getIdSala());
+		Usuario objUsuario = (Usuario) session.getAttribute("objUsuario");
+		obj.setUsuarioRegistro(objUsuario);
+		obj.setUsuarioActualiza(objUsuario);
 		obj.setFechaRegistro(optSala.get().getFechaRegistro());
-		obj.setFechaActualizacion(optSala.get().getFechaActualizacion());
 		obj.setEstado(optSala.get().getEstado());
-		obj.setUsuarioRegistro(optSala.get().getUsuarioRegistro());
-		obj.setUsuarioActualiza(optSala.get().getUsuarioActualiza());
+		obj.setFechaActualizacion(new Date());
+
+		
+
 		Sala objSalida = salaService.insertaActualizaSala(obj);
 		if (objSalida == null) {
 			map.put("mensaje", "Error en actualizar");
 		} else {
-			List<Sala> lista = salaService.listPorNumerolike("%");
+			List<Sala> lista = salaService.listaPorNumeroIgualActualiza("%");
 			map.put("lista", lista);
 			map.put("mensaje", "Actualización exitosa");
 		}
@@ -109,8 +114,8 @@ public class SalaCrudController {
 	
 	@GetMapping("/buscaSalaPorNumeroRegistra")
 	@ResponseBody
-	public String validaNumeroRegistra(String nombre) {
-		List<Sala> lst = salaService.listaPorNumeroIgualRegistra(nombre);
+	public String validaNumeroRegistra(String numero) {
+		List<Sala> lst = salaService.listaPorNumeroIgualRegistra(numero);
 		if(CollectionUtils.isEmpty(lst)) {
 			return "{\"valid\":true}";
 		}else {
@@ -118,5 +123,17 @@ public class SalaCrudController {
 		}
 	}
 	
+	@GetMapping("/buscaPorNumeroSalaActualiza")
+	@ResponseBody
+	public String validaNumeroActualiza(String numero) {
+	        List<Sala> lst = salaService.listaPorNumeroIgualActualiza(numero);
+	        if(CollectionUtils.isEmpty(lst))  {
+	            return "{\"valid\":true}";
+	        } else {
+	            return "{\"valid\":false}";
+	        }
+	    } 
+	}
+
 	
-}
+
