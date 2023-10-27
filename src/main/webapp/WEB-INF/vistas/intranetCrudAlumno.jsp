@@ -30,8 +30,8 @@
 <div class="container" style="margin-top: 1%">
 			<!------------------------------ Cabecera -->
 			<div class="row" style="height: 70px">
-				<div class="col-md-2" >
-						<input class="form-control" id="id_txt_filtro"  name="filtro" placeholder="Ingrese el nombre" type="text" maxlength="30"/>
+				<div class="col-md-5" >
+						<input class="form-control" id="id_txt_filtro"  name="filtro" placeholder="Ingrese el nombre y/o apellido" type="text" maxlength="30"/>
 				</div>
 				<div class="col-md-2" >
 					<button type="button" class="btn btn-primary" id="id_btn_filtrar" style="width: 150px">FILTRA</button>
@@ -369,13 +369,13 @@ $(document).ready(function() {
                             message: 'El nombre es de 2 a 40 caracteres'
                         },
                         regexp: {
-                            regexp: /^[a-zA-Z\s]+$/, 
+                            regexp: /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/, 
                             message: 'Ingresar nombres con caracteres alfabéticos'
                         },
                         remote: {
                             delay: 100,
-                            url: 'buscaAlumnoPorNombreApellidoId_btnRgistrar', 
-                            message: 'El alumno ya existe', //Ya existe una alumno con ese nombre y apellido
+                            url: 'buscaAlumnoPorNombreApellido_btnRegistrar', 
+                            message: 'Ya existe un alumno con el mismo nombre y apellido', 
                             data: {
                                 nombres: function() {
                                     return $('#id_reg_nombres').val();
@@ -383,22 +383,8 @@ $(document).ready(function() {
                                 apellidos: function() {
                                     return $('#id_reg_apellidos').val();
                                 },
-                                id: function() {
-                                    return $('#id_ID').val();
-                                },
-                            },
-                            //
-                            onSuccess: function (e, data) {
-                                // Eliminar el error en el campo de nombres
-                                $('#id_form_registra').bootstrapValidator('updateStatus', 'apellidos', 'VALID');
-                            },
-                            // Función para manejar el error remoto
-                            onError: function (e, data) {
-                               
-                			// Establecer un error en el campo de nombres
-                                $('#id_form_registra').bootstrapValidator('updateStatus', 'apellidos', 'INVALID', 'remote');
                             }
-                        }
+                        },
                     }
                 },
                 apellidos:{
@@ -413,13 +399,13 @@ $(document).ready(function() {
                             message: 'Los apellidos son de 2 a 40 caracteres '
                         },
                         regexp: {
-                            regexp: /^[a-zA-Z\s]+$/,
+                            regexp: /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/,
                             message: 'Ingresar apellidos con caracteres alfabéticos'
                     	},
                     	remote: {
                             delay: 100,
-                            url: 'buscaAlumnoPorNombreApellidoId_btnRgistrar', 
-                            message: 'El alumno ya existe', //Ya existe una alumno con ese nombre y apellido
+                            url: 'buscaAlumnoPorNombreApellido_btnRegistrar', 
+                            message: 'Ya existe un alumno con el mismo nombre y apellido', //Ya existe una alumno con ese nombre y apellido
                             data: {
                                 nombres: function() {
                                     return $('#id_reg_nombres').val();
@@ -427,22 +413,8 @@ $(document).ready(function() {
                                 apellidos: function() {
                                     return $('#id_reg_apellidos').val();
                                 },
-                                id: function() {
-                                    return $('#id_ID').val();
-                                },
-                            },
-                            //
-                            onSuccess: function (e, data) {
-                                // Eliminar el error en el campo de nombres
-                                $('#id_form_registra').bootstrapValidator('updateStatus', 'nombres', 'VALID');
-                            },
-                            // Función para manejar el error remoto
-                            onError: function (e, data) {
-                               
-                			// Establecer un error en el campo de nombres
-                                $('#id_form_registra').bootstrapValidator('updateStatus', 'nombres', 'INVALID', 'remote');
                             }
-                        }
+                    	},
                     }
                 },
                 telefono:{
@@ -597,19 +569,19 @@ $(document).ready(function() {
                         message: 'El nombre es de 2 a 40 caracteres'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z\s]+$/, 
+                        regexp: /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/, 
                         message: 'Ingresar nombres con caracteres alfabéticos'
                     },
                     remote: {
                         delay: 100,
-                        url: 'buscaAlumnoPorNombreApellidoId_btnRgistrar', 
+                        url: 'buscaAlumnoPorNombreApellidoId_btnActualizar', 
                         message: 'El alumno ya existe', //Ya existe una alumno con ese nombre y apellido
                         data: {
                             nombres: function() {
-                                return $('#id_reg_nombres').val();
+                                return $('#id_act_nombres').val();
                             },
                             apellidos: function() {
-                                return $('#id_reg_apellidos').val();
+                                return $('#id_act_apellidos').val();
                             },
                             id: function() {
                                 return $('#id_ID').val();
@@ -624,7 +596,7 @@ $(document).ready(function() {
                         onError: function (e, data) {
                            
             			// Establecer un error en el campo de nombres
-                            $('#id_form_actualiza').bootstrapValidator('updateStatus', 'apelidos', 'INVALID', 'remote');
+                            $('#id_form_actualiza').bootstrapValidator('updateStatus', 'apellidos', 'INVALID', 'remote');
                         }
                     }
                 }
@@ -641,7 +613,7 @@ $(document).ready(function() {
                         message: 'Los apellidos son de 2 a 40 caracteres '
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z\s]+$/,
+                        regexp: /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/,
                         message: 'Ingresar apellidos con caracteres alfabéticos'
                     },
                     remote: {
@@ -715,7 +687,7 @@ $(document).ready(function() {
                             id: function() {
                                 return $('#id_ID').val();
                             },
-                        },
+                        }, 
                     }
                 }
             },
@@ -781,6 +753,28 @@ function accionEliminar(id){
      });
 }
 
+/* VALIDACIONES NOMBRE APELLIDO ERROR SINCRONIZADO
+function handleRemoteErrorA(e, data) {
+    // Establecer un error en ambos campos
+    $('#id_form_registra').bootstrapValidator('updateStatus', 'nombres', 'INVALID', 'remote');
+    $('#id_form_registra').bootstrapValidator('updateStatus', 'apellidos', 'INVALID', 'remote');
+}
+
+function handleRemoteErrorN(e, data) {
+    // Establecer un error en ambos campos
+    $('#id_form_registra').bootstrapValidator('updateStatus', 'apellidos', 'INVALID', 'remote');
+    $('#id_form_registra').bootstrapValidator('updateStatus', 'nombres', 'INVALID', 'remote');
+}
+function handleRemoteSuccessA(e, data) {
+    // Eliminar el error en ambos campos
+    $('#id_form_registra').bootstrapValidator('updateStatus', 'nombres', 'VALID', 'remote');
+    $('#id_form_registra').bootstrapValidator('updateStatus', 'apellidos', 'VALID', 'remote');
+}
+function handleRemoteSuccessN(e, data) {
+    // Eliminar el error en ambos campos
+    $('#id_form_registra').bootstrapValidator('updateStatus', 'apellidos', 'VALID', 'remote');
+    $('#id_form_registra').bootstrapValidator('updateStatus', 'nombres', 'VALID', 'remote');
+}*/
 </script>   		
 </body>
 </html>

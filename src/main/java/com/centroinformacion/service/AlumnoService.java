@@ -21,16 +21,18 @@ public interface AlumnoService {
 	
 	//Validación Modal Registrar
 	public abstract List<Alumno> listaPorNombreApellidoIgualReg(String nombres, String apellidos);
+	
 	//Validación Modal Actualizar
 	public abstract List<Alumno> listaPorNombreApellidoIgualAct(String nombres, String apellidos, int id);
 	
 	
-	//Para actualizar el alumno, su ESTADO (btn Eliminar)
+	//Para actualizar datos del Alumno, su ESTADO (btn Eliminar)  y en el btn Atualizar
 	public abstract Alumno actualizaAlumno(Alumno obj);
-	//Para eliminar por ID
+	
+	//Para eliminar por ID o actualizar por ID
 	public abstract Optional<Alumno> buscaAlumno(int idAlumno);
 	
 	
-	//Validar que en el Actualizar no se pueda agregar un Alumno con un ID que ya existe
-		public abstract List<Alumno> listaPorDniAlumnoExistenteActualiza(String dni, int id);
+	//Validar que en el Actualizar no se pueda agregar un Alumno con un DNI que ya existe
+	public abstract List<Alumno> listaPorDniAlumnoExistenteActualiza(String dni, int id);
 }
