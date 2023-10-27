@@ -245,6 +245,16 @@
 <script type="text/javascript">
 <!-- SCRIPT -->
 
+<!--AUTO CLICK - FILTRO-->
+$(document).ready(function() { 
+
+	$.getJSON("consultaCrudEditorial",{"filtro":""}, function (listaEditorial){ 
+
+	agregarGrilla(listaEditorial); 
+
+	}); 
+
+	}); 
 
 $.getJSON("listaPais", {}, function(data){
 	$.each(data, function(i,item){
