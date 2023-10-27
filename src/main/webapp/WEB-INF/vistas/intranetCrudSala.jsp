@@ -1,3 +1,4 @@
+
 <jsp:include page="intranetValida.jsp" />
 <!DOCTYPE html>
 <html lang="esS" >
@@ -342,7 +343,7 @@ function limpiarFormulario(){
 	$('#id_sede').val('');
 }
 
-////////////////////REGISTRAR/////////////////
+//////////////REGISTRAR///////////////
 
 $("#id_btn_registra").click(function(){
 	var validator = $('#id_form_registra').data('bootstrapValidator');
@@ -369,7 +370,7 @@ $("#id_btn_registra").click(function(){
 });
 
 
-////////////////////ACTUALIZAR/////////////////
+////////////////////ACTUALIZAR///////////////
 $("#id_btn_actualiza").click(function(){
 	var validator = $('#id_form_actualiza').data('bootstrapValidator');
     validator.validate();
