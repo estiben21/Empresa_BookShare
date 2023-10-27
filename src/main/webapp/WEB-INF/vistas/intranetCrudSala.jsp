@@ -390,9 +390,7 @@ $("#id_btn_actualiza").click(function(){
     }
 });
 
-</script>
 
-<script type="text/javascript">
     	$('#id_form_registra').bootstrapValidator({
     	    message: 'This value is not valid',
     	    feedbackIcons: {
@@ -478,9 +476,7 @@ $("#id_btn_actualiza").click(function(){
     	 });
     	
   
-    	</script>
-
-    	<script type="text/javascript"> 
+    	
     	$('#id_form_actualiza').bootstrapValidator({
     	    message: 'This value is not valid',
     	    feedbackIcons: {
@@ -514,6 +510,7 @@ $("#id_btn_actualiza").click(function(){
                         } 
                     }
                 },
+                
     	    	 piso:{
     	             selector: "#id_act_piso",
     	             validators:{

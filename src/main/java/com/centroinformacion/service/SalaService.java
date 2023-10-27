@@ -18,5 +18,5 @@ public interface SalaService {
 	
 	
 	public abstract List<Sala> listaPorNumeroIgualRegistra(String numero);
-	public abstract List<Sala> listaPorNumeroIgualActualiza(String numero, int idSala);
+	public abstract List<Sala> listaPorNumeroIgualActualiza(String numero);
 }

@@ -43,8 +43,8 @@ public class SalaServiceImp implements SalaService {
 	}
 
 	@Override
-	public List<Sala> listaPorNumeroIgualActualiza(String numero,int idSala) {
-		return repository.listaPorNumeroIgualActualiza(numero, idSala);
+	public List<Sala> listaPorNumeroIgualActualiza(String numero) {
+		return repository.listaPorNumeroIgualActualiza(numero);
 
 	}
 	
