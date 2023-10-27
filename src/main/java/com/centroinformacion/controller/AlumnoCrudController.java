@@ -69,6 +69,17 @@ public class AlumnoCrudController {
 	}
 	
 	
+	//---- NO permitir el registro de un Alumno cuyo nombre y apellido ya estè registrado -----
+	@GetMapping("/buscaAlumnoPorNombreApellido_btnRegistrar")
+	@ResponseBody
+	public String buscaAlumno(String nombres, String apellidos) {
+		List<Alumno> listaPorNombreApellido = alumnoService.listaPorNombreApellidoIgualReg(nombres, apellidos);
+		if (CollectionUtils.isEmpty(listaPorNombreApellido)) {
+			return "{\"valid\" : true }";
+		} else {
+			return "{\"valid\" : false }";
+		}
+	}
 	
 	
 	/** -------------- Método ACTUALIZA / del btn EDITAR -------------- **/
@@ -97,6 +108,7 @@ public class AlumnoCrudController {
 		return map;
 	}
 
+	//---- NO permitir el registro de un Alumno cuyo nombre y apellido, con el ID ya estè registrado -----
 	@GetMapping("/buscaAlumnoPorNombreApellidoId_btnActualizar")
 	@ResponseBody
 	public String buscaAlumno(String nombres, String apellidos, int id) {
@@ -109,16 +121,7 @@ public class AlumnoCrudController {
 	}
 	
 	
-	@GetMapping("/buscaAlumnoPorNombreApellidoId_btnRgistrar")
-	@ResponseBody
-	public String buscaAlumno(String nombres, String apellidos) {
-		List<Alumno> listaPorNombreApellido = alumnoService.listaPorNombreApellidoIgualReg(nombres, apellidos);
-		if (CollectionUtils.isEmpty(listaPorNombreApellido)) {
-			return "{\"valid\" : true }";
-		} else {
-			return "{\"valid\" : false }";
-		}
-	}
+	
 	
 	@GetMapping("/buscaAlumnoPorDniId_Actualizar")
 	@ResponseBody

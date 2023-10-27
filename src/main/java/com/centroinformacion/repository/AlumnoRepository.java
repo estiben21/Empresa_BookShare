@@ -16,18 +16,16 @@ public interface AlumnoRepository extends JpaRepository<Alumno, Integer>{
 	//------------------------------CONSULTAS USANDO QUERY _CP2-------------------------------------------
 	//PASO1: ?1 => primer paràmetro
 	@Query("select a from Alumno a where a.nombres like ?1 or a.apellidos like ?1")
-	//PASO2:
+	//PASO2: Crear mètodo con paràmetro para el filtro ?1
 	public List<Alumno> listaPorNombresOApellidos(String filtro);
 	
 	@Query("select a from Alumno a where a.nombres like ?1 and a.apellidos like ?2")
-	//PASO2:
 	public List<Alumno> listaPorNombreApellidoIgualRegistra(String nombre, String apellido);
 	
 	@Query("select a from Alumno a where a.nombres like ?1 and a.apellidos like ?2 and a.idAlumno !=?3")
-	//PASO2:
 	public List<Alumno> listaPorNombreApellidoIgualActualiza(String nombre, String apellido, int id);
 	
 	@Query("select a from Alumno a where a.dni like ?1 and a.idAlumno !=?2")
-	//Validar que en el Actualizar no se pueda agregar un Alumno con un ID que ya existe
+	//Para Validar que no se pueda registrar un Alumno con un DNI que ya exista en otro registro (btnActualizar)
 	public abstract List<Alumno> listaPorDniAlumnoExistenteActualiza(String dni, int id);
 }
