@@ -103,8 +103,8 @@ public class SalaCrudController {
 	
 	@GetMapping("/buscaPorNumeroCrudSala")
 	@ResponseBody
-	public String validaNombre(String nombre) {
-		List<Sala> listaSala = salaService.listaPorNumero(nombre);
+	public String validaNombre(String numero) {
+		List<Sala> listaSala = salaService.listaPorNumero(numero);
 		if (CollectionUtils.isEmpty(listaSala)) {
 			return "{\"valid\" : true }";
 		} else {
