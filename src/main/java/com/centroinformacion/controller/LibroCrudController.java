@@ -62,12 +62,17 @@ public class LibroCrudController {
 	
 	@PostMapping("/actualizaCrudLibro")
 	@ResponseBody
-	public Map<?, ?> actualiza(Libro obj) {
+	public Map<?, ?> actualiza(Libro obj , HttpSession session) {
+		Usuario objUsuario = (Usuario)session.getAttribute("objUsuario");
+		obj.setEstado(1);
+		obj.setFechaRegistro(new Date());
+		obj.setUsuarioRegistro(objUsuario);
+		obj.setUsuarioActualiza(objUsuario);
+		
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		  
 		Optional<Libro> optLibro= libroService.buscaLibro(obj.getIdLibro());
 		obj.setFechaRegistro(optLibro.get().getFechaRegistro());
-		obj.setFechaActualizacion(optLibro.get().getFechaActualizacion());
+		obj.setFechaActualizacion(new Date());
 		obj.setEstado(optLibro.get().getEstado());
 		obj.setUsuarioRegistro(optLibro.get().getUsuarioRegistro());
 		obj.setUsuarioActualiza(optLibro.get().getUsuarioActualiza());
@@ -89,16 +94,27 @@ public class LibroCrudController {
 	
 	@ResponseBody
 	@PostMapping("/eliminaCrudLibro")
-	public Map<?, ?> elimina(int id) {
+	public Map<?, ?> elimina(int id, HttpSession session) {
+		Usuario objUsuario = (Usuario)session.getAttribute("objUsuario");
+		
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		Libro objLibro= libroService.buscaLibro(id).get();  
-		objLibro.setEstado( objLibro.getEstado() == 1 ? 0 : 1);
-		Libro objSalida = libroService.insertaActualizaLibro(objLibro);
+		Optional<Libro> optLibro= libroService.buscaLibro(id);
+		
+		
+		if(optLibro.isPresent()) {
+			Libro objL = optLibro.get();
+			objL.setFechaActualizacion(new Date());
+			objL.setUsuarioActualiza(objUsuario);
+			objL.setEstado(objL.getEstado() == 1 ? 0 : 1);
+			Libro objSalida = libroService.insertaActualizaLibro(objL);
 		if (objSalida == null) {
 			map.put("mensaje", "Error en actualizar");
 		} else {
 			List<Libro> lista = libroService.listaPorTituloLike("%");
 			map.put("lista", lista);
+		}
+		}else {
+			map.put("mensaje", "El Libro con ID" +id + "no se encontró");
 		}
 		return map;
 	}
