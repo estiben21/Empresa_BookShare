@@ -61,7 +61,7 @@ public class RevistaCrudController {
 		  
 		Optional<Revista> optRevista= revistaService.buscaRevista(obj.getIdRevista());
 		obj.setFechaRegistro(optRevista.get().getFechaRegistro());
-		obj.setFechaActualizacion(optRevista.get().getFechaActualizacion());
+		obj.setFechaActualizacion(new Date());
 		obj.setEstado(optRevista.get().getEstado());
 		obj.setUsuarioRegistro(optRevista.get().getUsuarioRegistro());
 		obj.setUsuarioActualiza(optRevista.get().getUsuarioActualiza());
@@ -78,10 +78,19 @@ public class RevistaCrudController {
 	
 	@ResponseBody
 	@PostMapping("/eliminaCrudRevista")
-	public Map<?, ?> elimina(int id) {
+	public Map<?, ?> elimina(Revista obj , HttpSession session, int id) {
+		Usuario objUsuario = (Usuario)session.getAttribute("objUsuario");
 		HashMap<String, Object> map = new HashMap<String, Object>();
+		
 		Revista objRevista= revistaService.buscaRevista(id).get();  
+		
 		objRevista.setEstado( objRevista.getEstado() == 1 ? 0 : 1);
+		objRevista.setFechaActualizacion(new Date());
+		
+		obj.setFechaActualizacion(new Date());
+		obj.setUsuarioRegistro(objUsuario);
+		obj.setUsuarioActualiza(objUsuario);
+		
 		Revista objSalida = revistaService.actualizaRevista(objRevista);
 		if (objSalida == null) {
 			map.put("mensaje", "Error en actualizar");
