@@ -415,7 +415,6 @@ $("#id_btn_actualiza").click(function(){
         	  mostrarMensaje(MSG_ERROR);
           }
         });
-        
     }
 });
 
