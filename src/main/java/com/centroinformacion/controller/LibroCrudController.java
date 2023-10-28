@@ -99,8 +99,7 @@ public class LibroCrudController {
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		Optional<Libro> optLibro= libroService.buscaLibro(id);
-		
-		
+
 		if(optLibro.isPresent()) {
 			Libro objL = optLibro.get();
 			objL.setFechaActualizacion(new Date());
