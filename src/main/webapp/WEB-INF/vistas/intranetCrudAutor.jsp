@@ -608,7 +608,7 @@
 										},
 										remote : {
 											delay : 100,
-											url : 'buscaAutorNombreApellidoRegistro',
+											url : '/buscaAutorNombreApellidoActualiza',
 											message : 'El nombre ya existe',
 											data : {
 												'nombres' : function() {
@@ -619,7 +619,10 @@
 													return $(
 															'#id_act_apellidos')
 															.val();
-												}
+												},
+					                            'id': function() {
+					                                return $('#id_ID').val();
+					                            }
 											}
 										}
 									}
@@ -641,7 +644,7 @@
 										},
 										remote : {
 											delay : 100,
-											url : 'buscaAutorNombreApellidoRegistro',
+											url : '/buscaAutorNombreApellidoActualiza',
 											message : 'El apellido ya existe',
 											data : {
 												'nombres' : function() {
