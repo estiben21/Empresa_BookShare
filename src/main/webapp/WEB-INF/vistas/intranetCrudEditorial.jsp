@@ -50,7 +50,7 @@
 									<table id="id_table" class="table table-striped table-bordered" >
 										<thead>
 											<tr>
-												<th style="width: 5%" >ID</th>
+												<th style="width: 5%" >Código</th>
 												<th style="width: 20%">Razón Social</th>
 												<th style="width: 20%">Dirección</th>
 												<th style="width: 10%">RUC</th>

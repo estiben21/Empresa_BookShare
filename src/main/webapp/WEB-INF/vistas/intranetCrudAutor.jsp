@@ -54,12 +54,12 @@
 					<table id="id_table" class="table table-striped table-bordered">
 						<thead>
 							<tr>
-								<th style="width: 5%">ID</th>
+								<th style="width: 5%">Código</th>
 								<th style="width: 10%">Nombres</th>
 								<th style="width: 10%">Apellidos</th>
 								<th style="width: 15%">Fecha de Nacimiento</th>
 								<th style="width: 9%">Teléfono</th>
-								<th style="width: 10%">Pais</th>
+								<th style="width: 10%">País</th>
 								<th style="width: 10%">Grado</th>
 								<th style="width: 10%">Actualiza</th>
 								<th style="width: 10%">Elimina</th>

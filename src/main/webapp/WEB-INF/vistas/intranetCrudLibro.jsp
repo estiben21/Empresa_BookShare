@@ -46,7 +46,7 @@
 						<table id="id_table" class="table table-striped table-bordered" >
 							<thead>
 								<tr>
-									<th style="width: 5%" >ID</th>
+									<th style="width: 5%" >Código</th>
 									<th style="width: 25%">Título</th>
 									<th style="width: 10%">Año</th>
 									<th style="width: 10%">Serie</th>

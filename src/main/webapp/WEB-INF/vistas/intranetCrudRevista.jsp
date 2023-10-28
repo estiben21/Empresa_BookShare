@@ -47,7 +47,7 @@
 									<table id="id_table" class="table table-striped table-bordered" >
 										<thead>
 											<tr>
-												<th style="width: 5%" >ID</th>
+												<th style="width: 5%" >Código</th>
 												<th style="width: 15%">Nombre</th>
 												<th style="width: 20%">Frecuencia</th>
 												<th style="width: 10%">Fecha Creación</th>

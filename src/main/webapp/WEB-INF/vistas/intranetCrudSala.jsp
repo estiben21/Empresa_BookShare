@@ -45,10 +45,10 @@
                         <table id="id_table" class="table table-striped table-bordered" >
                             <thead>
                                 <tr>
-                                    <th style="width: 10%" >ID</th>
-                                <th style="width: 10%">Numero</th>
+                                <th style="width: 10%" >Código</th>
+                                <th style="width: 10%">Número</th>
                                 <th style="width: 10%">Piso</th>
-                                <th style="width: 20%">Numero de Alumnos</th>
+                                <th style="width: 20%">Número de Alumnos</th>
                                 <th style="width: 10%">Recursos</th>
                                 <th style="width: 10%">Tipo Sala</th>
                                 <th style="width: 10%">Sede</th>
@@ -84,7 +84,7 @@
                             <div id="stepOne" class="panel-collapse collapse in">
                                 <div class="panel-body">
                                      <div class="form-group">
-                                        <label class="col-lg-3 control-label" for="id_reg_numero">Numero</label>
+                                        <label class="col-lg-3 control-label" for="id_reg_numero">Número</label>
                                         <div class="col-lg-6">
 											<input class="form-control" id="id_reg_numero" name="numero" placeholder="Ingrese el Número de la Sala" type="text" />
                                         </div>
@@ -96,7 +96,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-lg-3 control-label" for="id_reg_numAlumnos">Numero de Alumnos</label>
+                                        <label class="col-lg-3 control-label" for="id_reg_numAlumnos">Número de Alumnos</label>
                                         <div class="col-lg-6">
 											<input class="form-control" id="id_reg_numAlumnos" name="numAlumnos" placeholder="Ingrese el Número de alumnos" type="number" />
                                         </div>
@@ -166,7 +166,7 @@
                                     </div>
                                  </div>
                                   <div class="form-group">
-                                     <label class="col-lg-3 control-label" for="id_act_numero">Numero</label>
+                                     <label class="col-lg-3 control-label" for="id_act_numero">Número</label>
                                      <div class="col-lg-6">
                                          <input class="form-control" id="id_act_numero" name="numero" placeholder="Ingrese el Número de la Sala" type="text" />
                                      </div>
@@ -178,7 +178,7 @@
                                      </div>
                                  </div>
                                  <div class="form-group">
-                                     <label class="col-lg-3 control-label" for="id_act_numAlumnos">NNumero de Alumnos</label>
+                                     <label class="col-lg-3 control-label" for="id_act_numAlumnos">Número de Alumnos</label>
                                      <div class="col-lg-6">
                                          <input class="form-control" id="id_act_numAlumnos" name="numAlumnos" placeholder="Ingrese el Número de Alumnos" type="number" />
                                      </div>

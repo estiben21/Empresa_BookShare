@@ -47,11 +47,11 @@
 							<table id="id_table" class="table table-striped table-bordered" >
 								<thead>
 									<tr>
-										<th style="width: 5%" >ID</th>
+										<th style="width: 5%" >Código</th>
 										<th style="width: 12%">Nombres</th>
 										<th style="width: 12%">Apellidos</th>
 										<th style="width: 9%">Teléfono</th>
-										<th style="width: 8%">Dni</th>
+										<th style="width: 8%">DNI</th>
 										<th style="width: 13%">Correo electrónico</th>
 										<th style="width: 10%">Fecha de nacimiento</th>
 										<th style="width: 8%">País</th>
