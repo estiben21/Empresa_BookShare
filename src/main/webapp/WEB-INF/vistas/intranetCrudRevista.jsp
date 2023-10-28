@@ -50,7 +50,7 @@
 												<th style="width: 5%" >ID</th>
 												<th style="width: 15%">Nombre</th>
 												<th style="width: 20%">Frecuencia</th>
-												<th style="width: 10%">Fecha Creacion</th>
+												<th style="width: 10%">Fecha Creación</th>
 												<th style="width: 10%">Pais</th>
 												<th style="width: 10%">Tipo de revista</th>
 												<th style="width: 10%">Actualiza</th>
@@ -86,25 +86,25 @@
 		                            <div id="stepOne" class="panel-collapse collapse in">
 		                                <div class="panel-body">
 		                                     <div class="form-group">
-		                                        <label class="col-lg-3 control-label" for="id_reg_nombre">Nombre</label>
+		                                        <label class="col-lg-3 control-label" for="id_reg_nombre">Nombre:</label>
 		                                        <div class="col-lg-8">
 													<input class="form-control" id="id_reg_nombre" name="nombre" placeholder="Ingrese el nombre de la revista" type="text" maxlength="40"/>
 		                                        </div>
 		                                    </div>
 		                                    <div class="form-group">
-		                                        <label class="col-lg-3 control-label" for="id_reg_frecuencia">Frecuencia</label>
+		                                        <label class="col-lg-3 control-label" for="id_reg_frecuencia">Frecuencia:</label>
 		                                        <div class="col-lg-8">
 													<input class="form-control" id="id_reg_frecuencia" name="frecuencia" placeholder="Ingrese la frecuencia" type="text" maxlength="40"/>
 		                                        </div>
 		                                    </div>
 		                                    <div class="form-group">
-		                                        <label class="col-lg-3 control-label" for="id_reg_fechaCreacion">F.Creacion</label>
+		                                        <label class="col-lg-3 control-label" for="id_reg_fechaCreacion">F.Creación:</label>
 		                                        <div class="col-lg-8">
 													<input class="form-control" id="id_reg_fechaCreacion" name="fechaCreacion" type="date"/>
 		                                        </div>
 		                                    </div>		   
 		                                    <div class="form-group">
-		                                        <label class="col-lg-3 control-label" for="id_reg_pais">País</label>
+		                                        <label class="col-lg-3 control-label" for="id_reg_pais">País:</label>
 		                                        <div class="col-lg-8">
 													 <select id="id_reg_pais" name="pais" class='form-control'>
 							                            	<option value=" ">Seleccione:</option>    
@@ -112,7 +112,7 @@
 		                                        </div>
 		                                    </div>
 		                                     <div class="form-group">
-		                                        <label class="col-lg-3 control-label" for="id_reg_revista">Tipo de Revista</label>
+		                                        <label class="col-lg-3 control-label" for="id_reg_revista">Tipo de Revista:</label>
 		                                        <div class="col-lg-8">
 													 <select id="id_reg_revista" name="tipoRevista" class='form-control'>
 							                            	<option value=" ">Seleccione:</option>    
@@ -161,25 +161,25 @@
 		                                        </div>
 		                                     </div>
 		                                    <div class="form-group">
-		                                        <label class="col-lg-3 control-label" for="id_act_nombre">Nombre</label>
+		                                        <label class="col-lg-3 control-label" for="id_act_nombre">Nombre:</label>
 		                                        <div class="col-lg-8">
 													<input class="form-control" id="id_act_nombre" name="nombre" placeholder="Ingrese el nombre de la revista" type="text" maxlength="40"/>
 		                                        </div>
 		                                    </div>
 		                                    <div class="form-group">
-		                                        <label class="col-lg-3 control-label" for="id_act_frecuencia">Frecuencia</label>
+		                                        <label class="col-lg-3 control-label" for="id_act_frecuencia">Frecuencia:</label>
 		                                        <div class="col-lg-8">
 													<input class="form-control" id="id_act_frecuencia" name="frecuencia" placeholder="Ingrese la frecuencia" type="text" maxlength="40"/>
 		                                        </div>
 		                                    </div>
 		                                    <div class="form-group">
-		                                        <label class="col-lg-3 control-label" for="id_act_fechaCreacion">F.Creacion</label>
+		                                        <label class="col-lg-3 control-label" for="id_act_fechaCreacion">F.Creación:</label>
 		                                        <div class="col-lg-8">
 													<input class="form-control" id="id_act_fechaCreacion" name="fechaCreacion" type="date"/>
 		                                        </div>
 		                                    </div>		   
 		                                    <div class="form-group">
-		                                        <label class="col-lg-3 control-label" for="id_act_pais">País</label>
+		                                        <label class="col-lg-3 control-label" for="id_act_pais">País:</label>
 		                                        <div class="col-lg-8">
 													 <select id="id_act_pais" name="pais" class='form-control'>
 							                            	<option value=" ">Seleccione:</option>    
@@ -187,7 +187,7 @@
 		                                        </div>
 		                                    </div>
 		                                     <div class="form-group">
-		                                        <label class="col-lg-3 control-label" for="id_act_revista">Tipo de Revista</label>
+		                                        <label class="col-lg-3 control-label" for="id_act_revista">Tipo de Revista:</label>
 		                                        <div class="col-lg-8">
 													 <select id="id_act_revista" name="tipoRevista" class='form-control'>
 							                            	<option value=" ">Seleccione:</option>    
