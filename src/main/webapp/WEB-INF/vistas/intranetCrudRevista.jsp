@@ -34,7 +34,7 @@
 								<input class="form-control" id="id_txt_filtro"  name="filtro" placeholder="Ingrese el nombre" type="text" maxlength="30"/>
 						</div>
 						<div class="col-md-2" >
-							<button type="button" class="btn btn-primary" id="id_btn_filtrar" style="width: 150px">FILTRA</button>
+							<button type="button" class="btn btn-primary" id="id_btn_filtrar" style="width: 150px">FILTRAR</button>
 						</div>
 						<div class="col-md-2">
 							<button type="button" data-toggle='modal'  data-target="#id_div_modal_registra"  class='btn btn-success' style="width: 150px">REGISTRA</button>
@@ -53,8 +53,8 @@
 												<th style="width: 10%">Fecha Creación</th>
 												<th style="width: 10%">Pais</th>
 												<th style="width: 10%">Tipo de revista</th>
-												<th style="width: 10%">Actualiza</th>
-												<th style="width: 10%">Elimina</th>
+												<th style="width: 10%">Actualizar</th>
+												<th style="width: 10%">Eliminar</th>
 											</tr>
 										</thead>
 											<tbody>
