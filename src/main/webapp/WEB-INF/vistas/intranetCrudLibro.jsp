@@ -305,6 +305,17 @@ $("#id_btn_registra").click(function(){
         	  mostrarMensaje(MSG_ERROR);
           }
         });
+        $.ajax({
+		    type: "GET",  
+		    url: "buscarPorSerieLibro",
+		    data: $('#id_form_registra').serialize(),
+		    success: function(data){
+		   
+		    },
+		    error: function(){
+		       
+		    }
+		});
     }
 });
 
@@ -355,6 +366,11 @@ $('#id_form_registra').bootstrapValidator({
                     regexp: {
                         regexp: /^[A-Za-z]{2}\d{3}$/,
                         message: 'La serie debe tener 2 letras seguidas de 3 dígitos'
+                    },
+                    remote :{
+                        delay: 1000,
+                        url: 'buscarPorSerieLibro',
+                        message: 'La Serie ya existe'
                     }
                 }
             },
@@ -399,6 +415,17 @@ $("#id_btn_actualiza").click(function(){
         	  mostrarMensaje(MSG_ERROR);
           }
         });
+        $.ajax({
+		    type: "GET",  
+		    url: "buscarPorSerieLibro",
+		    data: $('#id_form_actualiza').serialize(),
+		    success: function(data){
+		   
+		    },
+		    error: function(){
+		       
+		    }
+		});
     }
 });
 
@@ -462,7 +489,16 @@ $('#id_form_actualiza').bootstrapValidator({
             validators: {
             	notEmpty: {
                     message: 'La serie es un campo obligatorio'
-            	}
+            	},
+            	regexp: {
+                    regexp: /^[A-Za-z]{2}\d{3}$/,
+                    message: 'La serie debe tener 2 letras seguidas de 3 dígitos'
+                },
+                remote :{
+                    delay: 1000,
+                    url: 'buscarPorSerieLibro',
+                    message: 'La Serie ya existe'
+                }
             }
         },
         categoriaLibro: {
