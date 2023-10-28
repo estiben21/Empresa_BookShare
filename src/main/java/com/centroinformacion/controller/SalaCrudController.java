@@ -37,7 +37,7 @@ public class SalaCrudController {
 	@PostMapping("/registraCrudSala")
 	@ResponseBody
 	public Map<?, ?> registra(Sala obj , HttpSession session) {
-		HashMap<String, Object> map = new HashMap<String, Object>();
+		
 		Usuario objUsuario = (Usuario)session.getAttribute("objUsuario");
 		obj.setEstado(1);
 		obj.setFechaRegistro(new Date());
@@ -45,7 +45,7 @@ public class SalaCrudController {
 		obj.setUsuarioRegistro(objUsuario);
 		obj.setUsuarioActualiza(objUsuario);
 		
-		
+		HashMap<String, Object> map = new HashMap<String, Object>();
 		Sala objSalida = salaService.insertaRegistraSala(obj);
 		if (objSalida == null) {
 			map.put("mensaje", "Error en el registro");
@@ -59,25 +59,21 @@ public class SalaCrudController {
 	
 	@PostMapping("/actualizaCrudSala")
 	@ResponseBody
-	@GetMapping
-	public Map<?, ?> actualiza(Sala obj, HttpSession session) {
-	    HashMap<String, Object> map = new HashMap<String, Object>();
-	    
+	public Map<?, ?> actualiza(Sala obj) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
 		Optional<Sala> optSala = salaService.buscarSala(obj.getIdSala());
-		Usuario objUsuario = (Usuario) session.getAttribute("objUsuario");
-		obj.setUsuarioRegistro(objUsuario);
-		obj.setUsuarioActualiza(objUsuario);
+		obj.setUsuarioRegistro(optSala.get().getUsuarioRegistro());
+		obj.setUsuarioActualiza(optSala.get().getUsuarioActualiza());
 		obj.setFechaRegistro(optSala.get().getFechaRegistro());
 		obj.setEstado(optSala.get().getEstado());
 		obj.setFechaActualizacion(new Date());
-
-		
 
 		Sala objSalida = salaService.insertaActualizaSala(obj);
 		if (objSalida == null) {
 			map.put("mensaje", "Error en actualizar");
 		} else {
-			List<Sala> lista = salaService.listaPorNumeroIgualActualiza("%");
+			
+			List<Sala> lista = salaService.listPorNumerolike("%");
 			map.put("lista", lista);
 			map.put("mensaje", "Actualización exitosa");
 		}

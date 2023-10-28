@@ -116,7 +116,7 @@
 									</div>
 										
 											<div class="form-group" >
-											<label class="col-lg-3 control-label" for="id_tipo">Tipo</label>
+											<label class="col-lg-3 control-label" for="id_reg_tipo">Tipo</label>
 											<div class="col-lg-6">
 											<select id="id_reg_tipo" name="tipoSala" class='form-control'>
 												<option value=" ">[Seleccione]</option>    
@@ -157,7 +157,7 @@
 				<div class="modal-content">
 				<div class="modal-header" style="padding: 35px 50px">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4><span class="glyphicon glyphicon-ok-sign"></span> Registro de Sala</h4>
+					<h4><span class="glyphicon glyphicon-ok-sign"></span> Actualizar Registro de Sala</h4>
 				</div>
 				<div class="modal-body" style="padding: 20px 10px;">
 						<form id="id_form_actualiza" accept-charset="UTF-8" class="form-horizontal"  method="post">
@@ -174,7 +174,7 @@
 		                                <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_ID">ID</label>
 		                                        <div class="col-lg-8">
-		                                           <input class="form-control" id="id_ID" readonly="readonly" name="idModalidad" type="text" maxlength="8"/>
+		                                           <input class="form-control" id="id_ID" readonly="readonly" name="idSala" type="text" maxlength="8"/>
 		                                        </div>
 		                                     </div>
 		                                	                        
@@ -201,7 +201,7 @@
 										</div>
 									</div>
 									
-									 	<div class="form-group">
+									 <div class="form-group">
 											<label class="col-lg-3 control-label" for="id_act_recursos">Recursos</label>
 											<div class="col-lg-8">
 											<input class="form-control" type="text" id="id_act_recursos" name="recursos" placeholder="Ingrese los recursos">
@@ -209,19 +209,19 @@
 									</div>
 										
 										<div class="form-group" >
-											<label class="col-lg-3 control-label" for="id_act_tipo">Tipo</label>
+											<label class="col-lg-3 control-label" for="id_act_tipoSala">Tipo</label>
 											<div class="col-lg-6">
 											<select id="id_act_tipo" name="tipoSala" class='form-control'>
-												<option value=" ">[Seleccione]</option>    
+												<option value="">Seleccione</option>    
 											</select>
 										   </div>
 										 </div>
 										 
 										<div class="form-group" >
 											<label class="col-lg-3 control-label" for="id_act_sede">Sede</label>
-											<div class="col-lg-6">
+											<div class="col-lg-6"> 
 											<select id="id_act_sede" name="sede" class='form-control'>
-												<option value=" ">[Seleccione]</option>    
+												<option value="">Seleccione</option>    
 											</select>
 										   </div>
 										  </div>
@@ -308,16 +308,16 @@ function agregarGrilla(lista){
 
 
 
+
 function editar(idSala, numero, piso, numAlumnos, recursos, tipoSala, sede) {
     $('#id_ID').val(idSala);
     $('#id_act_numero').val(numero);
     $('#id_act_piso').val(piso);
     $('#id_act_cantAlumnos').val(numAlumnos); 
     $('#id_act_recursos').val(recursos);
-    $('#id_act_tipo').val(tipoSala);
-    $('#id_act_sede').val(sede);
-	$('#id_div_modal_actualiza').modal("show");
-
+    $('#id_act_tipo').filter(tipoSala);
+    $('#id_act_sede').filter(sede);
+    $('#id_div_modal_actualiza').modal("show");
 }
 
 function accionEliminar(id){	
@@ -333,14 +333,15 @@ function accionEliminar(id){
           }
      });
 }
+
 function limpiarFormulario(){	
 	$('#id_ID').val('');
 	$('#id_numero').val('');
 	$('#id_piso').val('');
 	$('#id_cantAlumnos').val('');
 	$('#id_recursos').val('');
-	$('#id_tipo').val('');
-	$('#id_sede').val('');
+	$('#id_reg_tipo').val('');
+	$('#id_reg_sede').val('');
 }
 
 //////////////REGISTRAR///////////////
@@ -383,6 +384,7 @@ $("#id_btn_actualiza").click(function(){
         	  agregarGrilla(data.lista);
         	  $('#id_div_modal_actualiza').modal("hide");
         	  mostrarMensaje(data.mensaje);
+        	  validator.resetForm();
           },
           error: function(){
         	  mostrarMensaje(MSG_ERROR);
@@ -390,6 +392,10 @@ $("#id_btn_actualiza").click(function(){
         });
     }
 });
+
+
+</script>
+<script type="text/javascript">
 
 
     	$('#id_form_registra').bootstrapValidator({
@@ -476,7 +482,10 @@ $("#id_btn_actualiza").click(function(){
     	     }   
     	 });
     	
-  
+    	
+
+    	</script>
+    	<script type="text/javascript">
     	
     	$('#id_form_actualiza').bootstrapValidator({
     	    message: 'This value is not valid',
@@ -503,10 +512,7 @@ $("#id_btn_actualiza").click(function(){
                         	data: {
         		                numero: function() {
         		                    return $('#id_act_numero').val();
-        		                },
-        		                id: function() {
-        		                    return $('#id_ID').val();
-        		                },
+        		                   },
         		        	},
                         } 
                     }
@@ -552,12 +558,14 @@ $("#id_btn_actualiza").click(function(){
     	             }
     	         },
     	         
-    	         tipoSala: {
+    	         tipoRevista: {
     	     		selector : '#id_act_tipo',
     	             validators: {
     	             	notEmpty: {
     	                     message: 'Tipo es un campo obligatorio'
     	                 },
+    	                
+    		            
     	             }
     	         },
     	         sede: {
@@ -565,7 +573,7 @@ $("#id_btn_actualiza").click(function(){
     	              validators: {
     	              	notEmpty: {
     	                      message: 'Sede es un campo obligatorio'
-    	                  },
+    	                  }, 
     	              }
     	          },
     	     }   
