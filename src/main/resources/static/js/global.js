@@ -19,7 +19,22 @@ function mostrarMensaje(msg, ejecutarAccion){
 	
 	$('#id_my_modal').modal("show");
 }
-
+  
+var IDIOMA = {
+	processing:"procesando...",
+    lengthMenu: "_MENU_ Registros por p&aacute;gina",
+    zeroRecords: "No existen registros",
+    info: "P&aacute;gina _PAGE_ de _PAGES_",
+    infoEmpty: "Sin registros",
+    infoFiltered: "(Filtro de _MAX_ registros)",
+    search: "Buscar:",
+    paginate: {
+        "first":      "Primero",
+        "last":       "Last",
+        "next":       "Siguiente",
+        "previous":   "Anterior"
+    }
+};
 
 function mostrarMensajeConfirmacion(msg, accionAceptar, accionCancelar, data){
 	$('#id_my_modal_confirmacion').remove();
@@ -47,4 +62,18 @@ function mostrarMensajeConfirmacion(msg, accionAceptar, accionCancelar, data){
 	});
 	
 	$('#id_my_modal_confirmacion').modal("show");
+}
+
+function valFechaInicioMayFechaFin(idIni, idFin){
+		    var fIni = $.trim($(idIni).val());
+		    var fFin = $.trim($(idFin).val());
+		    
+		    var dIni = new Date(fIni);
+		    var dFin = new Date(fFin);
+		    
+		    if (dIni > dFin){
+		        return true;
+		    }else{
+		        return false;
+		    }
 }
