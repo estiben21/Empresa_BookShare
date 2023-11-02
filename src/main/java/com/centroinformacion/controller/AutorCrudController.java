@@ -34,7 +34,7 @@ public class AutorCrudController {
 		 return lstSalida;
 	}
 	
-	
+	//prueba
 	@ResponseBody
 	@PostMapping("/registraCrudAutor")
 	public Map<?, ?> registra(Autor obj , HttpSession session) {
