@@ -19,4 +19,8 @@ public interface SalaService {
 	
 	public abstract List<Sala> listaPorNumeroIgualRegistra(String numero);
 	public abstract List<Sala> listaPorNumeroIgualActualiza(String numero);
+	
+	
+	public abstract List<Sala> listaConsultaSala(int estado, String numero,int piso,int numAlumnos,String recursos,int idSede,int idTipoSala);
 }
+
