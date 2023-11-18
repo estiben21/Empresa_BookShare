@@ -26,10 +26,10 @@ public class SalaCrudController {
 	@Autowired
 	private SalaService salaService;
 	
-	@ResponseBody
+	/*@ResponseBody
 	@GetMapping("/consultaCrudSala")
 	public List<Sala> consulta(String filtro){
-	 List<Sala> lstSalida = salaService.listPorNumerolike("%"+filtro+"%");
+	 List<Sala> lstSalida = salaService.listaPorNumeroLike("%"+filtro+"%");
 	 return lstSalida;
 	}
 	
@@ -129,7 +129,8 @@ public class SalaCrudController {
 	            return "{\"valid\":false}";
 	        }
 	    } 
-	}
+	}*/
 
 	
 
+}

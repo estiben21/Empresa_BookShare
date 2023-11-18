@@ -1,5 +1,6 @@
 package com.centroinformacion.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -70,6 +71,13 @@ public class AlumnoServiceImp implements AlumnoService {
 	@Override
 	public List<Alumno> listaPorDniAlumnoExistenteActualiza(String dni, int id) {
 		return repository.listaPorDniAlumnoExistenteActualiza(dni, id);
+	}
+
+	//----------------------------------------- CP3 ---------------------------------------
+	@Override
+	public List<Alumno> listaAlumnosPorFiltroConsulta(String nomApellido, int estado, String telefono,
+			String dni, String correo, Date fechaNacDesde, Date fechaNacHasta, int idPais, int idModalidad) {
+			return repository.listaConsultaAlumno(nomApellido, estado, telefono, dni, correo, fechaNacDesde, fechaNacHasta, idPais, idModalidad);
 	}
 
 	
