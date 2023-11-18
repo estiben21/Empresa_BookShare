@@ -33,7 +33,7 @@
 				<div class="col-lg-6">
 					<label class="control-label" for="id_numero">Número</label> <input
 						class="form-control" type="text" id="id_numero" name="paramNumero"
-						placeholder="Ingrese el numero de la sala">
+						placeholder="Ingrese el número de la sala">
 				</div>
 				<div class="col-lg-6">
 					<label class="control-label" for="id_estado">Estado</label> <input
@@ -44,8 +44,8 @@
 			<div class="row" style="margin-top: 2%">
 				<div class="col-lg-6">
 					<label class="control-label" for="id_numAlumnos">Número de Alumnos</label> <input
-						class="form-control" type="number" id="id_numAlumnos" name="paramnumAlumnos"
-						placeholder="Ingrese el numero del alumnos">
+						class="form-control" type="number" id="id_numAlumnos" name="paramnumAlumnos" 
+						placeholder="Ingrese el número del alumnos">
 				</div>
 				<div class="col-lg-6">
 					<label class="control-label" for="id_tipoSala">Tipo Sala</label> <select
@@ -70,7 +70,7 @@
 			<div class="row" style="margin-top: 2%">
 				<div class="col-lg-6">
 					<label class="control-label" for="id_piso">Piso</label> <input
-						class="form-control" type="number" id="id_piso" name="paramPiso"
+						class="form-control" type="number" id="id_piso" name="paramPiso" 
 						placeholder="Ingrese el piso">
 				</div>
 			</div>
@@ -124,13 +124,12 @@
 				.click(
 						function() {
 							var varEstado = $("#id_estado").is(':checked') ? 1 : 0;
-						    var varNumero = $("#id_numero").val() || "%"; 
-						    var varPiso = $("#id_piso").val() || -1;
-						    var varNumAlumnos = $("#id_numAlumnos").val() || -1; 
+						    var varNumero = $("#id_numero").val() || "%";
+						    var varPiso = $("#id_piso").val() || -1; 
+						    var varNumAlumnos = $("#id_numAlumnos").val() || -1;
 						    var varRecursos = $("#id_recursos").val() || "%"; 
-						    var varSede = $("#id_sede").val();
 						    var varTipoSala = $("#id_tipoSala").val();
-	
+
 							console.log(">> varEstado >> " + varEstado);
 							console.log(">> varNumero >> " + varNumero)
 							console.log(">> varPiso >> " + varPiso);;
@@ -138,7 +137,8 @@
 							console.log(">> varRecursos >> " + varRecursos);
 							console.log(">> varSede >> " + varSede);
 							console.log(">> varTipoSala >> " + varTipoSala);
-								
+
+							
 							$.getJSON("consultaSala", {
 								"estado": varEstado,
 							    "numero": varNumero,
@@ -147,7 +147,7 @@
 							    "recursos": varRecursos,
 							    "idSede": varSede,
 							    "idTipoSala": varTipoSala
-
+							    
 							}, function(data) {
 								agregarGrilla(data);
 							});
