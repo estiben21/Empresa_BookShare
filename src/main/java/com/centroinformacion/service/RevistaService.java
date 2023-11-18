@@ -1,5 +1,6 @@
 package com.centroinformacion.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,4 +15,6 @@ public interface RevistaService {
 	public abstract List<Revista> ListaPorNombreOrFrecuencia(String nombre,String frecuencia);
 	public abstract List<Revista> listaPorNombreFrecuenciaLike(String filtro);
 	
+	//consultas
+	public abstract List<Revista> listaConsultaRevista(int estado, int idPais,int idDataCatalogo,String frecuencia, String nombre, Date fecDesde, Date fecHasta);
 }
