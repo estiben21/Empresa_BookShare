@@ -64,6 +64,7 @@ function mostrarMensajeConfirmacion(msg, accionAceptar, accionCancelar, data){
 	$('#id_my_modal_confirmacion').modal("show");
 }
 
+
 function valFechaInicioMayFechaFin(idIni, idFin){
 		    var fIni = $.trim($(idIni).val());
 		    var fFin = $.trim($(idFin).val());
@@ -77,3 +78,4 @@ function valFechaInicioMayFechaFin(idIni, idFin){
 		        return false;
 		    }
 }
+
