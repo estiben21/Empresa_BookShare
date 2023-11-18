@@ -70,7 +70,7 @@ public class Editorial {
 	@JoinColumn(name = "idUsuarioActualiza")
 	private Usuario usuarioActualiza;
 	
-	/*SEMANA 12--- PC3 -- CONSULTA
+	//SEMANA 12--- PC3 -- CONSULTA
 	public String getReporteEstado() {
 		return estado == 1 ? "Activo":"Inactivo";
 	}
@@ -85,5 +85,5 @@ public class Editorial {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return sdf.format(fechaCreacion);
 	}
-   */
+   
 }
