@@ -67,8 +67,8 @@ public class RevistaConsultaController {
 						paramEstado ?1:0, 
 						paramPais,
 						paramTipoRevista,
-						paramFrecuencia,
-						paramNombre, 
+						"%"+paramFrecuencia+"%",
+						"%"+paramNombre+"%", 
 						paramFechaCreacionDesde, 
 						paramFechaCreacionHasta);
 		
