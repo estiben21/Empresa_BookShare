@@ -20,8 +20,8 @@ public interface RevistaRepository extends JpaRepository<Revista, Integer>{
 				+ "( r.estado = ?1)  and "
 				+ "( ?2 = -1  or r.pais.idPais = ?2 ) and "
 				+ "( ?3 = -1  or r.tipoRevista.idDataCatalogo = ?3 ) and "
-				+ "( r.nombre like ?4 ) and"
-				+ "( r.frecuencia like ?5 ) and"
+				+ "( r.frecuencia like ?4 ) and"
+				+ "( r.nombre like ?5 ) and"
 				+ "( r.fechaCreacion >= ?6 ) and"
 				+ "( r.fechaCreacion <= ?7 )") 
 		public abstract List<Revista> listaConsultaRevista(int estado, int idPais,int idDataCatalogo,String frecuencia, String nombre, Date fecDesde, Date fecHasta);

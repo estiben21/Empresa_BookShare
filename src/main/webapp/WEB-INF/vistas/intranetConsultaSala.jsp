@@ -179,9 +179,9 @@
 				}, {
 					data : "recursos"
 				}, {
-					data : "sede.idDataCatalogo"
+					data : "sede.descripcion"
 				},{
-					data : "tipoSala.idDataCatalogo"
+					data : "tipoSala.descripcion"
 				},
 				{
 					data : function(row, type, val, meta) {
