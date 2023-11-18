@@ -31,9 +31,9 @@
 			<h4>Consulta Sala</h4>
 			<div class="row" style="margin-top: 3%">
 				<div class="col-lg-6">
-					<label class="control-label" for="id_numero">Número</label> <input
+					<label class="control-label" for="id_numero">N&uacutemero</label> <input
 						class="form-control" type="text" id="id_numero" name="paramNumero"
-						placeholder="Ingrese el número de la sala">
+						placeholder="Ingrese el numero de la sala">
 				</div>
 				<div class="col-lg-6">
 					<label class="control-label" for="id_estado">Estado</label> <input
@@ -43,9 +43,9 @@
 			</div>
 			<div class="row" style="margin-top: 2%">
 				<div class="col-lg-6">
-					<label class="control-label" for="id_numAlumnos">Número de Alumnos</label> <input
-						class="form-control" type="number" id="id_numAlumnos" name="paramnumAlumnos" 
-						placeholder="Ingrese el número del alumnos">
+					<label class="control-label" for="id_numAlumnos">N&uacutemero de Alumnos</label> <input
+						class="form-control" type="number" id="id_numAlumnos" name="paramnumAlumnos"
+						placeholder="Ingrese el numero del alumnos">
 				</div>
 				<div class="col-lg-6">
 					<label class="control-label" for="id_tipoSala">Tipo Sala</label> <select
@@ -70,7 +70,7 @@
 			<div class="row" style="margin-top: 2%">
 				<div class="col-lg-6">
 					<label class="control-label" for="id_piso">Piso</label> <input
-						class="form-control" type="number" id="id_piso" name="paramPiso" 
+						class="form-control" type="number" id="id_piso" name="paramPiso"
 						placeholder="Ingrese el piso">
 				</div>
 			</div>
@@ -84,15 +84,15 @@
 				<div class="col-md-12">
 					<table id="id_table" class="table table-striped table-bordered">
 						<thead>
-							<tr>			
-                             <th style="width: 10%" >Código</th>
-                                <th style="width: 10%">Número</th>
+							<tr>
+								  <th style="width: 10%" >C&oacute;digo</th>
+                                <th style="width: 10%">N&uacutemero</th>
                                 <th style="width: 10%">Piso</th>
-                                <th style="width: 20%">Número de Alumnos</th>
+                                <th style="width: 20%">N&uacutemero de Alumnos</th>
                                 <th style="width: 10%">Recursos</th>
-                                <th style="width: 10%">Tipo Sala</th>
-                                <th style="width: 10%">Sede</th>
-                                <th style="width: 10%">Estado</th>
+                                <th style="width: 15%">Tipo Sala</th>
+                                <th style="width: 15%">Sede</th>
+                                <th style="width: 15%">Estado</th>
                                 
 							</tr>
 						</thead>
@@ -118,17 +118,20 @@
 		$("#id_btn_reporte").click(function(){
 			$("#id_form").attr('action', 'reporteSalaPdf');
 			$("#id_form").submit();
-			
 		});
 		$("#id_btn_filtra")
 				.click(
 						function() {
 							var varEstado = $("#id_estado").is(':checked') ? 1 : 0;
-						    var varNumero = $("#id_numero").val() || "%";
-						    var varPiso = $("#id_piso").val() || -1; 
-						    var varNumAlumnos = $("#id_numAlumnos").val() || -1;
-						    var varRecursos = $("#id_recursos").val() || "%"; 
+						    var varNumero = $("#id_numero").val() || "%"; // Asigna "%" si el valor es nulo
+						    var varPiso = $("#id_piso").val() || -1; // Asigna -1 si el valor es nulo
+						    var varNumAlumnos = $("#id_numAlumnos").val() || -1; // Asigna -1 si el valor es nulo
+						    var varRecursos = $("#id_recursos").val() || "%"; // Asigna "%" si el valor es nulo
+						    var varSede = $("#id_sede").val();
 						    var varTipoSala = $("#id_tipoSala").val();
+							
+							
+						
 
 							console.log(">> varEstado >> " + varEstado);
 							console.log(">> varNumero >> " + varNumero)
@@ -137,6 +140,7 @@
 							console.log(">> varRecursos >> " + varRecursos);
 							console.log(">> varSede >> " + varSede);
 							console.log(">> varTipoSala >> " + varTipoSala);
+							
 
 							
 							$.getJSON("consultaSala", {
@@ -148,6 +152,7 @@
 							    "idSede": varSede,
 							    "idTipoSala": varTipoSala
 							    
+								
 							}, function(data) {
 								agregarGrilla(data);
 							});
@@ -164,13 +169,20 @@
 				pageLength : 10,
 				lengthChange : false,
 				columns : [ {
-					data : "idSala"}, {
-					data : "numero"}, {
-					data : "piso"}, {
-					data : "numAlumnos"}, {
-					data : "recursos"}, {
-					data : "sede.idDataCatalogo"},{
-					data : "tipoSala.idDataCatalogo"},
+					data : "idSala"
+				}, {
+					data : "numero"
+				}, {
+					data : "piso"
+				}, {
+					data : "numAlumnos"
+				}, {
+					data : "recursos"
+				}, {
+					data : "sede.idDataCatalogo"
+				},{
+					data : "tipoSala.idDataCatalogo"
+				},
 				{
 					data : function(row, type, val, meta) {
 						var salida = (row.estado == 1) ? 'Activo' : "Inactivo";
