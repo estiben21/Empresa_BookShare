@@ -1,4 +1,4 @@
-package com.centroinformacion.service;
+	package com.centroinformacion.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,4 +12,8 @@ public interface LibroService {
 	public abstract List<Libro> listaPorTituloLike(String filtro);
 	public abstract boolean existeLibroConSerie(String serie);
 	public abstract Optional<Libro>buscaLibro(int idLibro);
+	
+	//consultas
+	
+	public abstract List<Libro> listaConsultaLibro(int estado, int idCategoria, int idTipo, String titulo, String serie, int anio);
 }

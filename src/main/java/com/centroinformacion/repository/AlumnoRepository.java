@@ -1,5 +1,6 @@
 package com.centroinformacion.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -28,4 +29,18 @@ public interface AlumnoRepository extends JpaRepository<Alumno, Integer>{
 	@Query("select a from Alumno a where a.dni like ?1 and a.idAlumno !=?2")
 	//Para Validar que no se pueda registrar un Alumno con un DNI que ya exista en otro registro (btnActualizar)
 	public abstract List<Alumno> listaPorDniAlumnoExistenteActualiza(String dni, int id);
+	
+	//------------------------------CONSULTAS USANDO QUERY _CP3-------------------------------------------
+	@Query("select a from Alumno a where"
+										+ "(a.nombres like ?1 or a.apellidos like ?1) and"
+										+ "(a.estado = ?2) and"
+										+ "(a.telefono like ?3) and"
+										+ "(a.dni like ?4) and"
+										+ "(a.correo like ?5) and"
+										+ "(a.fechaNacimiento >= ?6) and"
+										+ "(a.fechaNacimiento <= ?7) and"
+										+ "( ?8 = -1  or a.pais.nombre = ?8) and"
+										+ "( ?9 = -1 or a.modalidad.descripcion = ?9)")
+	public abstract List<Alumno> listaConsultaAlumno(String nomApe, int estado, String telefono, String dni, 
+													String correo, Date fechaNacDesde, Date fechaNacHasta, int idPais, int idModalidad);
 }
