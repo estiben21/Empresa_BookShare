@@ -32,7 +32,7 @@ public class EditorialConsultaController {
 
 		// Realiza la consulta usando el servicio editorial y devuelve los resultados
 		List<Editorial> lstSalida = editorialService.listaConsultaEditorial(estado, idPais, "%"+  razonSocial+"%" ,
-				direccion, ruc, desde, hasta);
+				 "%"+direccion+ "%",  "%"+ruc + "%", desde, hasta);
 		return lstSalida;
 	}
 }
