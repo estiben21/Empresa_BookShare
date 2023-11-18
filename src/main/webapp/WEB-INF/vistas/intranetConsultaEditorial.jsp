@@ -107,11 +107,11 @@ $.getJSON("listaPais", {}, function(data){
 });
 
 
-//SEMANA 12 BOTON PDF
-//$("#id_btn_reporte").click(function(){
-//	$("#id_form").attr('action','reporteEmpleadoPdf');
-	//$("#id_form").submit();
-//});
+//REPORTE BOTON PDF
+$("#id_btn_reporte").click(function(){
+	$("#id_form").attr('action','reporteEditorialPdf');
+	$("#id_form").submit();
+});
 
 
 //-------------------
