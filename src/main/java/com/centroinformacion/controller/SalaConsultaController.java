@@ -23,78 +23,56 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.util.JRLoader;
+
 @CommonsLog
 @Controller
 public class SalaConsultaController {
 	@Autowired
 	private SalaService salaService;
-	
-	
+
 	@ResponseBody
 	@GetMapping("/consultaSala")
-	public List<Sala>consulta (int estado, 
-		        String numero,
-		        int piso,
-		        int numAlumnos,
-		        String recursos,
-		        int idSede,
-		        int idTipoSala){
-		List<Sala> lstSalida=salaService.listaConsultaSala(estado, numero, piso, numAlumnos, recursos, idSede, idTipoSala);
+	public List<Sala> consulta(int estado, String numero, int piso, int numAlumnos, String recursos, int idSede,
+			int idTipoSala) {
+		List<Sala> lstSalida = salaService.listaConsultaSala(estado, "%" + numero +"%", piso, numAlumnos, "%"+recursos+"%", idSede, idTipoSala);
 		return lstSalida;
 	}
-	
+
 	@GetMapping("/reporteSalaPdf")
-	public void reportes(HttpServletRequest request,
-	                     HttpServletResponse response,
-	                     boolean paramEstado,
-	                     String paramNumero,
-	                     Integer paramPiso,
-	                     Integer paramnumAlumnos,
-	                     String paramRecursos,
-	                     int paramtipoSala,
-	                     int paramsede) {
+	public void reportes(HttpServletRequest request, HttpServletResponse response, boolean paramEstado,
+			String paramNumero, int paramPiso, int paramnumAlumnos, String paramRecursos, int paramsede, int paramtipoSala) {
 
-	    // Asignar valores predeterminados si los parámetros son nulos o vacíos
-	    paramPiso = (paramPiso == null || paramPiso.equals("")) ? -1 : paramPiso;
-	    paramnumAlumnos = (paramnumAlumnos == null || paramnumAlumnos.equals("")) ? -1 : paramnumAlumnos;
+		try {
+			// PASO 1: obtener el data surce que va a generar el reporte
+			List<Sala> lstSalida = salaService.listaConsultaSala(paramEstado ?1:0, "%" + paramNumero +"%", paramPiso, paramnumAlumnos, "%"+paramRecursos+"%", paramsede,paramtipoSala );
 
-	    try {
-		//PASO 1: OBTENER EL DATASOURCE QUE VA A GENERAR EL REPORTE
-		List<Sala> lstSalida = salaService.listaConsultaSala(
-				paramEstado ? 1 : 0,
-		                paramNumero ,
-		                paramPiso ,
-		                paramnumAlumnos,
-		                paramRecursos,
-		                paramtipoSala,
-		                paramsede);
-		
-		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(lstSalida);
-		
-		//PASO 2: OBTENER EL ARCHIVO QUE CONTIENE EL DISEÑO DEL REPORTE
-		String fileDirectory = request.getServletContext().getRealPath("/WEB-INF/reportes/Cherry.jasper"); 
-		log.info(">>> File Reporte >> " + fileDirectory);
-		FileInputStream stream   = new FileInputStream(new File(fileDirectory));
-		
-		
-		String fileLogo = request.getServletContext().getRealPath("/WEB-INF/img/cherry.jpg");
-		log.info(">>> File Logo >> " + fileLogo);
-		
-		HashMap<String, Object> params = new HashMap<String, Object>();
-		params.put("RUTA_LOGO", fileLogo);
-		
-		//PASO 4: ENVIAMOS DATASOURCE, DISEÑO Y PARÁMETROS PARA GENERAR EL PDF
-		JasperReport jasperReport = (JasperReport) JRLoader.loadObject(stream);
-		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,params, dataSource);
-		
-		//PASO 5: ENVIAR EL PDF GENERADO
-		response.setContentType("application/x-pdf");
-	    response.addHeader("Content-disposition", "attachment; filename=reportesSala.pdf");
+			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(lstSalida);
 
-		OutputStream outStream = response.getOutputStream();
-		JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
-		
-		}catch(Exception e) {
+			// PASO 2: Obtener el archivo que contiene el diseño del reporte
+			String fileDirectory = request.getServletContext().getRealPath("/WEB-INF/reportes/reporteSala.jasper");
+			log.info(">>> File Reporte >> " + fileDirectory);
+
+			FileInputStream stream = new FileInputStream(new File(fileDirectory));
+
+			// PASO 3: Parametros adicionales
+			String fileLogo = request.getServletContext().getRealPath("/WEB-INF/img/cherry.jpg");
+			log.info(">>> File Logo >> " + fileLogo);
+
+			HashMap<String, Object> params = new HashMap<String, Object>();
+			params.put("RUTA_LOGO", fileLogo);
+
+			// PASO 4: Enviamos dataSource, diseño y parámetros para generar el PDF
+			JasperReport jasperReport = (JasperReport) JRLoader.loadObject(stream);
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
+
+			// PASO 5: Enviar el PDF generado
+			response.setContentType("application/x-pdf");
+			response.addHeader("Content-disposition", "attachment; filename=ReporteSala.pdf");
+
+			OutputStream outStream = response.getOutputStream();
+			JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+			
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
