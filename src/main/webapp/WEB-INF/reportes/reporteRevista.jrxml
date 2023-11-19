@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.20.1.final using JasperReports Library version 6.20.1-7584acb244139816654f64e2fd57a00d3e31921e  -->
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteRevista" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13acf49e-4913-4d1b-bccc-113817ad15d1">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
@@ -54,13 +54,6 @@
 					</textElement>
 					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>
-				<staticText>
-					<reportElement mode="Opaque" x="0" y="36" width="40" height="24" forecolor="#FFFFFF" backcolor="#030303" uuid="7ca647c2-9cbd-4169-aa16-c526172c7acb">
-						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="35889a0c-399c-4cc1-80b7-da144d16a238"/>
-					</reportElement>
-					<textElement textAlignment="Center"/>
-					<text><![CDATA[Codigo]]></text>
-				</staticText>
 			</frame>
 		</band>
 	</title>
@@ -68,7 +61,7 @@
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="24" splitType="Stretch">
+		<band height="60" splitType="Stretch">
 			<staticText>
 				<reportElement mode="Opaque" x="40" y="0" width="90" height="24" forecolor="#FFFFFF" backcolor="#030303" uuid="d249b6bc-dd8b-4e9c-accf-6a5f0a98489c">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4f491401-83eb-4502-b6f4-50582c7785bb"/>
@@ -115,6 +108,13 @@
 				<reportElement x="451" y="-132" width="93" height="132" uuid="97705585-a0b5-4ec7-86f3-ae10c220e6af"/>
 				<imageExpression><![CDATA[$P{RUTA_LOGO}]]></imageExpression>
 			</image>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="40" height="24" forecolor="#FFFFFF" backcolor="#030303" uuid="7ca647c2-9cbd-4169-aa16-c526172c7acb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="35889a0c-399c-4cc1-80b7-da144d16a238"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Codigo]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
@@ -122,49 +122,49 @@
 			<frame>
 				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="18" uuid="b50221b5-8254-440b-8c6f-1f0b138c9259"/>
 				<textField>
-					<reportElement x="0" y="0" width="40" height="18" uuid="c016cc81-fea7-4459-9f00-18e819fee188">
+					<reportElement x="0" y="-36" width="40" height="18" uuid="c016cc81-fea7-4459-9f00-18e819fee188">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="35889a0c-399c-4cc1-80b7-da144d16a238"/>
 					</reportElement>
 					<textElement textAlignment="Center"/>
 					<textFieldExpression><![CDATA[$F{idRevista}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="40" y="0" width="90" height="18" uuid="04dbea0b-92f3-4dbd-a87e-188bcc7aef80">
+					<reportElement x="40" y="-36" width="90" height="18" uuid="04dbea0b-92f3-4dbd-a87e-188bcc7aef80">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4f491401-83eb-4502-b6f4-50582c7785bb"/>
 					</reportElement>
 					<textElement textAlignment="Center"/>
 					<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="130" y="0" width="140" height="18" uuid="5353b0ba-236b-453c-bd49-e9644667d685">
+					<reportElement x="130" y="-36" width="140" height="18" uuid="5353b0ba-236b-453c-bd49-e9644667d685">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="660ccd32-5305-4ccc-b394-8d6ea6f41c0a"/>
 					</reportElement>
 					<textElement textAlignment="Center"/>
 					<textFieldExpression><![CDATA[$F{frecuencia}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="350" y="0" width="76" height="18" uuid="e3a9a2bc-e421-4f8b-a126-8413295271dc">
+					<reportElement x="350" y="-36" width="76" height="18" uuid="e3a9a2bc-e421-4f8b-a126-8413295271dc">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e0a9e4f2-db96-4568-abca-3f0d8a2c55e1"/>
 					</reportElement>
 					<textElement textAlignment="Center"/>
 					<textFieldExpression><![CDATA[$F{reportePais}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="426" y="1" width="60" height="18" uuid="e7033f2e-4884-4b30-a8ae-bf96812084dc">
+					<reportElement x="426" y="-35" width="60" height="18" uuid="e7033f2e-4884-4b30-a8ae-bf96812084dc">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7fde0fe4-bd6a-470e-8fbe-d7cdf9e17e27"/>
 					</reportElement>
 					<textElement textAlignment="Center"/>
 					<textFieldExpression><![CDATA[$F{reporteTipo}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="486" y="1" width="54" height="18" uuid="38c9f89e-f4bb-4488-b887-0372cfce1c43">
+					<reportElement x="486" y="-35" width="54" height="18" uuid="38c9f89e-f4bb-4488-b887-0372cfce1c43">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="62e90bcd-f6d1-4ca1-9d7a-37921d1e0915"/>
 					</reportElement>
 					<textElement textAlignment="Center"/>
 					<textFieldExpression><![CDATA[$F{reporteEstado}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="270" y="0" width="80" height="18" uuid="333c7fff-fc75-4ffc-b742-e8db3f42f284">
+					<reportElement x="270" y="-36" width="80" height="18" uuid="333c7fff-fc75-4ffc-b742-e8db3f42f284">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d4e5d93b-904a-4733-ab2f-afc3e84daf65"/>
 					</reportElement>
 					<textElement textAlignment="Center"/>

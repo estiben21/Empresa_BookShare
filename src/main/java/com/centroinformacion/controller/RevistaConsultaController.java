@@ -43,7 +43,7 @@ public class RevistaConsultaController {
 									@DateTimeFormat(pattern = "yyyy-MM-dd") Date desde,
 									@DateTimeFormat(pattern = "yyyy-MM-dd") Date hasta){
 		
-		List<Revista> lstSalida = revistaService.listaConsultaRevista(estado,idPais,idDataCatalogo,"%"+frecuencia +"%", "%"+nombre+"%", desde, hasta);
+		List<Revista> lstSalida = revistaService.listaConsultaRevista(estado,idPais,idDataCatalogo,"%"+nombre +"%","%"+frecuencia+"%", desde, hasta);
 		
 		return lstSalida;
 	}

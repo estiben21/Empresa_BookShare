@@ -16,5 +16,5 @@ public interface RevistaService {
 	public abstract List<Revista> listaPorNombreFrecuenciaLike(String filtro);
 	
 	//consultas
-	public abstract List<Revista> listaConsultaRevista(int estado, int idPais,int idDataCatalogo,String frecuencia, String nombre, Date fecDesde, Date fecHasta);
+	public abstract List<Revista> listaConsultaRevista(int estado, int idPais,int idDataCatalogo,String nombre,String frecuencia,  Date fecDesde, Date fecHasta);
 }

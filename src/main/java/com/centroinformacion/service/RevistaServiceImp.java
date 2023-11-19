@@ -40,8 +40,9 @@ public class RevistaServiceImp implements RevistaService{
 		return repository.save(obj);
 	}
 	@Override
-	public List<Revista> listaConsultaRevista(int estado, int idPais, int idDataCatalogo, String frecuencia,
-			String nombre, Date fecDesde, Date fecHasta) {
-		return repository.listaConsultaRevista(estado, idPais,idDataCatalogo,frecuencia,frecuencia, fecDesde, fecHasta);
+	public List<Revista> listaConsultaRevista(int estado, int idPais, int idDataCatalogo, String nombre,
+			String frecuencia,
+			 Date fecDesde, Date fecHasta) {
+		return repository.listaConsultaRevista(estado, idPais,idDataCatalogo,nombre,frecuencia, fecDesde, fecHasta);
 	}
 }
