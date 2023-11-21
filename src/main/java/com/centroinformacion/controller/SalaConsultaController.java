@@ -40,11 +40,11 @@ public class SalaConsultaController {
 
 	@GetMapping("/reporteSalaPdf")
 	public void reportes(HttpServletRequest request, HttpServletResponse response, boolean paramEstado,
-			String paramNumero, int paramPiso, int paramnumAlumnos, String paramRecursos, int paramsede, int paramtipoSala) {
+			String paramNumero, String paramPiso, String paramnumAlumnos, String paramRecursos, int paramsede, int paramtipoSala) {
 
 		try {
 			// PASO 1: obtener el data surce que va a generar el reporte
-			List<Sala> lstSalida = salaService.listaConsultaSala(paramEstado ?1:0, "%" + paramNumero +"%", paramPiso, paramnumAlumnos, "%"+paramRecursos+"%", paramsede,paramtipoSala );
+			List<Sala> lstSalida = salaService.listaConsultaSala(paramEstado ?1:0, "%" + paramNumero +"%", paramPiso =="" ?-1 : Integer.parseInt(paramPiso), paramnumAlumnos  =="" ?-1 : Integer.parseInt(paramnumAlumnos), "%"+paramRecursos+"%", paramsede,paramtipoSala );
 
 			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(lstSalida);
 

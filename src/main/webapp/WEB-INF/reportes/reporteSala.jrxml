@@ -27,7 +27,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="132" splitType="Stretch">
+		<band height="139" splitType="Stretch">
 			<image>
 				<reportElement x="456" y="0" width="99" height="132" uuid="97705585-a0b5-4ec7-86f3-ae10c220e6af"/>
 				<imageExpression><![CDATA[$P{RUTA_LOGO}]]></imageExpression>
@@ -35,18 +35,18 @@
 			<frame>
 				<reportElement mode="Opaque" x="0" y="0" width="451" height="95" backcolor="#000000" uuid="6c6ca4e1-17cd-4913-93d6-5e670ea9ae8a"/>
 				<staticText>
-					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="a2a2cac8-5a7d-4487-8c54-dab235ce4e21"/>
-					<textElement>
-						<font isBold="false"/>
+					<reportElement style="Title" x="10" y="0" width="360" height="66" uuid="a2a2cac8-5a7d-4487-8c54-dab235ce4e21"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="38" isBold="true" isItalic="true"/>
 					</textElement>
 					<text><![CDATA[Reporte Sala]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="SubTitle" x="150" y="60" width="290" height="29" uuid="8978eac3-c578-41c9-837e-48d2b0184642"/>
-					<textElement>
-						<font size="22" isBold="false"/>
+					<reportElement style="SubTitle" x="210" y="60" width="230" height="29" uuid="8978eac3-c578-41c9-837e-48d2b0184642"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font size="15" isBold="false"/>
 					</textElement>
-					<text><![CDATA[Autor: Marco Ñañez Viera]]></text>
+					<text><![CDATA[Autor: Marco A. Ñañez Viera]]></text>
 				</staticText>
 			</frame>
 			<frame>
@@ -67,56 +67,56 @@
 	<columnHeader>
 		<band height="26" splitType="Stretch">
 			<staticText>
-				<reportElement x="2" y="0" width="50" height="26" uuid="1c05aafb-aaa7-4049-81ea-dde0fea767c9">
+				<reportElement mode="Opaque" x="2" y="0" width="50" height="26" forecolor="#FFFFFF" backcolor="#030000" uuid="1c05aafb-aaa7-4049-81ea-dde0fea767c9">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="24cf9b1b-6389-42d2-b838-7c066f7b32f1"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Código]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="52" y="0" width="58" height="26" uuid="f1c3f80b-53ec-43ab-a099-9182e232fd18">
+				<reportElement mode="Opaque" x="52" y="0" width="58" height="26" forecolor="#FFFFFF" backcolor="#030000" uuid="f1c3f80b-53ec-43ab-a099-9182e232fd18">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cbe4d431-17eb-475c-b1ec-f3d6da9934a0"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Número]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="110" y="0" width="70" height="26" uuid="33d59ef9-a126-4f60-b066-7caafdcb937d">
+				<reportElement mode="Opaque" x="110" y="0" width="70" height="26" forecolor="#FFFFFF" backcolor="#030000" uuid="33d59ef9-a126-4f60-b066-7caafdcb937d">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b714263d-6c22-43df-ac17-ddec82357066"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Piso]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="180" y="0" width="60" height="26" uuid="55cfe119-663f-4cdb-acaf-1b7f2dc05947">
+				<reportElement mode="Opaque" x="180" y="0" width="60" height="26" forecolor="#FFFFFF" backcolor="#030000" uuid="55cfe119-663f-4cdb-acaf-1b7f2dc05947">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="23beeecf-0bea-455f-a257-61fd58172c58"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[N. Alumnos]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="240" y="0" width="90" height="26" uuid="72a8392d-8edb-43da-b8de-613e54b676cf">
+				<reportElement mode="Opaque" x="240" y="0" width="90" height="26" forecolor="#FFFFFF" backcolor="#030000" uuid="72a8392d-8edb-43da-b8de-613e54b676cf">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3555e4da-bc4d-40bb-b65a-0f910295c86b"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Recursos]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="330" y="0" width="70" height="26" uuid="90cd79f6-b99f-4143-bc61-11222e24b172">
+				<reportElement mode="Opaque" x="330" y="0" width="70" height="26" forecolor="#FFFFFF" backcolor="#030000" uuid="90cd79f6-b99f-4143-bc61-11222e24b172">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="55115336-6f2b-4030-9b4e-61a7b11ce583"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[reporteSede]]></text>
+				<text><![CDATA[Sede]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="400" y="0" width="70" height="26" uuid="8cc1364b-c794-414e-8231-2dc650391253">
+				<reportElement mode="Opaque" x="400" y="0" width="70" height="26" forecolor="#FFFFFF" backcolor="#030000" uuid="8cc1364b-c794-414e-8231-2dc650391253">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4a6dac41-4cb2-40af-864b-6e0e28e4074e"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Tipo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="470" y="0" width="82" height="26" uuid="9f4da69d-1ca7-4d0f-a1e4-fda5eef2d6bb">
+				<reportElement mode="Opaque" x="470" y="0" width="82" height="26" forecolor="#FFFFFF" backcolor="#030000" uuid="9f4da69d-1ca7-4d0f-a1e4-fda5eef2d6bb">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1d9b0c79-bf29-4533-9d4e-a24b5f114347"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
