@@ -31,7 +31,7 @@
 			<h4>Consulta Sala</h4>
 			<div class="row" style="margin-top: 3%">
 				<div class="col-lg-6">
-					<label class="control-label" for="id_numero">Nï¿½mero</label> <input
+					<label class="control-label" for="id_numero">Número</label> <input
 						class="form-control" type="text" id="id_numero" name="paramNumero"
 						placeholder="Ingrese el numero de la sala">
 				</div>
@@ -43,8 +43,8 @@
 			</div>
 			<div class="row" style="margin-top: 2%">
 				<div class="col-lg-6">
-					<label class="control-label" for="id_numAlumnos">Nï¿½mero de Alumnos</label> <input
-						class="form-control" type="number" id="id_numAlumnos" name="paramnumAlumnos" value="10" 
+					<label class="control-label" for="id_numAlumnos">Número de Alumnos</label> <input
+						class="form-control" type="number" id="id_numAlumnos" name="paramnumAlumnos"
 						placeholder="Ingrese el numero del alumnos">
 				</div>
 				<div class="col-lg-6">
@@ -70,7 +70,7 @@
 			<div class="row" style="margin-top: 2%">
 				<div class="col-lg-6">
 					<label class="control-label" for="id_piso">Piso</label> <input
-						class="form-control" type="number" id="id_piso" name="paramPiso" value="10" 
+						class="form-control" type="number" id="id_piso" name="paramPiso" 
 						placeholder="Ingrese el piso">
 				</div>
 			</div>
@@ -85,10 +85,10 @@
 					<table id="id_table" class="table table-striped table-bordered">
 						<thead>
 							<tr>
-								  <th style="width: 10%" >Cï¿½digo</th>
-                                <th style="width: 10%">Nï¿½mero</th>
+								  <th style="width: 10%" >Código</th>
+                                <th style="width: 10%">Número</th>
                                 <th style="width: 10%">Piso</th>
-                                <th style="width: 20%">Nï¿½mero de Alumnos</th>
+                                <th style="width: 20%">Número de Alumnos</th>
                                 <th style="width: 10%">Recursos</th>
                                 <th style="width: 15%">Sede</th>
                                 <th style="width: 15%">Tipo Sala</th>	
@@ -123,15 +123,13 @@
 				.click(
 						function() {
 			var varEstado = $("#id_estado").is(':checked') ? 1 : 0;
-		    var varNumero = $("#id_numero").val() || "%"; // Asigna "%" si el valor es nulo
-		    var varPiso = $("#id_piso").val() || -1; // Asigna -1 si el valor es nulo
-		    var varNumAlumnos = $("#id_numAlumnos").val() || -1; // Asigna -1 si el valor es nulo
-		    var varRecursos = $("#id_recursos").val() || "%"; // Asigna "%" si el valor es nulo
+		    var varNumero = $("#id_numero").val() || "%";
+		    var varPiso = $("#id_piso").val() || -1; 
+		    var varNumAlumnos = $("#id_numAlumnos").val() || -1;
+		    var varRecursos = $("#id_recursos").val() || "%";
 		    var varSede = $("#id_sede").val();
 		    var varTipoSala = $("#id_tipoSala").val();
 			
-			
-		
 
 			console.log(">> varEstado >> " + varEstado);
 			console.log(">> varNumero >> " + varNumero)
