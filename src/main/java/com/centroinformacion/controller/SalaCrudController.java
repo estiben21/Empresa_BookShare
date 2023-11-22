@@ -1,6 +1,4 @@
-
 package com.centroinformacion.controller;
-
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -19,25 +17,23 @@ import com.centroinformacion.entity.Usuario;
 import com.centroinformacion.service.SalaService;
 
 import jakarta.servlet.http.HttpSession;
-
 @Controller
 public class SalaCrudController {
+	@Autowired	
+private SalaService salaService;
 	
-	@Autowired
-	private SalaService salaService;
-	
-	/*@ResponseBody
+	@ResponseBody
 	@GetMapping("/consultaCrudSala")
 	public List<Sala> consulta(String filtro){
-	 List<Sala> lstSalida = salaService.listaPorNumeroLike("%"+filtro+"%");
-	 return lstSalida;
+		List<Sala> lstSalida = salaService.listPorNumerolike("%"+filtro+"%");
+		return lstSalida;
 	}
-	
+
 	
 	@PostMapping("/registraCrudSala")
 	@ResponseBody
-	public Map<?, ?> registra(Sala obj , HttpSession session) {
-		
+	public Map<?, ?> registra(Sala obj, HttpSession session) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
 		Usuario objUsuario = (Usuario)session.getAttribute("objUsuario");
 		obj.setEstado(1);
 		obj.setFechaRegistro(new Date());
@@ -45,8 +41,14 @@ public class SalaCrudController {
 		obj.setUsuarioRegistro(objUsuario);
 		obj.setUsuarioActualiza(objUsuario);
 		
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		Sala objSalida = salaService.insertaRegistraSala(obj);
+		List<Sala> lstSalida = salaService.listaPorNumero(
+								obj.getNumero());
+		if (!CollectionUtils.isEmpty(lstSalida)) {
+			map.put("mensaje", "La sala " + obj.getNumero() + " ya existe");
+			return map;
+		}
+		
+		Sala objSalida = salaService.insertaActualizaSala(obj);
 		if (objSalida == null) {
 			map.put("mensaje", "Error en el registro");
 		} else {
@@ -56,7 +58,6 @@ public class SalaCrudController {
 		}
 		return map;
 	}
-	
 	@PostMapping("/actualizaCrudSala")
 	@ResponseBody
 	public Map<?, ?> actualiza(Sala obj) {
@@ -79,7 +80,6 @@ public class SalaCrudController {
 		}
 		return map;
 	}
-	
 	
 	@ResponseBody
 	@PostMapping("/eliminaCrudSala")
@@ -107,7 +107,7 @@ public class SalaCrudController {
 			return "{\"valid\" : false }";
 		}
 	}
-	
+
 	@GetMapping("/buscaSalaPorNumeroRegistra")
 	@ResponseBody
 	public String validaNumeroRegistra(String numero) {
@@ -129,8 +129,6 @@ public class SalaCrudController {
 	            return "{\"valid\":false}";
 	        }
 	    } 
-	}*/
+	}
 
-	
 
-}
