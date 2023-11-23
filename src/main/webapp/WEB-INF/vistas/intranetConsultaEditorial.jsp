@@ -30,7 +30,6 @@
 <!-- AGREGAR FORM  -->
 <form id="id_form">
 	<div class="container">
-		<h3>Consulta Editorial</h3>
 		<div class="row" style="margin-top: 3%">
 			<div class="col-md-6">
 				<label class="control-label" for="id_razonSocial">Razón Social</label> 
