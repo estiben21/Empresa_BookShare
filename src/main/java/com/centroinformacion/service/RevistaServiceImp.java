@@ -1,5 +1,6 @@
 package com.centroinformacion.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,5 +38,11 @@ public class RevistaServiceImp implements RevistaService{
 	@Override
 	public Revista actualizaRevista(Revista obj) {
 		return repository.save(obj);
+	}
+	@Override
+	public List<Revista> listaConsultaRevista(int estado, int idPais, int idDataCatalogo, String nombre,
+			String frecuencia,
+			 Date fecDesde, Date fecHasta) {
+		return repository.listaConsultaRevista(estado, idPais,idDataCatalogo,nombre,frecuencia, fecDesde, fecHasta);
 	}
 }

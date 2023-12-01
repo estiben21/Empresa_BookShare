@@ -30,7 +30,7 @@ public class SalaServiceImp implements SalaService {
 	
 	@Override
 	public List<Sala> listPorNumerolike(String filtro) {
-		return repository.listPorNumerolike(filtro);
+		return repository.listaPorNumeroLike(filtro);
 	}
 	@Override
 	public Optional<Sala> buscarSala(int idSala) {
@@ -46,11 +46,13 @@ public class SalaServiceImp implements SalaService {
 	@Override
 	public List<Sala> listaPorNumeroIgualActualiza(String numero) {
 		return repository.listaPorNumeroIgualActualiza(numero);
+
 	}
-	
 	@Override
-	public List<Sala> listaConsultaSala(
-			int estado,String numero,int piso,int numAlumnos,String recursos,int idSede,int idTipoSala) {
+	public List<Sala> listaConsultaSala(int estado, String numero, int piso, int numAlumnos, String recursos,
+			int idSede, int idTipoSala) {
 		return repository.listaConsultaSala(estado, numero, piso, numAlumnos, recursos, idSede, idTipoSala);
 	}
+	
+
 }

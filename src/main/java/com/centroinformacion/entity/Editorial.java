@@ -1,5 +1,6 @@
 package com.centroinformacion.entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -69,5 +70,20 @@ public class Editorial {
 	@JoinColumn(name = "idUsuarioActualiza")
 	private Usuario usuarioActualiza;
 	
+	//SEMANA 12--- PC3 -- CONSULTA
+	public String getReporteEstado() {
+		return estado == 1 ? "Activo":"Inactivo";
+	}
+	
+	//abhora pais (cbo)
+	public String getReportePais() {
+		return pais.getNombre();
+	}
+	
+	//fecha nac
+	public String getReporteFechaCreacion() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(fechaCreacion);
+	}
    
 }

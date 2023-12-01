@@ -1,5 +1,6 @@
 package com.centroinformacion.entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -74,4 +75,25 @@ public class Autor {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idUsuarioActualiza")
 	private Usuario usuarioActualiza;
+	
+	//Atrbutos para el reporte
+		public String getReporteEstado() {
+			return estado ==1? "Activo":"Inactivo";
+		}
+		
+		//calmel case cuando empieza con mayusculas
+		public String getReportePais(){
+			return pais.getNombre();
+		}
+		
+		//calmel case cuando empieza con mayusculas
+				public String getReporteGrado(){
+					return grado.getDescripcion();
+				}
+		
+		//java text
+		public String getReporteFechaNacimiento(){
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			return sdf.format(fechaNacimiento);
+		}
 }

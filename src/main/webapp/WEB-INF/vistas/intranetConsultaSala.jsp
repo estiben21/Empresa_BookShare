@@ -84,15 +84,15 @@
 				<div class="col-md-12">
 					<table id="id_table" class="table table-striped table-bordered">
 						<thead>
-							<tr>			
-                             <th style="width: 10%" >Código</th>
+							<tr>
+								  <th style="width: 10%" >Código</th>
                                 <th style="width: 10%">Número</th>
                                 <th style="width: 10%">Piso</th>
                                 <th style="width: 20%">Número de Alumnos</th>
                                 <th style="width: 10%">Recursos</th>
-                                <th style="width: 10%">Tipo Sala</th>
-                                <th style="width: 10%">Sede</th>
-                                <th style="width: 10%">Estado</th>
+                                <th style="width: 15%">Sede</th>
+                                <th style="width: 15%">Tipo Sala</th>	
+                                <th style="width: 15%">Estado</th>
                                 
 							</tr>
 						</thead>
@@ -118,40 +118,45 @@
 		$("#id_btn_reporte").click(function(){
 			$("#id_form").attr('action', 'reporteSalaPdf');
 			$("#id_form").submit();
-			
 		});
 		$("#id_btn_filtra")
 				.click(
 						function() {
-							var varEstado = $("#id_estado").is(':checked') ? 1 : 0;
-						    var varNumero = $("#id_numero").val() || "%"; 
-						    var varPiso = $("#id_piso").val() || -1;
-						    var varNumAlumnos = $("#id_numAlumnos").val() || -1; 
-						    var varRecursos = $("#id_recursos").val() || "%"; 
-						    var varSede = $("#id_sede").val();
-						    var varTipoSala = $("#id_tipoSala").val();
-	
-							console.log(">> varEstado >> " + varEstado);
-							console.log(">> varNumero >> " + varNumero)
-							console.log(">> varPiso >> " + varPiso);;
-							console.log(">> varNumAlumnos >> " + varNumero);
-							console.log(">> varRecursos >> " + varRecursos);
-							console.log(">> varSede >> " + varSede);
-							console.log(">> varTipoSala >> " + varTipoSala);
-								
-							$.getJSON("consultaSala", {
-								"estado": varEstado,
-							    "numero": varNumero,
-							    "piso": varPiso,
-							     "numAlumnos":varNumAlumnos,
-							    "recursos": varRecursos,
-							    "idSede": varSede,
-							    "idTipoSala": varTipoSala
+			var varEstado = $("#id_estado").is(':checked') ? 1 : 0;
+		    var varNumero = $("#id_numero").val() || "%"; 
+		    var varPiso = $("#id_piso").val() || -1;
+		    var varNumAlumnos = $("#id_numAlumnos").val() || -1; 
+		    var varRecursos = $("#id_recursos").val() || "%"; 
+		    var varSede = $("#id_sede").val();
+		    var varTipoSala = $("#id_tipoSala").val();
+			
+			
+		
 
-							}, function(data) {
-								agregarGrilla(data);
-							});
-						});
+			console.log(">> varEstado >> " + varEstado);
+			console.log(">> varNumero >> " + varNumero)
+			console.log(">> varPiso >> " + varPiso);;
+			console.log(">> varNumAlumnos >> " + varNumAlumnos);
+			console.log(">> varRecursos >> " + varRecursos);
+			console.log(">> varSede >> " + varSede);
+			console.log(">> varTipoSala >> " + varTipoSala);
+			
+
+			
+			$.getJSON("consultaSala", {
+				"estado": varEstado,
+			    "numero": varNumero,
+			    "piso": varPiso,
+			     "numAlumnos":varNumAlumnos,
+			    "recursos": varRecursos,
+			    "idSede": varSede,
+			    "idTipoSala": varTipoSala
+			    
+				
+			}, function(data) {
+				agregarGrilla(data);
+			});
+		});
 
 		function agregarGrilla(lista) {
 			$('#id_table').DataTable().clear();
@@ -169,8 +174,8 @@
 					data : "piso"}, {
 					data : "numAlumnos"}, {
 					data : "recursos"}, {
-					data : "sede.idDataCatalogo"},{
-					data : "tipoSala.idDataCatalogo"},
+					data : "sede.descripcion"},{
+					data : "tipoSala.descripcion"},
 				{
 					data : function(row, type, val, meta) {
 						var salida = (row.estado == 1) ? 'Activo' : "Inactivo";

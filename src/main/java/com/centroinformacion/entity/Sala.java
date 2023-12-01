@@ -62,4 +62,25 @@ public class Sala {
 	@JoinColumn(name = "idUsuarioActualiza")
 	private Usuario usuarioActualiza;
 
+	
+	
+	
+	//Atributos para el reporte
+		public String getReporteEstado() {
+			return estado == 1 ? "Activo" : "Inactivo"; 
+		}
+		
+		public String getReporteTipoSala() {
+			return tipoSala.getDescripcion(); 
+		}
+		
+		public String getReporteSede() {
+			return sede.getDescripcion(); 
+		}
+	
+	
+	
+	
+	
+	
 }
