@@ -177,7 +177,7 @@ $(document).ready(function() {
                             message: 'El nombre es de 2 a 40 caracteres'
                         },
                         regexp: {
-                            regexp: /^[a-zA-Z]+$/,
+                        	regexp: /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/,
                             message: 'Ingresar nombres con caracteres alfab&eacute;ticos'
                         }
                     }
@@ -194,7 +194,7 @@ $(document).ready(function() {
                             message: 'Los apellidos son de 2 a 40 caracteres '
                         },
                         regexp: {
-                            regexp: /^[a-zA-Z]+$/,
+                        	regexp: /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/,
                             message: 'Ingresar apellidos con caracteres alfab&eacute;ticos'
                         }
                     }
