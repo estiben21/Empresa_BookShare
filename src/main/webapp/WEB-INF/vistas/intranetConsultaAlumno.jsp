@@ -144,7 +144,7 @@ $("#id_btn_filtra").click(function(){
 	        	$("#id_btn_reporte").prop('disabled', false);
 	        }	   
 	});
-});
+}); 
 
 function agregarGrilla(lista){
 	 $('#id_table').DataTable().clear();
