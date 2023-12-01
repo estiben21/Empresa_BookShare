@@ -142,7 +142,7 @@ $("#id_btn_filtra").click(function(){
 				$("#id_btn_reporte").prop('disabled', true);
 	        } else {
 	        	$("#id_btn_reporte").prop('disabled', false);
-	        }	
+	        }	  
 	});
 });
 
