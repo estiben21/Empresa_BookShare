@@ -56,7 +56,7 @@
 					<thead>
 						<tr>
 							<th style="width: 10%">Código</th>
-							<th style="width: 40%">Opcion</th>
+							<th style="width: 80%">Opción</th>
 							<th style="width: 10%"></th>
 						</tr>
 					</thead>
@@ -82,7 +82,7 @@ $.getJSON("listaOpcion", {}, function(data){
 });
 
 $("#id_rol").change(function(){
-	var var_usuario = $("#id_rol").val();
+	var var_rol = $("#id_rol").val();
 	$.getJSON("listaOpcionPorRol", {"idRol":var_rol }, function(data){
 		agregarGrilla(data , var_rol);
 	});
@@ -115,6 +115,7 @@ function agregarGrilla(lista, var_rol){
 			lengthChange: false,
 			columns:[
 				{data: "idOpcion"},
+				//{data: "idRol"},
 				{data: "nombre"},
 				{data: function(row, type, val, meta){
 				    var salida='<button type="button" style="width: 90px" class="btn btn-warning btn-sm" onclick="accionEliminar(\'' + var_rol +'\',\'' + row.idOpcion +'\')">Eliminar</button>';
@@ -125,18 +126,33 @@ function agregarGrilla(lista, var_rol){
 }
 
 function accionEliminar(idRol, idOpcion){
-	$.ajax({
+    $.ajax({
         type: "POST",
         url: "eliminaOpcion", 
         data: {"idRol": idRol, "idOpcion": idOpcion},
         success: function(data){
-      	  agregarGrilla(data.lista, data.opcion);
-      	  mostrarMensaje(data.mensaje);
+            // update the data table
+            agregarGrilla(data.lista, data.rol);
+            mostrarMensaje(data.mensaje);
+
+            // also update the select elements
+            $("#id_rol").empty();
+            $("#id_opcion").empty();
+            $.getJSON("listaRol", {}, function(data){
+                $.each(data, function(i,item){
+                    $("#id_rol").append("<option value="+item.idRol +">"+ item.nombre +"</option>");
+                });
+            });
+            $.getJSON("listaOpcion", {}, function(data){
+                $.each(data, function(i,item){
+                    $("#id_opcion").append("<option value="+item.idOpcion +">"+ item.nombre +"</option>");
+                });
+            });
         },
         error: function(){
-      	  mostrarMensaje(MSG_ERROR);
+            mostrarMensaje(MSG_ERROR);
         }
-     });
+    });
 }
 </script>   		
 </body>
