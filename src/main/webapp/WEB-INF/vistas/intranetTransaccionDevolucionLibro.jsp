@@ -225,7 +225,7 @@
 			//Se añade los alumno a la tabla
 			$
 					.getJSON(
-							"cargaAlumno",
+							"listaAlumnoDevolucion",
 							{
 								"filtro" : var_alumno
 							},
@@ -261,7 +261,7 @@
 			$("#id_table_Libro tbody").empty();
 			
 			//Se añade los libros a la tabla
-			$.getJSON("cargaLibro",{"filtro":var_libro}, function (data){
+			$.getJSON("listaLibroDevolucion",{"filtro":var_libro}, function (data){
 				$.each(data, function(index, item){
 					$('#id_table_libro').append("<tr><td>" +item.idLibro 
 														   + "</td><td>"

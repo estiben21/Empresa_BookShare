@@ -389,7 +389,7 @@ $("#id_btnAgregar").click(function (){
 		$("#id_table_alumno tbody").empty();
 		console.log("Funcion muestraAlumno() llamada");
 		//Se añade los alumnos a la tabla
-		$.getJSON("cargaAlumno",{"filtro":var_alumno}, function (data){
+		$.getJSON("listaAlumnoPrestamo",{"filtro":var_alumno}, function (data){
 			$.each(data, function(index, item){
 				$('#id_table_alumno').append("<tr><td>" +item.idAlumno + "</td><td>" +item.nombres + "</td><td>" +item.apellidos + "</td><td><button type='button' class='btn btn-default' aria-label='Left Align' onclick=\"f_seleccione_alumno('"+ item.idAlumno+"','"+ item.nombres+"','"+ item.apellidos+"');\" ><span class='glyphicon glyphicon-ok' aria-hidden='true'></span></button></td></tr>");
 			});
@@ -407,7 +407,7 @@ $("#id_btnAgregar").click(function (){
 		$("#id_table_libro tbody").empty();
 	    console.log("Funcion muestraLibro() llamada ");
 		//Se a�ade los clientes a la tabla
-		$.getJSON("listaLibro",{"filtro":var_libro}, function (data){
+		$.getJSON("listaLibroPrestamo",{"filtro":var_libro}, function (data){
 			$.each(data, function(index, item){
 			    $('#id_table_libro').append("<tr><td>" +item.idLibro + "</td><td>" +item.titulo + "</td><td>"    + item.estadoPrestamo.descripcion + "</td><td><button type='button' class='btn btn-default' aria-label='Left Align' onclick=\"f_seleccione_libro('"+ item.idLibro+"','"+ item.titulo +"','"+  item.estadoPrestamo.descripcion +"');\" ><span class='glyphicon glyphicon-ok' aria-hidden='true'></span></button></td></tr>");
 			});

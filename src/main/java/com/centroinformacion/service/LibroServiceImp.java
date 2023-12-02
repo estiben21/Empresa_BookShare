@@ -14,20 +14,20 @@ import com.centroinformacion.entity.LibroHasAutorPK;
 import com.centroinformacion.repository.LibroHasAutorRepository;
 import com.centroinformacion.repository.LibroRepository;
 
-
 @Service
 public class LibroServiceImp implements LibroService {
-	@Autowired	
+	@Autowired
 	private LibroRepository repository;
-	//sem 14
-		@Autowired
-		private LibroHasAutorRepository libroHasAutorRepository;
-		//--
+	// sem 14
+	@Autowired
+	private LibroHasAutorRepository libroHasAutorRepository;
+	// --
 
 	@Override
 	public Libro insertaActualizaLibro(Libro obj) {
 		return repository.save(obj);
 	}
+
 	@Override
 	public Libro insertaRegistraLibro(Libro obj) {
 		return repository.save(obj);
@@ -37,7 +37,7 @@ public class LibroServiceImp implements LibroService {
 	public List<Libro> listaPorTitulo(String titulo) {
 		return repository.findByTituloIgnoreCase(titulo);
 	}
-	
+
 	@Override
 	public List<Libro> listaPorTituloLike(String filtro) {
 		return repository.listPorTituloLike(filtro);
@@ -47,54 +47,55 @@ public class LibroServiceImp implements LibroService {
 	public Optional<Libro> buscaLibro(int idLibro) {
 		return repository.findById(idLibro);
 	}
-	
+
 	@Override
 	public boolean existeLibroConSerie(String serie) {
-		 Libro libro = repository.findBySerie(serie);
-		    if (libro != null) {
-		        return true;
-		    }else {
-			    return false;	
-		    }
-	}
-	@Override
-	public List<Libro> listaConsultaLibro(int estado, int idCategoria, int idTipo, String titulo, String serie, int anio) {
-		return repository.listaConsultaLibro(estado,  idCategoria, idTipo, titulo, serie, anio);
+		Libro libro = repository.findBySerie(serie);
+		if (libro != null) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@Override
-	public List<Libro> listaLibro(String filtro, Pageable pageable) {
-		return repository.listaLibro(filtro, pageable);
+	public List<Libro> listaConsultaLibro(int estado, int idCategoria, int idTipo, String titulo, String serie,
+			int anio) {
+		return repository.listaConsultaLibro(estado, idCategoria, idTipo, titulo, serie, anio);
 	}
 
-	
-	//pc4
+	@Override
+	public List<Libro> listaLibroDisponible(String filtro, Pageable pageable) {
+		return repository.listaLibroDisponible(filtro, pageable);
+	}
+
+	// pc4
 	@Override
 	public List<Libro> listaLibro() {
 		return repository.findAll();
 	}
 
-		//inserta
-		@Override
-		public LibroHasAutor insertaAutor(LibroHasAutor obj) {
-			return libroHasAutorRepository.save(obj);
-		}
+	// inserta
+	@Override
+	public LibroHasAutor insertaAutor(LibroHasAutor obj) {
+		return libroHasAutorRepository.save(obj);
+	}
 
-		@Override
-		public void eliminaAutor( LibroHasAutor obj) {
-			libroHasAutorRepository.delete(obj);
-			
-		}
+	@Override
+	public void eliminaAutor(LibroHasAutor obj) {
+		libroHasAutorRepository.delete(obj);
 
-		@Override
-		public Optional<LibroHasAutor> buscaAutor( LibroHasAutorPK obj) {
-			return libroHasAutorRepository.findById(obj);
-		}
+	}
 
-		@Override
-		public List<Autor> traerAutorDeLibro(int idLibro) {
-			return repository.traerAutorDeLibro(idLibro);
-		}
-		
-		//---
+	@Override
+	public Optional<LibroHasAutor> buscaAutor(LibroHasAutorPK obj) {
+		return libroHasAutorRepository.findById(obj);
+	}
+
+	@Override
+	public List<Autor> traerAutorDeLibro(int idLibro) {
+		return repository.traerAutorDeLibro(idLibro);
+	}
+
+	// ---
 }

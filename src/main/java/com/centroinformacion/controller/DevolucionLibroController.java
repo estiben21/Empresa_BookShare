@@ -31,28 +31,25 @@ public class DevolucionLibroController {
 
 	@Autowired
 	private DevolucionService devolucionService;
-	
-	
-	
-	@RequestMapping("/cargaAlumno")
+
+	@RequestMapping("/listaAlumnoDevolucion")
 	@ResponseBody()
-	public List<Alumno> listaAlumno(String filtro){
+	public List<Alumno> listaAlumno(String filtro) {
 		int page = 0;
 		int size = 5;
 		Pageable pageable = PageRequest.of(page, size);
-		List<Alumno> lstSalida = alumnoService.listaAlumno("%" +filtro + "%", pageable);
-		return lstSalida;		
+		List<Alumno> lstSalida = alumnoService.listaAlumno("%" + filtro + "%", pageable);
+		return lstSalida;
 	}
-	
-	
-	@RequestMapping("/cargaLibro")
+
+	@RequestMapping("listaLibroDevolucion")
 	@ResponseBody()
-	public List<Libro> listaLibro(String filtro){
+	public List<Libro> listaLibro(String filtro) {
 		int page = 0;
 		int size = 5;
 		Pageable pageable = PageRequest.of(page, size);
-		List<Libro> lstSalida = libroService.listaLibro("%" +filtro + "%", pageable);
-		return lstSalida;		
+		List<Libro> lstSalida = libroService.listaLibroDisponible("%" + filtro + "%", pageable);
+		return lstSalida;
 	}
-	
+
 }

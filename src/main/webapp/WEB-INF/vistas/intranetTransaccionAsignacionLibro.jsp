@@ -80,8 +80,7 @@ $.getJSON("listaLibro", {}, function(data){
 
 $.getJSON("listaAutor", {}, function(data){
     $.each(data, function(i,item){
-        $("#id_autor").append("<option value="+item.idAutor +">"
-				+ item.nombres +"</option>");
+        $("#id_autor").append("<option value="+item.idAutor +">"+ item.nombreCompleto +"</option>");
     });
 });
 
@@ -120,7 +119,7 @@ function agregarGrilla(lista, var_libro){
         lengthChange: false,
         columns:[
             {data: "idAutor"},
-            {data: "nombres"},
+            {data: "nombreCompleto"},
             {data: function(row, type, val, meta){
                 var salida='<button type="button" style="width: 90px" class="btn btn-warning btn-sm" onclick="accionEliminar(\'' + var_libro +'\',\'' + row.idAutor +'\')">Eliminar</button>';
                 return salida;

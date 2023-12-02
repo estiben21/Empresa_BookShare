@@ -1,16 +1,12 @@
 package com.centroinformacion.controller;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -24,8 +20,6 @@ import com.centroinformacion.entity.Usuario;
 import com.centroinformacion.service.AlumnoService;
 import com.centroinformacion.service.LibroService;
 import com.centroinformacion.service.PrestamoService;
-import com.centroinformacion.util.AppSettings;
-
 
 import jakarta.servlet.http.HttpSession;
 import lombok.Getter;
@@ -49,7 +43,7 @@ public class LibroPrestamo {
 		private List<Prestamo> prestamos = new ArrayList<Prestamo>();
 		
 		
-	@RequestMapping("/cargaAlumno")
+	@RequestMapping("/listaAlumnoPrestamo")
 	@ResponseBody()
 	public List<Alumno> listaAlumno(String filtro){
 		int page = 0;
@@ -59,13 +53,13 @@ public class LibroPrestamo {
 		return lstSalida;		
 	}
 		
-	@RequestMapping("/listaLibro")
+	@RequestMapping("/listaLibroPrestamo")
 	@ResponseBody()
 	public List<Libro> listaLibro(String filtro){
 		int page = 0;
 		int size = 5;
 		Pageable pageable = PageRequest.of(page, size);
-		List<Libro> lstSalida = libroService.listaLibro("%"+filtro+"%", pageable);
+		List<Libro> lstSalida = libroService.listaLibroDisponible("%"+filtro+"%", pageable);
 		return lstSalida;		
 	}
 	
