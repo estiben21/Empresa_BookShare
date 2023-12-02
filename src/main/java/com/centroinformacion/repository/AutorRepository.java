@@ -36,4 +36,6 @@ public interface AutorRepository extends JpaRepository<Autor, Integer>{
 				+ "( a.fechaNacimiento <= ?7 )") 
 		public abstract List<Autor> listaConsultaAutor(int estado, int idPais,int idGrado, String nomApe,String telefono, Date fecDesde, Date fecHasta);
 
+		
+		
 }
