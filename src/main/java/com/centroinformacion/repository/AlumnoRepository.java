@@ -3,6 +3,7 @@ package com.centroinformacion.repository;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -43,4 +44,7 @@ public interface AlumnoRepository extends JpaRepository<Alumno, Integer>{
 										+ "( ?9 = -1 or a.modalidad.idDataCatalogo = ?9)")
 	public abstract List<Alumno> listaConsultaAlumno(String nomApe, int estado, String telefono, String dni, 
 													String correo, Date fechaNacDesde, Date fechaNacHasta, int idPais, int idModalidad);
+	
+	@Query("select x from Alumno x where x.nombres like ?1 or x.apellidos like ?1")
+	public abstract List<Alumno> listaAlumno (String filtro, Pageable pageable);
 }

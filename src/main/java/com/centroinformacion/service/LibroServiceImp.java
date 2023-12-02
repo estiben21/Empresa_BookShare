@@ -1,5 +1,6 @@
 package com.centroinformacion.service;
 
+import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,5 +51,9 @@ public class LibroServiceImp implements LibroService {
 	@Override
 	public List<Libro> listaConsultaLibro(int estado, int idCategoria, int idTipo, String titulo, String serie, int anio) {
 		return repository.listaConsultaLibro(estado,  idCategoria, idTipo, titulo, serie, anio);
+	}
+	@Override
+	public List<Libro> listaLibro(String filtro, Pageable pageable) {
+		return repository.listaLibro(filtro, pageable);
 	}
 }

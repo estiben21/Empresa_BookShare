@@ -1,5 +1,6 @@
 	package com.centroinformacion.service;
 
+import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,4 +17,7 @@ public interface LibroService {
 	//consultas
 	
 	public abstract List<Libro> listaConsultaLibro(int estado, int idCategoria, int idTipo, String titulo, String serie, int anio);
+	
+	
+	public abstract List<Libro> listaLibro(String filtro, Pageable pageable);
 }
