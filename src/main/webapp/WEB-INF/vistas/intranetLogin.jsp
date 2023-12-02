@@ -46,11 +46,11 @@
 			                    <form id="id_form"  action="login" method="post" class="login-form">
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-username">Usuario</label>
-			                        	<input type="text" name="login" placeholder="Ingrese Usuario" class="form-username form-control" id="form-username" maxlength="20" value="luis">
+			                        	<input type="text" name="login" placeholder="Ingrese Usuario" class="form-username form-control" id="form-username" maxlength="20" value="">
 			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-password">Contraseña</label>
-			                        	<input type="password" name="password" placeholder="Ingrese Contraseña" class="form-password form-control" id="form-password" maxlength="20" value="luis">
+			                        	<input type="password" name="password" placeholder="Ingrese Contraseña" class="form-password form-control" id="form-password" maxlength="20" value="">
 			                        </div>
 			                        <button type="submit" class="btn btn-primary">Ingresar</button>
 			                    </form>
@@ -83,6 +83,18 @@ $(document).ready(function() {
         },
         fields: {
         	dni: {
+                validators: {
+                    notEmpty: {
+                        message: 'El usuario es obligatorio'
+                    },
+                    stringLength :{
+                    	message: 'El usuario es de 3 a 20 caracteres',
+                    	min : 3,
+                    	max : 20
+                    }
+                }
+            },
+            login: {
                 validators: {
                     notEmpty: {
                         message: 'El usuario es obligatorio'

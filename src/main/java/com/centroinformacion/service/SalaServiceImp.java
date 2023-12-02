@@ -53,6 +53,13 @@ public class SalaServiceImp implements SalaService {
 			int idSede, int idTipoSala) {
 		return repository.listaConsultaSala(estado, numero, piso, numAlumnos, recursos, idSede, idTipoSala);
 	}
-	
+	@Override
+	public List<Sala> listaSalaDisponibles() {
+		return repository.listaSalaDisponibles();
+	}
+	@Override
+	public Sala actualizarSala(Sala sala) {
+		return repository.save(sala);
+	}
 
 }

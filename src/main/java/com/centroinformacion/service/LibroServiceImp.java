@@ -7,13 +7,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.centroinformacion.entity.Autor;
 import com.centroinformacion.entity.Libro;
+import com.centroinformacion.entity.LibroHasAutor;
+import com.centroinformacion.entity.LibroHasAutorPK;
+import com.centroinformacion.repository.LibroHasAutorRepository;
 import com.centroinformacion.repository.LibroRepository;
+
 
 @Service
 public class LibroServiceImp implements LibroService {
 	@Autowired	
 	private LibroRepository repository;
+	//sem 14
+		@Autowired
+		private LibroHasAutorRepository libroHasAutorRepository;
+		//--
 
 	@Override
 	public Libro insertaActualizaLibro(Libro obj) {
@@ -52,9 +61,40 @@ public class LibroServiceImp implements LibroService {
 	public List<Libro> listaConsultaLibro(int estado, int idCategoria, int idTipo, String titulo, String serie, int anio) {
 		return repository.listaConsultaLibro(estado,  idCategoria, idTipo, titulo, serie, anio);
 	}
+
 	@Override
 	public List<Libro> listaLibro(String filtro, Pageable pageable) {
 		return repository.listaLibro(filtro, pageable);
 	}
 
+	
+	//pc4
+	@Override
+	public List<Libro> listaLibro() {
+		return repository.findAll();
+	}
+
+		//inserta
+		@Override
+		public LibroHasAutor insertaAutor(LibroHasAutor obj) {
+			return libroHasAutorRepository.save(obj);
+		}
+
+		@Override
+		public void eliminaAutor( LibroHasAutor obj) {
+			libroHasAutorRepository.delete(obj);
+			
+		}
+
+		@Override
+		public Optional<LibroHasAutor> buscaAutor( LibroHasAutorPK obj) {
+			return libroHasAutorRepository.findById(obj);
+		}
+
+		@Override
+		public List<Autor> traerAutorDeLibro(int idLibro) {
+			return repository.traerAutorDeLibro(idLibro);
+		}
+		
+		//---
 }

@@ -6,7 +6,12 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Pageable;
 
+
+import com.centroinformacion.entity.Autor;
 import com.centroinformacion.entity.Libro;
+import com.centroinformacion.entity.LibroHasAutor;
+import com.centroinformacion.entity.LibroHasAutorPK;
+
 
 public interface LibroService {
 	public abstract Libro insertaActualizaLibro(Libro obj);
@@ -23,5 +28,13 @@ public interface LibroService {
 	//devolucion
 	public abstract List<Libro> listaLibro(String filtro, Pageable pageable);
 	
+
+
+	  public abstract List<Libro> listaLibro();
+	
+		public abstract LibroHasAutor insertaAutor(LibroHasAutor obj);
+		public abstract void eliminaAutor(LibroHasAutor obj);
+		public abstract Optional<LibroHasAutor> buscaAutor(LibroHasAutorPK obj);
+		public abstract List<Autor> traerAutorDeLibro(int idLibro);
 
 }
