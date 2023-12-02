@@ -9,10 +9,12 @@ import com.centroinformacion.entity.RolHasOpcion;
 import com.centroinformacion.entity.RolHasOpcionPK;
 
 public interface RolService {
-	public abstract List<Rol> listaRol();
 	public abstract List<Opcion> traerOpcionDeRol(int idRol);
 	
 	public abstract RolHasOpcion insertaOpcion(RolHasOpcion obj);
 	public abstract void eliminaOpcion(RolHasOpcion obj);
 	public abstract Optional<RolHasOpcion> buscaOpcion(RolHasOpcionPK obj);
+	
+	/*_______________________ PC4 _____________________*/
+	public abstract List<Rol> listaRol();
 }

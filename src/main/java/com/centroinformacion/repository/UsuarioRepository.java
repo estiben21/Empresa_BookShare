@@ -18,9 +18,10 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 	@Query("Select p from Opcion p, RolHasOpcion pr, Rol r, UsuarioHasRol u where  p.idOpcion = pr.opcion.idOpcion and pr.rol.idRol = r.idRol and r.idRol = u.rol.idRol and u.usuario.idUsuario = :var_idUsuario")
 	public abstract List<Opcion> traerEnlacesDeUsuario(@Param("var_idUsuario") int idUsuario);
 
-	@Query("Select r from Rol r, UsuarioHasRol u where r.idRol = u.rol.idRol and u.usuario.idUsuario = :var_idUsuario")
-	public abstract List<Rol> traerRolesDeUsuario(@Param("var_idUsuario")int idUsuario);
-	
 	public abstract Usuario findByLogin(String login);
 	
+	/*_______________________ PC4 _____________________*/
+	//trae los roles según usuario: relaciona las tablas Rol y UsuarioHasRol mediante su idRol y el idUsuario con un parámetro var_idUsuario
+	@Query("Select r from Rol r, UsuarioHasRol u where r.idRol = u.rol.idRol and u.usuario.idUsuario = :var_idUsuario")
+	public abstract List<Rol> traerRolesDeUsuario(@Param("var_idUsuario")int idUsuario);
 }
