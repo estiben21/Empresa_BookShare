@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.centroinformacion.entity.Libro;
@@ -50,5 +51,10 @@ public class LibroServiceImp implements LibroService {
 	@Override
 	public List<Libro> listaConsultaLibro(int estado, int idCategoria, int idTipo, String titulo, String serie, int anio) {
 		return repository.listaConsultaLibro(estado,  idCategoria, idTipo, titulo, serie, anio);
+	}
+	@Override
+	public List<Libro> listaLibro(String filtro, Pageable pageable) {
+		return repository.listaLibro(filtro, pageable);
+
 	}
 }

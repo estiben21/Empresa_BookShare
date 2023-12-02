@@ -94,6 +94,8 @@ public class Alumno {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return sdf.format(fechaActualizacion);
 	}
-	
+	public String getNombreCompleto() {
+		return nombres.concat(" ").concat(apellidos);
+	}
    
 }

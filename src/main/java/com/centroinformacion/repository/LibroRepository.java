@@ -2,6 +2,7 @@ package com.centroinformacion.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -27,4 +28,8 @@ public interface LibroRepository extends JpaRepository<Libro, Integer> {
 		)
 	public abstract List<Libro> listaConsultaLibro(int estado, int idCategoria, int idTipo,  String titulo, String serie, int anio);
 
+		@Query("SELECT p FROM Libro p WHERE "
+		    + "(LOWER(p.titulo) LIKE LOWER(CONCAT('%', ?1, '%'))) AND "
+		    + "(p.estadoPrestamo.idDataCatalogo = 27)")
+		public abstract List<Libro> listaLibro(String filtro, Pageable pageable);
 }
