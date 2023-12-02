@@ -108,7 +108,7 @@
 </form>
 
 <script type="text/javascript">
-$("#id_btn_reporte").prop('disabled', true);  
+$("#id_btn_reporte").prop('disabled', true);   
 
 //------------------------ btn FILTRA ---------------------------
 $("#id_btn_filtra").click(function(){
