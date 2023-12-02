@@ -211,6 +211,7 @@ $(document).ready(function() {
                     notEmpty: {
                         message: 'Seleccione una opción'
                     },
+                    
                     callback: {
                         message: 'Seleccione una opción válida',
                         callback: function(value, validator, $field) {
