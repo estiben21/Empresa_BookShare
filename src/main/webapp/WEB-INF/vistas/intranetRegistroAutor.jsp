@@ -36,11 +36,13 @@
 		<form id="id_form" method="post">
 			<div class="col-md-12" style="margin-top: 2%">
 				<div class="row">
+				
 					<div class="form-group col-md-3">
 						<label class="control-label" for="id_nombres">Nombres</label> <input
 							class="form-control" type="text" id="id_nombres" name="nombres"
 							placeholder="Ingrese nombre">
 					</div>
+					
 					<div class="form-group col-md-3">
 						<label class="control-label" for="id_apellidos">Apellidos</label>
 						<input class="form-control" type="text" id="id_apellidos"
