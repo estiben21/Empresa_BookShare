@@ -69,6 +69,7 @@ public class UsuarioTransaccionController {
 			}
 		}
 		List<Rol> lstSalida = usuarioService.traerRolesDeUsuario(idUsuario);
+		
 		maps.put("lista", lstSalida);
 		maps.put("usuario", idUsuario);
 		return maps;

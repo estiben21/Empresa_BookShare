@@ -35,21 +35,22 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 
 	@Override
-	public List<Rol> traerRolesDeUsuario(int idUsuario) {
-		return repository.traerRolesDeUsuario(idUsuario);
-	}
-
-	@Override
 	public Usuario buscaPorLogin(String login) {
 		return repository.findByLogin(login);
 	}
 
+	/*_______________________ PC4 _____________________*/ 
+	@Override
+	public List<Rol> traerRolesDeUsuario(int idUsuario) {
+		return repository.traerRolesDeUsuario(idUsuario);
+	}
+	
 	@Override
 	public List<Usuario> listaUsuario() {
 		return repository.findAll();
 	}
 
-	@Override
+	@Override  
 	public Optional<UsuarioHasRol> buscaRol(UsuarioHasRolPK obj) {
 		return usuarioHasRolRepository.findById(obj);
 	}
