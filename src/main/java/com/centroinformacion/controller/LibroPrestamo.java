@@ -1,12 +1,16 @@
 package com.centroinformacion.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -20,6 +24,8 @@ import com.centroinformacion.entity.Usuario;
 import com.centroinformacion.service.AlumnoService;
 import com.centroinformacion.service.LibroService;
 import com.centroinformacion.service.PrestamoService;
+import com.centroinformacion.util.AppSettings;
+
 
 import jakarta.servlet.http.HttpSession;
 import lombok.Getter;
@@ -39,9 +45,6 @@ public class LibroPrestamo {
 	@Autowired
 	private PrestamoService prestamoService;
 
-	/*@Autowired
-	private PrestamoService prestamoService;
-	*/
 	//Los productos seleccionados
 		private List<Prestamo> prestamos = new ArrayList<Prestamo>();
 		
@@ -89,7 +92,7 @@ public class LibroPrestamo {
 	
 	@RequestMapping("/registraPrestamo")
 	@ResponseBody()
-	public Mensaje boleta(Alumno alumno, HttpSession session) {
+	public Mensaje Prestamo(Alumno alumno, HttpSession session) {
 		Usuario objUsuario = (Usuario)session.getAttribute("objUsuario");
 		Mensaje objMensaje = new Mensaje();
 		
@@ -98,38 +101,21 @@ public class LibroPrestamo {
 			
 			PrestamoHasLibroPK pk = new PrestamoHasLibroPK();
 			pk.setIdPrestamo(seleccion.getIdPrestamo());
+			PrestamoHasLibro phl = new PrestamoHasLibro();
+			phl.setPrestamoHasLibroPK(pk);
 			
-			PrestamoHasLibro psb = new PrestamoHasLibro();
-			psb.setPrestamoHasLibroPK(pk);
-			
-			detalles.add(psb);
+			detalles.add(phl);
 		}
 		
-		/*Prestamo obj = new Prestamo();
+		Prestamo obj = new Prestamo();
 		obj.setAlumno(alumno);
 		obj.setUsuario(objUsuario);
 		
-		Prestamo objPrestamo =  prestamoService.insertaPrestamo(obj);
-		
-		String salida = "-1";
-		
-		if (objPrestamo != null) {
-				salida = "Se generó el prestamo con código N° : " + objPrestamo.getIdPrestamo() + "<br><br>";
-				salida += "Alumno: " + objPrestamo.getAlumno().getNombreCompleto() + "<br><br>";
-				salida += "<table class=\"table\"><tr><td>Producto</td><td>Precio</td><td>Cantidad</td><td>Subtotal</td></tr>";
-				double monto = 0;
-				for (Prestamo x : prestamos) {
-					salida += "<tr><td>"  + x.getAlumno() 
-							+ "</td><td>" + x.getPrecio() 
-							+ "</td><td>" + x.getCantidad()
-							+ "</td><td>" + x.getTotalParcial() + "</td></tr>";
-				}
-				prestamos.clear();
-				objMensaje.setTexto(salida);	
-		}*/
+	
 		
 		return objMensaje;
 	}
+	
 	
 	
 	
