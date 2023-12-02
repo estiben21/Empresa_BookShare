@@ -34,7 +34,7 @@
     <jsp:include page="intranetCabecera.jsp" />
 
     <div class="container" style="margin-top: 4%">
-        <h4>Registro Sala</h4>
+        <h4>Reserva Sala</h4>
     </div>
 
     <div class="container mt-2">
@@ -74,7 +74,7 @@
 
             <div class="row mt-2">
                 <div class="form-group col-md-12" align="center">
-                    <button id="id_registrar" type="button" class="btn btn-primary">Registrar Sala</button>
+                    <button id="id_registrar" type="button" class="btn btn-primary">Reserva Sala</button>
                 </div>
             </div>
         </form>
@@ -96,21 +96,7 @@
                             + "</option>");
         });
     });
-    
-    function actualizarComboBox() {
-        // Limpia el combobox antes de actualizarlo
-        $("#id_sala").empty();
 
-        // Realiza la solicitud para obtener la lista actualizada de salas disponibles
-        $.getJSON("listaSalaDisponible", {}, function(data) {
-            $.each(data, function(i, item) {
-                $("#id_sala").append(
-                		
-                    "<option value=" + item.idSala + ">" + item.numero + "</option>"
-                );
-            });
-        });
-    }
     
     $("#id_registrar").click(function() {
 		var validator = $('#id_form').data('bootstrapValidator');
@@ -123,9 +109,8 @@
 				data : $('#id_form').serialize(),
 				success : function(data) {
 					mostrarMensaje(data.MENSAJE);
-					validator.resetForm();
 					limpiarFormulario();
-					actualizarComboBox();
+					validator.resetForm();
 				},
 				error : function() {
 					mostrarMensaje(MSG_ERROR);
@@ -134,12 +119,12 @@
 		}
 	});
     
+    
     function limpiarFormulario() {
-		$("#id_alumno").empty();
-		$("#id_sala").empty();
-		$("#id_fecha_reserva").val(' ');
-		$("#id_hora_inicio").val(' ');
-		$("#id_hora_fin").val(' ');
+		$('#id_alumno').val(' ');
+		$('#id_fecha_reserva').val('');
+		$('#id_hora_fin').val('');
+		$('#id_hora_inicio').val(' ');
 	}
 
     
