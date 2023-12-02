@@ -90,7 +90,7 @@
 								class="table table-striped table-bordered">
 								<thead>
 									<tr>
-										<th style="width: 10%">Código</th>
+										<th style="width: 10%">Codigo</th>
 										<th style="width: 35%">Alumno</th>
 										<th style="width: 30%">Libro</th>
 										<th style="width: 25%">F. Devolucion</th>
