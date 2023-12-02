@@ -83,7 +83,6 @@ public class AlumnoServiceImp implements AlumnoService {
 
 	@Override
 	public List<Alumno> listaAlumno(String filtro, Pageable pageable) {
-		// TODO Auto-generated method stub
 		return repository.listaAlumno(filtro, pageable);
 	}
 

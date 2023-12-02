@@ -3,7 +3,6 @@ package com.centroinformacion.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.centroinformacion.entity.Alumno;
+import com.centroinformacion.entity.Libro;
 import com.centroinformacion.service.AlumnoService;
 import com.centroinformacion.service.DevolucionService;
 import com.centroinformacion.service.LibroService;
@@ -41,6 +41,17 @@ public class DevolucionLibroController {
 		int size = 5;
 		Pageable pageable = PageRequest.of(page, size);
 		List<Alumno> lstSalida = alumnoService.listaAlumno("%" +filtro + "%", pageable);
+		return lstSalida;		
+	}
+	
+	
+	@RequestMapping("/cargaLibro")
+	@ResponseBody()
+	public List<Libro> listaLibro(String filtro){
+		int page = 0;
+		int size = 5;
+		Pageable pageable = PageRequest.of(page, size);
+		List<Libro> lstSalida = libroService.listaLibro("%" +filtro + "%", pageable);
 		return lstSalida;		
 	}
 	
