@@ -34,7 +34,7 @@
     <jsp:include page="intranetCabecera.jsp" />
 
     <div class="container" style="margin-top: 4%">
-        <h4>Registro Sala</h4>
+        <h4>Reserva Sala</h4>
     </div>
 
     <div class="container mt-2">
@@ -74,9 +74,32 @@
 
             <div class="row mt-2">
                 <div class="form-group col-md-12" align="center">
-                    <button id="id_registrar" type="button" class="btn btn-primary">Registrar Sala</button>
+                    <button id="id_registrar" type="button" class="btn btn-primary">Reserva Sala</button>
                 </div>
             </div>
+            
+            <div class="row" > 
+						<div class="col-md-12">
+								<div class="content" >
+						
+									<table id="id_table" class="table table-striped table-bordered" >
+										<thead>
+											<tr>
+												<th style="width: 15%" >C. Reserva</th>
+												<th style="width: 20%">Alumno</th>
+												<th style="width: 20%">Sala</th>
+												<th style="width: 15%">Fecha de Reserva</th>
+												<th style="width: 10%">Hora Inicio</th>
+												<th style="width: 10%">Hora Fin</th>
+												
+											</tr>
+										</thead>
+											<tbody>
+											</tbody>
+										</table>
+								</div>	
+						</div>
+					</div>
         </form>
     </div>
 
@@ -112,6 +135,27 @@
         });
     }
     
+    function agregarGrilla(lista){
+   	 $('#id_table').DataTable().clear();
+   	 $('#id_table').DataTable().destroy();
+   	 $('#id_table').DataTable({
+   			data: lista,
+   			searching: false,
+   			ordering: true,
+   			processing: true,
+   			pageLength: 5,
+   			lengthChange: false,
+   			columns:[
+   				{data: "idSeparacion"},
+   				{data: "alumno.nombres"},
+   				{data: "sala.numero"},
+   				{data: "fechaReserva"},
+   				{data: "horaInicio"},
+   				{data: "horaFin"}									
+   			]                                     
+   	    });
+   }
+    
     $("#id_registrar").click(function() {
 		var validator = $('#id_form').data('bootstrapValidator');
 		validator.validate();
@@ -122,10 +166,12 @@
 				url : "registraReservaSala",
 				data : $('#id_form').serialize(),
 				success : function(data) {
+					agregarGrilla(data.lista);
 					mostrarMensaje(data.MENSAJE);
-					validator.resetForm();
 					limpiarFormulario();
-					actualizarComboBox();
+					validator.resetForm();
+					
+					
 				},
 				error : function() {
 					mostrarMensaje(MSG_ERROR);
@@ -134,9 +180,10 @@
 		}
 	});
     
+    
     function limpiarFormulario() {
-		$("#id_alumno").empty();
-		$("#id_sala").empty();
+		$("#id_alumno").val(' ');
+		$("#id_sala").val(' ');
 		$("#id_fecha_reserva").val(' ');
 		$("#id_hora_inicio").val(' ');
 		$("#id_hora_fin").val(' ');
