@@ -126,6 +126,7 @@ $("#id_btn_agregar").click(function(){
 	      			  data.lista, 
 	      			  data.usuario);
 	      	  mostrarMensaje(data.mensaje);
+	      	limpiarCboOpcion();
 	        },
 	        error: function(){
 	      	  mostrarMensaje(MSG_ERROR);
@@ -155,34 +156,29 @@ function agregarGrilla(lista, var_rol){
 	    });
 }
 
-function accionEliminar(idRol, idOpcion){
+function accionEliminar(idRol, idOpcion) {
     $.ajax({
         type: "POST",
-        url: "eliminaOpcion", 
+        url: "eliminaOpcion",
         data: {"idRol": idRol, "idOpcion": idOpcion},
-        success: function(data){
-            // update the data table
+        success: function(data) {
+            console.log("Data received after deletion:", data);
+            // Update the data table only
             agregarGrilla(data.lista, data.rol);
             mostrarMensaje(data.mensaje);
-
-            // also update the select elements
-            $("#id_rol").empty();
-            $("#id_opcion").empty();
-            $.getJSON("listaRol", {}, function(data){
-                $.each(data, function(i,item){
-                    $("#id_rol").append("<option value="+item.idRol +">"+ item.nombre +"</option>");
-                });
-            });
-            $.getJSON("listaOpcion", {}, function(data){
-                $.each(data, function(i,item){
-                    $("#id_opcion").append("<option value="+item.idOpcion +">"+ item.nombre +"</option>");
-                });
-            });
         },
-        error: function(){
+        error: function() {
             mostrarMensaje(MSG_ERROR);
         }
     });
+}
+
+
+function limpiarCboOpcion() {
+    // Set the selected value to the default value ("-1")
+    $("#id_opcion").val("-1");
+    // Reset the validation state for the idOpcion field
+    $('#id_form').data('bootstrapValidator').resetField($('#id_opcion'));
 }
 
 $(document).ready(function() {
@@ -215,6 +211,7 @@ $(document).ready(function() {
                     notEmpty: {
                         message: 'Seleccione una opción'
                     },
+                    
                     callback: {
                         message: 'Seleccione una opción válida',
                         callback: function(value, validator, $field) {
@@ -227,8 +224,6 @@ $(document).ready(function() {
         }   
     })
 });
-
-
 </script>   		
 </body>
 </html>
