@@ -1,10 +1,13 @@
 package com.centroinformacion.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.centroinformacion.entity.Opcion;
 import com.centroinformacion.entity.Rol;
 import com.centroinformacion.entity.Usuario;
+import com.centroinformacion.entity.UsuarioHasRol;
+import com.centroinformacion.entity.UsuarioHasRolPK;
 
 public interface UsuarioService {
 
@@ -15,4 +18,10 @@ public interface UsuarioService {
 	public abstract List<Rol> traerRolesDeUsuario(int idUsuario);
 
 	public abstract Usuario buscaPorLogin(String login);
+	
+	/*______________________ PC4 _______________________*/
+	public abstract List<Usuario> listaUsuario();
+	public abstract Optional<UsuarioHasRol> buscaRol(UsuarioHasRolPK obj);
+	public abstract UsuarioHasRol insertaRol(UsuarioHasRol obj);
+	public abstract void eliminaRol(UsuarioHasRol obj);
 }

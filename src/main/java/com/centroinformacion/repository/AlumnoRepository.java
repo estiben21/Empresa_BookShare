@@ -44,13 +44,8 @@ public interface AlumnoRepository extends JpaRepository<Alumno, Integer>{
 										+ "( ?9 = -1 or a.modalidad.idDataCatalogo = ?9)")
 	public abstract List<Alumno> listaConsultaAlumno(String nomApe, int estado, String telefono, String dni, 
 													String correo, Date fechaNacDesde, Date fechaNacHasta, int idPais, int idModalidad);
-
-
-
 		
 	@Query("select x from Alumno x where "
 		    + "( x.nombres like ?1 or x.apellidos like ?1 ) ")
 	public abstract List<Alumno> listaAlumno(String filtro, Pageable pageable);
-
-
 }
