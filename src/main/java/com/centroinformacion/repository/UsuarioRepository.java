@@ -20,8 +20,9 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 
 	public abstract Usuario findByLogin(String login);
 	
-	/*_______________________ PC4 _____________________*/
+	/*_______________________ PC4 _____________________*/ 
 	//trae los roles según usuario: relaciona las tablas Rol y UsuarioHasRol mediante su idRol y el idUsuario con un parámetro var_idUsuario
 	@Query("Select r from Rol r, UsuarioHasRol u where r.idRol = u.rol.idRol and u.usuario.idUsuario = :var_idUsuario")
 	public abstract List<Rol> traerRolesDeUsuario(@Param("var_idUsuario")int idUsuario);
+	
 }

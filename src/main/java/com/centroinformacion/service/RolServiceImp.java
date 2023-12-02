@@ -24,7 +24,7 @@ public class RolServiceImp implements RolService{
 
 	@Override
 	public List<Opcion> traerOpcionDeRol(int idRol) {
-		return rolRepository.traerOpcionDeRol(idRol);
+		return rolRepository.traerOpcionDeRol(idRol); 
 	}
 
 	@Override

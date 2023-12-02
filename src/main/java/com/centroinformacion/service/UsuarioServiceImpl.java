@@ -39,7 +39,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 		return repository.findByLogin(login);
 	}
 
-	/*_______________________ PC4 _____________________*/
+	/*_______________________ PC4 _____________________*/ 
 	@Override
 	public List<Rol> traerRolesDeUsuario(int idUsuario) {
 		return repository.traerRolesDeUsuario(idUsuario);

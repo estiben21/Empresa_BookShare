@@ -15,6 +15,6 @@ public interface RolService {
 	public abstract void eliminaOpcion(RolHasOpcion obj);
 	public abstract Optional<RolHasOpcion> buscaOpcion(RolHasOpcionPK obj);
 	
-	/*_______________________ PC4 _____________________*/
+	/*_______________________ PC4 _____________________*/ 
 	public abstract List<Rol> listaRol();
 }
