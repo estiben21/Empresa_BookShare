@@ -77,29 +77,6 @@
                     <button id="id_registrar" type="button" class="btn btn-primary">Reserva Sala</button>
                 </div>
             </div>
-            
-            <div class="row" > 
-						<div class="col-md-12">
-								<div class="content" >
-						
-									<table id="id_table" class="table table-striped table-bordered" >
-										<thead>
-											<tr>
-												<th style="width: 15%" >C. Reserva</th>
-												<th style="width: 20%">Alumno</th>
-												<th style="width: 20%">Sala</th>
-												<th style="width: 15%">Fecha de Reserva</th>
-												<th style="width: 10%">Hora Inicio</th>
-												<th style="width: 10%">Hora Fin</th>
-												
-											</tr>
-										</thead>
-											<tbody>
-											</tbody>
-										</table>
-								</div>	
-						</div>
-					</div>
         </form>
     </div>
 
@@ -119,42 +96,7 @@
                             + "</option>");
         });
     });
-    
-    function actualizarComboBox() {
-        // Limpia el combobox antes de actualizarlo
-        $("#id_sala").empty();
 
-        // Realiza la solicitud para obtener la lista actualizada de salas disponibles
-        $.getJSON("listaSalaDisponible", {}, function(data) {
-            $.each(data, function(i, item) {
-                $("#id_sala").append(
-                		
-                    "<option value=" + item.idSala + ">" + item.numero + "</option>"
-                );
-            });
-        });
-    }
-    
-    function agregarGrilla(lista){
-   	 $('#id_table').DataTable().clear();
-   	 $('#id_table').DataTable().destroy();
-   	 $('#id_table').DataTable({
-   			data: lista,
-   			searching: false,
-   			ordering: true,
-   			processing: true,
-   			pageLength: 5,
-   			lengthChange: false,
-   			columns:[
-   				{data: "idSeparacion"},
-   				{data: "alumno.nombres"},
-   				{data: "sala.numero"},
-   				{data: "fechaReserva"},
-   				{data: "horaInicio"},
-   				{data: "horaFin"}									
-   			]                                     
-   	    });
-   }
     
     $("#id_registrar").click(function() {
 		var validator = $('#id_form').data('bootstrapValidator');
@@ -166,12 +108,9 @@
 				url : "registraReservaSala",
 				data : $('#id_form').serialize(),
 				success : function(data) {
-					agregarGrilla(data.lista);
 					mostrarMensaje(data.MENSAJE);
 					limpiarFormulario();
 					validator.resetForm();
-					
-					
 				},
 				error : function() {
 					mostrarMensaje(MSG_ERROR);
@@ -182,11 +121,10 @@
     
     
     function limpiarFormulario() {
-		$("#id_alumno").val(' ');
-		$("#id_sala").val(' ');
-		$("#id_fecha_reserva").val(' ');
-		$("#id_hora_inicio").val(' ');
-		$("#id_hora_fin").val(' ');
+		$('#id_alumno').val(' ');
+		$('#id_fecha_reserva').val('');
+		$('#id_hora_fin').val('');
+		$('#id_hora_inicio').val(' ');
 	}
 
     
