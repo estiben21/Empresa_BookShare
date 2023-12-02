@@ -42,7 +42,7 @@ public class Alumno {
 	private String dni;
 	private String correo;
 	
-@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern ="yyyy-MM-dd")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private Date fechaNacimiento;
@@ -94,6 +94,8 @@ public class Alumno {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return sdf.format(fechaActualizacion);
 	}
-	
+	public String getNombreCompleto() {
+		return nombres.concat(" ").concat(apellidos);
+	}
    
 }

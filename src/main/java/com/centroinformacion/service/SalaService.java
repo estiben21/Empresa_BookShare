@@ -23,5 +23,10 @@ public interface SalaService {
 	        String recursos,
 	        int idSede,
 	        int idTipoSala);
+	
+	public abstract List<Sala> listaSalaDisponibles();
+	
+	public Sala actualizarSala(Sala sala);
+
 }
 
