@@ -53,6 +53,14 @@ public class AutorServiceImpl implements AutorService{
 			Date fecDesde, Date fecHasta) {
 		return repository.listaConsultaAutor(estado, idPais, idGrado, nomApe, telefono, fecDesde, fecHasta);
 	}
+	
+	//PC4
+	@Override
+	public List<Autor> listaAutor(){
+		return repository.findAll();
+
+}
+
 
 	
 	

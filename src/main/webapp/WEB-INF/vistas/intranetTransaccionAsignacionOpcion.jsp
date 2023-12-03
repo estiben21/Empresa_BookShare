@@ -23,50 +23,73 @@
 
 <title>Intranet</title>
 </head>
+<style>
+    .help-block {
+        color: #a94442; /* Color rojo para los mensajes de error */
+    }
+    .form-group.has-feedback {
+        position: relative;
+    }
+
+    .form-control-feedback {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        display: block;
+        width: 34px;
+        height: 34px;
+        line-height: 34px;
+        text-align: center;
+        pointer-events: none;
+    }
+</style>
 <body>
 <jsp:include page="intranetCabecera.jsp" />
 <div class="container" style="margin-top: 4%"><h4>Asignación de Opción a Rol</h4></div>
 
-<form id="id_form" >
-	<div class="container">
-		<div class="row" style="margin-top: 1%">
-			<div class="col-md-6">
-				<label class="control-label" for="id_rol">Rol</label> 
-				<select id="id_rol" name="idRol" class='form-control'>
-					<option value="-1"> [Seleccione] </option>
-				</select>
-			</div>
-		</div>	
-		<div class="row" style="margin-top: 1%">
-			<div class="col-md-6">
-				<label class="control-label" for="id_opcion">Opción</label> 
-				<select id="id_opcion" name="idOpcion" class='form-control'>
-					<option value="-1"> [Seleccione] </option>
-				</select>
-			</div>
-		</div>
-		<div class="row" style="margin-top: 3%">
-			<div class="col-md-12" align="center">
-				<button type="button" class="btn btn-primary" id="id_btn_agregar">Agregar</button>
-			</div>
-		</div>
-		<div class="row" style="margin-top: 3%">
-			<div class="col-md-12">
-				<table id="id_table" class="table table-striped table-bordered">
-					<thead>
-						<tr>
-							<th style="width: 10%">Código</th>
-							<th style="width: 40%">Opcion</th>
-							<th style="width: 10%"></th>
-						</tr>
-					</thead>
-					<tbody>
-					</tbody>
-				</table>
-			</div>
-		</div>
-		</div>
-</form>
+<form id="id_form">
+        <div class="container">
+            <div class="row" style="margin-top: 1%">
+                <div class="col-md-6 form-group has-feedback">
+                    <label class="control-label" for="id_rol">Rol</label> 
+                    <select id="id_rol" name="idRol" class="form-control">
+                        <option value="-1"> [Seleccione] </option>
+                    </select>
+                    <span class="form-control-feedback" data-bv-icon-for="idRol"></span>
+                </div>
+            </div>    
+            <div class="row" style="margin-top: 1%">
+                <div class="col-md-6 form-group has-feedback">
+                    <label class="control-label" for="id_opcion">Opción</label> 
+                    <select id="id_opcion" name="idOpcion" class="form-control">
+                        <option value="-1"> [Seleccione] </option>
+                    </select>
+                    <span class="form-control-feedback" data-bv-icon-for="idOpcion"></span>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 3%">
+                <div class="col-md-12" align="center">
+                    <button type="button" class="btn btn-primary" id="id_btn_agregar">Agregar</button>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 3%">
+                <div class="col-md-12">
+                    <table id="id_table" class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th style="width: 10%">Código</th>
+                                <th style="width: 80%">Opción</th>
+                                <th style="width: 10%"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
 
 <script type="text/javascript">
 $.getJSON("listaRol", {}, function(data){
@@ -82,25 +105,34 @@ $.getJSON("listaOpcion", {}, function(data){
 });
 
 $("#id_rol").change(function(){
-	var var_usuario = $("#id_rol").val();
+	var var_rol = $("#id_rol").val();
 	$.getJSON("listaOpcionPorRol", {"idRol":var_rol }, function(data){
 		agregarGrilla(data , var_rol);
 	});
 });
 
+
 $("#id_btn_agregar").click(function(){
-	$.ajax({
-        type: "POST",
-        url: "registraOpcion", 
-        data: $('#id_form').serialize(),
-        success: function(data){
-      	  agregarGrilla(data.lista, data.rol);
-      	  mostrarMensaje(data.mensaje);
-        },
-        error: function(){
-      	  mostrarMensaje(MSG_ERROR);
-        }
-      });
+	var validator = $('#id_form').data('bootstrapValidator');
+	validator.validate();
+	
+	 if (validator.isValid()) {
+		$.ajax({
+	        type: "POST",
+	        url: "registraOpcion", 
+	        data: $('#id_form').serialize(), //------------> ENVÌA como variable "data" toda la informaciòn recogida en el formulario del .jsp
+	        success: function(data){
+	      	  agregarGrilla(
+	      			  data.lista, 
+	      			  data.usuario);
+	      	  mostrarMensaje(data.mensaje);
+	      	limpiarCboOpcion();
+	        },
+	        error: function(){
+	      	  mostrarMensaje(MSG_ERROR);
+	        }
+	      });
+	}
 });
 
 function agregarGrilla(lista, var_rol){
@@ -124,20 +156,74 @@ function agregarGrilla(lista, var_rol){
 	    });
 }
 
-function accionEliminar(idRol, idOpcion){
-	$.ajax({
+function accionEliminar(idRol, idOpcion) {
+    $.ajax({
         type: "POST",
-        url: "eliminaOpcion", 
+        url: "eliminaOpcion",
         data: {"idRol": idRol, "idOpcion": idOpcion},
-        success: function(data){
-      	  agregarGrilla(data.lista, data.opcion);
-      	  mostrarMensaje(data.mensaje);
+        success: function(data) {
+            console.log("Data received after deletion:", data);
+            // Update the data table only
+            agregarGrilla(data.lista, data.rol);
+            mostrarMensaje(data.mensaje);
         },
-        error: function(){
-      	  mostrarMensaje(MSG_ERROR);
+        error: function() {
+            mostrarMensaje(MSG_ERROR);
         }
-     });
+    });
 }
+
+
+function limpiarCboOpcion() {
+    // Set the selected value to the default value ("-1")
+    $("#id_opcion").val("-1");
+    // Reset the validation state for the idOpcion field
+    $('#id_form').data('bootstrapValidator').resetField($('#id_opcion'));
+}
+
+$(document).ready(function() {
+    $('#id_form').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            idRol: {
+                selector: "#id_rol",
+                validators: {
+                    notEmpty: {
+                        message: 'Seleccione un rol'
+                    },
+                    callback: {
+                        message: 'Seleccione un rol válido',
+                        callback: function(value, validator, $field) {
+                            // Check if the selected value is not equal to the default value ("-1")
+                            return value !== '-1';
+                        }
+                    }
+                }
+            },
+            idOpcion: {
+                selector: "#id_opcion",
+                validators: {
+                    notEmpty: {
+                        message: 'Seleccione una opción'
+                    },
+                    
+                    callback: {
+                        message: 'Seleccione una opción válida',
+                        callback: function(value, validator, $field) {
+                            // Check if the selected value is not equal to the default value ("-1")
+                            return value !== '-1';
+                        }
+                    }
+                }
+            }
+        }   
+    })
+});
 </script>   		
 </body>
 </html>

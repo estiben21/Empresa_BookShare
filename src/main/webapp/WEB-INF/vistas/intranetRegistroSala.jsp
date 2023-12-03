@@ -86,9 +86,7 @@
 
 $.getJSON("listaTipoSala", {}, function(data) {
 	$.each(data, function(index, item) {
-		$("#id_tipo").append(
-				"<option value="+item.idDataCatalogo +">" + item.descripcion
-						+ "</option>");
+		$("#id_tipo").append("<option value="+item.idDataCatalogo +">" + item.descripcion+ "</option>");
 	});
 	
 	
@@ -96,9 +94,7 @@ $.getJSON("listaTipoSala", {}, function(data) {
 
 $.getJSON("listaSede", {}, function(data) {
 	$.each(data, function(index, item) {
-		$("#id_sede").append(
-				"<option value="+item.idDataCatalogo +">" + item.descripcion
-						+ "</option>");
+		$("#id_sede").append("<option value="+item.idDataCatalogo +">" + item.descripcion + "</option>");
 	});	
 });
 

@@ -108,6 +108,8 @@
 </form>
 
 <script type="text/javascript">
+$("#id_btn_reporte").prop('disabled', true);    
+
 //------------------------ btn FILTRA ---------------------------
 $("#id_btn_filtra").click(function(){
 	var varNomApe = $("#id_nombres_apellidos").val();
@@ -135,9 +137,14 @@ $("#id_btn_filtra").click(function(){
 		"idPais":varPais,
 		"idModalidad":varModalidad},
 		function (data){
-		agregarGrilla(data);
+			agregarGrilla(data);
+			if (data.length == 0) {
+				$("#id_btn_reporte").prop('disabled', true);
+	        } else {
+	        	$("#id_btn_reporte").prop('disabled', false);
+	        }	   
 	});
-});
+}); 
 
 function agregarGrilla(lista){
 	 $('#id_table').DataTable().clear();

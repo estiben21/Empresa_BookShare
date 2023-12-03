@@ -30,21 +30,20 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Autor {
-  
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idAutor;
 	private String nombres;
 	private String apellidos;
-	
+
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd" , timezone = "America/Lima")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "America/Lima")
 	private Date fechaNacimiento;
-	
+
 	private String telefono;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
 	private Date fechaRegistro;
@@ -52,7 +51,7 @@ public class Autor {
 	@Temporal(TemporalType.TIMESTAMP)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
 	private Date fechaActualizacion;
-	
+
 	private int estado;
 
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
@@ -64,36 +63,40 @@ public class Autor {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idGrado")
 	private DataCatalogo grado;
-	
-	
+
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idUsuarioRegistro")
 	private Usuario usuarioRegistro;
-	
+
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idUsuarioActualiza")
 	private Usuario usuarioActualiza;
+
+	// Atrbutos para el reporte
+	public String getReporteEstado() {
+		return estado == 1 ? "Activo" : "Inactivo";
+	}
+
+	// calmel case cuando empieza con mayusculas
+	public String getReportePais() {
+		return pais.getNombre();
+	}
+
+	// calmel case cuando empieza con mayusculas
+	public String getReporteGrado() {
+		return grado.getDescripcion();
+	}
+
+	// java text
+	public String getReporteFechaNacimiento() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(fechaNacimiento);
+	}
 	
-	//Atrbutos para el reporte
-		public String getReporteEstado() {
-			return estado ==1? "Activo":"Inactivo";
-		}
-		
-		//calmel case cuando empieza con mayusculas
-		public String getReportePais(){
-			return pais.getNombre();
-		}
-		
-		//calmel case cuando empieza con mayusculas
-				public String getReporteGrado(){
-					return grado.getDescripcion();
-				}
-		
-		//java text
-		public String getReporteFechaNacimiento(){
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			return sdf.format(fechaNacimiento);
-		}
+	public String getNombreCompleto() {
+		return nombres.concat(" ").concat(apellidos);
+	}
+   
 }

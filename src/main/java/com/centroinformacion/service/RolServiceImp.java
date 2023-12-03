@@ -21,15 +21,10 @@ public class RolServiceImp implements RolService{
 		
 	@Autowired
 	private RolHasOpcionRepository rolHasOpcionRepository;
-	
-	@Override
-	public List<Rol> listaRol() {
-		return rolRepository.findAll();
-	}
 
 	@Override
 	public List<Opcion> traerOpcionDeRol(int idRol) {
-		return rolRepository.traerOpcionDeRol(idRol);
+		return rolRepository.traerOpcionDeRol(idRol); 
 	}
 
 	@Override
@@ -47,4 +42,9 @@ public class RolServiceImp implements RolService{
 		return rolHasOpcionRepository.findById(obj);
 	}
 
+	/*_______________________ PC4 _____________________*/
+	@Override
+	public List<Rol> listaRol() {
+		return rolRepository.findAll();
+	}
 }
