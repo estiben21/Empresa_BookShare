@@ -32,9 +32,6 @@ public class UtilController {
 	@Autowired
 	private SalaService salaService;
 	
-	
-	
-
 	@GetMapping("/listaPais")
 	@ResponseBody
 	public List<Pais> listaPais() {
