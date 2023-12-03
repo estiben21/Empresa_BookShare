@@ -20,6 +20,10 @@
 <script type="text/javascript" src="js/bootstrapValidator.js"></script>
 <script type="text/javascript" src="js/global.js"></script>
 
+<!-- Incluye SweetAlert desde CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
 <link rel="stylesheet" href="css/bootstrap.css" />
 <link rel="stylesheet" href="css/dataTables.bootstrap.min.css" />
 <link rel="stylesheet" href="css/bootstrapValidator.css" />
@@ -96,44 +100,73 @@
 			});
 		});
 
-		$("#id_registrar").click(function() {
-			var validator = $('#id_form').data('bootstrapValidator');
-			validator.validate();
-
-			if (validator.isValid()) {
-				$.ajax({
-					type : "POST",
-					url : "registraReservaSala",
-					data : $('#id_form').serialize(),
-					success : function(data) {
-						mostrarMensaje(data.MENSAJE);
-						limpiarFormulario();
-						validator.resetForm();
-						actualizarComboBox();
-					},
-					error : function() {
-						mostrarMensaje(MSG_ERROR);
-					}
-				});
-			}
-		});
+		/*----------------------------------------------------------------------------------------------------------------------*/
+		///inicio de la validacion de la hora 
 		
-		function actualizarComboBox() {
-		    // Limpia el combo box de salas antes de actualizarlo
-		    $("#id_sala").empty();
-		    
-		    // Agrega una opción predeterminada para el combo box de salas
-		    $("#id_sala").append("<option value='' selected>[Seleccione]</option>");
+		// Define la constante HORA_ERROR con el mensaje de error
+		const HORA_ERROR = "La hora de fin debe ser mayor que la hora de inicio.";
 
-		    // Realiza la solicitud para obtener la lista actualizada de salas disponibles
-		    $.getJSON("listaSalaDisponible", {}, function(data) {
-		        // Itera sobre la lista de salas y agrega las opciones al combo box de salas
-		        $.each(data, function(i, item) {
-		            $("#id_sala").append(
-		                "<option value=" + item.idSala + ">" + item.numero + "</option>"
-		            );
-		        });
-		    });
+		$("#id_registrar")
+				.click(
+						function() {
+							var validator = $('#id_form').data(
+									'bootstrapValidator');
+							validator.validate();
+
+							if (validator.isValid()) {
+								var horaInicio = $('#id_hora_inicio').val();
+								var horaFin = $('#id_hora_fin').val();
+
+								if (compararHoras(horaInicio, horaFin)) {
+									$.ajax({
+										type : "POST",
+										url : "registraReservaSala",
+										data : $('#id_form').serialize(),
+										success : function(data) {
+											mostrarMensaje(data.MENSAJE);
+											limpiarFormulario();
+											validator.resetForm();
+											actualizarComboBox();
+										},
+										error : function() {
+											mostrarMensaje(MSG_ERROR);
+										}
+									});
+								} else {
+									mostrarMensaje(HORA_ERROR);
+									// Resetear solo el campo de horaFin
+									validator.resetField($('#id_hora_fin'));
+									$('#id_hora_fin').val(' ');	
+								}
+							}
+						});
+
+		// Función para comparar dos horas (formato HH:mm)
+		function compararHoras(horaInicio, horaFin) {
+			var horaInicioDate = new Date("1970-01-01 " + horaInicio);
+			var horaFinDate = new Date("1970-01-01 " + horaFin);
+			return horaInicioDate < horaFinDate;
+		}
+		///fin de la validacion de la hora 
+		/*----------------------------------------------------------------------------------------------------------------------*/
+
+		function actualizarComboBox() {
+			// Limpia el combo box de salas antes de actualizarlo
+			$("#id_sala").empty();
+
+			// Agrega una opción predeterminada para el combo box de salas
+			$("#id_sala").append(
+					"<option value='' selected>[Seleccione]</option>");
+
+			// Realiza la solicitud para obtener la lista actualizada de salas disponibles
+			$.getJSON("listaSalaDisponible", {}, function(data) {
+				// Itera sobre la lista de salas y agrega las opciones al combo box de salas
+				$.each(data, function(i, item) {
+					$("#id_sala").append(
+							"<option value=" + item.idSala + ">" + item.numero
+									+ "</option>");
+				});
+			});
 		}
 
 		function limpiarFormulario() {
