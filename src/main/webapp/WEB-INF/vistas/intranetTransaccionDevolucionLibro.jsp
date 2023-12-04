@@ -1,6 +1,8 @@
 <jsp:include page="intranetValida.jsp" />
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="esS" >
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -25,19 +27,19 @@
 <body>
 
 <jsp:include page="intranetCabecera.jsp" />
-<div class="container" style="margin-top: 4%"><h4>Devoluci�n de Libro</h4></div>
+<div class="container " style="margin-top: 4%"><h4>Devolución de Libro</h4></div>
 
 <div class="container" style="margin-top: 1%">
-<!-- Agregar aquí -->
+<!-- Agregar aquí­ -->
 
 <form id="id_form" accept-charset="UTF-8" action="boleta" class="form-horizontal" method="post">
 
-    <div class="panel-group" id="steps">
+    <div class="panel-group d-flex justify-content-center" id="steps">
 
         <!-- Panel 1: Prestamo -->
-        <div class="panel panel-default">
-            <div class="panel-heading">Devoluci�n</div>
-            <div class="panel-body">
+        <div class="panel panel-default " >
+            <div class="panel-heading text-center">DEVOLUCIÓN</div>
+            <div class="panel-body " >
 
                 <div class="form-group col-md-5">
                     <label class="col-lg-2 control-label">Alumno</label>
@@ -54,9 +56,12 @@
                 </div>
 
                 <div class="form-group  col-sm-3">
-                    <label class="control-label" for="id_alumno_fechaPrestamo">Fecha de Devoluci�n:</label>
-                    <input class="form-control" type="date" id="id_fechaDevolucion" name="fechaDevolucion" maxlength="100"  >
+                    <label class="control-label" for="id_alumno_fechaDevolucion">Fecha de Devolución:</label>
+    				<input class="form-control" type="date" id="id_fechaDevolucion" name="fechaDevolucion" placeholder="Ingrese la fecha de devolucion" maxlength="100" min="2022-12-03">
                 </div>
+
+
+
 
                 <div class="form-group  col-md-5">
                     <label class="col-lg-2 control-label">Libros</label>
@@ -75,32 +80,34 @@
                 <div class="form-group">
                     <div class="col-lg-9 col-lg-offset-5">
                         <div class="col-lg-9 col-lg-offset-3">
-                            <button type="button" id="id_btnAgregar" class="btn btn-primary" style="width: 170px">AGREGA PRODUCTO</button>
-                            <button type="button" id="id_btnRegistrar"  class="btn btn-primary" style="width: 170px">REGISTRA BOLETA</button>
+                            <button type="button" id="id_btnAgregar" class="btn btn-primary" style="width: 170px">AGREGAR LIBRO</button>
+                            <button type="button" id="id_btnRegistrar"  class="btn btn-primary" style="width: 188Px">REGISTRAR PRESTAMO</button>
                         </div>
                     </div>
                 </div>
 
             </div>
         </div>
+     
+        
 
-        <!-- Panel 2: Detalle del Prestamo -->
-        <div class="panel panel-default">
-            <div class="panel-heading">Detalle del Prestamo</div>
+        <!-- Panel 2: Detalle de la devolucion -->
+        <div class="panel panel-default" >
+           <div class="panel-heading text-center">DETALLE DE LA DEVOLUCIÓN</div>
             <div class="panel-body">
                
                 
-                <div class="form-group">
+                <div class="form-group" >
                     <div class="col-lg-12">
-                        <table id="id_table_boleta" class="table table-striped table-bordered">
+                        <table id="id_table_boleta" class="table table-striped table-bordered" >
                             <thead>
                                 <tr>
-                                  				<th style="width: 10%">Codigo</th>
-												<th style="width: 25%">Titulo</th>
+                                  				<th style="width: 10%">Código</th>
+												<th style="width: 25%">Título</th>
 												<th style="width: 10%"></th>
                                
                                
-                                </tr>
+                                </tr> 
                             </thead>
                             <tbody id="id_table_boleta_body"></tbody>
                         </table>
@@ -138,7 +145,7 @@
 												<table id="id_table_alumno" class="table table-striped table-bordered">
 														<thead>
 															<tr>
-																<th style="width: 15%">C�digo</th>
+																<th style="width: 15%">Código</th>
 																<th style="width: 40%">Nombre</th>
 																<th style="width: 35%">Apellido</th>
 																<th style="width: 10%"></th>
@@ -183,8 +190,8 @@
 												<table id="id_table_libro" class="table table-striped table-bordered" >
 														<thead>
 															<tr>
-																<th style="width: 40%">Id</th>
-																<th style="width: 50%">Titulo</th>
+																<th style="width: 40%">Código</th>
+																<th style="width: 50%">Título</th>
 																<th style="width: 35%">Estado</th>
 																
 																<th style="width: 10%"></th>
@@ -209,12 +216,12 @@
 
 				<div class="modal-content">
 				<div class="modal-header" style="padding: 20px 20px">
+				
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4><span class="glyphicon glyphicon-ok-sign"></span> Mensaje</h4>
 				</div>
-				
-				<div  id="idMensajeTexto" class="modal-body" style="padding: 30px 30px;align-content: center;">
-						Registro Exitoso
+				<div  id="idMensajeTexto" class="modal-body text-center " style="padding: 30px 30px;align-content: center;">
+
 			    </div>
 			</div>
 			</div>
@@ -228,23 +235,31 @@
 
 
 <script type="text/javascript">
-<!-- Agregar aquí -->
 	$(document).ready(function() {
-		//Se a�ade los alumnos a la tabla
-		$.getJSON("listaSeleccion",{}, function (data){
+		
+		$.getJSON("listaSelecciones",{}, function (data){
 			$.each(data, function(index, item){
 				$('#id_table_boleta_body').append("<tr><td>" +item.idLibro + "</td><td>" +item.titulo + "</td><td><button type='button' onclick='f_elimina_seleccion(" + item.idAlumno +");' class='btn btn-default' aria-label='Left Align' ><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></td></tr>");
 			});
 		});
 		
 	});
+/Fecha actual/	
+ window.onload = function(){
+    document.getElementById('id_fechaDevolucion').min = new Date().toISOString().split('T')[0];
+}
+
+
+	
+	
+	
 	//Al pulsar el boton alumno
 	$("#id_btnAlumno").click(function (){
 		muestraAlumno();
 		$("#idBuscaAlumno").modal("show");
 	});
 
-	//Al pulsar el boton libro
+	//Al pulsar el botï¿½n libro
 	$("#id_btnLibro").click(function (){
 		muestraLibro();
 		$("#idBuscaLibro").modal("show");
@@ -266,13 +281,12 @@
 	});
 
 	
-	//Al pulsar el boton agregar
 $("#id_btnAgregar").click(function (){
-	var var_id = $("#id_libro_id").val();
-	var var_nom_com = $("#id_alumno_nombre").val();
-	var var_titulo = $("#id_libro_nombre").val();
-	var var_fech = $("#id_alumno_fechaDevolucion").val();
-	
+    var var_id = $("#id_libro_id").val();
+    var var_nom_com = $("#id_alumno_nombre").val();
+    var var_titulo = $("#id_libro_nombre").val();
+    var var_fech = $("#id_fechaDevolucion").val();
+    
     // Validar duplicados
     var yaExiste = false;
     $("#id_table_boleta_body tr").each(function() {
@@ -280,6 +294,7 @@ $("#id_btnAgregar").click(function (){
             yaExiste = true;
         }
     });
+    
     
     
     if (var_nom_com == '' ){
@@ -303,64 +318,62 @@ $("#id_btnAgregar").click(function (){
 				
 		//limpiar la tabla
 		$("#id_table_boleta_body").empty();
-        // No limpiar la tabla antes de agregar
         
         
         var jsonParam = {"idLibro": var_id, "titulo": var_titulo};
-    
-			$.ajax({
-				url:  'agregarSeleccion',
-				type: 'POST',
-				dataType:'json',
-				data: jsonParam,
-				success:function(data){
-					console.log(data);
-					if(data != null){
-						$.each(data, function(index, item){
-							$('#id_table_boleta_body').append("<tr><td>" +item.idLibro + "</td><td>" +item.titulo + "</td><td><button type='button' onclick='f_elimina_seleccion(" + item.idLibro +");' class='btn btn-default' aria-label='Left Align' ><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></td></tr>");
-						});
-						
-					}else
-						swal("Error al agregar la seleccion del libro","","error");
-						return false;
-					},
-				error: function (jqXhr) { 
-					swal("Error en la conexion","","error");
-				}
-		   });	
-			   
-			  // Limpiar las cajas de texto despu�s de agregar
-	        $("#id_libro_id").val("-1");
-	        $("#id_libro_nombre").val("");
-	    }
-	});
-	
+        
+        $.ajax({
+            url: 'agregarSelecciones',
+            type: 'POST',
+            dataType: 'json',
+            data: jsonParam,
+            success: function(data) {
+                console.log(data);
+                if (data != null) {
+                	$.each(data, function(index, item){
+                		
+                    // Agregar la nueva fila sin limpiar la tabla
+                    $('#id_table_boleta_body').append("<tr><td>" + item.idLibro + "</td><td>" + item.titulo + "</td><td><button type='button' onclick='f_elimina_seleccion(" + item.idLibro + ");' class='btn btn-default' aria-label='Left Align' ><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></td></tr>");
+               
+                	});
+                	} else {
+                    swal("Error al agregar la selección del libro", "", "error");
+                    return false;
+                }
+            },
+            error: function(jqXhr) {
+                swal("Error en la conexión", "", "error");
+            }
+        });
+        
+        // Limpiar las cajas de texto después de agregar
+        $("#id_libro_id").val("-1");
+        $("#id_libro_nombre").val("");
+    }
+});
+
 	
 	//Al pulsar el boton registrar
 	$("#id_btnRegistrar").click(function (){
 	var var_alu = $("#id_alumno_id").val();
-	var var_cli = $("#id_libro_id").val();
-	var var_ape = $("#id_apellidos").val();
-	var var_nom = $("#id_nombres").val();
+	var var_idLibro = $("#id_libro_id").val();
+	var var_Libro =$("#id_libro_nombre").val("");
+
+	var var_alum_nombre = $("#id_alumno_nombre").val();
 	var var_fecha_devolucion = $("#id_fechaDevolucion").val();
 	
+
 	
-	var var_nom_com =  var_nom + ' ' + var_ape;
-	
-	var var_count = 0;
-	$("#id_table_boleta_body tr").each(function() {
-		var_count = var_count + 1;
-	});
-	
+
 	if (var_alu == "-1"){
 		$("#idMensajeTexto").text("Seleccione un alumno");
 		$("#idMensaje").modal("show");
-	}else if (var_count == "-1"){
+	}else if (var_fecha_devolucion == "-1"){
 		$("#idMensajeTexto").text("Seleccione un libro");
 		$("#idMensaje").modal("show");
 	}else{
 
-		var jsonParam = {"idAlumno":var_alu,"nombres":var_nom,"apellidos":var_ape, "fechaDevolucion":var_fecha_devolucion };
+		var jsonParam = {"idAlumno":var_alu,"nombres":var_alum_nombre, "fechaPrestamo":var_fecha_devolucion,"fechaDevolucion":var_fecha_devolucion };
 
 		$.ajax({
 			url:  'registraDevolucion',
@@ -373,9 +386,10 @@ $("#id_btnAgregar").click(function (){
 					$("#idMensajeTexto").html(data.texto);
 					$("#idMensaje").modal("show");
 					$("#id_table_boleta_body").empty();
-					$("#id_alumno_id").val("-1");
-					$("#id_nombres").val("");
-					$("#id_apellidos").val("");
+					$("#id_libro_id").val("-1");
+					$("#id_alumno_nombre").val("");
+				    $("#id_fechaDevolucion").val("");
+
 				}else
 					swal("Error al agregar la Boleta","","error");
 					return false;
@@ -401,13 +415,13 @@ $("#id_btnAgregar").click(function (){
 		//Se añade los alumnos a la tabla
 		$.getJSON("listaAlumnoDevolucion",{"filtro":var_alumno}, function (data){
 			$.each(data, function(index, item){
-				$('#id_table_alumno').append("<tr><td>" +item.idAlumno + "</td><td>" +item.nombres + "</td><td>" +item.apellidos +  "</td><td><button type='button' class='btn btn-default' aria-label='Left Align' onclick=\"f_seleccione_alumno('"+ item.idAlumno+"','"+ item.nombres+"','"+ item.apellidos+"');\" ><span class='glyphicon glyphicon-ok' aria-hidden='true'></span></button></td></tr>");
+				$('#id_table_alumno').append("<tr><td>" +item.idAlumno + "</td><td>" +item.nombres + "</td><td>" +item.apellidos + "</td><td><button type='button' class='btn btn-default' aria-label='Left Align' onclick=\"f_seleccione_alumno('"+ item.idAlumno+"','"+ item.nombres+"','"+ item.apellidos+"');\" ><span class='glyphicon glyphicon-ok' aria-hidden='true'></span></button></td></tr>");
 			});
 		});
 	}
 
 
-//muestra Libro
+//                 muestra Libro
 
 
 	function muestraLibro(){
@@ -416,10 +430,10 @@ $("#id_btnAgregar").click(function (){
 		//limpiar la tabla
 		$("#id_table_libro tbody").empty();
 	    console.log("Funcion muestraLibro() llamada ");
-		//Se a�ade los clientes a la tabla
+		//Se añade los libros a la tabla
 		$.getJSON("listaLibroDevolucion",{"filtro":var_libro}, function (data){
 			$.each(data, function(index, item){
-			    $('#id_table_libro').append("<tr><td>" +item.idLibro + "</td><td>" +item.titulo + "</td><td>"    + item.estadoPrestamo.descripcion +"</td><td><button type='button' class='btn btn-default' aria-label='Left Align' onclick=\"f_seleccione_libro('"+ item.idLibro+"','"+ item.titulo +"','"+  item.estadoPrestamo.descripcion +"');\" ><span class='glyphicon glyphicon-ok' aria-hidden='true'></span></button></td></tr>");
+			    $('#id_table_libro').append("<tr><td>" +item.idLibro + "</td><td>" +item.titulo + "</td><td>"    + item.estadoPrestamo.descripcion + "</td><td><button type='button' class='btn btn-default' aria-label='Left Align' onclick=\"f_seleccione_libro('"+ item.idLibro+"','"+ item.titulo +"','"+  item.estadoPrestamo.descripcion +"');\" ><span class='glyphicon glyphicon-ok' aria-hidden='true'></span></button></td></tr>");
 			});
 		});
 	}
@@ -427,12 +441,11 @@ $("#id_btnAgregar").click(function (){
 
 
 	//Al pulsar selecciona alumno
-function f_seleccione_alumno(idAlumno, nombres, apellidos) {
-    $("#id_alumno_nombre").val(nombres + ' ' + apellidos);
-    $("#id_alumno_id").val(idAlumno);
-    $("#idBuscaAlumno").modal("hide");
-}
-
+	function f_seleccione_alumno(idAlumno,nombres,apellidos){
+		$("#id_alumno_nombre").val(nombres + ' ' + apellidos);
+		$("#id_alumno_id").val(idAlumno);
+		$("#idBuscaAlumno").modal("hide");
+	}
 	
 	//Al pulsar selecciona producto
 	function f_seleccione_libro(idLibro,titulo,estadoPrestamo){
@@ -443,22 +456,25 @@ function f_seleccione_alumno(idAlumno, nombres, apellidos) {
 
 	
 	
-	
 	//Al pulsar el boton eliminar
 	function f_elimina_seleccion(id){	
-		//limpiar la tabla
-		$("#id_table_boleta_body").empty();
-			
-		//Se añade los clientes a la tabla
-		$.getJSON("eliminaSeleccion",{"idLibro":id}, function (data){
-			$.each(data, function(index, item){
-				$('#id_table_boleta_body').append("<tr><td>" +item.idLibro + "</td><td>" +item.titulo + "</td><td><button type='button' onclick='f_elimina_seleccion(" + item.idLibro +");' class='btn btn-default' aria-label='Left Align' ><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></td><tr>");
-			});
-		});
-		//limpia las cajas de texto
-		$("#id_libro_id").val("");
-		$("#id_libro_nombre").val("");
+		 var data = $('#id_table_boleta_body').html();
+		    
+		    // Se actualiza la tabla eliminando la selección
+		    $.getJSON("eliminaSelecciones", {"idLibro": id}, function (data) {
+		        $.each(data, function(index, item) {
+		            $('#id_table_boleta_body').append("<tr><td>" + item.idLibro + "</td><td>" + item.titulo + "</td><td><button type='button' onclick='f_elimina_seleccion(" + item.idLibro +");' class='btn btn-default' aria-label='Left Align' ><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></td><tr>");
+		        });
+		        
+		        // Se actualiza el almacenamiento local con los nuevos datos de la tabla
+		        localStorage.setItem('boletaData', $('#id_table_boleta_body').html());
+		    });
+
+		    // Limpia las cajas de texto
+		    $("#id_libro_id").val("-1");
+		    $("#id_libro_nombre").val("");
 	}
+	
 	
 
 </script>   		
