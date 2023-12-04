@@ -1,8 +1,10 @@
 package com.centroinformacion.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -23,6 +25,8 @@ import com.centroinformacion.entity.Usuario;
 import com.centroinformacion.service.AlumnoService;
 import com.centroinformacion.service.LibroService;
 import com.centroinformacion.service.PrestamoService;
+
+
 
 import jakarta.servlet.http.HttpSession;
 import lombok.Getter;
@@ -95,10 +99,10 @@ public class LibroPrestamo {
 		Mensaje objMensaje = new Mensaje();
 
 		List<PrestamoHasLibro> detalles = new ArrayList<PrestamoHasLibro>();
-		for (SeleccionPrestamo seleccion : prestamos) {
+		for (SeleccionPrestamo seleccionPrestamo : prestamos) {
 
 			PrestamoHasLibroPK pk = new PrestamoHasLibroPK();
-			pk.setIdLibro(seleccion.getIdLibro());
+			pk.setIdLibro(seleccionPrestamo.getIdLibro());
 			
 			PrestamoHasLibro phl = new PrestamoHasLibro();
 			phl.setPrestamoHasLibroPK(pk);
@@ -114,9 +118,31 @@ public class LibroPrestamo {
 		obj.setUsuario(objUsuario);
 		obj.setDetallesPrestamo(detalles);
 		
-		prestamoService.insertaPrestamo(obj);
+		Prestamo objPrestamo = prestamoService.insertaPrestamo(obj);
 		
-		return objMensaje;
+		String salida = "-1";
+		// Creas un SimpleDateFormat con el formato de fecha que deseas
+		SimpleDateFormat sdf = new SimpleDateFormat("dd 'de' MMMM 'de' yyyy", new Locale("es", "ES"));
+		String fechaFormateada = sdf.format(fechaDevolucion);
+		
+		
+		if (objPrestamo != null) {
+			salida = "Se generó el prestamo con el código N° : " + objPrestamo.getIdPrestamo() + "<br><br>";
+			salida +=	"Alumno: " + objPrestamo.getAlumno().getNombres()+"<br><br>";
+			salida +=	"Fecha de devolución : " + fechaFormateada +"<br><br>";
+			salida +=	"<table class=\"table\"><tr><td>Codigo</td><td>Titulo</td></tr>";
+			for (SeleccionPrestamo x : prestamos) {
+				salida += "<tr><td>"  + x.getIdLibro() 
+						+ "</td><td>" + x.getTitulo();
+
+						
+			}
+
+			prestamos.clear();
+			objMensaje.setTexto(salida);	
 	}
+	
+	return objMensaje;
+}
 
 }
