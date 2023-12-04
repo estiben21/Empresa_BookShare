@@ -29,6 +29,8 @@ public interface LibroService {
 
 	// devolucion
 	public abstract List<Libro> listaLibroDisponible(String filtro, Pageable pageable);
+	public abstract List<Libro> listaLibroPrestado(String filtro, Pageable pageable);
+
 	public abstract List<Libro> listaLibro();
 	public abstract LibroHasAutor insertaAutor(LibroHasAutor obj);
 	public abstract void eliminaAutor(LibroHasAutor obj);
