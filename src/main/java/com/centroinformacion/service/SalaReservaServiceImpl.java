@@ -1,5 +1,7 @@
 package com.centroinformacion.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,11 @@ public class SalaReservaServiceImpl implements SalaReservaService{
 	@Override
 	public ReservaSala registraSalaReservado(ReservaSala obj) {
 		return repository.save(obj);
+	}
+
+	@Override
+	public List<ReservaSala> listaReservaSala() {
+		return repository.findByOrderBySalaAsc();
 	}
 
 	

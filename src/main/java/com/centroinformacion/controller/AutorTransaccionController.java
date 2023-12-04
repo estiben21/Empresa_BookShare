@@ -9,11 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.centroinformacion.entity.Libro;
 import com.centroinformacion.entity.Autor;
 import com.centroinformacion.entity.LibroHasAutor;
 import com.centroinformacion.entity.LibroHasAutorPK;
-import com.centroinformacion.service.AutorService;
 import com.centroinformacion.service.LibroService;
 
 
@@ -22,20 +20,6 @@ public class AutorTransaccionController {
 	@Autowired 
 	private LibroService libroService;
 
-	@Autowired 
-	private AutorService autorService;
-
-	@ResponseBody()
-	@RequestMapping("/listaAutor")
-	public List<Autor> listaAutor(){
-	    return autorService.listaAutor(); 
-	}
-
-	@ResponseBody()
-	@RequestMapping("/listaLibro")
-	public List<Libro> listaLibro(){
-	    return libroService.listaLibro(); 
-	}
 
 	@ResponseBody()
 	@RequestMapping("/listaAutorPorLibro")
@@ -70,6 +54,7 @@ public class AutorTransaccionController {
 	    
 	    List<Autor> lstSalida = libroService.traerAutorDeLibro(idLibro);
 	    maps.put("lista", lstSalida);
+	    maps.put("libro", idLibro);
 	    return maps;
 	}
 	

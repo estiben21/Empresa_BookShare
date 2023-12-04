@@ -87,7 +87,7 @@ $.getJSON("listaRol", {}, function(data){
 $("#id_usuario").change(function(){
 	var var_usuario = $("#id_usuario").val();
 	$.getJSON("listaRolPorUsuario", {"idUsuario":var_usuario }, function(data){
-		agregarGrilla(data , var_usuario);
+		agregarGrilla(data, var_usuario);
 	});
 });
 
@@ -103,9 +103,9 @@ function agregarGrilla(lista, var_usuario){
 			lengthChange: false,
 			columns:[
 				{data: "idRol"},
-				{data: "nombre"},
+				{data: "nombre"}, 
 				{data: function(row, type, val, meta){
-				    var salida='<button type="button" style="width: 90px" class="btn btn-warning btn-sm" onclick="accionEliminar(\'' + var_usuario +'\',\'' + row.idRol +'\')">Eliminar</button>';
+				    var salida='<button type="button" style="width: 90px" class="btn btn-warning btn-sm" onclick="accionEliminar(\'' + var_usuario +'\',\'' + row.idRol + '\')">Eliminar</button>';
 					return salida;
 				},className:'text-center'},	
 			]                                     
