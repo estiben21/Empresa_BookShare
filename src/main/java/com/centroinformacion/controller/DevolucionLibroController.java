@@ -126,8 +126,10 @@ public class DevolucionLibroController {
 			
 			
 			if (objDevolucion != null) {
-			    salida = 	"Se generó la Devolución con el código N° : " + objDevolucion.getIdDevolucion() +"<br><br>";
-			    salida +=	"Alumno: " + objDevolucion.getAlumno().getNombres() +"<br><br>";
+			    
+			    salida = 	"Se generó el Devolucion con el código N° : " + objDevolucion.getIdDevolucion() + "<br><br>";
+			    salida +=	"Alumno: " + objDevolucion.getAlumno().getNombres() + "<br><br>";
+
 			    salida += 	"Fecha de devolución : " + fechaFormateada + "<br><br>";
 			    salida +=	"<table class=\"table\"><tr><td>Codigo</td><td>Titulo</td></tr>";
 			    for (SeleccionDevolucion x : devoluciones) {
