@@ -21,6 +21,15 @@
 <link rel="stylesheet" href="css/dataTables.bootstrap.min.css"/>
 <link rel="stylesheet" href="css/bootstrapValidator.css"/>
 
+<!-- -ESTILOS -->
+<style>
+    .table-header-bg-color {
+        background-color: #0464ac; 
+        color: #fff; 
+        
+    }
+</style>
+
 <title>Consulta de Alumnos</title>
 </head>
 <body>
@@ -59,22 +68,31 @@
 				</select>
 			</div>
 		</div>
+		<div class="row" style="margin-top: 1%">
+		<!-- DESDE -->
+		<div class="col-md-6">
+				<label class="control-label" for="id_fechaNacimientoDesde">Fecha de nacimiento [Desde]</label> 
+				<input class="form-control" type="date" id="id_fechaNacimientoDesde" name="paramFechaNacDesde" value="1900-01-01">
+			</div>	
+			
+			
+			<!-- HASTA -->
+			<div class="col-md-6">
+					<label class="control-label" for="id_fechaNacimientoHasta">Fecha de nacimiento [Hasta]</label> 
+					<input class="form-control" type="date" id="id_fechaNacimientoHasta" name="paramFechaNacHasta" value="2900-01-01">
+			</div>
+			
+			
+			
+		</div>
 		<div class="row" style="margin-top: 1%">	
+			
+			
 			<div class="col-md-6">
 				<label class="control-label" for="id_modalidad">Modalidad</label> 
 				<select id="id_modalidad" name="paramModalidad" class='form-control'>
 					<option value="-1">[Todos]</option>
 				</select>
-			</div>
-			<div class="col-md-6">
-				<label class="control-label" for="id_fechaNacimientoDesde">Fecha de nacimiento [Desde]</label> 
-				<input class="form-control" type="date" id="id_fechaNacimientoDesde" name="paramFechaNacDesde" value="1900-01-01">
-			</div>
-		</div>
-		<div class="row" style="margin-top: 1%">	
-			<div class="col-md-6">
-					<label class="control-label" for="id_fechaNacimientoHasta">Fecha de nacimiento [Hasta]</label> 
-					<input class="form-control" type="date" id="id_fechaNacimientoHasta" name="paramFechaNacHasta" value="2900-01-01">
 			</div>
 		</div>
 		<div class="row" style="margin-top: 3%">
@@ -82,11 +100,12 @@
 				<button type="button" class="btn btn-primary" id="id_btn_filtra" style="width: 100px">FILTRA</button>
 				<button type="button" class="btn btn-primary" id="id_btn_reporte" style="width: 90px">PDF</button>
 			</div>
+			
 		</div>
 		<div class="row" style="margin-top: 3%">
 			<div class="col-md-12">
 				<table id="id_table" class="table table-striped table-bordered">
-					<thead>
+					<thead  class="table-header-bg-color">
 						<tr>
 							<th style="width: 5%" >Código</th>
 							<th style="width: 12%">Nombres</th>
@@ -107,7 +126,12 @@
 </div>
 </form>
 
+
+
 <script type="text/javascript">
+$("#id_btn_reporte").prop('disabled', true); 
+
+
 //------------------------ btn FILTRA ---------------------------
 $("#id_btn_filtra").click(function(){
 	var varNomApe = $("#id_nombres_apellidos").val();
@@ -125,6 +149,7 @@ $("#id_btn_filtra").click(function(){
 		return;
 	}
 	
+	
 	$.getJSON("consultaAlumno", {"nomApellido":varNomApe,
 		"estado":varEstado,
 		"telefono":varTelefono,
@@ -135,9 +160,14 @@ $("#id_btn_filtra").click(function(){
 		"idPais":varPais,
 		"idModalidad":varModalidad},
 		function (data){
-		agregarGrilla(data);
+			agregarGrilla(data);
+			if (data.length == 0) {
+				$("#id_btn_reporte").prop('disabled', true);
+	        } else {
+	        	$("#id_btn_reporte").prop('disabled', false);
+	        }	   
 	});
-});
+}); 
 
 function agregarGrilla(lista){
 	 $('#id_table').DataTable().clear();
