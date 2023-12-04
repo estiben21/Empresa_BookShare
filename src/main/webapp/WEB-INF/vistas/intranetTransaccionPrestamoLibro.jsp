@@ -44,7 +44,7 @@
                 <div class="form-group col-md-5">
                     <label class="col-lg-2 control-label">Alumno</label>
                     <div class="col-lg-8">
-                        <input type="text" id="id_alumno_nombre" class="form-control" readonly="readonly"/>
+                        <input type="text" id="id_alumno_nombre" class="form-control" placeholder="Ingrese el nombre del alumno"  readonly="readonly"/>
                     </div>
                 </div>
 
@@ -66,7 +66,7 @@
                 <div class="form-group  col-md-5">
                     <label class="col-lg-2 control-label">Libros</label>
                     <div class="col-lg-8">
-                        <input type="text" name="titulo" id="id_libro_nombre" class="form-control" readonly="readonly"/>
+                        <input type="text" name="titulo" id="id_libro_nombre" class="form-control" placeholder="Ingrese el nombre del libro" readonly="readonly"/>
                     </div>
                 </div>
 
@@ -349,7 +349,9 @@ $("#id_btnAgregar").click(function (){
         
         // Limpiar las cajas de texto después de agregar
         $("#id_libro_id").val("-1");
+        $("#id_alumno_nombre").val("");
         $("#id_libro_nombre").val("");
+        $("#id_fechaDevolucion").val("");
     }
 });
 
