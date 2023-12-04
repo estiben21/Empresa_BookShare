@@ -349,7 +349,6 @@ $("#id_btnAgregar").click(function (){
         
         // Limpiar las cajas de texto después de agregar
         $("#id_libro_id").val("-1");
-        $("#id_alumno_nombre").val("");
         $("#id_libro_nombre").val("");
     }
 });
