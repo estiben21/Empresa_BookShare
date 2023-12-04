@@ -351,7 +351,6 @@ $("#id_btnAgregar").click(function (){
         $("#id_libro_id").val("-1");
         $("#id_alumno_nombre").val("");
         $("#id_libro_nombre").val("");
-        $("#id_fechaDevolucion").val("");
     }
 });
 
