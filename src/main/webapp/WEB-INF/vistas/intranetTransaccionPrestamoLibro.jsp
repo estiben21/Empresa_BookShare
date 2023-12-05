@@ -38,7 +38,7 @@
 
         <!-- Panel 1: Prestamo -->
         <div class="panel panel-default " >
-            <div class="panel-heading text-center">PRESTAMO</div>
+            <div class="panel-heading text-center">Préstamo</div>
             <div class="panel-body " >
 
                 <div class="form-group col-md-5">
@@ -81,7 +81,7 @@
                     <div class="col-lg-9 col-lg-offset-5">
                         <div class="col-lg-9 col-lg-offset-3">
                             <button type="button" id="id_btnAgregar" class="btn btn-primary" style="width: 170px">AGREGAR LIBRO</button>
-                            <button type="button" id="id_btnRegistrar"  class="btn btn-primary" style="width: 188Px">REGISTRAR PRESTAMO</button>
+                            <button type="button" id="id_btnRegistrar"  class="btn btn-primary" style="width: 188Px">REGISTRAR PRÉSTAMO</button>
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
 
         <!-- Panel 2: Detalle del Prestamo -->
         <div class="panel panel-default" >
-           <div class="panel-heading text-center">DETALLE DEL PRESTAMO</div>
+           <div class="panel-heading text-center">DETALLE DEL PRÉSTAMO</div>
             <div class="panel-body">
                
                 
