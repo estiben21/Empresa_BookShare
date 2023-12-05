@@ -127,10 +127,10 @@ public class PrestamoLibroController {
 		
 		
 		if (objPrestamo != null) {
-			salida = "Se generó el prestamo con el código N° : " + objPrestamo.getIdPrestamo() + "<br><br>";
+			salida = "Se generó el préstamo con el código N° : " + objPrestamo.getIdPrestamo() + "<br><br>";
 			salida +=	"Alumno: " + objPrestamo.getAlumno().getNombres()+"<br><br>";
 			salida +=	"Fecha de devolución : " + fechaFormateada +"<br><br>";
-			salida +=	"<table class=\"table\"><tr><td>Codigo</td><td>Titulo</td></tr>";
+			salida +=	"<table class=\"table\"><tr><td>código</td><td>Título</td></tr>";
 			for (SeleccionPrestamo x : prestamos) {
 				salida += "<tr><td>"  + x.getIdLibro() 
 						+ "</td><td>" + x.getTitulo();
