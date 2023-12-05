@@ -81,7 +81,7 @@
                     <div class="col-lg-9 col-lg-offset-5">
                         <div class="col-lg-9 col-lg-offset-3">
                             <button type="button" id="id_btnAgregar" class="btn btn-primary" style="width: 170px">AGREGAR LIBRO</button>
-                            <button type="button" id="id_btnRegistrar"  class="btn btn-primary" style="width: 190Px">REGISTRAR DEVOLUCIÓN</button>
+                            <button type="button" id="id_btnRegistrar"  class="btn btn-primary" style="width: 170px">DEVOLVER</button>
                         </div>
                     </div>
                 </div>
@@ -237,7 +237,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		
-		$.getJSON("listaSelecciones",{}, function (data){
+		$.getJSON("listaSeleccionDevolucion",{}, function (data){
 			$.each(data, function(index, item){
 				$('#id_table_boleta_body').append("<tr><td>" +item.idLibro + "</td><td>" +item.titulo + "</td><td><button type='button' onclick='f_elimina_seleccion(" + item.idAlumno +");' class='btn btn-default' aria-label='Left Align' ><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></td></tr>");
 			});
@@ -259,7 +259,7 @@
 		$("#idBuscaAlumno").modal("show");
 	});
 
-	//Al pulsar el botï¿½n libro
+	//Al pulsar el botn libro
 	$("#id_btnLibro").click(function (){
 		muestraLibro();
 		$("#idBuscaLibro").modal("show");
@@ -322,7 +322,7 @@ $("#id_btnAgregar").click(function (){
         var jsonParam = {"idLibro": var_id, "titulo": var_titulo};
         
         $.ajax({
-            url: 'agregarSelecciones',
+            url: 'agregarSeleccionDevolucion',
             type: 'POST',
             dataType: 'json',
             data: jsonParam,
@@ -463,7 +463,7 @@ $("#id_btnAgregar").click(function (){
 		$("#id_table_boleta_body").empty();
 			
 		//Se aÃ±ade los clientes a la tabla
-		$.getJSON("eliminaSeleccion",{"idLibro":id}, function (data){
+		$.getJSON("eliminaSeleccionDevolucion",{"idLibro":id}, function (data){
 			$.each(data, function(index, item){
 				$('#id_table_boleta_body').append("<tr><td>" +item.idLibro + "</td><td>" +item.titulo + "</td><td><button type='button' onclick='f_elimina_seleccion(" + item.idLibro +");' class='btn btn-default' aria-label='Left Align' ><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></td><tr>");
 			});

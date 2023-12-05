@@ -81,7 +81,7 @@
                     <div class="col-lg-9 col-lg-offset-5">
                         <div class="col-lg-9 col-lg-offset-3">
                             <button type="button" id="id_btnAgregar" class="btn btn-primary" style="width: 170px">AGREGAR LIBRO</button>
-                            <button type="button" id="id_btnRegistrar"  class="btn btn-primary" style="width: 188Px">REGISTRAR PRESTAMO</button>
+                            <button type="button" id="id_btnRegistrar"  class="btn btn-primary" style="width: 170px">PRESTAR</button>
                         </div>
                     </div>
                 </div>
@@ -260,7 +260,7 @@
 		$("#idBuscaAlumno").modal("show");
 	});
 
-	//Al pulsar el botï¿½n libro
+	//Al pulsar el botn libro
 	$("#id_btnLibro").click(function (){
 		muestraLibro();
 		$("#idBuscaLibro").modal("show");
@@ -431,7 +431,7 @@ $("#id_btnAgregar").click(function (){
 		//limpiar la tabla
 		$("#id_table_libro tbody").empty();
 	    console.log("Funcion muestraLibro() llamada ");
-		//Se aï¿½ade los clientes a la tabla
+		//Se aade los clientes a la tabla
 		$.getJSON("listaLibroPrestamo",{"filtro":var_libro}, function (data){
 			$.each(data, function(index, item){
 			    $('#id_table_libro').append("<tr><td>" +item.idLibro + "</td><td>" +item.titulo + "</td><td>"    + item.estadoPrestamo.descripcion + "</td><td><button type='button' class='btn btn-default' aria-label='Left Align' onclick=\"f_seleccione_libro('"+ item.idLibro+"','"+ item.titulo +"','"+  item.estadoPrestamo.descripcion +"');\" ><span class='glyphicon glyphicon-ok' aria-hidden='true'></span></button></td></tr>");

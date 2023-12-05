@@ -35,7 +35,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Controller
-public class LibroPrestamo {
+public class PrestamoLibroController {
 
 	@Autowired
 	private AlumnoService alumnoService;

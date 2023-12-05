@@ -227,7 +227,7 @@
 
 
 <script type="text/javascript">
-<!-- Agregar aqu� -->
+<!-- Agregar aqu -->
 $("#id_btn_filtrar").click(function(){
 	var fil=$("#id_txt_filtro").val();
 	$.getJSON("consultaCrudSala",{"filtro":fil}, function (lista){

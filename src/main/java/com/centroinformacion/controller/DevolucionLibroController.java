@@ -35,114 +35,110 @@ import java.util.Locale;
 @Controller
 public class DevolucionLibroController {
 
-    @Autowired
-    private DevolucionService devolucionService;
-    @Autowired
-    private PrestamoService prestamoService;
-    @Autowired
+	@Autowired
+	private DevolucionService devolucionService;
+	@Autowired
+	private PrestamoService prestamoService;
+	@Autowired
 	private AlumnoService alumnoService;
 
 	@Autowired
 	private LibroService libroService;
 	// Los productos seleccionados
-		private List<SeleccionDevolucion> devoluciones = new ArrayList<SeleccionDevolucion>();
-		@RequestMapping("/listaAlumnoDevolucion")
-		@ResponseBody()
-		public List<Alumno> listaAlumno(String filtro) {
-		    int page = 0;
-		    int size = 5;
-		    Pageable pageable = PageRequest.of(page, size);
-		    List<Alumno> lstSalida = alumnoService.listaAlumno("%" + filtro + "%", pageable);
-		    return lstSalida;
+	private List<SeleccionDevolucion> devoluciones = new ArrayList<SeleccionDevolucion>();
+
+	@RequestMapping("/listaAlumnoDevolucion")
+	@ResponseBody()
+	public List<Alumno> listaAlumno(String filtro) {
+		int page = 0;
+		int size = 5;
+		Pageable pageable = PageRequest.of(page, size);
+		List<Alumno> lstSalida = alumnoService.listaAlumno("%" + filtro + "%", pageable);
+		return lstSalida;
+	}
+
+	@RequestMapping("/listaLibroDevolucion")
+	@ResponseBody()
+	public List<Libro> listaLibro(String filtro) {
+		int page = 0;
+		int size = 5;
+		Pageable pageable = PageRequest.of(page, size);
+		List<Libro> lstSalida = libroService.listaLibroPrestado("%" + filtro + "%", pageable);
+		return lstSalida;
+	}
+
+	@RequestMapping("/listaSeleccionDevolucion")
+	@ResponseBody()
+	public List<SeleccionDevolucion> lista() {
+		return devoluciones;
+	}
+
+	@RequestMapping("/agregarSeleccionDevolucion")
+	@ResponseBody()
+	public List<SeleccionDevolucion> agregar(SeleccionDevolucion obj) {
+		devoluciones.add(obj);
+		return devoluciones;
+	}
+
+	@RequestMapping("/eliminaSeleccionDevolucion")
+	@ResponseBody()
+	public List<SeleccionDevolucion> eliminar(int idLibro) {
+		devoluciones.removeIf(x -> x.getIdLibro() == idLibro);
+		return devoluciones;
+
+	}
+
+	@RequestMapping("/registraDevolucion")
+	@ResponseBody()
+	public Mensaje Devolucion(Alumno alumno, HttpSession session,
+			@DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaDevolucion) {
+
+		Usuario objUsuario = (Usuario) session.getAttribute("objUsuario");
+		Mensaje objMensaje = new Mensaje();
+		List<DevolucionHasLibro> detalles = new ArrayList<DevolucionHasLibro>();
+		for (SeleccionDevolucion seleccionDevolucion : devoluciones) {
+
+			DevolucionHasLibroPK pk = new DevolucionHasLibroPK();
+			pk.setIdLibro(seleccionDevolucion.getIdLibro());
+
+			DevolucionHasLibro phl = new DevolucionHasLibro();
+			phl.setDevolucionHasLibroPK(pk);
+
+			detalles.add(phl);
 		}
 
+		Devolucion obj = new Devolucion();
+		obj.setFechaRegistro(new Date());
+		obj.setFechaDevolucion(fechaDevolucion);
+		obj.setFechaPrestamo(new Date());
+		obj.setAlumno(alumno);
+		obj.setUsuario(objUsuario);
+		obj.setDetallesDevolucion(detalles);
 
-		@RequestMapping("/listaLibroDevolucion")
-		@ResponseBody()
-		public List<Libro> listaLibro(String filtro) {
-			int page = 0;
-			int size = 5;
-			Pageable pageable = PageRequest.of(page, size);
-			List<Libro> lstSalida = libroService.listaLibroPrestado("%"+filtro+"%", pageable);
-			return lstSalida;
-		}
+		Devolucion objDevolucion = devolucionService.insertaDevolucion(obj);
 
-		@RequestMapping("/listaSelecciones")
-		@ResponseBody()
-		public List<SeleccionDevolucion> lista() {
-			return devoluciones;
-		}
+		String salida = "-1";
+		// Creas un SimpleDateFormat con el formato de fecha que deseas
+		SimpleDateFormat sdf = new SimpleDateFormat("dd 'de' MMMM 'de' yyyy", new Locale("es", "ES"));
+		String fechaFormateada = sdf.format(fechaDevolucion);
 
-		@RequestMapping("/agregarSelecciones")
-		@ResponseBody()
-		public List<SeleccionDevolucion> agregar(SeleccionDevolucion obj) {
-			devoluciones.add(obj);
-			return devoluciones;
-		}
+		if (objDevolucion != null) {
 
-		@RequestMapping("/eliminaSelecciones")
-		@ResponseBody()
-		public List<SeleccionDevolucion> eliminar(int idLibro) {
-			devoluciones.removeIf(x -> x.getIdLibro() == idLibro);
-			return devoluciones;
-			
-		}
-		
-		
-		@RequestMapping("/registraDevolucion")
-		@ResponseBody()
-		public Mensaje Devolucion(Alumno alumno, 
-								HttpSession session ,
-								@DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaDevolucion) {
-			
-			Usuario objUsuario = (Usuario) session.getAttribute("objUsuario");
-			Mensaje objMensaje = new Mensaje();
-			List<DevolucionHasLibro> detalles = new ArrayList<DevolucionHasLibro>();
-			for (SeleccionDevolucion seleccionDevolucion : devoluciones) {
+			salida = "Se generó el Devolucion con el código N° : " + objDevolucion.getIdDevolucion() + "<br><br>";
+			salida += "Alumno: " + objDevolucion.getAlumno().getNombres() + "<br><br>";
 
-				DevolucionHasLibroPK pk = new DevolucionHasLibroPK();
-				pk.setIdLibro(seleccionDevolucion.getIdLibro());
-				
-				DevolucionHasLibro phl = new DevolucionHasLibro();
-				phl.setDevolucionHasLibroPK(pk);
-
-				detalles.add(phl);
+			salida += "Fecha de devolución : " + fechaFormateada + "<br><br>";
+			salida += "<table class=\"table\"><tr><td>Codigo</td><td>Titulo</td></tr>";
+			for (SeleccionDevolucion x : devoluciones) {
+				salida += "<tr><td>" + x.getIdLibro() + "</td><td>" + x.getTitulo();
 			}
+			salida += "</table>";
+			salida += "</pre>";
 
-			Devolucion obj = new Devolucion();
-			obj.setFechaRegistro(new Date());
-			obj.setFechaDevolucion(fechaDevolucion);
-			obj.setFechaPrestamo(new Date());
-			obj.setAlumno(alumno);
-			obj.setUsuario(objUsuario);
-			obj.setDetallesDevolucion(detalles);
-			
-			Devolucion objDevolucion = devolucionService.insertaDevolucion(obj);
-			
-			String salida = "-1";
-			// Creas un SimpleDateFormat con el formato de fecha que deseas
-			SimpleDateFormat sdf = new SimpleDateFormat("dd 'de' MMMM 'de' yyyy", new Locale("es", "ES"));
-			String fechaFormateada = sdf.format(fechaDevolucion);
-			
-			
-			if (objDevolucion != null) {
-			    
-			    salida = 	"Se generó el Devolucion con el código N° : " + objDevolucion.getIdDevolucion() + "<br><br>";
-			    salida +=	"Alumno: " + objDevolucion.getAlumno().getNombres() + "<br><br>";
-
-			    salida += 	"Fecha de devolución : " + fechaFormateada + "<br><br>";
-			    salida +=	"<table class=\"table\"><tr><td>Codigo</td><td>Titulo</td></tr>";
-			    for (SeleccionDevolucion x : devoluciones) {
-			        salida += "<tr><td>"  + x.getIdLibro() 
-			                + "</td><td>" + x.getTitulo();
-			    }
-			    salida += "</table>";
-			    salida += "</pre>";
-
-			    devoluciones.clear();
-			    objMensaje.setTexto(salida);    
-			}
-
-			return objMensaje;
+			devoluciones.clear();
+			objMensaje.setTexto(salida);
 		}
+
+		return objMensaje;
+	}
 }
