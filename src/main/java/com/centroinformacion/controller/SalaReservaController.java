@@ -32,29 +32,27 @@ public class SalaReservaController {
 	public SalaService salaService;
 	
 	
-	@PostMapping("/registraReservaSala")
-    @ResponseBody
-    public Map<String, Object> registraSalaResevado(ReservaSala obj, HttpSession session) {
-		Map<String, Object> map = new HashMap<>();
-        Usuario objUsuario = (Usuario) session.getAttribute("objUsuario");
-        
-        obj.setEstado(AppSettings.ACTIVO);
-        obj.setUsuarioRegistro(objUsuario);
-        obj.setFechaRegistro(new Date());
-        
-       
-        
-        ReservaSala objSalida = salaReservaService.registraSalaReservado(obj);
-        if (objSalida == null) {
-            map.put("MENSAJE", "Error en el registro");
-        } else {
-        	Sala salaRelacionada = objSalida.getSala();
-            salaRelacionada.setEstado(AppSettings.INACTIVO);
+	 @PostMapping("/registraReservaSala")
+	    @ResponseBody
+	    public Map<String, Object> registraSalaResevado(ReservaSala obj, HttpSession session) {
+	        Map<String, Object> map = new HashMap<>();
+	        Usuario objUsuario = (Usuario) session.getAttribute("objUsuario");
 
-            // Actualiza el estado de la sala
-            salaService.actualizarSala(salaRelacionada);
-            map.put("MENSAJE", "Registro exitoso");
-        }
-        return map;
-    }
+	        obj.setEstado(AppSettings.ACTIVO);
+	        obj.setUsuarioRegistro(objUsuario);
+	        obj.setFechaRegistro(new Date());
+
+	        ReservaSala objSalida = salaReservaService.registraSalaReservado(obj);
+	        if (objSalida == null) {
+	            map.put("MENSAJE", "Error en el registro");
+	        } else {
+	            Sala salaRelacionada = objSalida.getSala();
+	            salaRelacionada.setEstado(AppSettings.INACTIVO);
+
+	            // Actualiza el estado de la sala
+	            salaService.actualizarSala(salaRelacionada);
+	            map.put("MENSAJE", "Registro exitoso");
+	        }
+	        return map;
+	    }
 }

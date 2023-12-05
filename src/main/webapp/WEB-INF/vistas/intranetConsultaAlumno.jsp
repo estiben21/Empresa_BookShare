@@ -21,6 +21,15 @@
 <link rel="stylesheet" href="css/dataTables.bootstrap.min.css"/>
 <link rel="stylesheet" href="css/bootstrapValidator.css"/>
 
+<!-- -ESTILOS -->
+<style>
+    .table-header-bg-color {
+        background-color: #0464ac; 
+        color: #fff; 
+        
+    }
+</style>
+
 <title>Consulta de Alumnos</title>
 </head>
 <body>
@@ -39,7 +48,7 @@
 		</div>
 		<div class="row" style="margin-top: 1%">
 			<div class="col-md-6">
-				<label class="control-label" for="id_telefono">Teléfono</label> 
+				<label class="control-label" for="id_telefono">TelÃ©fono</label> 
 				<input class="form-control" type="text" id="id_telefono"	name="paramTelefono">
 			</div>
 			<div class="col-md-6">
@@ -49,32 +58,41 @@
 		</div>
 		<div class="row" style="margin-top: 1%">
 			<div class="col-md-6">
-				<label class="control-label" for="id_correo">Correo electrónico</label> 
+				<label class="control-label" for="id_correo">Correo electrÃ³nico</label> 
 				<input class="form-control" type="text" id="id_correo"	name="paramCorreo">
 			</div>
 			<div class="col-md-6">
-				<label class="control-label" for="id_pais">País</label> 
+				<label class="control-label" for="id_pais">PaÃ­s</label> 
 				<select id="id_pais" name="paramPais" class='form-control'>
 					<option value="-1">[Todos]</option>
 				</select>
 			</div>
 		</div>
+		<div class="row" style="margin-top: 1%">
+		<!-- DESDE -->
+		<div class="col-md-6">
+				<label class="control-label" for="id_fechaNacimientoDesde">Fecha de nacimiento [Desde]</label> 
+				<input class="form-control" type="date" id="id_fechaNacimientoDesde" name="paramFechaNacDesde" value="1900-01-01">
+			</div>	
+			
+			
+			<!-- HASTA -->
+			<div class="col-md-6">
+					<label class="control-label" for="id_fechaNacimientoHasta">Fecha de nacimiento [Hasta]</label> 
+					<input class="form-control" type="date" id="id_fechaNacimientoHasta" name="paramFechaNacHasta" value="2900-01-01">
+			</div>
+			
+			
+			
+		</div>
 		<div class="row" style="margin-top: 1%">	
+			
+			
 			<div class="col-md-6">
 				<label class="control-label" for="id_modalidad">Modalidad</label> 
 				<select id="id_modalidad" name="paramModalidad" class='form-control'>
 					<option value="-1">[Todos]</option>
 				</select>
-			</div>
-			<div class="col-md-6">
-				<label class="control-label" for="id_fechaNacimientoDesde">Fecha de nacimiento [Desde]</label> 
-				<input class="form-control" type="date" id="id_fechaNacimientoDesde" name="paramFechaNacDesde" value="1900-01-01">
-			</div>
-		</div>
-		<div class="row" style="margin-top: 1%">	
-			<div class="col-md-6">
-					<label class="control-label" for="id_fechaNacimientoHasta">Fecha de nacimiento [Hasta]</label> 
-					<input class="form-control" type="date" id="id_fechaNacimientoHasta" name="paramFechaNacHasta" value="2900-01-01">
 			</div>
 		</div>
 		<div class="row" style="margin-top: 3%">
@@ -82,20 +100,21 @@
 				<button type="button" class="btn btn-primary" id="id_btn_filtra" style="width: 100px">FILTRA</button>
 				<button type="button" class="btn btn-primary" id="id_btn_reporte" style="width: 90px">PDF</button>
 			</div>
+			
 		</div>
 		<div class="row" style="margin-top: 3%">
 			<div class="col-md-12">
 				<table id="id_table" class="table table-striped table-bordered">
-					<thead>
+					<thead  class="table-header-bg-color">
 						<tr>
-							<th style="width: 5%" >Código</th>
+							<th style="width: 5%" >CÃ³digo</th>
 							<th style="width: 12%">Nombres</th>
 							<th style="width: 13%">Apellidos</th>
-							<th style="width: 9%">Teléfono</th>
+							<th style="width: 9%">TelÃ©fono</th>
 							<th style="width: 8%">DNI</th>
-							<th style="width: 15%">Correo electrónico</th>
+							<th style="width: 15%">Correo electrÃ³nico</th>
 							<th style="width: 12%">Fecha de nacimiento</th>
-							<th style="width: 10%">País</th>
+							<th style="width: 10%">PaÃ­s</th>
 							<th style="width: 8%">Modalidad</th>
 							<th style="width: 7%">Estado</th>
 						</tr>
@@ -107,8 +126,11 @@
 </div>
 </form>
 
+
+
 <script type="text/javascript">
-$("#id_btn_reporte").prop('disabled', true);    
+$("#id_btn_reporte").prop('disabled', true); 
+
 
 //------------------------ btn FILTRA ---------------------------
 $("#id_btn_filtra").click(function(){
@@ -126,6 +148,7 @@ $("#id_btn_filtra").click(function(){
 		mostrarMensaje("La fecha hasta es superior a la fecha desde");
 		return;
 	}
+	
 	
 	$.getJSON("consultaAlumno", {"nomApellido":varNomApe,
 		"estado":varEstado,

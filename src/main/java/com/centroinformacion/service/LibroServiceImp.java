@@ -69,6 +69,12 @@ public class LibroServiceImp implements LibroService {
 		return repository.listaLibroDisponible(filtro, pageable);
 	}
 
+	@Override
+	public List<Libro> listaLibroPrestado(String filtro, Pageable pageable) {
+		return repository.listaLibroPrestado(filtro, pageable);
+
+	}
+	
 	// pc4
 	@Override
 	public List<Libro> listaLibro() {
@@ -97,5 +103,7 @@ public class LibroServiceImp implements LibroService {
 		return repository.traerAutorDeLibro(idLibro);
 	}
 
-	// ---
+
+
+
 }
