@@ -24,10 +24,10 @@ public class EnlaceController {
 	
 	//Crud
 	@GetMapping("/verCrudAlumno")
-	public String verCrudAlumno() {	return "intranetCrudAlumno";	}
+	public String verCrudAlumno() {	return "intranetMantenimientoAlumno";	}
 
 	@GetMapping("/verCrudLibro")
-	public String verCrudLibro() {	return "intranetCrudLibro";	}
+	public String verCrudLibro() {	return "intranetMantenimientoLibro";	}
 	
 	
 	//Consulta
