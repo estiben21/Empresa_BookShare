@@ -37,10 +37,10 @@
 					<textElement>
 						<font fontName="Tw Cen MT" size="55" isBold="false"/>
 					</textElement>
-					<text><![CDATA[Cibertec]]></text>
+					<text><![CDATA[Book Share]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="SubTitle" x="230" y="60" width="203" height="28" uuid="8978eac3-c578-41c9-837e-48d2b0184642"/>
+					<reportElement style="SubTitle" x="270" y="67" width="203" height="28" uuid="8978eac3-c578-41c9-837e-48d2b0184642"/>
 					<textElement>
 						<font fontName="Tw Cen MT" size="22" isBold="false"/>
 					</textElement>

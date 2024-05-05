@@ -26,8 +26,6 @@ import com.centroinformacion.service.AlumnoService;
 import com.centroinformacion.service.LibroService;
 import com.centroinformacion.service.PrestamoService;
 
-
-
 import jakarta.servlet.http.HttpSession;
 import lombok.Getter;
 import lombok.Setter;

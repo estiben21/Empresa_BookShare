@@ -7,20 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.centroinformacion.entity.Autor;
 import com.centroinformacion.entity.Libro;
-import com.centroinformacion.entity.LibroHasAutor;
-import com.centroinformacion.entity.LibroHasAutorPK;
-import com.centroinformacion.repository.LibroHasAutorRepository;
 import com.centroinformacion.repository.LibroRepository;
 
 @Service
 public class LibroServiceImp implements LibroService {
 	@Autowired
 	private LibroRepository repository;
-	// sem 14
-	@Autowired
-	private LibroHasAutorRepository libroHasAutorRepository;
+	
 	// --
 
 	@Override
@@ -81,28 +75,7 @@ public class LibroServiceImp implements LibroService {
 		return repository.findAll();
 	}
 
-	// inserta
-	@Override
-	public LibroHasAutor insertaAutor(LibroHasAutor obj) {
-		return libroHasAutorRepository.save(obj);
-	}
-
-	@Override
-	public void eliminaAutor(LibroHasAutor obj) {
-		libroHasAutorRepository.delete(obj);
-
-	}
-
-	@Override
-	public Optional<LibroHasAutor> buscaAutor(LibroHasAutorPK obj) {
-		return libroHasAutorRepository.findById(obj);
-	}
-
-	@Override
-	public List<Autor> traerAutorDeLibro(int idLibro) {
-		return repository.traerAutorDeLibro(idLibro);
-	}
-
+	
 
 
 
