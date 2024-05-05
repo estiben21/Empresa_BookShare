@@ -79,7 +79,7 @@ public class LibroConsultaControler {
 		FileInputStream stream = new  FileInputStream(new File(fileDirectory));
 		
 		//PASO 3: Parametros adicionales
-		String fileLogo = request.getServletContext().getRealPath("/WEB-INF/img/cherry.jpg");
+		String fileLogo = request.getServletContext().getRealPath("/WEB-INF/img/libro.jpeg");
 		log.info(">>> File Logo >> " + fileLogo);
 		
 		HashMap<String, Object> params = new HashMap<String, Object>();

@@ -81,7 +81,7 @@ public class AlumnoConsultaController {
 			FileInputStream stream = new FileInputStream(new File(fileDirectory));
 				
 		//PASO 3: Parametros adicionales
-			String fileLogo = request.getServletContext().getRealPath("/WEB-INF/img/logo_azul.jpg");
+			String fileLogo = request.getServletContext().getRealPath("/WEB-INF/img/alumno.jpeg");
 			log.info(">>> File Logo >> " + fileLogo);
 				
 			HashMap<String, Object> params = new HashMap<String, Object>();
