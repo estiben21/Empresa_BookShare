@@ -22,6 +22,11 @@
 <link rel="stylesheet" href="css/bootstrapValidator.css"/>
 
 <title>Intranet</title>
+<style>
+	body {
+        background-image: url('img/bibli.jpg');
+    }
+</style>
 </head>
 <body>
 <jsp:include page="intranetCabecera.jsp" />

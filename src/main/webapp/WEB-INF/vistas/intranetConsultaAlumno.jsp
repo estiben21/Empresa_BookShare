@@ -21,21 +21,12 @@
 <link rel="stylesheet" href="css/dataTables.bootstrap.min.css"/>
 <link rel="stylesheet" href="css/bootstrapValidator.css"/>
 
-<!-- -ESTILOS -->
-<style>
-    .table-header-bg-color {
-        background-color: #0464ac; 
-        color: #fff; 
-        
-    }
-</style>
-
 <title>Consulta de Alumnos</title>
 </head>
 <body>
 <jsp:include page="intranetCabecera.jsp" />
 <form id="id_form">
-<div class="container" style="margin-top: 4%"><h4>Consulta Alumno</h4>
+<div class="container" style="margin-top: 4%"><h3>Consulta Alumno</h3>
 		<div class="row" style="margin-top: 1%">
 			<div class="col-md-6">
 				<label class="control-label" for="id_nombres_apellidos">Nombres y Apellidos</label> 
@@ -98,7 +89,7 @@
 		<div class="row" style="margin-top: 3%">
 			<div class="col-md-12" align="center">
 				<button type="button" class="btn btn-primary" id="id_btn_filtra" style="width: 100px">FILTRA</button>
-				<button type="button" class="btn btn-primary" id="id_btn_reporte" style="width: 90px">PDF</button>
+				<button type="button" class="btn btn-danger" id="id_btn_reporte" style="width: 90px">PDF</button>
 			</div>
 			
 		</div>

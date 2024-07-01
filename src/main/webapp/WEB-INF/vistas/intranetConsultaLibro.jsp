@@ -21,14 +21,13 @@
 <link rel="stylesheet" href="css/dataTables.bootstrap.min.css"/>
 <link rel="stylesheet" href="css/bootstrapValidator.css"/>
 
-<title>Intranet</title>
+<title>Consulta de Libros</title>
 </head>
 <body>
 <jsp:include page="intranetCabecera.jsp" />
-<div class="container" style="margin-top: 4%"><h3>Consulta Libro</h3></div>
 <form id="id_form" >
-	<div class="container" style="margin-top: 1%">
-		<div class="row" style="margin-top: 3%">
+<div class="container" style="margin-top: 4%"><h3>Consulta Libro</h3>
+	<div class="row" style="margin-top: 2%">
 			<div class="col-md-6">
 				<label class="control-label" for="id_titulo">Título</label> 
 				<input class="form-control" type="text" id="id_titulo" name="paramTitulo">
@@ -37,7 +36,7 @@
 				<label class="control-label" for="id_estado">Estado</label> 
 				<input class="form-control" type="checkbox" id="id_estado" name="paramEstado" checked="checked">
 			</div>
-		</div>
+	</div>
 		<div class="row" style="margin-top: 2%">
 			<div class="col-md-6">
 				<label class="control-label" for="id_anio">Año</label> 
@@ -82,16 +81,16 @@
 							<th style="width: 14%">Estado</th>
 						</tr>
 					</thead>
-					<tbody>
-					</tbody>
 				</table>
 			</div>
 		</div>
-	</div>
+</div>
 </form>
 
 
 <script type="text/javascript">
+$("#id_btn_reporte").prop('disabled', true); 
+
 $.getJSON("listaCategoriaDeLibro", {}, function(data) {
 	$.each(data, function(index, item) {
 		$("#id_categoria").append(
@@ -135,9 +134,15 @@ $("#id_btn_filtra").click(function(){
 								"idTipo": varTipo,
 								"titulo": varTitulo,
 								"serie": varSerie,
-								"anio": varAnio }, function(data){
-		agregarGrilla(data);
-	});
+								"anio": varAnio }, 
+			function (data){
+				agregarGrilla(data);
+				if (data.length == 0) {
+					$("#id_btn_reporte").prop('disabled', true);
+		        } else {
+		        	$("#id_btn_reporte").prop('disabled', false);
+		        }	   
+		});
 });
 
 function agregarGrilla(lista){

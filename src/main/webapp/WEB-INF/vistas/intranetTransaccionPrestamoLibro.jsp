@@ -23,6 +23,14 @@
 <link rel="stylesheet" href="css/dataTables.bootstrap.min.css"/>
 <link rel="stylesheet" href="css/bootstrapValidator.css"/>
 <title>Intranet</title>
+<style>
+	body {
+        background-image: url('img/bibli.jpg');
+    }
+    h4 {
+    	color: white;
+    }
+</style>
 </head>
 <body>
 

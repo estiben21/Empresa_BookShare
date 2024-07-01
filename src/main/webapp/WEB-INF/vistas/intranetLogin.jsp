@@ -21,47 +21,50 @@
 <link rel="stylesheet" href="css/bootstrapValidator.css">
 
 <title>Intranet</title>
+<style>
+	body {
+        background-image: url('img/bibli.jpg');
+    }
+</style>
 </head>   
 <body>    
-
-
-        <div class="top-content">
-            <div class="inner-bg">
-                <div class="container">
-                	<c:if test="${requestScope.mensaje != null}">
-               		<div class="alert alert-danger fade in" id="success-alert">
-				        <a href="#" class="close" data-dismiss="alert">&times;</a>
-				        <strong>${requestScope.mensaje}</strong>
-				    </div>
-				    </c:if>
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3 form-box">
-                        	<div class="form-top">
-                        		<div class="form-top-left">
-                        			<h3>Ingreso al Sistema de Intranet</h3>
-                            		<p>Ingrese su Usuario y Contraseña:</p>
-                        		</div>
-                            </div>
-                            <div class="form-bottom">
-			                    <form id="id_form"  action="login" method="post" class="login-form">
-			                    	<div class="form-group">
-			                    		<label class="sr-only" for="form-username">Usuario</label>
-			                        	<input type="text" name="login" placeholder="Ingrese Usuario" class="form-username form-control" id="form-username" maxlength="20" value="">
-			                        </div>
-			                        <div class="form-group">
-			                        	<label class="sr-only" for="form-password">Contraseña</label>
-			                        	<input type="password" name="password" placeholder="Ingrese Contraseña" class="form-password form-control" id="form-password" maxlength="20" value="">
-			                        </div>
-			                        <button type="submit" class="btn btn-primary">Ingresar</button>
-			                    </form>
-		                    </div>
-                        </div>   
-                    </div>
-                    
-                </div>
+   <div class="top-content">
+       <div class="inner-bg">
+           <div class="container">
+           	<c:if test="${requestScope.mensaje != null}">
+          		<div class="alert alert-danger fade in" id="success-alert">
+       <a href="#" class="close" data-dismiss="alert">&times;</a>
+       <strong>${requestScope.mensaje}</strong>
+   </div>
+   </c:if>
+          <div class="row">
+              <div class="col-sm-6 col-sm-offset-3 form-box">
+              	<div class="form-top">
+              		<div class="form-top-left">
+              			<h3>Ingreso al Sistema de Intranet</h3>
+                  		<p>Ingrese su Usuario y Contraseña:</p>
+              		</div>
+                  </div>
+                  <div class="form-bottom">
+             <form id="id_form"  action="login" method="post" class="login-form">
+             	<div class="form-group">
+             		<label class="sr-only" for="form-username">Usuario</label>
+                 	<input type="text" name="login" placeholder="Ingrese Usuario" class="form-username form-control" id="form-username" maxlength="20" value="">
+                 </div>
+                 <div class="form-group">
+                 	<label class="sr-only" for="form-password">Contraseña</label>
+                 	<input type="password" name="password" placeholder="Ingrese Contraseña" class="form-password form-control" id="form-password" maxlength="20" value="">
+                 </div>
+                 <button type="submit" class="btn btn-primary">Ingresar</button>
+             </form>
             </div>
-            
-        </div>
+              </div>   
+          </div>
+               
+           </div>
+       </div>
+       
+   </div>
 
 
      
