@@ -23,7 +23,7 @@
 
 <title>Intranet</title>
 <style>
-	body {
+    body {
         background-image: url('img/bibli.jpg');
         color: white;
     }
@@ -33,7 +33,7 @@
     }
     .content-wrapper img {
         margin-left: -50px;
-        max-width: 250px;
+        max-width: 200px;
     }
     .content-wrapper .text-content {
         flex-grow: 1;
@@ -48,6 +48,14 @@
         font-size: 2em; /* Aumenta el tamaño de los subtítulos */
         text-align: center;
     }
+    .image-row {
+        display: flex;
+        justify-content: center;
+        gap: 15px; /* Espacio entre las imágenes */
+    }
+    .image-row img {
+        max-width: 230px; /* Ajusta el tamaño de ambas imágenes */
+    }
 </style>
 </head>
 <body>
@@ -57,14 +65,16 @@
     <div class="text-content">
         <h3>Bienvenido a la empresa Book Share</h3>
         <br><br>
-        <h4>Bienvenido Sr(a): ${sessionScope.objUsuario.nombreCompleto}</h4><br>                
-        
+        <h4>Bienvenido Sr(a): ${sessionScope.objUsuario.nombreCompleto}</h4><br>
+        <div class="image-row">
+            <img src="img/bienvenido.gif">
+            <img src="img/pato.gif">
+        </div>
     </div>
-    
 </div>
 
 <div class="container">
-    <div class="col-md-12" align="center" style="width: 50px; height: 150px"></div>
+    <div class="col-md-12" align="center" style="width: 50px; height: 70px"></div>
 </div>
 </body>
 </html>
