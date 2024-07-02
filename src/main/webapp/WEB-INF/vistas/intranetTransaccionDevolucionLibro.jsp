@@ -25,10 +25,7 @@
 <title>Intranet</title>
 <style>
 	body {
-        background-image: url('img/bibli.jpg');
-    }
-    h4 {
-    	color: white;
+        background-color: #ebe6ea;
     }
 </style>
 </head>

@@ -22,6 +22,11 @@
 <link rel="stylesheet" href="css/bootstrapValidator.css"/>
 
 <title>Intranet</title>
+<style>
+	body {
+        background-color: #ebe6ea;
+    }
+</style>
 </head>
 <body>
 <jsp:include page="intranetCabecera.jsp" />

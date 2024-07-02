@@ -22,6 +22,11 @@
 <link rel="stylesheet" href="css/bootstrapValidator.css"/>
 
 <title>Consulta de Libros</title>
+<style>
+	body {
+        background-color: #ebe6ea;
+    }
+</style>
 </head>
 <body>
 <jsp:include page="intranetCabecera.jsp" />
