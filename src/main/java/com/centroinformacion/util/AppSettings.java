@@ -9,8 +9,8 @@ public class AppSettings {
 
 	
 	public static final int CATALOGO_01_CATEGORIA_DE_LIBRO = 1;
-	public static final int CATALOGO_02_MODALIDAD_DE_ALUMNO = 2;
-	public static final int CATALOGO_03_TIPO_DE_LIBRO_Y_REVISTA = 3;
+	public static final int CATALOGO_02_MODALIDAD_DE_ALUMNO = 3;
+	public static final int CATALOGO_03_TIPO_DE_LIBRO_Y_REVISTA = 5;
 	public static final int CATALOGO_04_ESTADO_DE_LIBRO = 4;
 	
 	public static final int  ACTIVO = 1;

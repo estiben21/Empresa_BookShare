@@ -34,8 +34,8 @@
 
 <div class="container" style="margin-top: 1%">
 	   <div class="row" style="height: 70px">
-			<div class="col-md-2" >
-					<input class="form-control" id="id_txt_filtro"  name="filtro" placeholder="Ingrese el nombre" type="text" maxlength="30"/>
+			<div class="col-md-3" >
+					<input class="form-control" id="id_txt_filtro"  name="filtro" placeholder="Ingrese el Título" type="text" maxlength="30"/>
 			</div>
 			<div class="col-md-2" >
 				<button type="button" class="btn btn-primary" id="id_btn_filtrar" style="width: 150px">FILTRA</button>
@@ -216,6 +216,13 @@
 
 
 <script type="text/javascript">
+//--------------------- Mostrar datos en grilla al cargar
+$(document).ready(function() {
+	$.getJSON("consultaCrudLibro",{"filtro":""}, function (lista){
+		agregarGrilla(lista);
+	});
+});
+
 $.getJSON("listaCategoriaDeLibro", {}, function(data) {
 	$.each(data, function(index, item) {
 		$("#id_reg_categoria").append(

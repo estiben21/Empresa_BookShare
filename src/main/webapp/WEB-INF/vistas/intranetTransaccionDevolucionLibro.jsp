@@ -35,7 +35,6 @@
 <div class="container " style="margin-top: 4%"><h4>Devolución de Libro</h4></div>
 
 <div class="container" style="margin-top: 1%">
-<!-- Agregar aquí­ -->
 
 <form id="id_form" accept-charset="UTF-8" action="boleta" class="form-horizontal" method="post">
 

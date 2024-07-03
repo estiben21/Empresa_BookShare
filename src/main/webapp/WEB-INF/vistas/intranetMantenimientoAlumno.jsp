@@ -35,7 +35,7 @@
 <div class="container" style="margin-top: 1%">
 			<!------------------------------ Cabecera -->
 			<div class="row" style="height: 70px">
-				<div class="col-md-5" >
+				<div class="col-md-3" >
 						<input class="form-control" id="id_txt_filtro"  name="filtro" placeholder="Ingrese el nombre y/o apellido" type="text" maxlength="30"/>
 				</div>
 				<div class="col-md-2" >
