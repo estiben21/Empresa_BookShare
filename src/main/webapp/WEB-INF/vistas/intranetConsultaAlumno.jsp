@@ -44,7 +44,7 @@
 		</div>
 		<div class="row" style="margin-top: 1%">
 			<div class="col-md-6">
-				<label class="control-label" for="id_telefono">Teléfono</label> 
+				<label class="control-label" for="id_telefono">Telï¿½fono</label> 
 				<input class="form-control" type="text" id="id_telefono"	name="paramTelefono">
 			</div>
 			<div class="col-md-6">
@@ -54,15 +54,10 @@
 		</div>
 		<div class="row" style="margin-top: 1%">
 			<div class="col-md-6">
-				<label class="control-label" for="id_correo">Correo electrónico</label> 
+				<label class="control-label" for="id_correo">Correo electrï¿½nico</label> 
 				<input class="form-control" type="text" id="id_correo"	name="paramCorreo">
 			</div>
-			<div class="col-md-6">
-				<label class="control-label" for="id_pais">País</label> 
-				<select id="id_pais" name="paramPais" class='form-control'>
-					<option value="-1">[Todos]</option>
-				</select>
-			</div>
+			
 		</div>
 		<div class="row" style="margin-top: 1%">
 		<!-- DESDE -->
@@ -103,14 +98,13 @@
 				<table id="id_table" class="table table-striped table-bordered">
 					<thead  class="table-header-bg-color">
 						<tr>
-							<th style="width: 5%" >Código</th>
+							<th style="width: 5%" >Cï¿½digo</th>
 							<th style="width: 12%">Nombres</th>
 							<th style="width: 13%">Apellidos</th>
-							<th style="width: 9%">Teléfono</th>
+							<th style="width: 9%">Telï¿½fono</th>
 							<th style="width: 8%">DNI</th>
-							<th style="width: 15%">Correo electrónico</th>
+							<th style="width: 15%">Correo electrï¿½nico</th>
 							<th style="width: 12%">Fecha de nacimiento</th>
-							<th style="width: 10%">País</th>
 							<th style="width: 8%">Modalidad</th>
 							<th style="width: 7%">Estado</th>
 						</tr>
@@ -137,7 +131,6 @@ $("#id_btn_filtra").click(function(){
 	var varCorreo = $("#id_correo").val();
 	var varFechaNacDesde = $("#id_fechaNacimientoDesde").val() == '' ?'1900-01-01' : $("#id_fechaNacimientoDesde").val();
 	var varFechaNacHasta = $("#id_fechaNacimientoHasta").val()  == '' ?'9999-01-01' : $("#id_fechaNacimientoHasta").val();
-	var varPais = $("#id_pais").val();
 	var varModalidad = $("#id_modalidad").val();
 	
 	if (valFechaInicioMayFechaFin("#id_fechaNacimientoDesde", "#id_fechaNacimientoHasta")){
@@ -153,7 +146,6 @@ $("#id_btn_filtra").click(function(){
 		"correo":varCorreo,
 		"fechaNacDesde":varFechaNacDesde,
 		"fechaNacHasta":varFechaNacHasta,
-		"idPais":varPais,
 		"idModalidad":varModalidad},
 		function (data){
 			agregarGrilla(data);
@@ -182,8 +174,7 @@ function agregarGrilla(lista){
 				{data: "telefono"},
 				{data: "dni"},
 				{data: "correo"}, 
-				{data: "fechaNacimiento"}, 
-				{data: "pais.nombre"},
+				{data: "fechaNacimiento"},
 				{data: "modalidad.descripcion"},
 				{data: function(row, type, val, meta){
 					var salida= (row.estado == 1)? 'Activo':"Inactivo";

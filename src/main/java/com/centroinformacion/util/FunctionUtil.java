@@ -25,7 +25,7 @@ public class FunctionUtil {
 		//Se obtiene la fecha limite del mayor de edad
 		Calendar cal = Calendar.getInstance(); //5/10/2023
 		int anioActual = cal.get(Calendar.YEAR);
-		cal.set(Calendar.YEAR, anioActual - 3);
+		cal.set(Calendar.YEAR, anioActual - 18);
 		Date fechaMinimaEdadLimite = cal.getTime(); //5/10/2005
 		
 		//Convierte de String a Date

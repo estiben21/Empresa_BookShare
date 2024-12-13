@@ -77,8 +77,8 @@ public class AlumnoServiceImp implements AlumnoService {
 	//----------------------------------------- CP3 ---------------------------------------
 	@Override
 	public List<Alumno> listaAlumnosPorFiltroConsulta(String nomApellido, int estado, String telefono,
-			String dni, String correo, Date fechaNacDesde, Date fechaNacHasta, int idPais, int idModalidad) {
-			return repository.listaConsultaAlumno(nomApellido, estado, telefono, dni, correo, fechaNacDesde, fechaNacHasta, idPais, idModalidad);
+			String dni, String correo, Date fechaNacDesde, Date fechaNacHasta, int idModalidad) {
+			return repository.listaConsultaAlumno(nomApellido, estado, telefono, dni, correo, fechaNacDesde, fechaNacHasta, idModalidad);
 	}
 
 	@Override

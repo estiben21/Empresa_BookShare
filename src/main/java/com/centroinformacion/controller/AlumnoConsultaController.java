@@ -40,12 +40,11 @@ public class AlumnoConsultaController {
 										String dni, 
 										String correo, 
 										@DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaNacDesde, 
-										@DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaNacHasta, 
-										int idPais, 
+										@DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaNacHasta,  
 										int idModalidad)
 	{
 		List<Alumno> lstSalida = alumnoService.listaAlumnosPorFiltroConsulta("%"+nomApellido+"%", estado, "%"+telefono+"%", "%"+dni+"%", "%"+correo+"%", 
-															fechaNacDesde, fechaNacHasta, idPais, idModalidad);
+															fechaNacDesde, fechaNacHasta, idModalidad);
 		return lstSalida;
 		
 	}
@@ -60,7 +59,6 @@ public class AlumnoConsultaController {
 						String paramTelefono,
 						String paramDni,
 						String paramCorreo,
-						int paramPais,
 						int paramModalidad,
 						@DateTimeFormat(pattern = "yyyy-MM-dd") Date paramFechaNacDesde,
 						@DateTimeFormat(pattern = "yyyy-MM-dd") Date paramFechaNacHasta
@@ -70,7 +68,7 @@ public class AlumnoConsultaController {
 		//PASO 1: Obtener el dataSource que va generar el reporte
 		List<Alumno> lstSalida = alumnoService.listaAlumnosPorFiltroConsulta("%"+paramNomApe+"%", paramEstado ?1:0, "%"+paramTelefono+"%", 
 																			"%"+paramDni+"%", "%"+paramCorreo+"%", paramFechaNacDesde, 
-																			paramFechaNacHasta, paramPais, paramModalidad);
+																			paramFechaNacHasta, paramModalidad);
 		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(lstSalida);
 		
 		//PASO 2: Obtener el archivo que contiene el diseño del reporte

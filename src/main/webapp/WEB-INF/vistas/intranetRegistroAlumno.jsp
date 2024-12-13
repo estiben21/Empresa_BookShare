@@ -55,7 +55,7 @@
 		<div class="row" style="margin-top: 2%">
 			<div class="form-group col-sm-6">
 					<div class="col-sm-4">
-						<label class="control-label" for="id_telefono">Teléfono</label>
+						<label class="control-label" for="id_telefono">Telefono</label>
 					</div>
 					<div class="col-sm-8">
 						<input class="form-control" type="text" id="id_telefono" name="telefono" placeholder="Ingrese el tel&eacute;fono" maxlength="9">
@@ -63,7 +63,7 @@
 			</div>
 			<div class="form-group col-sm-6">
 					<div class="col-sm-4">
-						<label class="control-label" for="id_dni">DNI</label>
+						<label class="control-label" for="id_dni">Nro Documento</label>
 					</div>
 					<div class="col-sm-8">
 						<input class="form-control" type="text" id="id_dni" name="dni" placeholder="Ingrese el DNI" maxlength="8">
@@ -89,16 +89,6 @@
 			</div>
 		</div>
 		<div class="row" style="margin-top: 2%">
-		<div class="form-group col-sm-6">
-				<div class="col-sm-4">
-					<label class="control-label" for="id_pais">País</label>
-				</div>
-				<div class="col-sm-8">
-					<select id="id_pais" name="pais.idPais" class='form-control'>
-						<option value=" ">[Seleccione]</option>    
-					</select>
-			    </div>
-		</div>
 		<div class="form-group col-sm-6">
 				<div class="col-sm-4">
 					<label class="control-label" for="id_modalidad">Modalidad</label>
@@ -157,7 +147,6 @@ function limpiar(){
 	$("#id_dni").val('');
 	$("#id_correo").val('');
 	$("#id_fechaNacimiento").val('');
-	$("#id_pais").val(' ');
 	$("#id_modalidad").val(' ');
 }
  
@@ -182,8 +171,8 @@ $(document).ready(function() {
                             message: 'El nombre es de 2 a 40 caracteres'
                         },
                         regexp: {
-                        	regexp: /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/,
-                            message: 'Ingresar nombres con caracteres alfabéticos'
+                        	regexp: /^[a-zA-Zï¿½-ï¿½\u00f1\u00d1]+(\s*[a-zA-Zï¿½-ï¿½\u00f1\u00d1]*)*[a-zA-Zï¿½-ï¿½\u00f1\u00d1]+$/,
+                            message: 'Ingresar nombres con caracteres alfabï¿½ticos'
                         }
                     }
                 },
@@ -199,8 +188,8 @@ $(document).ready(function() {
                             message: 'Los apellidos son de 2 a 40 caracteres '
                         },
                         regexp: {
-                        	regexp: /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/,
-                            message: 'Ingresar apellidos con caracteres alfabéticos'
+                        	regexp: /^[a-zA-Zï¿½-ï¿½\u00f1\u00d1]+(\s*[a-zA-Zï¿½-ï¿½\u00f1\u00d1]*)*[a-zA-Zï¿½-ï¿½\u00f1\u00d1]+$/,
+                            message: 'Ingresar apellidos con caracteres alfabï¿½ticos'
                         }
                     }
                 },
@@ -208,21 +197,21 @@ $(document).ready(function() {
                     selector: "#id_telefono",
                     validators:{
                         notEmpty: {
-                             message: 'El teléfono es obligatorio'
+                             message: 'El telï¿½fono es obligatorio'
                         },
                         stringLength: {
                         	min: 9,
                             max: 9,
-                            message: 'El teléfono es de 9 dígitos'
+                            message: 'El telï¿½fono es de 9 dï¿½gitos'
                         },
                         regexp: {
                             regexp: /^[0-9]+$/,
-                            message: 'Ingresar teléfono con caracteres numéricos'
+                            message: 'Ingresar telï¿½fono con caracteres numï¿½ricos'
                         },
                         remote :{
                             delay: 100,
                             url: 'buscaPorTelefono',
-                            message: 'El teléfono ya existe'
+                            message: 'El telï¿½fono ya existe'
                         }
                     }
                 },
@@ -258,7 +247,7 @@ $(document).ready(function() {
                         },
                         regexp: {
                             regexp: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                            message: 'Ingresar un correo válido'
+                            message: 'Ingresar un correo vï¿½lido'
                         }
                     }
                 },
@@ -270,15 +259,7 @@ $(document).ready(function() {
                         }, remote :{
                         	delay   : 100,
                         	url     : 'buscaAlumnoEdadEstudiantil',
-                        	message : 'El alumno debe tener mínimo 3 años de edad'
-                        }
-                    }
-                },
-                pais:{
-                    selector: "#id_pais",
-                    validators:{
-                        notEmpty: {
-                             message: 'El país es obligatorio'
+                        	message : 'El alumno debe tener minimo 18 aÃ±os'
                         }
                     }
                 },

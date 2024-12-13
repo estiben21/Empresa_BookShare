@@ -52,14 +52,13 @@
 							<table id="id_table" class="table table-striped table-bordered" >
 								<thead>
 									<tr>
-										<th style="width: 5%" >Código</th>
+										<th style="width: 5%" >Cï¿½digo</th>
 										<th style="width: 12%">Nombres</th>
 										<th style="width: 12%">Apellidos</th>
-										<th style="width: 9%">Teléfono</th>
+										<th style="width: 9%">Telï¿½fono</th>
 										<th style="width: 8%">DNI</th>
-										<th style="width: 13%">Correo electrónico</th>
+										<th style="width: 13%">Correo electrï¿½nico</th>
 										<th style="width: 10%">Fecha de nacimiento</th>
-										<th style="width: 8%">País</th>
 										<th style="width: 8%">Modalidad</th>
 										<th style="width: 7%">Actualiza</th>
 										<th style="width: 7%">Elimina</th>
@@ -102,9 +101,9 @@
 				                                        </div>
 				                                    </div>
 				                                    <div class="form-group">
-				                                        <label class="col-lg-3 control-label" for="id_reg_telefono">Teléfono</label>
+				                                        <label class="col-lg-3 control-label" for="id_reg_telefono">Telï¿½fono</label>
 				                                        <div class="col-lg-8">
-															<input class="form-control" id="id_reg_telefono" name="telefono" placeholder="Ingrese el teléfono" type="text" maxlength="9"/>
+															<input class="form-control" id="id_reg_telefono" name="telefono" placeholder="Ingrese el telï¿½fono" type="text" maxlength="9"/>
 				                                        </div>
 				                                    </div>
 				                                    <div class="form-group">
@@ -114,9 +113,9 @@
 				                                        </div>
 				                                    </div>
 				                                    <div class="form-group">
-				                                        <label class="col-lg-3 control-label" for="id_reg_correo">Correo electrónico</label>
+				                                        <label class="col-lg-3 control-label" for="id_reg_correo">Correo electrï¿½nico</label>
 				                                        <div class="col-lg-8">
-															<input class="form-control" id="id_reg_correo" name="correo" placeholder="Ingrese el correo electrónico" type="text" maxlength="50"/>
+															<input class="form-control" id="id_reg_correo" name="correo" placeholder="Ingrese el correo electrï¿½nico" type="text" maxlength="50"/>
 				                                        </div>
 				                                    </div>
 				                                    <div class="form-group">
@@ -125,14 +124,6 @@
 															<input class="form-control" id="id_reg_fechaNacimiento" name="fechaNacimiento" type="date"/>
 				                                        </div>
 				                                    </div>		   
-				                                    <div class="form-group">
-				                                        <label class="col-lg-3 control-label" for="id_reg_pais">País</label>
-				                                        <div class="col-lg-6">
-															 <select id="id_reg_pais" name="pais" class='form-control'>
-									                            	<option value=" ">[Seleccione]</option>    
-									                         </select>
-				                                        </div>
-				                                    </div>
 				                                    <div class="form-group">
 				                                        <label class="col-lg-3 control-label" for="id_reg_modalidad">Modalidad</label>
 				                                        <div class="col-lg-6">
@@ -156,7 +147,7 @@
 				</div>		
 			</div>
 			
-			<!--------------------------------------- MODAL de Actualización ----------------------------------------------->
+			<!--------------------------------------- MODAL de Actualizaciï¿½n ----------------------------------------------->
 		  	 <div class="modal fade" id="id_div_modal_actualiza" >
 					<div class="modal-dialog" style="width: 60%">
 						<!-- Modal content-->
@@ -194,21 +185,21 @@
 				                                        </div>
 				                                    </div>
 				                                    <div class="form-group">
-				                                        <label class="col-lg-3 control-label" for="id_act_telefono">Teléfono</label>
+				                                        <label class="col-lg-3 control-label" for="id_act_telefono">Telï¿½fono</label>
 				                                        <div class="col-lg-8">
-															<input class="form-control" id="id_act_telefono" name="telefono" placeholder="Ingrese el teléfono" type="text" maxlength="9"/>
+															<input class="form-control" id="id_act_telefono" name="telefono" placeholder="Ingrese el telï¿½fono" type="text" maxlength="9"/>
 				                                        </div>
 				                                    </div>
 				                                    <div class="form-group">
-				                                        <label class="col-lg-3 control-label" for="id_act_dni">DNI</label>
+				                                        <label class="col-lg-3 control-label" for="id_act_dni">Nro Documento</label>
 				                                        <div class="col-lg-8">
 															<input class="form-control" id="id_act_dni" name="dni" placeholder="Ingrese el DNI" type="text" maxlength="8"/>
 				                                        </div>
 				                                    </div>
 				                                    <div class="form-group">
-				                                        <label class="col-lg-3 control-label" for="id_act_correo">Correo electrónico</label>
+				                                        <label class="col-lg-3 control-label" for="id_act_correo">Correo electrï¿½nico</label>
 				                                        <div class="col-lg-8">
-															<input class="form-control" id="id_act_correo" name="correo" placeholder="Ingrese el correo electrónico" type="text" maxlength="50"/>
+															<input class="form-control" id="id_act_correo" name="correo" placeholder="Ingrese el correo electrï¿½nico" type="text" maxlength="50"/>
 				                                        </div>
 				                                    </div>
 				                                    <div class="form-group">
@@ -217,14 +208,7 @@
 															<input class="form-control" id="id_act_fechaNacimiento" name="fechaNacimiento" type="date"/>
 				                                        </div>
 				                                    </div>		   
-				                                    <div class="form-group">
-				                                        <label class="col-lg-3 control-label" for="id_act_pais">País</label>
-				                                        <div class="col-lg-6">
-															 <select id="id_act_pais" name="pais" class='form-control'>
-									                            	<option value=" ">[Seleccione]</option>    
-									                         </select>
-				                                        </div>
-				                                    </div>
+				                                    
 				                                    <div class="form-group">
 				                                        <label class="col-lg-3 control-label" for="id_act_modalidad">Modalidad</label>
 				                                        <div class="col-lg-6">
@@ -276,10 +260,9 @@ function agregarGrilla(listaAlumno){
 				{data: "dni"},
 				{data: "correo"}, 
 				{data: "fechaNacimiento"},
-				{data: "pais.nombre"},
 				{data: "modalidad.descripcion"},
 				{data: function(row, type, val, meta){
-					var salida='<button type="button" style="width: 90px" class="btn btn-info btn-sm" onclick="editar(\''+row.idAlumno + '\',\'' + row.nombres +'\',\'' + row.apellidos  +'\',\'' + row.telefono  +'\',\'' +  row.dni  +  '\',\'' + row.correo  +'\',\'' + row.fechaNacimiento + '\',\'' + row.pais.idPais  + '\',\'' + row.modalidad.idDataCatalogo + '\')">Editar</button>';
+					var salida='<button type="button" style="width: 90px" class="btn btn-info btn-sm" onclick="editar(\''+row.idAlumno + '\',\'' + row.nombres +'\',\'' + row.apellidos  +'\',\'' + row.telefono  +'\',\'' +  row.dni  +  '\',\'' + row.correo  +'\',\'' + row.fechaNacimiento  + '\',\'' + row.modalidad.idDataCatalogo + '\')">Editar</button>';
 					return salida;
 				},className:'text-center'},	
 				{data: function(row, type, val, meta){
@@ -298,14 +281,6 @@ $("#id_btn_filtrar").click(function(){
 	});
 });
 
-//----------------- LISTAR paises en el CBO ---------------------------------------------
-$.getJSON("listaPais", {}, function(data){
-	$.each(data, function(i,item){
-		$("#id_reg_pais").append("<option value="+item.idPais +">"+ item.nombre +"</option>");
-		$("#id_act_pais").append("<option value="+item.idPais +">"+ item.nombre +"</option>");
-	});
-});
-
 //----------------- LISTAR modalidades en el CBO --------------------------------------------- ***************************************++*
 $.getJSON("listaModalidadAlumno", {}, function(data){
 	$.each(data, function(i,item){
@@ -321,11 +296,10 @@ function limpiarFormulario(){
 	$("#id_reg_dni").val('');
 	$("#id_reg_correo").val('');
 	$("#id_reg_fechaNacimiento").val('');
-	$("#id_reg_pais").val(' ');
 	$("#id_reg_modalidad").val(' ');
 } 
 
-//------------------------ botón REGISTRAR ------------------------
+//------------------------ botï¿½n REGISTRAR ------------------------
 $("#id_btn_registra").click(function(){
 	var validator = $('#id_form_registra').data('bootstrapValidator');
     validator.validate();
@@ -374,8 +348,8 @@ $(document).ready(function() {
                             message: 'El nombre es de 2 a 40 caracteres'
                         },
                         regexp: {
-                            regexp: /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/, 
-                            message: 'Ingresar nombres con caracteres alfabéticos'
+                            regexp: /^[a-zA-Zï¿½-ï¿½\u00f1\u00d1]+(\s*[a-zA-Zï¿½-ï¿½\u00f1\u00d1]*)*[a-zA-Zï¿½-ï¿½\u00f1\u00d1]+$/, 
+                            message: 'Ingresar nombres con caracteres alfabï¿½ticos'
                         },
                         remote: {
                             delay: 100,
@@ -404,8 +378,8 @@ $(document).ready(function() {
                             message: 'Los apellidos son de 2 a 40 caracteres '
                         },
                         regexp: {
-                            regexp: /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/,
-                            message: 'Ingresar apellidos con caracteres alfabéticos'
+                            regexp: /^[a-zA-Zï¿½-ï¿½\u00f1\u00d1]+(\s*[a-zA-Zï¿½-ï¿½\u00f1\u00d1]*)*[a-zA-Zï¿½-ï¿½\u00f1\u00d1]+$/,
+                            message: 'Ingresar apellidos con caracteres alfabï¿½ticos'
                     	},
                     	remote: {
                             delay: 100,
@@ -426,20 +400,20 @@ $(document).ready(function() {
                     selector: "#id_reg_telefono",
                     validators:{
                         notEmpty: {
-                             message: 'El teléfono es obligatorio'
+                             message: 'El telï¿½fono es obligatorio'
                         },
                         stringLength: {
                         	min: 9,
                             max: 9,
-                            message: 'El teléfono es de 9 dígitos'
+                            message: 'El telï¿½fono es de 9 dï¿½gitos'
                         },
                         regexp: {
                             regexp: /^[0-9]+$/,
-                            message: 'Ingresar teléfono con caracteres numéricos'
+                            message: 'Ingresar telï¿½fono con caracteres numï¿½ricos'
                         },remote :{
                             delay: 100,
                             url: 'buscaPorTelefono', 
-                            message: 'El teléfono ya existe'
+                            message: 'El telï¿½fono ya existe'
                         }
                     }
                 },
@@ -452,11 +426,11 @@ $(document).ready(function() {
                         stringLength: {
                         	max: 8,
                         	min: 8,
-                            message: 'El DNI es de 8 dígitos'
+                            message: 'El DNI es de 8 dï¿½gitos'
                         },
                         regexp: {
                             regexp: /^[0-9]+$/,
-                            message: 'Ingresar DNI con caracteres numéricos'
+                            message: 'Ingresar DNI con caracteres numï¿½ricos'
                         },remote :{
                             delay: 100,
                             url: 'buscaPorDni',
@@ -471,11 +445,11 @@ $(document).ready(function() {
                              message: 'El correo es obligatorio'
                         },
                         emailAddress: {
-                            message: 'El correo no es válido'
+                            message: 'El correo no es vï¿½lido'
                         },
                         regexp: {
                             regexp: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                            message: 'Ingresar un correo válido'
+                            message: 'Ingresar un correo vï¿½lido'
                         }
                     }
                 },
@@ -488,15 +462,7 @@ $(document).ready(function() {
                         remote :{
                         	delay   : 100,
                         	url     : 'buscaAlumnoEdadEstudiantil',
-                        	message : 'El alumno debe tener mínimo 3 años de edad'
-                        }
-                    }
-                },
-                pais:{
-                    selector: "#id_reg_pais",
-                    validators:{
-                        notEmpty: {
-                             message: 'El país es obligatorio'
+                        	message : 'El alumno debe tener mï¿½nimo 3 aï¿½os de edad'
                         }
                     }
                 },
@@ -512,7 +478,7 @@ $(document).ready(function() {
     });
 });
 
-//------------------------ botón Actualiza ------------------------
+//------------------------ botï¿½n Actualiza ------------------------
 $("#id_btn_actualiza").click(function(){
 	var validator = $('#id_form_actualiza').data('bootstrapValidator');
     validator.validate();
@@ -536,7 +502,7 @@ $("#id_btn_actualiza").click(function(){
 });
 
 
-//----------------------------------- botón EDITA ---------------------------
+//----------------------------------- botï¿½n EDITA ---------------------------
 function editar(idAlumno,nombres,apellidos,telefono,dni,correo,fechaNacimiento,pais,modalidad){	
 	$('#id_ID').val(idAlumno);
 	$('#id_act_nombres').val(nombres);
@@ -574,8 +540,8 @@ $(document).ready(function() {
                         message: 'El nombre es de 2 a 40 caracteres'
                     },
                     regexp: {
-                        regexp: /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/, 
-                        message: 'Ingresar nombres con caracteres alfabéticos'
+                        regexp: /^[a-zA-Zï¿½-ï¿½\u00f1\u00d1]+(\s*[a-zA-Zï¿½-ï¿½\u00f1\u00d1]*)*[a-zA-Zï¿½-ï¿½\u00f1\u00d1]+$/, 
+                        message: 'Ingresar nombres con caracteres alfabï¿½ticos'
                     },
                     remote: {
                         delay: 100,
@@ -597,7 +563,7 @@ $(document).ready(function() {
                             // Eliminar el error en el campo de nombres
                             $('#id_form_actualiza').bootstrapValidator('updateStatus', 'apellidos', 'VALID');
                         },
-                        // Función para manejar el error remoto
+                        // Funciï¿½n para manejar el error remoto
                         onError: function (e, data) {
                            
             			// Establecer un error en el campo de nombres
@@ -618,8 +584,8 @@ $(document).ready(function() {
                         message: 'Los apellidos son de 2 a 40 caracteres '
                     },
                     regexp: {
-                        regexp: /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/,
-                        message: 'Ingresar apellidos con caracteres alfabéticos'
+                        regexp: /^[a-zA-Zï¿½-ï¿½\u00f1\u00d1]+(\s*[a-zA-Zï¿½-ï¿½\u00f1\u00d1]*)*[a-zA-Zï¿½-ï¿½\u00f1\u00d1]+$/,
+                        message: 'Ingresar apellidos con caracteres alfabï¿½ticos'
                     },
                     remote: {
                         delay: 100,
@@ -641,7 +607,7 @@ $(document).ready(function() {
                             // Eliminar el error en el campo de nombres
                             $('#id_form_actualiza').bootstrapValidator('updateStatus', 'nombres', 'VALID');
                         },
-                        // Función para manejar el error remoto
+                        // Funciï¿½n para manejar el error remoto
                         onError: function (e, data) {
                            
             			// Establecer un error en el campo de nombres
@@ -654,16 +620,16 @@ $(document).ready(function() {
                 selector: "#id_act_telefono",
                 validators:{
                     notEmpty: {
-                         message: 'El teléfono es obligatorio'
+                         message: 'El telï¿½fono es obligatorio'
                     },
                     stringLength: {
                     	min: 9,
                         max: 9,
-                        message: 'El teléfono es de 9 dígitos'
+                        message: 'El telï¿½fono es de 9 dï¿½gitos'
                     },
                     regexp: {
                         regexp: /^[0-9]+$/,
-                        message: 'Ingresar teléfono con caracteres numéricos'
+                        message: 'Ingresar telï¿½fono con caracteres numï¿½ricos'
                     },
                 }
             },
@@ -676,11 +642,11 @@ $(document).ready(function() {
                     stringLength: {
                     	max: 8,
                     	min: 8,
-                        message: 'El DNI es de 8 dígitos'
+                        message: 'El DNI es de 8 dï¿½gitos'
                     },
                     regexp: {
                         regexp: /^[0-9]+$/,
-                        message: 'Ingresar DNI con caracteres numéricos'
+                        message: 'Ingresar DNI con caracteres numï¿½ricos'
                     }, remote: {
                         delay: 100,
                         url: 'buscaAlumnoPorDniId_Actualizar', 
@@ -703,11 +669,11 @@ $(document).ready(function() {
                          message: 'El correo es obligatorio'
                     },
                     emailAddress: {
-                        message: 'El correo no es válido'
+                        message: 'El correo no es vï¿½lido'
                     },
                     regexp: {
                         regexp: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                        message: 'Ingresar un correo válido'
+                        message: 'Ingresar un correo vï¿½lido'
                     }
                 }
             },
@@ -719,7 +685,7 @@ $(document).ready(function() {
                     }, remote :{
                     	delay   : 100,
                     	url     : 'buscaAlumnoEdadEstudiantil',
-                    	message : 'El alumno debe tener mínimo 3 años de edad'
+                    	message : 'El alumno debe tener mï¿½nimo 3 aï¿½os de edad'
                     }
                 }
             },
@@ -727,7 +693,7 @@ $(document).ready(function() {
                 selector: "#id_act_pais",
                 validators:{
                     notEmpty: {
-                         message: 'El país es obligatorio'
+                         message: 'El paï¿½s es obligatorio'
                     }
                 }
             },
@@ -743,7 +709,7 @@ $(document).ready(function() {
     });
 });
 
-//----------------------------------- botón ELIMINA  ---------------------------
+//----------------------------------- botï¿½n ELIMINA  ---------------------------
 function accionEliminar(id){	
     $.ajax({
           type: "POST",

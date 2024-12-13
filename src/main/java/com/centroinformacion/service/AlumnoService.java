@@ -41,7 +41,7 @@ public interface AlumnoService {
 	//------------------------------ CP3 -------------------------------------------
 	//Para la consulta
 	public abstract List<Alumno> listaAlumnosPorFiltroConsulta(String nomApellido, int estado, String telefono, String dni, 
-													String correo, Date fechaNacDesde, Date fechaNacHasta, int idPais, int idModalidad);
+													String correo, Date fechaNacDesde, Date fechaNacHasta, int idModalidad);
 	
 	public abstract List<Alumno> listaAlumno (String filtro, Pageable pageable);
 	

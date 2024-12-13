@@ -40,10 +40,9 @@ public interface AlumnoRepository extends JpaRepository<Alumno, Integer>{
 										+ "(a.correo like ?5) and "
 										+ "(a.fechaNacimiento >= ?6) and "
 										+ "(a.fechaNacimiento <= ?7) and "
-										+ "( ?8 = -1  or a.pais.idPais = ?8) and "
-										+ "( ?9 = -1 or a.modalidad.idDataCatalogo = ?9)")
+										+ "( ?8 = -1  or a.modalidad.idDataCatalogo = ?8)")
 	public abstract List<Alumno> listaConsultaAlumno(String nomApe, int estado, String telefono, String dni, 
-													String correo, Date fechaNacDesde, Date fechaNacHasta, int idPais, int idModalidad);
+													String correo, Date fechaNacDesde, Date fechaNacHasta, int idModalidad);
 
 	
 	@Query("select x from Alumno x where x.nombres like ?1 or x.apellidos like ?1")

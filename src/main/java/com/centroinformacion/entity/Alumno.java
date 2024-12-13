@@ -56,11 +56,6 @@ public class Alumno {
 	private Date fechaActualizacion;
 
 	private int estado;
-
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idPais")
-	private Pais pais;
 	
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -82,9 +77,6 @@ public class Alumno {
 		return estado == 1 ? "Activo" : "Inactivo";
 	}
 	
-	public String getReportePais() {
-		return pais.getNombre();
-	}
 	
 	public String getReporteModalidad() {
 		return modalidad.getDescripcion();
