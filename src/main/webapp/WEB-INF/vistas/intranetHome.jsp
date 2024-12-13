@@ -66,10 +66,6 @@
         <h3>Bienvenido a la empresa Book Share</h3>
         <br><br>
         <h4>Bienvenido Sr(a): ${sessionScope.objUsuario.nombreCompleto}</h4><br>
-        <div class="image-row">
-            <img src="img/bienvenido.gif">
-            <img src="img/pato.gif">
-        </div>
     </div>
 </div>
 
