@@ -24,7 +24,7 @@
 <title>Intranet</title>
 <style>
     body {
-        background-image: url('img/bibli.jpg');
+        background-image: url('img/fondo.jpg');
         color: white;
     }
     .content-wrapper {
@@ -42,19 +42,19 @@
         align-items: center;
     }
     .text-content h3 {
-        font-size: 3em; /* Aumenta el tamaño del título principal */
+        font-size: 3em; /* Aumenta el tamaï¿½o del tï¿½tulo principal */
     }
     .text-content h4 {
-        font-size: 2em; /* Aumenta el tamaño de los subtítulos */
+        font-size: 2em; /* Aumenta el tamaï¿½o de los subtï¿½tulos */
         text-align: center;
     }
     .image-row {
         display: flex;
         justify-content: center;
-        gap: 15px; /* Espacio entre las imágenes */
+        gap: 15px; /* Espacio entre las imï¿½genes */
     }
     .image-row img {
-        max-width: 230px; /* Ajusta el tamaño de ambas imágenes */
+        max-width: 230px; /* Ajusta el tamaï¿½o de ambas imï¿½genes */
     }
 </style>
 </head>
