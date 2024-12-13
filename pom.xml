@@ -65,10 +65,17 @@
 		<dependency>
 		    <groupId>net.sf.jasperreports</groupId>
 		    <artifactId>jasperreports</artifactId>
-		    <version>6.20.6</version>
+		    <version>7.0.1</version>
 		</dependency>
-	</dependencies>
+		
+		<dependency>
+    <groupId>net.sf.jasperreports</groupId>
+    <artifactId>jasperreports-pdf</artifactId>
+    <version>7.0.1</version>
+     </dependency>
 
+	</dependencies>
+	
 	<build>
 		<plugins>
 			<plugin>
